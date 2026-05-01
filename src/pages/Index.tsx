@@ -79,11 +79,13 @@ const Index = () => {
               <li>네델란드 조직배양한 묘목 수입하여 재배</li>
               <li>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</li>
             </ul>
-            <Button asChild size="lg" className="rounded-none mt-10">
-              <Link to="/shop">
-                Shop trees <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <div className="mt-10 flex justify-end">
+              <Button asChild size="lg" className="rounded-none">
+                <Link to="/shop">
+                  Shop trees <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
