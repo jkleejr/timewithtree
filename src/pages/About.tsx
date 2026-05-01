@@ -1,5 +1,4 @@
 import { SiteLayout } from "@/components/SiteLayout";
-import { FarmContact } from "@/components/FarmContact";
 import aboutBark from "@/assets/about-bark.jpg";
 
 const About = () => (
@@ -37,8 +36,6 @@ const About = () => (
         </p>
       </div>
     </section>
-
-    <FarmContact />
   </SiteLayout>
 );
 
