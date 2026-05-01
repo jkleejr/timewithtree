@@ -82,7 +82,7 @@ const Index = () => {
             <div className="mt-10 flex justify-end">
               <Button asChild size="lg" className="rounded-none">
                 <Link to="/shop">
-                  Shop trees <ArrowRight className="ml-2 h-4 w-4" />
+                  나무 쇼핑하기 <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>
