@@ -45,14 +45,7 @@ const Index = () => {
       <section className="border-t border-border">
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-24 grid md:grid-cols-12 gap-10 md:gap-16 items-center">
           <div className="md:col-span-6">
-            <img
-              src={farmIntro}
-              alt="Rows of Jacquemontii Doorenbos birch saplings growing in air-pots at the farm"
-              width={1366}
-              height={1820}
-              loading="lazy"
-              className="w-full h-auto object-cover"
-            />
+            <FarmGallery images={farmImages} />
           </div>
           <div className="md:col-span-6">
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
