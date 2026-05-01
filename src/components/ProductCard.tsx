@@ -23,7 +23,7 @@ export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
         )}
       </div>
       <div className="flex items-baseline justify-between gap-4">
-        <h3 className="font-display text-lg leading-tight">{p.title}</h3>
+        <h3 className="font-display text-lg leading-tight font-sans">{p.title}</h3>
         <span className="text-sm tabular-nums whitespace-nowrap">
           {price.currencyCode} {parseFloat(price.amount).toFixed(2)}
         </span>
