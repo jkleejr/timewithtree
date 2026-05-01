@@ -7,7 +7,7 @@ export const SiteFooter = () => (
       <div className="md:col-span-4">
         <div className="font-display text-lg mb-2">나무와 걷는 시간</div>
         <p className="text-muted-foreground max-w-xs">
-          Korean white birch trees, grown with care and shipped from our nursery.
+          저희 묘목장에서 정성껏 키운 한국산 자작나무입니다.
         </p>
         <div className="flex flex-col gap-2 mt-6">
           <span className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Explore</span>
