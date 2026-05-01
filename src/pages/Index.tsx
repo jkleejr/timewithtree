@@ -34,6 +34,10 @@ const farmImages = [
     src: farmJac17,
     alt: "Grove of Jacquemontii Doorenbos birch trunks in autumn",
   },
+  {
+    src: farmJacBark,
+    alt: "Close-up of Jacquemontii Doorenbos birch trunk peeling its papery white bark",
+  },
 ];
 
 const Index = () => {
