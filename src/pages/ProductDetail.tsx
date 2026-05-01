@@ -92,7 +92,7 @@ const ProductDetail = () => {
         </div>
 
         <div className="flex flex-col">
-          <h1 className="font-display text-4xl md:text-5xl mb-4">{p.title}</h1>
+          <h1 className="font-display text-4xl md:text-5xl mb-4 font-serif font-bold">{p.title}</h1>
           {variant && (
             <p className="text-xl tabular-nums mb-6">
               {variant.price.currencyCode} {parseFloat(variant.price.amount).toFixed(2)}
