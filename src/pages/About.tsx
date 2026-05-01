@@ -7,7 +7,7 @@ import aboutBark from "@/assets/about-doorenbos.jpg";
 const About = () => (
   <SiteLayout>
     <section className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-12">
-      <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">나무 소개</p>
+      <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4"></p>
       <h1 className="font-display text-4xl md:text-6xl max-w-3xl leading-[1.05] font-serif font-bold">
         잭큐몬티 도랜보스 자작나무
       </h1>
