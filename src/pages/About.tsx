@@ -17,7 +17,7 @@ const About = () => (
       <div className="md:col-span-5">
         <img
           src={aboutBark}
-          alt="Detail of Korean white birch bark"
+          alt="에어포트에서 자라는 잭큐몬티 도랜보스 자작나무"
           loading="lazy"
           width={1280}
           height={1280}
