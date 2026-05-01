@@ -66,10 +66,10 @@ const Index = () => {
             <h2 className="font-display md:text-4xl lg:text-5xl leading-tight mb-8 font-serif text-5xl font-bold">
               잭큐몬티 도랜보스 자작나무 농장
             </h2>
-            <ul className="space-y-4 text-base md:text-lg leading-relaxed list-disc pl-6 font-serif text-primary marker:text-accent">
-              <li className="text-lg">잭큐몬티 도랜보스 (Jacquemontii Doorenbos) 자작나무 농장</li>
-              <li className="text-lg">네델란드 조직배양한 묘목 수입하여 재배</li>
-              <li className="text-lg">에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</li>
+            <ul className="space-y-4 text-base md:text-lg leading-relaxed font-serif text-primary">
+              <li className="text-lg flex gap-2"><span aria-hidden="true">-</span><span>잭큐몬티 도랜보스 (Jacquemontii Doorenbos) 자작나무 농장</span></li>
+              <li className="text-lg flex gap-2"><span aria-hidden="true">-</span><span>네델란드 조직배양한 묘목 수입하여 재배</span></li>
+              <li className="text-lg flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
             </ul>
             <div className="mt-10 flex justify-end">
               <Button asChild size="lg" className="rounded-none">
