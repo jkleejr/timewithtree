@@ -90,7 +90,7 @@ const Index = () => {
             <h2 className="font-display md:text-4xl font-serif font-extrabold text-5xl">자작나무 주문</h2>
           </div>
           <Link to="/shop" className="text-sm hover:text-accent transition-colors hidden md:inline-flex items-center gap-1">
-            View all <ArrowRight className="h-4 w-4" />
+            다 보기 <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
