@@ -48,9 +48,9 @@ const Index = () => {
           </div>
           <div className="md:col-span-6">
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
-              About the farm
+              자작나무 소개
             </p>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight mb-8">
+            <h2 className="font-display md:text-4xl lg:text-5xl leading-tight mb-8 font-serif text-5xl font-bold">
               잭큐몬티 도랜보스 자작나무 농장
             </h2>
             <ul className="space-y-4 text-base md:text-lg leading-relaxed text-muted-foreground list-disc pl-6 marker:text-accent">
