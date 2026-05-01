@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import heroBirch from "@/assets/hero-birch.jpg";
+import farmIntro from "@/assets/farm-intro.jpg";
 
 const Index = () => {
   const { data: products = [], isLoading } = useShopifyProducts(50);
