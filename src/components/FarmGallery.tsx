@@ -21,13 +21,13 @@ export const FarmGallery = ({ images }: { images: GalleryImage[] }) => {
 
   return (
     <div className="w-full">
-      <div className="relative group overflow-hidden bg-secondary">
+      <div className="relative group overflow-hidden bg-secondary aspect-[4/5]">
         <img
           key={current.src}
           src={current.src}
           alt={current.alt}
           loading="lazy"
-          className="w-full h-auto object-cover animate-in fade-in duration-300"
+          className="absolute inset-0 w-full h-full object-cover animate-in fade-in duration-300"
         />
 
         {images.length > 1 && (
