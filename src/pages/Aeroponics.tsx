@@ -55,7 +55,7 @@ const Aeroponics = () => {
         <div className="mt-16 flex justify-end">
           <Button asChild size="lg" className="rounded-none">
             <Link to="/shop">
-              쇼핑하러 가기 <ArrowRight className="ml-2 h-4 w-4" />
+              나무 주문 <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>
