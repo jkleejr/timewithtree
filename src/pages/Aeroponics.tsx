@@ -7,7 +7,7 @@ const Aeroponics = () => {
   return (
     <SiteLayout>
       <section className="max-w-4xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-10">
-        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">재배 방식</p>
+        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3"></p>
         <h1 className="font-display font-serif text-4xl md:text-6xl leading-tight mb-6">
           에어포닉스로 키운 자작나무
         </h1>
