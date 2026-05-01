@@ -60,8 +60,8 @@ const ProductDetail = () => {
   return (
     <SiteLayout>
       <div className="max-w-7xl mx-auto px-6 md:px-10 pt-8">
-        <Link to="/shop" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
-          <ArrowLeft className="h-4 w-4" /> Back
+        <Link to="/shop" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground font-serif font-bold">
+          <ArrowLeft className="h-4 w-4" /> 뒤로 가기
         </Link>
       </div>
 
@@ -102,7 +102,7 @@ const ProductDetail = () => {
 
           {variants.length > 1 && (
             <div className="mb-6">
-              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Size</p>
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3 font-serif font-bold">Size</p>
               <div className="flex flex-wrap gap-2">
                 {variants.map((v, i) => (
                   <button
@@ -120,7 +120,7 @@ const ProductDetail = () => {
           )}
 
           <div className="mb-8">
-            <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Quantity</p>
+            <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3 font-serif font-bold">수량</p>
             <div className="inline-flex items-center border border-border">
               <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-3 py-2 hover:bg-secondary">
                 <Minus className="h-3 w-3" />
@@ -138,22 +138,22 @@ const ProductDetail = () => {
             onClick={handleAdd}
             disabled={isAdding || !variant?.availableForSale}
           >
-            {isAdding ? <Loader2 className="h-4 w-4 animate-spin" /> : variant?.availableForSale === false ? 'Sold out' : 'Add to cart'}
+            {isAdding ? <Loader2 className="h-4 w-4 animate-spin" /> : variant?.availableForSale === false ? 'Sold out' : '장바구니 담기'}
           </Button>
 
-          <Accordion type="single" collapsible className="mt-10">
+          <Accordion type="single" collapsible className="mt-10 font-serif font-bold">
             <AccordionItem value="shipping">
-              <AccordionTrigger>Shipping & care</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
-                Trees ship bare-root or potted depending on size, carefully wrapped to protect the bark and roots.
-                Plant in well-drained soil with full sun to partial shade. Water deeply for the first season.
+              <AccordionTrigger>배송 및 관리</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground font-serif font-normal text-black">
+                나무는 크기에 따라 뿌리가 드러난 상태(bare-root)나 화분에 심긴 상태로 배송되며, 수피와 뿌리를 보호하기 위해 정성스럽게 포장됩니다. {"\n\n"}
+                배수가 잘 되는 토양에 심고, 햇빛이 잘 들거나 약간 그늘진 곳이 적합합니다. {"\n"}
+                식재 후 첫 시즌에는 물을 충분히 깊게 주어야 합니다.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="origin">
-              <AccordionTrigger>Origin</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
-                Grown at our family nursery in the highlands of South Korea, where cool climate and clean air
-                produce the bright white bark Korean birch is known for.
+              <AccordionTrigger>원산지</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground font-serif font-normal text-black">
+                서늘한 기후와 깨끗한 공기로 밝고 하얀 수피를 자랑하는 대한민국 강원도 고산지대 농장에서 직접 재배되었습니다.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
