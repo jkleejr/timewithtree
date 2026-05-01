@@ -24,7 +24,7 @@ const About = () => (
           className="w-full aspect-[3/4] object-cover"
         />
       </div>
-      <div className="md:col-span-5 md:col-start-8 flex flex-col gap-6 text-base leading-relaxed text-muted-foreground">
+      <div className="md:col-span-5 md:col-start-8 flex-col gap-6 text-base leading-relaxed text-muted-foreground flex items-start justify-start">
         <p className="text-primary">
           잭큐몬티 도랜보스(Jacquemontii Doorenbos)는 히말라야 자작나무의 변이종을 네덜란드에서 개량한, 자작나무 중 수피가 가장 하얗고 깨끗한 명품 조경수입니다. 성장 속도가 빠르고 9~15m까지 자라며, 줄기뿐만 아니라 가지까지 형광 백색을 띠는 것이 특징입니다. 전국 노지 월동이 가능하며, 3~4년생부터 뱀 껍질처럼 허물을 벗으며 백색 수피를 드러냅니다.
         </p>
