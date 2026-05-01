@@ -62,19 +62,10 @@ const Index = () => {
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight mb-8">
               잭큐몬티 도랜보스 자작나무 농장
             </h2>
-            <ul className="space-y-5 text-base md:text-lg leading-relaxed text-muted-foreground">
-              <li className="flex gap-4">
-                <span className="text-accent mt-2 h-px w-6 bg-accent shrink-0" aria-hidden="true" />
-                <span>잭큐몬티 도랜보스 (Jacquemontii Doorenbos) 자작나무 농장</span>
-              </li>
-              <li className="flex gap-4">
-                <span className="text-accent mt-2 h-px w-6 bg-accent shrink-0" aria-hidden="true" />
-                <span>네델란드 조직배양한 묘목 수입하여 재배</span>
-              </li>
-              <li className="flex gap-4">
-                <span className="text-accent mt-2 h-px w-6 bg-accent shrink-0" aria-hidden="true" />
-                <span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span>
-              </li>
+            <ul className="space-y-4 text-base md:text-lg leading-relaxed text-muted-foreground list-disc pl-6 marker:text-accent">
+              <li>잭큐몬티 도랜보스 (Jacquemontii Doorenbos) 자작나무 농장</li>
+              <li>네델란드 조직배양한 묘목 수입하여 재배</li>
+              <li>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</li>
             </ul>
           </div>
         </div>
