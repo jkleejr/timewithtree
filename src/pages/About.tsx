@@ -48,7 +48,7 @@ const About = () => (
         <p className="text-primary">
           수액은 웰빙 음료로 활용되기도 합니다.
         </p>
-        <div className="mt-10 flex justify-end">
+        <div className="mt-10 flex justify-end w-full">
           <Button asChild size="lg" className="rounded-none">
             <Link to="/shop">
               나무 주문 <ArrowRight className="ml-2 h-4 w-4" />
