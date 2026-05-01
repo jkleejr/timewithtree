@@ -19,7 +19,7 @@ const Cart = () => {
     <SiteLayout>
       <section className="max-w-6xl mx-auto px-6 md:px-10 pt-16 pb-24">
         <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">Your cart</p>
-        <h1 className="font-display text-4xl md:text-5xl mb-10">
+        <h1 className="font-display text-4xl md:text-5xl mb-10 font-serif font-bold">
           {totalItems === 0 ? 'Cart is empty' : `${totalItems} item${totalItems !== 1 ? 's' : ''}`}
         </h1>
 
