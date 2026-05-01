@@ -116,7 +116,7 @@ const Index = () => {
       <section className="border-t border-border">
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28 grid md:grid-cols-12 gap-10">
           <div className="md:col-span-5">
-            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">잭큐몬티 도랜보스</p>
+            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">에어포트 재배의 장점</p>
             <h2 className="font-display text-3xl md:text-5xl leading-tight">
               Trees raised slowly, in the highlands of Korea.
             </h2>
