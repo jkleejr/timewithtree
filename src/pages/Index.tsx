@@ -2,10 +2,18 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { ProductCard } from "@/components/ProductCard";
+import { FarmGallery } from "@/components/FarmGallery";
 import { Button } from "@/components/ui/button";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import heroBirch from "@/assets/hero-birch.jpg";
 import farmIntro from "@/assets/farm-intro.jpg";
+
+const farmImages = [
+  {
+    src: farmIntro,
+    alt: "Rows of Jacquemontii Doorenbos birch saplings growing in air-pots at the farm",
+  },
+];
 
 const Index = () => {
   const { data: products = [], isLoading } = useShopifyProducts(50);
