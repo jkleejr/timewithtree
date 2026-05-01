@@ -7,7 +7,7 @@ import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import heroBirch from "@/assets/hero-birch.jpg";
 
 const Index = () => {
-  const { data: products = [], isLoading } = useShopifyProducts(3);
+  const { data: products = [], isLoading } = useShopifyProducts(50);
 
   return (
     <SiteLayout>
