@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
+import { Button } from "@/components/ui/button";
 
 const Aeroponics = () => {
   return (
@@ -47,6 +50,14 @@ const Aeroponics = () => {
               관리하기 때문에, 수형과 수피 색이 일관된 고품질 자작나무를 공급할 수 있습니다.
             </p>
           </article>
+        </div>
+
+        <div className="mt-16 flex justify-end">
+          <Button asChild size="lg" className="rounded-none">
+            <Link to="/shop">
+              쇼핑하러 가기 <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </section>
     </SiteLayout>
