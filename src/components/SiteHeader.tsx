@@ -22,7 +22,7 @@ export const SiteHeader = () => {
         </nav>
         <Link to="/cart" className="relative flex items-center gap-2 text-sm">
           <ShoppingBag className="h-5 w-5" />
-          <span className="hidden sm:inline">Cart</span>
+          <span className="hidden sm:inline">장바구니</span>
           {totalItems > 0 && (
             <span className="absolute -top-2 -right-2 sm:static sm:ml-1 inline-flex items-center justify-center h-5 min-w-[20px] px-1 rounded-full bg-accent text-accent-foreground text-[11px] font-medium">
               {totalItems}

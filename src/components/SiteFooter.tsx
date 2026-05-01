@@ -13,7 +13,7 @@ export const SiteFooter = () => (
           <span className="text-xs uppercase tracking-widest text-muted-foreground mb-1">목차</span>
           <Link to="/shop" className="hover:text-accent transition-colors">쇼핑</Link>
           <Link to="/about" className="hover:text-accent transition-colors">잭큐몬티 도랜보스</Link>
-          <Link to="/cart" className="hover:text-accent transition-colors">Cart</Link>
+          <Link to="/cart" className="hover:text-accent transition-colors">장바구니</Link>
         </div>
       </div>
       <div className="md:col-span-8">
