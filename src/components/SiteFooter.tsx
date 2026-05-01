@@ -4,12 +4,9 @@ import logo from "@/assets/logo.png";
 
 export const SiteFooter = () => (
   <footer className="border-t border-border mt-24">
-    <div className="max-w-7xl mx-auto px-6 md:px-10 pt-10 flex justify-center">
-      <img src={logo} alt="나무와 걷는 시간 로고" className="h-24 md:h-28 w-auto" />
-    </div>
-    <div className="max-w-7xl mx-auto px-6 md:px-10 py-12 grid gap-10 md:grid-cols-12 text-sm">
+    <div className="max-w-7xl mx-auto px-6 md:px-10 pt-12 pb-10 grid gap-10 md:grid-cols-12 text-sm">
       <div className="md:col-span-4">
-        <div className="font-display text-lg mb-2">나무와 걷는 시간</div>
+        <img src={logo} alt="나무와 걷는 시간 로고" className="h-20 md:h-24 w-auto mb-4 -ml-2" />
         <p className="text-muted-foreground max-w-xs">
           저희 농장에서 정성껏 키우고 직접 배송해 드리는 한국산 자작나무입니다.
         </p>
