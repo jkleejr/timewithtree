@@ -126,9 +126,13 @@ const Index = () => {
               For three generations, our family nursery has cultivated Betula platyphylla — the Korean white birch —
               prized for its smooth white bark and soft, papery leaves that turn golden in autumn.
             </p>
-            <Link to="/aeroponics" className="inline-flex items-center gap-2 text-sm hover:text-accent transition-colors">
-              Read more <ArrowRight className="h-4 w-4" />
-            </Link>
+            <div className="flex justify-end">
+              <Button asChild size="lg" className="rounded-none">
+                <Link to="/aeroponics">
+                  에어포닉스 <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
