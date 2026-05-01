@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
+import { Button } from "@/components/ui/button";
 import aboutBark from "@/assets/about-bark.jpg";
 
 const About = () => (
@@ -45,6 +48,13 @@ const About = () => (
         <p className="text-primary">
           수액은 웰빙 음료로 활용되기도 합니다.
         </p>
+        <div className="mt-10 flex justify-end">
+          <Button asChild size="lg" className="rounded-none">
+            <Link to="/shop">
+              쇼핑하러 가기 <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
       </div>
     </section>
   </SiteLayout>
