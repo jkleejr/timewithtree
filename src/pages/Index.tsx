@@ -11,6 +11,7 @@ import farmJac1 from "@/assets/farm-jac-1.png";
 import farmJac5 from "@/assets/farm-jac-5.png";
 import farmJac13 from "@/assets/farm-jac-13.png";
 import farmJac17 from "@/assets/farm-jac-17.png";
+import farmJacBark from "@/assets/farm-jac-bark.jpg";
 
 const farmImages = [
   {
@@ -32,6 +33,10 @@ const farmImages = [
   {
     src: farmJac17,
     alt: "Grove of Jacquemontii Doorenbos birch trunks in autumn",
+  },
+  {
+    src: farmJacBark,
+    alt: "Close-up of Jacquemontii Doorenbos birch trunk peeling its papery white bark",
   },
 ];
 
