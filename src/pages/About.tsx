@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
-import aboutBark from "@/assets/about-bark.jpg";
+import aboutBark from "@/assets/about-doorenbos.jpg";
 
 const About = () => (
   <SiteLayout>
