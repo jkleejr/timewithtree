@@ -20,8 +20,8 @@ const Shop = () => {
   return (
     <SiteLayout>
       <section className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-20 pb-10">
-        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">Shop</p>
-        <h1 className="font-display text-4xl md:text-5xl mb-6">All trees</h1>
+        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">쇼핑</p>
+        <h1 className="font-display text-4xl md:text-5xl mb-6 font-serif">모든 나무</h1>
         <div className="flex items-center justify-between border-t border-border pt-6">
           <span className="text-sm text-muted-foreground">{sorted.length} item{sorted.length !== 1 ? 's' : ''}</span>
           <Select value={sort} onValueChange={(v) => setSort(v as SortKey)}>
