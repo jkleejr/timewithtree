@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import heroBirch from "@/assets/hero-birch.jpg";
+import farmIntro from "@/assets/farm-intro.jpg";
 
 const Index = () => {
   const { data: products = [], isLoading } = useShopifyProducts(50);
@@ -37,6 +38,44 @@ const Index = () => {
                 Shop trees <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Farm intro */}
+      <section className="border-t border-border">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-24 grid md:grid-cols-12 gap-10 md:gap-16 items-center">
+          <div className="md:col-span-6">
+            <img
+              src={farmIntro}
+              alt="Rows of Jacquemontii Doorenbos birch saplings growing in air-pots at the farm"
+              width={1366}
+              height={1820}
+              loading="lazy"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+          <div className="md:col-span-6">
+            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
+              About the farm
+            </p>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight mb-8">
+              잭큐몬티 도랜보스 자작나무 농장
+            </h2>
+            <ul className="space-y-5 text-base md:text-lg leading-relaxed text-muted-foreground">
+              <li className="flex gap-4">
+                <span className="text-accent mt-2 h-px w-6 bg-accent shrink-0" aria-hidden="true" />
+                <span>잭큐몬티 도랜보스 (Jacquemontii Doorenbos) 자작나무 농장</span>
+              </li>
+              <li className="flex gap-4">
+                <span className="text-accent mt-2 h-px w-6 bg-accent shrink-0" aria-hidden="true" />
+                <span>네델란드 조직배양한 묘목 수입하여 재배</span>
+              </li>
+              <li className="flex gap-4">
+                <span className="text-accent mt-2 h-px w-6 bg-accent shrink-0" aria-hidden="true" />
+                <span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
