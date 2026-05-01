@@ -64,7 +64,7 @@ const Index = () => {
           <div className="md:col-span-6">
             <FarmGallery images={farmImages} />
           </div>
-          <div className="md:col-span-6">
+          <div className="md:col-span-6 md:-mt-8">
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
               나무 소개
             </p>
