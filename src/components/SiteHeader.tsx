@@ -17,7 +17,7 @@ export const SiteHeader = () => {
           <img src={logo} alt="나무와 걷는 시간" className="h-[72px] md:h-[88px] w-auto -my-3" />
         </Link>
         <nav className="hidden md:flex items-center gap-10">
-          <NavLink to="/shop" className={navClass}>Shop</NavLink>
+          <NavLink to="/shop" className={navClass}>쇼핑</NavLink>
           <NavLink to="/about" className={navClass}>잭큐몬티 도랜보스</NavLink>
         </nav>
         <Link to="/cart" className="relative flex items-center gap-2 text-sm">
