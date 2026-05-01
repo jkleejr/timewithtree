@@ -51,14 +51,6 @@ const Index = () => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16">
-          <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
-            From the nurseries of Korea
-          </p>
-          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[1.05] max-w-3xl">
-            Quiet, slender, and luminous — the Korean white birch.
-          </h1>
-        </div>
       </section>
 
       {/* Farm intro */}
