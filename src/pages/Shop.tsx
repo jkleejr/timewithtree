@@ -23,7 +23,7 @@ const Shop = () => {
         <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">쇼핑</p>
         <h1 className="font-display text-4xl md:text-5xl mb-6 font-serif">모든 나무</h1>
         <div className="flex items-center justify-between border-t border-border pt-6">
-          <span className="text-sm text-muted-foreground">{sorted.length} item{sorted.length !== 1 ? 's' : ''}</span>
+          <span className="text-sm text-muted-foreground">{sorted.length}개</span>
           <Select value={sort} onValueChange={(v) => setSort(v as SortKey)}>
             <SelectTrigger className="w-[180px] rounded-none">
               <SelectValue placeholder="Sort" />
