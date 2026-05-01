@@ -61,7 +61,7 @@ const Index = () => {
           </div>
           <div className="md:col-span-6">
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
-              자작나무 소개
+              나무 소개
             </p>
             <h2 className="font-display md:text-4xl lg:text-5xl leading-tight mb-8 font-serif text-5xl font-bold">
               잭큐몬티 도랜보스 자작나무 농장
@@ -74,7 +74,7 @@ const Index = () => {
             <div className="mt-10 flex justify-end">
               <Button asChild size="lg" className="rounded-none">
                 <Link to="/about">
-                  자작나무 소개 <ArrowRight className="ml-2 h-4 w-4" />
+                  나무 소개 <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>
