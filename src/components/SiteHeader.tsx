@@ -18,7 +18,7 @@ export const SiteHeader = () => {
         </Link>
         <nav className="hidden md:flex items-center gap-10">
           <NavLink to="/shop" className={navClass}>Shop</NavLink>
-          <NavLink to="/about" className={navClass}>About</NavLink>
+          <NavLink to="/about" className={navClass}>잭큐몬티 도랜보스</NavLink>
         </nav>
         <Link to="/cart" className="relative flex items-center gap-2 text-sm">
           <ShoppingBag className="h-5 w-5" />

@@ -12,7 +12,7 @@ export const SiteFooter = () => (
         <div className="flex flex-col gap-2 mt-6">
           <span className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Explore</span>
           <Link to="/shop" className="hover:text-accent transition-colors">Shop</Link>
-          <Link to="/about" className="hover:text-accent transition-colors">About</Link>
+          <Link to="/about" className="hover:text-accent transition-colors">잭큐몬티 도랜보스</Link>
           <Link to="/cart" className="hover:text-accent transition-colors">Cart</Link>
         </div>
       </div>
