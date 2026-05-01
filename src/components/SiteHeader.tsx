@@ -12,9 +12,9 @@ export const SiteHeader = () => {
 
   return (
     <header className="sticky top-0 z-40 bg-background/85 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 h-24 md:h-28 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 h-16 md:h-18 flex items-center justify-between">
         <Link to="/" className="flex items-center" aria-label="나무와 걷는 시간 — 홈">
-          <img src={logo} alt="나무와 걷는 시간" className="h-20 md:h-24 w-auto" />
+          <img src={logo} alt="나무와 걷는 시간" className="h-12 md:h-14 w-auto" />
         </Link>
         <nav className="hidden md:flex items-center gap-10">
           <NavLink to="/shop" className={navClass}>Shop</NavLink>
