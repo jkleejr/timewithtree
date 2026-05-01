@@ -22,7 +22,7 @@ export const SiteFooter = () => (
     </div>
     <div className="border-t border-border">
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 text-xs text-muted-foreground flex justify-between">
-        <span>© {new Date().getFullYear()} Seoul Birch</span>
+        <span>© {new Date().getFullYear()} 나무와 걷는 시간</span>
         <span>Secure checkout by Shopify</span>
       </div>
     </div>
