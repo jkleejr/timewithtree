@@ -113,7 +113,7 @@ const Index = () => {
       </section>
 
       {/* Story */}
-      <section className="border-t border-border">
+      <section>
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28 grid md:grid-cols-12 gap-10">
           <div className="md:col-span-5">
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">에어포트</p>
