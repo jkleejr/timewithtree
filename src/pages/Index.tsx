@@ -94,8 +94,8 @@ const Index = () => {
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-24">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">Featured</p>
-            <h2 className="font-display text-3xl md:text-4xl">Selected trees</h2>
+            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">추천</p>
+            <h2 className="font-display md:text-4xl font-serif font-extrabold text-5xl">자작나무 주문</h2>
           </div>
           <Link to="/shop" className="text-sm hover:text-accent transition-colors hidden md:inline-flex items-center gap-1">
             View all <ArrowRight className="h-4 w-4" />
