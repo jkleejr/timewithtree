@@ -23,22 +23,13 @@ const Index = () => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16 grid md:grid-cols-12 gap-8 items-end">
-          <div className="md:col-span-8">
-            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
-              From the nurseries of Korea
-            </p>
-            <h1 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[1.05] max-w-3xl">
-              Quiet, slender, and luminous — the Korean white birch.
-            </h1>
-          </div>
-          <div className="md:col-span-4 flex md:justify-end">
-            <Button asChild size="lg" className="rounded-none">
-              <Link to="/shop">
-                Shop trees <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16">
+          <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
+            From the nurseries of Korea
+          </p>
+          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[1.05] max-w-3xl">
+            Quiet, slender, and luminous — the Korean white birch.
+          </h1>
         </div>
       </section>
 
@@ -67,6 +58,11 @@ const Index = () => {
               <li>네델란드 조직배양한 묘목 수입하여 재배</li>
               <li>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</li>
             </ul>
+            <Button asChild size="lg" className="rounded-none mt-10">
+              <Link to="/shop">
+                Shop trees <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
