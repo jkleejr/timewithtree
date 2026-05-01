@@ -7,11 +7,31 @@ import { Button } from "@/components/ui/button";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import heroBirch from "@/assets/hero-birch.jpg";
 import farmIntro from "@/assets/farm-intro.jpg";
+import farmJac1 from "@/assets/farm-jac-1.png";
+import farmJac5 from "@/assets/farm-jac-5.png";
+import farmJac13 from "@/assets/farm-jac-13.png";
+import farmJac17 from "@/assets/farm-jac-17.png";
 
 const farmImages = [
   {
     src: farmIntro,
     alt: "Rows of Jacquemontii Doorenbos birch saplings growing in air-pots at the farm",
+  },
+  {
+    src: farmJac5,
+    alt: "Young Jacquemontii birch with bright white bark and green summer foliage",
+  },
+  {
+    src: farmJac1,
+    alt: "Multi-stem Jacquemontii birch with brilliant white trunks against red winter stems",
+  },
+  {
+    src: farmJac13,
+    alt: "Mature white-barked Jacquemontii birches planted in a landscaped lawn",
+  },
+  {
+    src: farmJac17,
+    alt: "Grove of Jacquemontii Doorenbos birch trunks in autumn",
   },
 ];
 
