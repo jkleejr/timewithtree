@@ -20,6 +20,13 @@ import farmJac5 from "@/assets/farm-jac-5.png";
 import farmJac13 from "@/assets/farm-jac-13.png";
 import farmJac17 from "@/assets/farm-jac-17.png";
 import farmJacBark from "@/assets/farm-jac-bark.jpg";
+import airpot1 from "@/assets/airpot-1.jpg";
+import airpot2 from "@/assets/airpot-2.jpg";
+
+const airpotImages = [
+  { src: airpot1, alt: "에어포트에서 재배되는 자작나무 농장 전경" },
+  { src: airpot2, alt: "에어포트에서 자라는 자작나무 줄지어 선 모습" },
+];
 
 const heroImages = [
   { src: heroMain1, alt: "Rows of Jacquemontii Doorenbos birch saplings growing in air-pots at the farm in summer" },
@@ -61,6 +68,8 @@ const Index = () => {
   const { data: products = [], isLoading } = useShopifyProducts(50);
   const [heroIndex, setHeroIndex] = useState(0);
   const heroLen = heroImages.length;
+  const [airpotIndex, setAirpotIndex] = useState(0);
+  const airpotLen = airpotImages.length;
 
   useEffect(() => {
     if (heroLen <= 1) return;
@@ -69,6 +78,14 @@ const Index = () => {
     }, 10000);
     return () => clearInterval(id);
   }, [heroLen]);
+
+  useEffect(() => {
+    if (airpotLen <= 1) return;
+    const id = setInterval(() => {
+      setAirpotIndex((i) => (i + 1) % airpotLen);
+    }, 10000);
+    return () => clearInterval(id);
+  }, [airpotLen]);
 
   return (
     <SiteLayout>
@@ -147,34 +164,83 @@ const Index = () => {
       </section>
 
       {/* Story */}
-      <section>
-        <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28 grid md:grid-cols-12 gap-10">
-          <div className="md:col-span-5">
-            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">에어포트</p>
-            <h2 className="font-display text-3xl md:text-5xl leading-tight font-bold font-sans">
-              에어포트 재배의 장점
-            </h2>
-          </div>
-          <div className="md:col-span-6 md:col-start-7 flex flex-col gap-6">
-            <div className="text-muted-foreground leading-relaxed whitespace-pre-line text-primary">
-              <p className="mb-4">
-                <span className="font-bold text-foreground">1️⃣ 뿌리 회전(뺑뺑이) 완전 방지</span>{"\n"}
-                일반 화분: 뿌리가 벽에 닿으면 옆으로 돌면서 계속 감기고, 결국 뿌리 엉킴과 생육 저하가 발생합니다.{"\n"}
-                에어 포트: 뿌리가 공기와 만나 끝이 자연 건조(air pruning)되면서, 안쪽에서 새로운 잔뿌리가 계속 생성됩니다.{"\n"}
-                👉 <span className="font-medium">결과: 방사형의 촘촘한 뿌리 구조 형성</span>
-              </p>
-              <p>
-                <span className="font-bold text-foreground">2️⃣ 잔뿌리 폭발적으로 증가</span>{"\n"}
-                식물 성장의 핵심인 잔뿌리가 에어 포트에서는 계속 분지되어 양분과 수분 흡수력이 극대화됩니다.{"\n"}
-                👉 <span className="font-medium">결과: 활착 속도 증가 및 건강한 생육</span>
-              </p>
+      <section className="relative">
+        <div className="relative aspect-[16/10] md:aspect-[16/8] w-full overflow-hidden bg-secondary">
+          {airpotImages.map((img, i) => (
+            <img
+              key={i}
+              src={img.src}
+              alt={img.alt}
+              width={1920}
+              height={1280}
+              loading="lazy"
+              decoding="async"
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                i === airpotIndex ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          ))}
+          <div className="absolute inset-0 bg-black/30" />
+
+          {airpotLen > 1 && (
+            <>
+              <button
+                onClick={() => setAirpotIndex((i) => (i - 1 + airpotLen) % airpotLen)}
+                className="absolute left-1 md:left-2 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background p-1.5 rounded-full shadow z-10"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="h-3.5 w-3.5" />
+              </button>
+              <button
+                onClick={() => setAirpotIndex((i) => (i + 1) % airpotLen)}
+                className="absolute right-1 md:right-2 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background p-1.5 rounded-full shadow z-10"
+                aria-label="Next image"
+              >
+                <ChevronRight className="h-3.5 w-3.5" />
+              </button>
+              <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                {airpotImages.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setAirpotIndex(i)}
+                    aria-label={`Go to image ${i + 1}`}
+                    className={`h-2 w-2 rounded-full transition-all ${
+                      i === airpotIndex ? "bg-white w-6" : "bg-white/50"
+                    }`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+
+          <div className="relative z-[5] max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28 h-full grid md:grid-cols-12 gap-10 items-center">
+            <div className="md:col-span-5">
+              <p className="text-xs uppercase tracking-[0.25em] text-white/80 mb-3">에어포트</p>
+              <h2 className="font-display text-3xl md:text-5xl leading-tight font-bold font-sans text-white drop-shadow-lg">
+                에어포트 재배의 장점
+              </h2>
             </div>
-            <div className="flex justify-end">
-              <Button asChild size="lg" className="rounded-none">
-                <Link to="/aeroponics">
-                  에어포트​ 설명 <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+            <div className="md:col-span-6 md:col-start-7 flex flex-col gap-6">
+              <div className="leading-relaxed whitespace-pre-line text-white drop-shadow-md">
+                <p className="mb-4">
+                  <span className="font-bold">1️⃣ 뿌리 회전(뺑뺑이) 완전 방지</span>{"\n"}
+                  일반 화분: 뿌리가 벽에 닿으면 옆으로 돌면서 계속 감기고, 결국 뿌리 엉킴과 생육 저하가 발생합니다.{"\n"}
+                  에어 포트: 뿌리가 공기와 만나 끝이 자연 건조(air pruning)되면서, 안쪽에서 새로운 잔뿌리가 계속 생성됩니다.{"\n"}
+                  👉 <span className="font-medium">결과: 방사형의 촘촘한 뿌리 구조 형성</span>
+                </p>
+                <p>
+                  <span className="font-bold">2️⃣ 잔뿌리 폭발적으로 증가</span>{"\n"}
+                  식물 성장의 핵심인 잔뿌리가 에어 포트에서는 계속 분지되어 양분과 수분 흡수력이 극대화됩니다.{"\n"}
+                  👉 <span className="font-medium">결과: 활착 속도 증가 및 건강한 생육</span>
+                </p>
+              </div>
+              <div className="flex justify-end">
+                <Button asChild size="lg" className="rounded-none">
+                  <Link to="/aeroponics">
+                    에어포트​ 설명 <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
