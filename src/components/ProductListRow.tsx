@@ -87,7 +87,7 @@ export const ProductListRow = ({ product }: { product: ShopifyProduct }) => {
                   {variant.title !== "Default Title" && (
                     <p className="text-sm font-medium truncate">{variant.title}</p>
                   )}
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-primary text-sm">
                     예상출고시기: <span className="text-foreground">즉시배송 가능</span>
                   </p>
                 </div>
