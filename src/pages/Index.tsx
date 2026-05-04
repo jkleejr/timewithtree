@@ -168,11 +168,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Shop */}
-      <section className="border-t border-border py-16 md:py-24">
-        <ShopBrowser />
-      </section>
-
       {/* Story */}
       <section className="relative">
         <div className="relative aspect-[16/10] md:aspect-[16/8] w-full overflow-hidden bg-secondary">
@@ -250,6 +245,11 @@ const Index = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Shop */}
+      <section className="border-t border-border py-16 md:py-24">
+        <ShopBrowser />
       </section>
     </SiteLayout>
   );
