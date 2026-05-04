@@ -164,12 +164,16 @@ const Shop = () => {
                   ))}
                 </div>
               )}
-              <Link
-                to={`/product/${activeProduct.node.handle}`}
-                className="inline-block mt-4 text-sm underline text-muted-foreground hover:text-foreground"
-              >
-                상세 페이지 보기 →
-              </Link>
+              {activeProduct.node.description && (
+                <div className="mt-6 pt-6 border-t border-border">
+                  <h3 className="font-serif font-bold text-lg mb-3">
+                    {activeProduct.node.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed whitespace-pre-line text-foreground font-serif">
+                    {activeProduct.node.description}
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Right: scrollable list of all products with their variants */}
