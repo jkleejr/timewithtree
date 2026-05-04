@@ -240,15 +240,15 @@ const Index = () => {
             </>
           )}
 
-          <div className="relative z-[5] max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16 h-full flex flex-col gap-8 md:gap-12">
+          <div className="relative z-[5] max-w-7xl mx-auto px-6 md:px-10 py-8 md:py-12 h-full flex flex-col gap-4 md:gap-6">
             <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-white/80 mb-3">​</p>
-              <h2 className="font-display md:text-5xl leading-tight font-bold font-sans text-white drop-shadow-lg text-6xl">
+              <p className="text-xs uppercase tracking-[0.25em] text-white/80 mb-2">​</p>
+              <h2 className="font-display leading-tight font-bold font-sans text-white drop-shadow-lg text-3xl md:text-5xl">
                 에어포트 재배의 장점
               </h2>
             </div>
-            <div className="flex flex-col gap-6">
-              <ul className="md:max-w-2xl leading-relaxed text-lg text-white drop-shadow-md space-y-2">
+            <div className="flex flex-col gap-4 flex-1 min-h-0">
+              <ul className="md:max-w-2xl leading-snug text-sm md:text-base text-white drop-shadow-md space-y-1">
                 <li>1️⃣ 뿌리 회전 (뺑뺑이) 완전 방지</li>
                 <li>2️⃣ 잔뿌리 폭발적으로 증가</li>
                 <li>3️⃣ 과습 & 뿌리썩음 예방</li>
@@ -257,7 +257,7 @@ const Index = () => {
                 <li>6️⃣ 생육 속도 & 균일성 향상</li>
                 <li>7️⃣ 대형 수목 재배에 특히 유리</li>
               </ul>
-              <div className="flex justify-end">
+              <div className="mt-auto flex justify-end">
                 <Button asChild size="lg" className="rounded-none">
                   <Link to="/aeroponics">
                     에어포트​ 설명 <ArrowRight className="ml-2 h-4 w-4" />
