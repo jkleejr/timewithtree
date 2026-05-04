@@ -1,11 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
-import { ShoppingBag } from "lucide-react";
+import { ShoppingBag, User } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
+import { useAuth } from "@/contexts/AuthContext";
 import logo from "@/assets/logo.png";
 
 export const SiteHeader = () => {
   const items = useCartStore(s => s.items);
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
+  const { user } = useAuth();
 
   const navClass = ({ isActive }: { isActive: boolean }) =>
     `text-sm tracking-wide transition-colors ${isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`;
@@ -22,15 +24,24 @@ export const SiteHeader = () => {
           <NavLink to="/aeroponics" className={navClass}>에어포트</NavLink>
           <NavLink to="/shop" className={navClass}>구매하기</NavLink>
         </nav>
-        <Link to="/cart" className="relative flex items-center gap-2 text-sm">
-          <ShoppingBag className="h-5 w-5" />
-          <span className="hidden sm:inline">장바구니</span>
-          {totalItems > 0 && (
-            <span className="absolute -top-2 -right-2 sm:static sm:ml-1 inline-flex items-center justify-center h-5 min-w-[20px] px-1 rounded-full bg-accent text-accent-foreground text-[11px] font-medium">
-              {totalItems}
-            </span>
-          )}
-        </Link>
+        <div className="flex items-center gap-5">
+          <Link
+            to={user ? "/account" : "/auth"}
+            className="flex items-center text-muted-foreground hover:text-foreground transition-colors"
+            aria-label={user ? "내 계정" : "로그인"}
+          >
+            <User className="h-5 w-5" />
+          </Link>
+          <Link to="/cart" className="relative flex items-center gap-2 text-sm">
+            <ShoppingBag className="h-5 w-5" />
+            <span className="hidden sm:inline">장바구니</span>
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 sm:static sm:ml-1 inline-flex items-center justify-center h-5 min-w-[20px] px-1 rounded-full bg-accent text-accent-foreground text-[11px] font-medium">
+                {totalItems}
+              </span>
+            )}
+          </Link>
+        </div>
       </div>
     </header>
   );

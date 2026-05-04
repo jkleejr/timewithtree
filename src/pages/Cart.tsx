@@ -1,18 +1,32 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Loader2, Minus, Plus, Trash2, ExternalLink, ShoppingBag } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
+import { CheckoutDialog } from "@/components/CheckoutDialog";
 import { useCartStore } from "@/stores/cartStore";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Cart = () => {
   const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl } = useCartStore();
+  const { user } = useAuth();
+  const [dialogOpen, setDialogOpen] = useState(false);
   const totalItems = items.reduce((s, i) => s + i.quantity, 0);
   const subtotal = items.reduce((s, i) => s + parseFloat(i.price.amount) * i.quantity, 0);
   const currency = items[0]?.price.currencyCode || 'USD';
 
-  const handleCheckout = () => {
+  const openCheckout = () => {
     const url = getCheckoutUrl();
     if (url) window.open(url, '_blank');
+  };
+
+  const handleCheckout = () => {
+    if (!getCheckoutUrl()) return;
+    if (user) {
+      openCheckout();
+    } else {
+      setDialogOpen(true);
+    }
   };
 
   return (
@@ -112,6 +126,7 @@ const Cart = () => {
           </div>
         )}
       </section>
+      <CheckoutDialog open={dialogOpen} onOpenChange={setDialogOpen} onGuestCheckout={openCheckout} />
     </SiteLayout>
   );
 };
