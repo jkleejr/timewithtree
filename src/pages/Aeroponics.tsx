@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
+import { BackButton } from "@/components/BackButton";
 
 const Aeroponics = () => {
   return (
@@ -101,11 +102,14 @@ const Aeroponics = () => {
             </p>
           </article>
 
-          <Button asChild size="lg" className="rounded-none">
-            <Link to="/shop">
-              구매하기 <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+          <div className="w-full flex justify-between items-center">
+            <BackButton />
+            <Button asChild size="lg" className="rounded-none">
+              <Link to="/shop">
+                구매하기 <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
     </SiteLayout>

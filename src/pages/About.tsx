@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
+import { BackButton } from "@/components/BackButton";
 import aboutBark from "@/assets/about-doorenbos.jpg";
 import aboutBark2 from "@/assets/about-doorenbos-2.jpg";
 import aboutBark3 from "@/assets/about-doorenbos-3.jpg";
@@ -107,7 +108,8 @@ const About = () => {
           <p className="text-primary">
             ​
           </p>
-          <div className="mt-10 flex justify-end w-full">
+          <div className="mt-10 flex justify-between items-center w-full">
+            <BackButton />
             <Button asChild size="lg" className="rounded-none">
               <Link to="/shop">
                 구매하기 <ArrowRight className="ml-2 h-4 w-4" />
