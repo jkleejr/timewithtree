@@ -147,12 +147,12 @@ const Index = () => {
                 잭큐몬티 도랜보스 (Jacquemontii Doorenbos) 자작나무 농장
               </h1>
             </div>
-            <div className="md:max-w-2xl md:ml-auto flex flex-col gap-6 pointer-events-auto">
-              <ul className="space-y-2 text-sm md:text-base leading-relaxed font-sans text-white drop-shadow-md">
+            <div className="mt-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6 pointer-events-auto">
+              <ul className="md:max-w-xl space-y-2 text-sm md:text-base leading-relaxed font-sans text-white drop-shadow-md">
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>네델란드 조직배양한 묘목 수입하여 재배</span></li>
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
               </ul>
-              <div className="flex justify-end">
+              <div className="flex justify-end shrink-0">
                 <Button asChild size="lg" className="rounded-none">
                   <Link to="/about">
                     잭큐몬티 도랜보스 <ArrowRight className="ml-2 h-4 w-4" />
