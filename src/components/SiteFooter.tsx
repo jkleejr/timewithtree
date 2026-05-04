@@ -8,7 +8,7 @@ export const SiteFooter = () => (
       <div className="md:col-span-4">
         <img src={logo} alt="나무와 걷는 시간 로고" className="h-28 md:h-36 w-auto mb-4 -ml-2" />
         <p className="text-muted-foreground max-w-xs">
-          저희 농장에서 정성껏 키우고 직접 배송해 드리는 한국산 자작나무입니다.
+          ​
         </p>
         <div className="flex flex-col gap-2 mt-6">
           <span className="text-xs uppercase tracking-widest text-muted-foreground mb-1">목차</span>
