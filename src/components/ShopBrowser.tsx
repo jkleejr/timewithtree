@@ -184,7 +184,7 @@ export const ShopBrowser = ({ showHeader = true, title = "나무 주문" }: Shop
                   <h3 className="font-serif font-bold text-lg mb-3">
                     {activeProduct.node.title}
                   </h3>
-                  <p className="text-sm leading-relaxed whitespace-pre-line text-foreground font-serif">
+                  <p className="text-sm leading-relaxed whitespace-pre-wrap text-foreground font-serif">
                     {activeProduct.node.description}
                   </p>
                 </div>
