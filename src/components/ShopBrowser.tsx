@@ -22,6 +22,12 @@ export const ShopBrowser = ({ showHeader = true, title = "나무 주문" }: Shop
 
   const addItem = useCartStore((s) => s.addItem);
   const isAdding = useCartStore((s) => s.isLoading);
+  const cartItems = useCartStore((s) => s.items);
+  const cartQtyByVariant = useMemo(() => {
+    const map: Record<string, number> = {};
+    for (const it of cartItems) map[it.variantId] = (map[it.variantId] ?? 0) + it.quantity;
+    return map;
+  }, [cartItems]);
 
   const sorted = useMemo(() => {
     const arr = [...products];
