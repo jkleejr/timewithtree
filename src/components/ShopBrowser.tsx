@@ -274,8 +274,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                             </p>
                           </div>
                           <span className="text-sm tabular-nums font-semibold whitespace-nowrap">
-                            {variant.price.currencyCode}{" "}
-                            {parseFloat(variant.price.amount).toFixed(2)}
+                            {formatPrice(variant.price.amount, variant.price.currencyCode)}
                           </span>
                           <div
                             className="inline-flex items-center border border-border"
