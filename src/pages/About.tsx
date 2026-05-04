@@ -119,7 +119,6 @@ const About = () => {
       </section>
       <section className="max-w-7xl mx-auto px-6 md:px-10 pb-20">
         <BackButton />
-        </div>
       </section>
     </SiteLayout>
   );
