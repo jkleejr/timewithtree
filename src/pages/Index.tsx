@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
-import { ProductCard } from "@/components/ProductCard";
+import { ShopBrowser } from "@/components/ShopBrowser";
 import { FarmGallery } from "@/components/FarmGallery";
 import { Button } from "@/components/ui/button";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
@@ -87,34 +87,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured */}
-      <section className="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-24">
-        <div className="flex items-end justify-between mb-10">
-          <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">쇼핑</p>
-            <h2 className="font-display md:text-4xl font-serif font-extrabold text-5xl">나무 주문</h2>
-          </div>
-          <Link to="/shop" className="text-sm hover:text-accent transition-colors hidden md:inline-flex items-center gap-1">
-            다 보기 <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-
-        {isLoading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="animate-pulse">
-                <div className="aspect-[4/5] bg-secondary mb-4" />
-                <div className="h-4 bg-secondary w-2/3" />
-              </div>
-            ))}
-          </div>
-        ) : products.length === 0 ? (
-          <EmptyProducts />
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12">
-            {products.map(p => <ProductCard key={p.node.id} product={p} />)}
-          </div>
-        )}
+      {/* Shop */}
+      <section className="border-t border-border py-16 md:py-24">
+        <ShopBrowser />
       </section>
 
       {/* Story */}
