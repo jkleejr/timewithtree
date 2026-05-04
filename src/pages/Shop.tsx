@@ -5,7 +5,7 @@ const Shop = () => {
   return (
     <SiteLayout>
       <div className="pb-16">
-        <ShopBrowser />
+        <ShopBrowser showBackButton={false} />
       </div>
     </SiteLayout>
   );
