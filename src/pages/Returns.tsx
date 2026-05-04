@@ -38,14 +38,14 @@ const Returns = () => {
           ))}
         </div>
 
-        <h2 className="text-xl md:text-2xl font-semibold mt-12 mb-5">【교환 및 반품안내】</h2>
+        <h2 className="text-xl md:text-2xl font-semibold mt-12 mb-5">교환 및 반품안내</h2>
         <div className="space-y-5 text-base leading-relaxed text-foreground/90">
           {exchangeReturn.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
         </div>
 
-        <h2 className="text-xl md:text-2xl font-semibold mt-12 mb-5">【환불안내】</h2>
+        <h2 className="text-xl md:text-2xl font-semibold mt-12 mb-5">환불안내</h2>
         <div className="space-y-3 text-base leading-relaxed text-foreground/90">
           {refunds.map((p, i) => (
             <p key={i}>{p}</p>
