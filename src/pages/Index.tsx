@@ -174,7 +174,7 @@ const Index = () => {
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">​</p>
             <h2 className="font-display md:text-5xl leading-tight font-bold font-sans text-6xl">
-              🌱 식재방법
+              식재방법
             </h2>
           </div>
           <p className="md:max-w-2xl text-base md:text-lg leading-relaxed font-sans text-primary">
