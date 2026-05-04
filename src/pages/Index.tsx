@@ -225,12 +225,9 @@ const Index = () => {
               </h2>
             </div>
             <div className="md:max-w-2xl md:ml-auto flex flex-col gap-6">
-              <div className="leading-relaxed whitespace-pre-line text-white drop-shadow-md">
-                <p className="mb-4">
-                  {"\n"}{"\n"}{"\n"}
-                </p>
-                <p>
-                  {"\n"}{"\n"}
+              <div className="bg-background/80 backdrop-blur-sm p-6 md:p-8 rounded-lg shadow-lg">
+                <p className="leading-relaxed whitespace-pre-line text-foreground">
+                  여기에 에어포트 재배의 장점을 설명하는 내용을 입력하세요.
                 </p>
               </div>
               <div className="flex justify-end">
