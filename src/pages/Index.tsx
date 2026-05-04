@@ -6,6 +6,8 @@ import { ShopBrowser } from "@/components/ShopBrowser";
 import { FarmGallery } from "@/components/FarmGallery";
 import { Button } from "@/components/ui/button";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
+import heroMain1 from "@/assets/hero-main-1.jpg";
+import heroMain2 from "@/assets/hero-main-2.jpg";
 import heroBirch from "@/assets/hero-birch.jpg";
 import heroBirch2 from "@/assets/hero-birch-2.png";
 import heroBirch3 from "@/assets/hero-birch-3.jpg";
@@ -19,6 +21,8 @@ import farmJac17 from "@/assets/farm-jac-17.png";
 import farmJacBark from "@/assets/farm-jac-bark.jpg";
 
 const heroImages = [
+  { src: heroMain1, alt: "Rows of Jacquemontii Doorenbos birch saplings growing in air-pots at the farm in summer" },
+  { src: heroMain2, alt: "Rows of Jacquemontii Doorenbos birch in air-pots in autumn" },
   { src: heroBirch, alt: "A grove of Korean white birch trees in soft morning light" },
   { src: heroBirch2, alt: "Close-up of a multi-stem Jacquemontii birch and its papery white bark" },
   { src: heroBirch3, alt: "A pathway through a grove of white birch trees" },
