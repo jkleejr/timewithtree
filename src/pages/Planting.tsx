@@ -19,7 +19,7 @@ const Planting = () => {
         <div className="border-t border-border pt-12 grid gap-12 font-sans">
           <article>
             <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans font-semibold">식재방법</h2>
-            <p className="font-claude-response-body break-words whitespace-pre-wrap leading-[1.7] font-sans text-primary text-lg">
+            <p className="font-claude-response-body break-words whitespace-pre-wrap leading-[1.7] font-sans text-primary text-base">
               {`1️⃣ 식재할 장소를 정리를 해줍니다.
 
 2️⃣ 필요이상으로 긴 가지나 뿌리는 정리해줍니다.
