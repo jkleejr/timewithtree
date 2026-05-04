@@ -227,15 +227,10 @@ const Index = () => {
             <div className="md:max-w-2xl md:ml-auto flex flex-col gap-6">
               <div className="leading-relaxed whitespace-pre-line text-white drop-shadow-md">
                 <p className="mb-4">
-                  <span className="font-bold">1️⃣ 뿌리 회전(뺑뺑이) 완전 방지</span>{"\n"}
-                  일반 화분: 뿌리가 벽에 닿으면 옆으로 돌면서 계속 감기고, 결국 뿌리 엉킴과 생육 저하가 발생합니다.{"\n"}
-                  에어 포트: 뿌리가 공기와 만나 끝이 자연 건조(air pruning)되면서, 안쪽에서 새로운 잔뿌리가 계속 생성됩니다.{"\n"}
-                  👉 <span className="font-medium">결과: 방사형의 촘촘한 뿌리 구조 형성</span>
+                  {"\n"}{"\n"}{"\n"}
                 </p>
                 <p>
-                  <span className="font-bold">2️⃣ 잔뿌리 폭발적으로 증가</span>{"\n"}
-                  식물 성장의 핵심인 잔뿌리가 에어 포트에서는 계속 분지되어 양분과 수분 흡수력이 극대화됩니다.{"\n"}
-                  👉 <span className="font-medium">결과: 활착 속도 증가 및 건강한 생육</span>
+                  {"\n"}{"\n"}
                 </p>
               </div>
               <div className="flex justify-end">
