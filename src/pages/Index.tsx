@@ -152,7 +152,7 @@ const Index = () => {
                 <span className="block">Jacquemontii Doorenbos</span>
                 <span className="block">자작나무 농장</span>
               </h1>
-              <ul className="md:max-w-2xl space-y-2 text-sm md:text-base leading-relaxed font-sans text-white drop-shadow-md">
+              <ul className="md:max-w-2xl space-y-2 text-lg leading-relaxed font-sans text-white drop-shadow-md">
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>네델란드 조직배양한 묘목 수입하여 재배</span></li>
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
               </ul>
@@ -177,7 +177,7 @@ const Index = () => {
               식재방법
             </h2>
           </div>
-          <p className="md:max-w-2xl text-base md:text-lg leading-relaxed text-muted-foreground">
+          <p className="md:max-w-2xl text-base md:text-lg leading-relaxed font-sans text-primary">
             에어포트에서 자란 자작나무는 연중 식재가 가능하며 활착이 매우 빠릅니다. 올바른 식재 절차와 사후 관리 방법을 안내해 드립니다.
           </p>
           <div className="flex justify-end">
@@ -248,7 +248,7 @@ const Index = () => {
               </h2>
             </div>
             <div className="flex flex-col gap-6">
-              <ul className="md:max-w-2xl leading-relaxed text-white drop-shadow-md space-y-2">
+              <ul className="md:max-w-2xl leading-relaxed text-lg text-white drop-shadow-md space-y-2">
                 <li>1️⃣ 뿌리 회전 (뺑뺑이) 완전 방지</li>
                 <li>2️⃣ 잔뿌리 폭발적으로 증가</li>
                 <li>3️⃣ 과습 & 뿌리썩음 예방</li>
