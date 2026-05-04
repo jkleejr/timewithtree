@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Loader2, Minus, Plus, Trash2, ExternalLink, ShoppingBag } from "lucide-react";
+import { Loader2, Minus, Plus, Trash2, ExternalLink, ShoppingCart } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { CheckoutDialog } from "@/components/CheckoutDialog";
@@ -39,7 +39,7 @@ const Cart = () => {
 
         {items.length === 0 ? (
           <div className="border border-dashed border-border py-20 text-center">
-            <ShoppingBag className="h-10 w-10 mx-auto mb-4 text-muted-foreground" />
+            <ShoppingCart className="h-10 w-10 mx-auto mb-4 text-muted-foreground" />
             <p className="text-muted-foreground mb-6">현재 장바구니에 담긴 상품이 없습니다.</p>
             <Button asChild className="rounded-none">
               <Link to="/shop">나무 둘러보기</Link>
