@@ -88,9 +88,9 @@
     font-feature-settings: 'ss01';
   }
 
-  h1, h2, h3, .font-display {
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 400;
+  h1, h2, h3, .font-display, .font-serif {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 600;
     letter-spacing: -0.02em;
   }
 }
