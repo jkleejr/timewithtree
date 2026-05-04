@@ -80,7 +80,7 @@ const Cart = () => {
                           </button>
                         </div>
                         <button onClick={() => removeItem(item.variantId)} className="text-sm text-muted-foreground hover:text-destructive inline-flex items-center gap-1">
-                          <Trash2 className="h-3.5 w-3.5" /> Remove
+                          <Trash2 className="h-3.5 w-3.5" /> 삭제
                         </button>
                       </div>
                     </div>
@@ -91,19 +91,19 @@ const Cart = () => {
 
             <aside className="lg:col-span-1">
               <div className="bg-secondary p-6 md:p-8 sticky top-24">
-                <h2 className="font-display text-xl mb-6">Order summary</h2>
+                <h2 className="font-display text-xl mb-6">주문 요약</h2>
                 <div className="space-y-3 text-sm border-b border-border pb-4 mb-4">
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Subtotal</span>
+                    <span className="text-muted-foreground">소계</span>
                     <span className="tabular-nums">{currency} {subtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Shipping</span>
-                    <span className="text-muted-foreground">Calculated at checkout</span>
+                    <span className="text-muted-foreground">배송비</span>
+                    <span className="text-muted-foreground">결제 시 계산</span>
                   </div>
                 </div>
                 <div className="flex justify-between items-baseline mb-6">
-                  <span className="text-base">Total</span>
+                  <span className="text-base">합계</span>
                   <span className="font-display text-2xl tabular-nums">{currency} {subtotal.toFixed(2)}</span>
                 </div>
                 <Button
