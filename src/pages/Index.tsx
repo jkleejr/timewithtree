@@ -224,8 +224,8 @@ const Index = () => {
                 에어포트 재배의 장점
               </h2>
             </div>
-            <div className="md:max-w-2xl flex flex-col gap-6">
-              <ul className="leading-relaxed text-white drop-shadow-md space-y-2">
+            <div className="flex flex-col gap-6">
+              <ul className="md:max-w-2xl leading-relaxed text-white drop-shadow-md space-y-2">
                 <li>1️⃣ 뿌리 회전 (뺑뺑이) 완전 방지</li>
                 <li>2️⃣ 잔뿌리 폭발적으로 증가</li>
                 <li>3️⃣ 과습 & 뿌리썩음 예방</li>
