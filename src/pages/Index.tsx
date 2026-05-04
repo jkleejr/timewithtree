@@ -121,7 +121,7 @@ const Index = () => {
             <div className="mt-4 flex justify-end">
               <Button asChild size="sm" className="rounded-none">
                 <Link to="/about">
-                  나무 소개 <ArrowRight className="ml-2 h-4 w-4" />
+                  잭큐몬티 도랜보스 <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>
