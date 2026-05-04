@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
 import treeMeasurements from "@/assets/tree-measurements.png";
 import plantingMistakes from "@/assets/planting-mistakes.png";
+import plantingCorrectVsWrong from "@/assets/planting-correct-vs-wrong.png";
 
 const Planting = () => {
   return (
