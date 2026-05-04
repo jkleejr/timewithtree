@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
@@ -62,6 +62,14 @@ const Index = () => {
   const [heroIndex, setHeroIndex] = useState(0);
   const heroLen = heroImages.length;
 
+  useEffect(() => {
+    if (heroLen <= 1) return;
+    const id = setInterval(() => {
+      setHeroIndex((i) => (i + 1) % heroLen);
+    }, 10000);
+    return () => clearInterval(id);
+  }, [heroLen]);
+
   return (
     <SiteLayout>
       {/* Hero gallery */}
@@ -86,17 +94,17 @@ const Index = () => {
             <>
               <button
                 onClick={() => setHeroIndex((i) => (i - 1 + heroLen) % heroLen)}
-                className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background p-3 rounded-full shadow"
+                className="absolute left-1 md:left-2 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background p-1.5 rounded-full shadow z-10"
                 aria-label="Previous image"
               >
-                <ChevronLeft className="h-5 w-5" />
+                <ChevronLeft className="h-3.5 w-3.5" />
               </button>
               <button
                 onClick={() => setHeroIndex((i) => (i + 1) % heroLen)}
-                className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background p-3 rounded-full shadow"
+                className="absolute right-1 md:right-2 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background p-1.5 rounded-full shadow z-10"
                 aria-label="Next image"
               >
-                <ChevronRight className="h-5 w-5" />
+                <ChevronRight className="h-3.5 w-3.5" />
               </button>
               <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
                 {heroImages.map((_, i) => (
