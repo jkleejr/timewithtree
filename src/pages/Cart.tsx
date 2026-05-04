@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { CheckoutDialog } from "@/components/CheckoutDialog";
 import { useCartStore } from "@/stores/cartStore";
 import { useAuth } from "@/contexts/AuthContext";
+import { formatPrice } from "@/lib/utils";
 
 const Cart = () => {
   const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl } = useCartStore();
@@ -62,7 +63,7 @@ const Cart = () => {
                           {item.product.node.title}
                         </Link>
                         <span className="text-sm tabular-nums whitespace-nowrap">
-                          {item.price.currencyCode} {(parseFloat(item.price.amount) * item.quantity).toFixed(2)}
+                          {formatPrice(parseFloat(item.price.amount) * item.quantity, item.price.currencyCode)}
                         </span>
                       </div>
                       {item.selectedOptions.length > 0 && item.selectedOptions[0].value !== 'Default Title' && (
@@ -96,7 +97,7 @@ const Cart = () => {
                 <div className="space-y-3 text-sm border-b border-border pb-4 mb-4">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">소계</span>
-                    <span className="tabular-nums">{currency} {subtotal.toFixed(2)}</span>
+                    <span className="tabular-nums">{formatPrice(subtotal, currency)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">배송비</span>
@@ -105,7 +106,7 @@ const Cart = () => {
                 </div>
                 <div className="flex justify-between items-baseline mb-6">
                   <span className="text-base">합계</span>
-                  <span className="font-display text-2xl tabular-nums">{currency} {subtotal.toFixed(2)}</span>
+                  <span className="font-display text-2xl tabular-nums">{formatPrice(subtotal, currency)}</span>
                 </div>
                 <Button
                   size="lg"

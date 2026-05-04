@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Minus, Plus, ShoppingCart, Loader2, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
+import { formatPrice } from "@/lib/utils";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
@@ -274,8 +275,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                             </p>
                           </div>
                           <span className="text-sm tabular-nums font-semibold whitespace-nowrap">
-                            {variant.price.currencyCode}{" "}
-                            {parseFloat(variant.price.amount).toFixed(2)}
+                            {formatPrice(variant.price.amount, variant.price.currencyCode)}
                           </span>
                           <div
                             className="inline-flex items-center border border-border"
