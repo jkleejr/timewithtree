@@ -64,30 +64,18 @@ const Index = () => {
       <section className="relative">
         <div className="relative aspect-[16/10] md:aspect-[16/8] w-full overflow-hidden bg-secondary">
           {heroImages.map((img, i) => (
-            <div
+            <img
               key={i}
-              className={`absolute inset-0 transition-opacity duration-700 ${
+              src={img.src}
+              alt={img.alt}
+              width={1920}
+              height={1280}
+              loading={i === 0 ? "eager" : "lazy"}
+              decoding="async"
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
                 i === heroIndex ? "opacity-100" : "opacity-0"
               }`}
-              aria-hidden={i !== heroIndex}
-            >
-              {/* Blurred background fills the frame so the foreground can use object-contain without empty bars */}
-              <img
-                src={img.src}
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-60"
-              />
-              <img
-                src={img.src}
-                alt={img.alt}
-                width={1920}
-                height={1280}
-                loading={i === 0 ? "eager" : "lazy"}
-                decoding="async"
-                className="relative w-full h-full object-contain"
-              />
-            </div>
+            />
           ))}
 
           {heroLen > 1 && (
