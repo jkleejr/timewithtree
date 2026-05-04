@@ -138,21 +138,27 @@ const Index = () => {
             </>
           )}
 
-          {/* Intro card overlay on the bottom right */}
-          <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 max-w-xs md:max-w-sm bg-white/75 backdrop-blur-md text-black p-4 md:p-5 shadow-xl font-sans">
-            <p className="font-semibold text-sm leading-snug mb-2 font-sans md:text-2xl">
-              잭큐몬티 도랜보스 (Jacquemontii Doorenbos) 자작나무 농장
-            </p>
-            <ul className="space-y-1 text-xs md:text-sm leading-relaxed font-sans">
-              <li className="flex gap-2"><span aria-hidden="true">-</span><span>네델란드 조직배양한 묘목 수입하여 재배</span></li>
-              <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
-            </ul>
-            <div className="mt-4 flex justify-end">
-              <Button asChild size="sm" className="rounded-none">
-                <Link to="/about">
-                  잭큐몬티 도랜보스 <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+          <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+
+          {/* Intro overlay */}
+          <div className="absolute inset-0 z-[5] max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col gap-8 md:gap-12 pointer-events-none">
+            <div className="pointer-events-auto">
+              <h1 className="font-display text-3xl md:text-5xl leading-tight font-bold font-sans text-white drop-shadow-lg">
+                잭큐몬티 도랜보스 (Jacquemontii Doorenbos) 자작나무 농장
+              </h1>
+            </div>
+            <div className="md:max-w-2xl md:ml-auto flex flex-col gap-6 pointer-events-auto">
+              <ul className="space-y-2 text-sm md:text-base leading-relaxed font-sans text-white drop-shadow-md">
+                <li className="flex gap-2"><span aria-hidden="true">-</span><span>네델란드 조직배양한 묘목 수입하여 재배</span></li>
+                <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
+              </ul>
+              <div className="flex justify-end">
+                <Button asChild size="lg" className="rounded-none">
+                  <Link to="/about">
+                    잭큐몬티 도랜보스 <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
