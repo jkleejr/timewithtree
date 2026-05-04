@@ -11,7 +11,7 @@ const Planting = () => {
           🌱 식재방법
         </h1>
         <p className="text-lg md:text-xl leading-relaxed text-primary">
-          에어포트에서 자란 자작나무는 뿌리가 건강해 식재 후 활착이 빠르고 고사 가능성이 매우 낮습니다. 아래의 식재 방법을 참고하여 건강하게 키워보세요.
+          아래의 식재 방법을 참고하여 건강하게 키워보세요.
         </p>
       </section>
 
