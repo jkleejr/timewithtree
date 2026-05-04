@@ -360,7 +360,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기" }: ShopB
           <AlertDialogFooter>
             <AlertDialogCancel className="rounded-none">취소</AlertDialogCancel>
             <AlertDialogAction
-              className="rounded-none"
+              className="rounded-none bg-red-600 text-white hover:bg-red-700"
               onClick={() => {
                 if (pendingAdd) {
                   handleAddVariant(pendingAdd.product, pendingAdd.variantId);
