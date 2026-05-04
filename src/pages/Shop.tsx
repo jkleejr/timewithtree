@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
-import { ProductCard } from "@/components/ProductCard";
+import { ProductListRow } from "@/components/ProductListRow";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
@@ -53,8 +53,8 @@ const Shop = () => {
             <p className="text-muted-foreground text-sm">Add your first birch tree to get started.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12">
-            {sorted.map(p => <ProductCard key={p.node.id} product={p} />)}
+          <div className="divide-y divide-border">
+            {sorted.map(p => <ProductListRow key={p.node.id} product={p} />)}
           </div>
         )}
       </section>
