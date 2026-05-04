@@ -63,7 +63,7 @@ const Cart = () => {
                           {item.product.node.title}
                         </Link>
                         <span className="text-sm tabular-nums whitespace-nowrap">
-                          {item.price.currencyCode} {(parseFloat(item.price.amount) * item.quantity).toFixed(2)}
+                          {formatPrice(parseFloat(item.price.amount) * item.quantity, item.price.currencyCode)}
                         </span>
                       </div>
                       {item.selectedOptions.length > 0 && item.selectedOptions[0].value !== 'Default Title' && (
