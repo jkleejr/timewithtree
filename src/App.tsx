@@ -15,6 +15,7 @@ import Cart from "./pages/Cart.tsx";
 import Auth from "./pages/Auth.tsx";
 import Account from "./pages/Account.tsx";
 import Returns from "./pages/Returns.tsx";
+import PickupGuide from "./pages/PickupGuide.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
