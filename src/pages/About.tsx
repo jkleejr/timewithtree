@@ -108,14 +108,17 @@ const About = () => {
           <p className="text-primary">
             ​
           </p>
-          <div className="mt-10 flex justify-between items-center w-full">
-            <BackButton />
+          <div className="mt-10 flex justify-end w-full">
             <Button asChild size="lg" className="rounded-none">
               <Link to="/shop">
                 구매하기 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
+        </div>
+      </section>
+      <section className="max-w-7xl mx-auto px-6 md:px-10 pb-20">
+        <BackButton />
         </div>
       </section>
     </SiteLayout>
