@@ -191,7 +191,7 @@ export const ShopBrowser = ({ showHeader = true, title = "나무 주문" }: Shop
               )}
             </div>
 
-            <div>
+            <div className="md:pt-14">
               <div className="border border-border">
                 <ul className="divide-y divide-border">
                   {sorted.flatMap((product) => {
