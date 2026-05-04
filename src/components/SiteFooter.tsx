@@ -10,14 +10,24 @@ export const SiteFooter = () => (
         <p className="text-muted-foreground max-w-xs">
           ​
         </p>
-        <div className="flex flex-col gap-2 mt-6">
+        <div className="flex flex-col items-start gap-2 mt-6">
           <span className="text-xs uppercase tracking-widest text-muted-foreground mb-1">목차</span>
-          <Link to="/shop" className="hover:text-accent transition-colors">​구매하기</Link>
-          <Link to="/about" className="hover:text-accent transition-colors">잭큐몬티 도랜보스</Link>
-          <Link to="/aeroponics" className="hover:text-accent transition-colors">에어포트</Link>
-          <Link to="/cart" className="hover:text-accent transition-colors">장바구니</Link>
-          <Link to="/returns" className="hover:text-accent transition-colors">교환 / 환불 규정</Link>
-          <Link to="/pickup-guide" className="hover:text-accent transition-colors">방문 수령시 안내</Link>
+          {[
+            { to: "/shop", label: "​구매하기" },
+            { to: "/about", label: "잭큐몬티 도랜보스" },
+            { to: "/aeroponics", label: "에어포트" },
+            { to: "/cart", label: "장바구니" },
+            { to: "/returns", label: "교환 / 환불 규정" },
+            { to: "/pickup-guide", label: "방문 수령시 안내" },
+          ].map(({ to, label }) => (
+            <Link
+              key={to}
+              to={to}
+              className="relative inline-block transition-colors hover:text-accent after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:h-0.5 after:w-full after:bg-accent after:scale-x-0 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
+            >
+              {label}
+            </Link>
+          ))}
         </div>
       </div>
       <div className="md:col-span-8">
