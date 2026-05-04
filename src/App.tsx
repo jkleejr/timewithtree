@@ -29,6 +29,8 @@ const AppRoutes = () => {
       <Route path="/aeroponics" element={<Aeroponics />} />
       <Route path="/planting" element={<Planting />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/auth" element={<Auth />} />
+      <Route path="/account" element={<Account />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
     </Routes>
@@ -41,7 +43,9 @@ const App = () => (
       <Toaster />
       <Sonner position="top-center" />
       <BrowserRouter>
-        <AppRoutes />
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
