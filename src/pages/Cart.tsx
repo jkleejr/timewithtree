@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { CheckoutDialog } from "@/components/CheckoutDialog";
 import { useCartStore } from "@/stores/cartStore";
 import { useAuth } from "@/contexts/AuthContext";
+import { formatPrice } from "@/lib/utils";
 
 const Cart = () => {
   const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl } = useCartStore();
