@@ -24,9 +24,10 @@ type SortKey = "newest" | "price-asc" | "price-desc";
 interface ShopBrowserProps {
   showHeader?: boolean;
   title?: string;
+  showBackButton?: boolean;
 }
 
-export const ShopBrowser = ({ showHeader = true, title = "구매하기" }: ShopBrowserProps) => {
+export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBackButton = true }: ShopBrowserProps) => {
   const { data: products = [], isLoading } = useShopifyProducts(50);
   const [sort, setSort] = useState<SortKey>("newest");
   const [activeProductId, setActiveProductId] = useState<string | null>(null);
@@ -206,9 +207,11 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기" }: ShopB
                   </p>
                 </div>
               )}
-              <div className="mt-16">
-                <BackButton />
-              </div>
+              {showBackButton && (
+                <div className="mt-16">
+                  <BackButton />
+                </div>
+              )}
             </div>
 
             <div className="md:pt-14">

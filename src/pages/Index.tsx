@@ -271,7 +271,7 @@ const Index = () => {
 
       {/* Shop */}
       <section className="border-t border-border py-16 md:py-24">
-        <ShopBrowser />
+        <ShopBrowser showBackButton={false} />
       </section>
     </SiteLayout>
   );
