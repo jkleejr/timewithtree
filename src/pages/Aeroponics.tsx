@@ -83,6 +83,13 @@ const Aeroponics = () => {
               에어포트 재배 나무는 일반 노지나 화분 재배 나무에 비해 식재 후 환경 적응력이 탁월합니다.
             </p>
           </article>
+
+          <article>
+            <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans font-semibold">✔ 관리 유의사항</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              에어포트 재배는 일반 화분보다 물이 빨리 마를 수 있어, 정기적인 수분 관리가 필요합니다.
+            </p>
+          </article>
         </div>
 
         <div className="mt-16 flex justify-end">
