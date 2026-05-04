@@ -168,6 +168,28 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Planting */}
+      <section className="border-t border-border py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-col gap-8">
+          <div>
+            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">Planting Guide</p>
+            <h2 className="font-display text-3xl md:text-5xl leading-tight font-bold font-sans">
+              식재방법
+            </h2>
+          </div>
+          <p className="md:max-w-2xl text-base md:text-lg leading-relaxed text-muted-foreground">
+            에어포트에서 자란 자작나무는 연중 식재가 가능하며 활착이 매우 빠릅니다. 올바른 식재 절차와 사후 관리 방법을 안내해 드립니다.
+          </p>
+          <div className="flex justify-end">
+            <Button asChild size="lg" className="rounded-none">
+              <Link to="/planting">
+                식재방법 자세히 보기 <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Story */}
       <section className="relative">
         <div className="relative aspect-[16/10] md:aspect-[16/8] w-full overflow-hidden bg-secondary">
