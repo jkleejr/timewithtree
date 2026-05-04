@@ -49,19 +49,58 @@ const farmImages = [
 
 const Index = () => {
   const { data: products = [], isLoading } = useShopifyProducts(50);
+  const [heroIndex, setHeroIndex] = useState(0);
+  const heroLen = heroImages.length;
 
   return (
     <SiteLayout>
-      {/* Hero */}
+      {/* Hero gallery */}
       <section className="relative">
-        <div className="aspect-[16/10] md:aspect-[16/8] w-full overflow-hidden">
-          <img
-            src={heroBirch}
-            alt="A grove of Korean white birch trees in soft morning light"
-            width={1920}
-            height={1280}
-            className="w-full h-full object-cover"
-          />
+        <div className="relative aspect-[16/10] md:aspect-[16/8] w-full overflow-hidden bg-secondary">
+          {heroImages.map((img, i) => (
+            <img
+              key={i}
+              src={img.src}
+              alt={img.alt}
+              width={1920}
+              height={1280}
+              loading={i === 0 ? "eager" : "lazy"}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                i === heroIndex ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          ))}
+
+          {heroLen > 1 && (
+            <>
+              <button
+                onClick={() => setHeroIndex((i) => (i - 1 + heroLen) % heroLen)}
+                className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background p-3 rounded-full shadow"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => setHeroIndex((i) => (i + 1) % heroLen)}
+                className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background p-3 rounded-full shadow"
+                aria-label="Next image"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+              <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+                {heroImages.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setHeroIndex(i)}
+                    aria-label={`Go to image ${i + 1}`}
+                    className={`h-2 w-2 rounded-full transition-all ${
+                      i === heroIndex ? "bg-foreground w-6" : "bg-foreground/40"
+                    }`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 
