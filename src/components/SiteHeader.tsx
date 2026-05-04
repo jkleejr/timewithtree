@@ -10,7 +10,13 @@ export const SiteHeader = () => {
   const { user } = useAuth();
 
   const navClass = ({ isActive }: { isActive: boolean }) =>
-    `story-link text-sm tracking-wide transition-colors ${isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`;
+    [
+      "relative inline-block text-sm tracking-wide transition-colors",
+      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-foreground after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left",
+      isActive
+        ? "text-foreground after:scale-x-100"
+        : "text-muted-foreground hover:text-foreground after:scale-x-0",
+    ].join(" ");
 
   return (
     <header className="sticky top-0 z-40 bg-background/85 backdrop-blur-md border-b border-border">
