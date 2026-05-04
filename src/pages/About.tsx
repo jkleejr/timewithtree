@@ -101,8 +101,10 @@ const About = () => {
           <p className="text-primary text-base">
             자작나무 중 가장 밝은 백색을 띠며 성장속도가 빠르다. 수피는 줄기뿐만 아니라 가지까지도 형광성을 지닌 특이한 흰색이라서 여러그루를 식재시 가을 단풍과 겨울나목이 다른 품종과 달리 매우 몽환적인 느낌을 주는 매력이 있어 1993년 영국 왕립현회로부터 최고의 권위있는 훈장을 수상하였다고 한다.
           </p>
-          <p className="text-primary text-base">
-            주의사항: 조직배양이나 삽목으로 생산되어 가격이 비싼 편이며, 일반 잭큐몬티 실생 묘목과 구분하는 것이 중요합니다.
+          <p className="text-primary text-base whitespace-pre-line">
+            전국 노지월동이 가능하고, 성장속도가 빠른 속성수이다.
+            나무높이는 9~15m까지 성장하며, 뿌리는 땅속깊이 직근으로 파고들지 않고, 사방으로 퍼지는 특성이 있다.
+            유럽과 미국뿐만 아니라 호주, 일본 등에서 인기조경수로 자리매김되고 있으며, 그 수액은 자일리톨 성분 등 이로운 성분이 많이 함유되어 있어서 국내의 고로쇠 수액처럼 웰빙음료 등에 활용이 가는 추세이다.
           </p>
           <p className="font-bold text-foreground mt-4 text-3xl">활용</p>
           <p className="text-primary text-base">
