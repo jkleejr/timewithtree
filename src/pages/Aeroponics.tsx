@@ -84,15 +84,16 @@ const Aeroponics = () => {
             </p>
           </article>
 
-          <article>
+        </div>
+
+        <div className="mt-16 flex flex-col items-end gap-16">
+          <article className="w-full">
             <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans font-semibold">✔ 관리 유의사항</h2>
             <p className="text-muted-foreground leading-relaxed">
               에어포트 재배는 일반 화분보다 물이 빨리 마를 수 있어, 정기적인 수분 관리가 필요합니다.
             </p>
           </article>
-        </div>
 
-        <div className="mt-16 flex justify-end">
           <Button asChild size="lg" className="rounded-none">
             <Link to="/shop">
               구매하기 <ArrowRight className="ml-2 h-4 w-4" />
