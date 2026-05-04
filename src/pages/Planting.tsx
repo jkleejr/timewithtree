@@ -57,7 +57,7 @@ const Planting = () => {
               />
             </div>
             <div className="mt-8 grid gap-3">
-              <img src={plantingMistakes} alt="잘못된 식재 예시" className="w-64 md:w-80 h-auto" />
+              <img src={plantingMistakes} alt="잘못된 식재 예시" className="w-80 md:w-96 h-auto" />
               <p className="text-primary text-base leading-relaxed">❌ 묘목이 기울어져 있거나 뿌리가 뭉쳐있다</p>
               <p className="text-primary text-base leading-relaxed">❌ 구덩이가 얕아서 뿌리가 밖으로 나온다</p>
             </div>
