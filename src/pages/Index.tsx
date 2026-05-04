@@ -24,8 +24,8 @@ import airpot1 from "@/assets/airpot-1.jpg";
 import airpot2 from "@/assets/airpot-2.jpg";
 
 const airpotImages = [
-  { src: airpot1, alt: "에어포트에서 재배되는 자작나무 농장 전경" },
   { src: airpot2, alt: "에어포트에서 자라는 자작나무 줄지어 선 모습" },
+  { src: airpot1, alt: "에어포트에서 재배되는 자작나무 농장 전경" },
 ];
 
 const heroImages = [
