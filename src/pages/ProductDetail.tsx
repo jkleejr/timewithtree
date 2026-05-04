@@ -96,7 +96,7 @@ const ProductDetail = () => {
           <h1 className="font-display text-4xl md:text-5xl mb-4 font-serif font-bold">{p.title}</h1>
           {variant && (
             <p className="text-xl tabular-nums mb-6">
-              {variant.price.currencyCode} {parseFloat(variant.price.amount).toFixed(2)}
+              {formatPrice(variant.price.amount, variant.price.currencyCode)}
             </p>
           )}
           {p.descriptionHtml ? (
