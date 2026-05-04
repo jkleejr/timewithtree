@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Loader2, Minus, Plus, Trash2, ExternalLink, ShoppingCart } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
+import { BackButton } from "@/components/BackButton";
 import { Button } from "@/components/ui/button";
 import { CheckoutDialog } from "@/components/CheckoutDialog";
 import { useCartStore } from "@/stores/cartStore";
@@ -125,6 +126,9 @@ const Cart = () => {
             </aside>
           </div>
         )}
+        <div className="mt-12">
+          <BackButton />
+        </div>
       </section>
       <CheckoutDialog open={dialogOpen} onOpenChange={setDialogOpen} onGuestCheckout={openCheckout} />
     </SiteLayout>
