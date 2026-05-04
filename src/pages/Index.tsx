@@ -172,7 +172,7 @@ const Index = () => {
       <section className="border-t border-border py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-col gap-8">
           <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">Planting Guide</p>
+            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">​</p>
             <h2 className="font-display text-3xl md:text-5xl leading-tight font-bold font-sans">
               식재방법
             </h2>
