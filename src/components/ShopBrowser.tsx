@@ -336,6 +336,43 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기" }: ShopB
           </div>
         ) : null}
       </div>
+
+      <AlertDialog open={!!pendingAdd} onOpenChange={(o) => !o && setPendingAdd(null)}>
+        <AlertDialogContent className="rounded-none">
+          <AlertDialogHeader>
+            <AlertDialogTitle>용달 배송안내</AlertDialogTitle>
+            <AlertDialogDescription asChild>
+              <div className="space-y-3 text-sm leading-relaxed">
+                <p>
+                  본 상품은 일반 택배로 배송이 불가하며, <strong>용달(화물차)</strong>로
+                  배송됩니다. 그래도 주문하시겠습니까?
+                </p>
+                <p>
+                  용달 배송비는 별도로 청구되며, 정확한 금액은 사무실로 직접
+                  문의해 주시기 바랍니다.
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  (용달은 일반 택배가 아닌 화물차 배송 서비스를 의미합니다)
+                </p>
+              </div>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel className="rounded-none">취소</AlertDialogCancel>
+            <AlertDialogAction
+              className="rounded-none"
+              onClick={() => {
+                if (pendingAdd) {
+                  handleAddVariant(pendingAdd.product, pendingAdd.variantId);
+                  setPendingAdd(null);
+                }
+              }}
+            >
+              장바구니에 담기
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   );
 };
