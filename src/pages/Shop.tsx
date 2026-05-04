@@ -111,6 +111,9 @@ const Shop = () => {
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             {/* Left: image gallery for active product */}
             <div className="md:sticky md:top-24 self-start">
+              <h2 className="font-display font-serif font-bold text-2xl md:text-3xl mb-4">
+                {activeProduct.node.title}
+              </h2>
               <div className="relative aspect-[4/5] bg-secondary overflow-hidden mb-3">
                 {images[activeImage] ? (
                   <img
