@@ -84,7 +84,9 @@ export const ProductListRow = ({ product }: { product: ShopifyProduct }) => {
             return (
               <li key={variant.id} className="flex items-center gap-3 py-3">
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium truncate">{variant.title}</p>
+                  {variant.title !== "Default Title" && (
+                    <p className="text-sm font-medium truncate">{variant.title}</p>
+                  )}
                   <p className="text-xs text-muted-foreground">
                     예상출고시기: <span className="text-foreground">즉시배송 가능</span>
                   </p>
