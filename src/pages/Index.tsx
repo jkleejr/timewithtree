@@ -221,7 +221,7 @@ const Index = () => {
 
           <div className="relative z-[5] max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16 h-full flex flex-col gap-8 md:gap-12">
             <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-white/80 mb-3">에어포트</p>
+              <p className="text-xs uppercase tracking-[0.25em] text-white/80 mb-3">​</p>
               <h2 className="font-display text-3xl md:text-5xl leading-tight font-bold font-sans text-white drop-shadow-lg">
                 에어포트 재배의 장점
               </h2>
