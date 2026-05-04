@@ -252,7 +252,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                           )}
                           <div className="flex-1 min-w-0">
                             {vi === 0 && (
-                              <p className="font-bold text-sm leading-tight truncate font-sans">
+                              <p className="font-bold leading-tight truncate font-sans text-base">
                                 {p.title}
                               </p>
                             )}
@@ -261,7 +261,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                                 {variant.title}
                               </p>
                             )}
-                            <p className="text-xs text-muted-foreground">
+                            <p className="text-primary text-sm">
                               예상출고시기:{" "}
                               <span className="text-foreground">즉시배송 가능</span>
                             </p>
