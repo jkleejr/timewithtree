@@ -164,7 +164,7 @@ const Index = () => {
             <div className="flex justify-end">
               <Button asChild size="lg" className="rounded-none">
                 <Link to="/aeroponics">
-                  에어포닉스 설명 <ArrowRight className="ml-2 h-4 w-4" />
+                  에어포트​ 설명 <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>

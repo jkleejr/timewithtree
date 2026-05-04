@@ -9,7 +9,7 @@ const Aeroponics = () => {
       <section className="max-w-4xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-10">
         <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3"></p>
         <h1 className="font-display md:text-6xl leading-tight mb-6 font-sans text-4xl">
-          에어포닉스로 키운 자작나무
+          에어포트​로 키운 자작나무
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
           저희 농장은 흙 대신 에어포트(air-pot) 방식으로 자작나무를 재배합니다. 뿌리에 충분한 산소를 공급하고
