@@ -197,14 +197,21 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                   ))}
                 </div>
               )}
-              {activeProduct.node.description && (
+              {(activeProduct.node.descriptionHtml || activeProduct.node.description) && (
                 <div className="mt-6 pt-6 border-t border-border">
                   <h3 className="font-bold mb-3 font-sans text-lg">
                     {activeProduct.node.title}
                   </h3>
-                  <p className="leading-relaxed whitespace-pre-line text-foreground font-sans text-lg">
-                    {activeProduct.node.description}
-                  </p>
+                  {activeProduct.node.descriptionHtml ? (
+                    <div
+                      className="leading-relaxed space-y-3 text-foreground font-sans text-lg"
+                      dangerouslySetInnerHTML={{ __html: activeProduct.node.descriptionHtml }}
+                    />
+                  ) : (
+                    <p className="leading-relaxed whitespace-pre-line text-foreground font-sans text-lg">
+                      {activeProduct.node.description}
+                    </p>
+                  )}
                 </div>
               )}
               {showBackButton && (
