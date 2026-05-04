@@ -83,7 +83,6 @@ const About = () => {
               </>
             )}
           </div>
-        </div>
           <div className="mt-10 flex justify-start">
             <BackButton />
           </div>
