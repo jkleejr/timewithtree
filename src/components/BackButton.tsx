@@ -1,15 +1,18 @@
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 export const BackButton = () => {
   const navigate = useNavigate();
   return (
-    <button
+    <Button
+      type="button"
+      size="lg"
+      className="rounded-none"
       onClick={() => navigate(-1)}
-      className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white border border-black hover:bg-black hover:text-white transition-colors text-sm h-11"
     >
-      <ArrowLeft className="h-4 w-4" />
+      <ArrowLeft className="mr-2 h-4 w-4" />
       뒤로 가기
-    </button>
+    </Button>
   );
 };
