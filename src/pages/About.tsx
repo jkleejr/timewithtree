@@ -83,9 +83,6 @@ const About = () => {
               </>
             )}
           </div>
-          <div className="mt-10 flex justify-start">
-            <BackButton />
-          </div>
         </div>
         <div className="md:col-span-5 md:col-start-8 flex-col gap-6 text-base leading-relaxed text-muted-foreground flex items-start justify-start">
           <p className="text-primary text-base">
@@ -111,13 +108,14 @@ const About = () => {
           <p className="text-primary">
             ​
           </p>
-          <div className="mt-10 flex justify-end w-full">
-            <Button asChild size="lg" className="rounded-none">
-              <Link to="/shop">
-                구매하기 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
+        </div>
+        <div className="md:col-span-12 mt-10 flex justify-between items-center w-full">
+          <BackButton />
+          <Button asChild size="lg" className="rounded-none">
+            <Link to="/shop">
+              구매하기 <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </section>
     </SiteLayout>
