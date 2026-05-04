@@ -13,7 +13,7 @@ interface ShopBrowserProps {
   title?: string;
 }
 
-export const ShopBrowser = ({ showHeader = true, title = "나무 주문" }: ShopBrowserProps) => {
+export const ShopBrowser = ({ showHeader = true, title = "구매하기" }: ShopBrowserProps) => {
   const { data: products = [], isLoading } = useShopifyProducts(50);
   const [sort, setSort] = useState<SortKey>("newest");
   const [activeProductId, setActiveProductId] = useState<string | null>(null);

@@ -51,7 +51,7 @@ const About = () => (
         <div className="mt-10 flex justify-end w-full">
           <Button asChild size="lg" className="rounded-none">
             <Link to="/shop">
-              나무 주문 <ArrowRight className="ml-2 h-4 w-4" />
+              구매하기 <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>
