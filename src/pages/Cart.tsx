@@ -115,11 +115,11 @@ const Cart = () => {
                   {isLoading || isSyncing ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
                   ) : (
-                    <>Checkout <ExternalLink className="ml-2 h-4 w-4" /></>
+                    <>결제하기 <ExternalLink className="ml-2 h-4 w-4" /></>
                   )}
                 </Button>
                 <p className="text-xs text-muted-foreground text-center mt-4">
-                  Secure checkout powered by Shopify
+                  Shopify로 안전하게 결제됩니다
                 </p>
               </div>
             </aside>
