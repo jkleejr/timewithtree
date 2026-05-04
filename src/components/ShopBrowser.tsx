@@ -6,6 +6,7 @@ import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/stores/cartStore";
+import type { ShopifyProduct } from "@/lib/shopify";
 import {
   AlertDialog,
   AlertDialogAction,
