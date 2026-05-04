@@ -189,11 +189,12 @@ export const ShopBrowser = ({ showHeader = true, title = "나무 주문" }: Shop
               )}
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               {sorted.map((product) => {
                 const p = product.node;
                 const isActive = p.id === activeProduct.node.id;
                 const thumb = p.images.edges[0]?.node;
+                const productVariants = p.variants.edges;
                 return (
                   <div
                     key={p.id}
@@ -220,69 +221,73 @@ export const ShopBrowser = ({ showHeader = true, title = "나무 주문" }: Shop
                           {p.title}
                         </h2>
                         <p className="text-xs text-muted-foreground">
-                          총 {p.variants.edges.length}개의 옵션
+                          총 {productVariants.length}개의 옵션
                         </p>
                       </div>
                     </button>
 
-                    {isActive && (
-                      <ul className="divide-y divide-border border-y border-border">
-                        {variants.map((v, i) => {
-                          const variant = v.node;
-                          const qty = getQty(variant.id);
-                          return (
-                            <li key={variant.id} className="flex items-center gap-3 py-3">
-                              <div className="flex-1 min-w-0">
-                                <p className="text-sm font-medium truncate">
-                                  {variant.title}
-                                </p>
-                                <p className="text-xs text-muted-foreground">
-                                  예상출고시기:{" "}
-                                  <span className="text-foreground">즉시배송 가능</span>
-                                </p>
-                              </div>
-                              <span className="text-sm tabular-nums font-semibold whitespace-nowrap">
-                                {variant.price.currencyCode}{" "}
-                                {parseFloat(variant.price.amount).toFixed(2)}
-                              </span>
-                              <div className="inline-flex items-center border border-border">
-                                <button
-                                  onClick={() => setQty(variant.id, qty - 1)}
-                                  className="px-2 py-1.5 hover:bg-secondary"
-                                  aria-label="Decrease"
-                                >
-                                  <Minus className="h-3 w-3" />
-                                </button>
-                                <span className="w-8 text-center text-sm tabular-nums">
-                                  {qty}
-                                </span>
-                                <button
-                                  onClick={() => setQty(variant.id, qty + 1)}
-                                  className="px-2 py-1.5 hover:bg-secondary"
-                                  aria-label="Increase"
-                                >
-                                  <Plus className="h-3 w-3" />
-                                </button>
-                              </div>
-                              <Button
-                                size="icon"
-                                variant="outline"
-                                className="rounded-none h-9 w-9"
-                                onClick={() => handleAdd(i)}
-                                disabled={isAdding || !variant.availableForSale}
-                                aria-label="Add to cart"
+                    <ul className="divide-y divide-border border-y border-border">
+                      {productVariants.map((v) => {
+                        const variant = v.node;
+                        const qty = getQty(variant.id);
+                        const inCart = cartQtyByVariant[variant.id] ?? 0;
+                        return (
+                          <li key={variant.id} className="flex items-center gap-3 py-3">
+                            <div className="flex-1 min-w-0">
+                              <p className="text-sm font-medium truncate">
+                                {variant.title}
+                              </p>
+                              <p className="text-xs text-muted-foreground">
+                                예상출고시기:{" "}
+                                <span className="text-foreground">즉시배송 가능</span>
+                              </p>
+                            </div>
+                            <span className="text-sm tabular-nums font-semibold whitespace-nowrap">
+                              {variant.price.currencyCode}{" "}
+                              {parseFloat(variant.price.amount).toFixed(2)}
+                            </span>
+                            <div className="inline-flex items-center border border-border">
+                              <button
+                                onClick={() => setQty(variant.id, qty - 1)}
+                                className="px-2 py-1.5 hover:bg-secondary"
+                                aria-label="Decrease"
                               >
-                                {isAdding ? (
-                                  <Loader2 className="h-4 w-4 animate-spin" />
-                                ) : (
-                                  <ShoppingCart className="h-4 w-4" />
-                                )}
-                              </Button>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    )}
+                                <Minus className="h-3 w-3" />
+                              </button>
+                              <span className="w-8 text-center text-sm tabular-nums">
+                                {qty}
+                              </span>
+                              <button
+                                onClick={() => setQty(variant.id, qty + 1)}
+                                className="px-2 py-1.5 hover:bg-secondary"
+                                aria-label="Increase"
+                              >
+                                <Plus className="h-3 w-3" />
+                              </button>
+                            </div>
+                            <Button
+                              size="icon"
+                              variant="outline"
+                              className="rounded-none h-9 w-9 relative"
+                              onClick={() => handleAddVariant(product, variant.id)}
+                              disabled={isAdding || !variant.availableForSale}
+                              aria-label="Add to cart"
+                            >
+                              {isAdding ? (
+                                <Loader2 className="h-4 w-4 animate-spin" />
+                              ) : (
+                                <ShoppingCart className="h-4 w-4" />
+                              )}
+                              {inCart > 0 && (
+                                <span className="absolute -top-2 -right-2 bg-foreground text-background text-[10px] font-semibold rounded-full h-5 min-w-5 px-1 flex items-center justify-center tabular-nums">
+                                  {inCart}
+                                </span>
+                              )}
+                            </Button>
+                          </li>
+                        );
+                      })}
+                    </ul>
                   </div>
                 );
               })}
