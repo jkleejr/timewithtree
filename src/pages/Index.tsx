@@ -109,17 +109,22 @@ const Index = () => {
             </>
           )}
 
-          {/* Intro CTA overlay on the right */}
-          <div className="absolute inset-y-0 right-0 flex items-center pr-6 md:pr-12 pointer-events-none">
-            <Button
-              asChild
-              size="lg"
-              className="rounded-none pointer-events-auto shadow-lg"
-            >
-              <Link to="/about">
-                나무 소개 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+          {/* Intro card overlay on the bottom right */}
+          <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 max-w-sm md:max-w-md bg-white text-black p-5 md:p-6 shadow-xl">
+            <p className="font-serif font-semibold text-sm md:text-base leading-snug mb-3">
+              잭큐몬티 도랜보스 (Jacquemontii Doorenbos) 자작나무 농장
+            </p>
+            <ul className="space-y-1.5 text-xs md:text-sm leading-relaxed font-serif">
+              <li className="flex gap-2"><span aria-hidden="true">-</span><span>네델란드 조직배양한 묘목 수입하여 재배</span></li>
+              <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
+            </ul>
+            <div className="mt-4 flex justify-end">
+              <Button asChild size="sm" className="rounded-none">
+                <Link to="/about">
+                  나무 소개 <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
