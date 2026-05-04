@@ -10,7 +10,7 @@ export const SiteHeader = () => {
   const { user } = useAuth();
 
   const navClass = ({ isActive }: { isActive: boolean }) =>
-    `text-sm tracking-wide transition-colors ${isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`;
+    `story-link text-sm tracking-wide transition-colors ${isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`;
 
   return (
     <header className="sticky top-0 z-40 bg-background/85 backdrop-blur-md border-b border-border">
