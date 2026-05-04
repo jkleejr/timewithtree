@@ -31,7 +31,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기" }: ShopB
   const [activeImage, setActiveImage] = useState(0);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [pendingAdd, setPendingAdd] = useState<{
-    product: typeof sorted[number];
+    product: ReturnType<typeof useShopifyProducts>["data"] extends (infer U)[] | undefined ? U : never;
     variantId: string;
   } | null>(null);
 
