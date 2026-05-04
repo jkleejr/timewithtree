@@ -19,7 +19,7 @@ export const ProductListRow = ({ product }: { product: ShopifyProduct }) => {
 
   const getQty = (id: string) => quantities[id] ?? 1;
   const setQty = (id: string, q: number) =>
-    setQuantities(prev => ({ ...prev, [id]: Math.max(1, q) }));
+    setQuantities(prev => ({ ...prev, [id]: Math.min(100, Math.max(0, q)) }));
 
   const handleAdd = async (variantIndex: number) => {
     const variant = variants[variantIndex]?.node;
