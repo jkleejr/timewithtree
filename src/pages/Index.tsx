@@ -24,8 +24,8 @@ import airpot1 from "@/assets/airpot-1.jpg";
 import airpot2 from "@/assets/airpot-2.jpg";
 
 const airpotImages = [
-  { src: airpot1, alt: "에어포트에서 재배되는 자작나무 농장 전경" },
   { src: airpot2, alt: "에어포트에서 자라는 자작나무 줄지어 선 모습" },
+  { src: airpot1, alt: "에어포트에서 재배되는 자작나무 농장 전경" },
 ];
 
 const heroImages = [
@@ -224,8 +224,8 @@ const Index = () => {
                 에어포트 재배의 장점
               </h2>
             </div>
-            <div className="md:max-w-2xl flex flex-col gap-6">
-              <ul className="leading-relaxed text-white drop-shadow-md space-y-2">
+            <div className="flex flex-col gap-6">
+              <ul className="md:max-w-2xl leading-relaxed text-white drop-shadow-md space-y-2">
                 <li>1️⃣ 뿌리 회전 (뺑뺑이) 완전 방지</li>
                 <li>2️⃣ 잔뿌리 폭발적으로 증가</li>
                 <li>3️⃣ 과습 & 뿌리썩음 예방</li>
