@@ -97,7 +97,7 @@ const Cart = () => {
                 <div className="space-y-3 text-sm border-b border-border pb-4 mb-4">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">소계</span>
-                    <span className="tabular-nums">{currency} {subtotal.toFixed(2)}</span>
+                    <span className="tabular-nums">{formatPrice(subtotal, currency)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">배송비</span>
