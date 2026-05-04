@@ -74,7 +74,7 @@ export const ProductListRow = ({ product }: { product: ShopifyProduct }) => {
           </h2>
         </Link>
         <p className="text-sm text-muted-foreground mb-5">
-          총 <span className="font-semibold text-foreground">{variants.length}</span>개의 옵션 상품이 등록되어 있습니다.
+          ​
         </p>
 
         <ul className="divide-y divide-border border-y border-border">
