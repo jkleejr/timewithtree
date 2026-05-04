@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
-import { ProductCard } from "@/components/ProductCard";
+import { ProductListRow } from "@/components/ProductListRow";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
