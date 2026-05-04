@@ -53,26 +53,7 @@ const Planting = () => {
             </p>
           </article>
 
-          <article>
-            <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans font-semibold">흙 채우기 & 물 주기</h2>
-            <p className="leading-relaxed text-primary text-base">
-              파낸 흙으로 빈 공간을 채우며 가볍게 눌러줍니다. 식재 직후 충분한 양의 물을 주어 뿌리와 흙이 밀착되도록 합니다.
-            </p>
-          </article>
-
-          <article>
-            <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans font-semibold">지주대 설치</h2>
-            <p className="leading-relaxed text-primary text-base">
-              바람에 흔들리지 않도록 지주대를 세워 고정합니다. 활착이 안정되는 1~2년 후 제거합니다.
-            </p>
-          </article>
-
-          <article>
-            <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans font-semibold">사후 관리</h2>
-            <p className="leading-relaxed text-primary text-base">
-              식재 후 첫 해는 토양이 마르지 않도록 정기적으로 관수해 주세요. 멀칭재(왕겨, 우드칩 등)를 덮어주면 수분 보존과 잡초 억제에 효과적입니다.
-            </p>
-          </article>
+          {/* Content removed per user request */}
 
           <div className="flex justify-between items-center">
             <BackButton />
