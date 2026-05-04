@@ -31,7 +31,13 @@ const Returns = () => {
     <SiteLayout>
       <section className="max-w-4xl mx-auto px-6 md:px-10 py-16 md:py-24">
         <h1 className="text-3xl md:text-5xl font-semibold tracking-tight mb-10">​교환 / 환불 규정</h1>
-...
+
+        <div className="space-y-5 text-base leading-relaxed text-foreground/90">
+          {paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
+
         <h2 className="text-xl md:text-2xl font-semibold mt-12 mb-5">​교환 / 환불 규정</h2>
         <div className="space-y-5 text-base leading-relaxed text-foreground/90">
           {exchangeReturn.map((p, i) => (
