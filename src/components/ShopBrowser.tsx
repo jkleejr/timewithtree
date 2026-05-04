@@ -311,11 +311,10 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기" }: ShopB
                 ⓘ 생물 특성상 실제 받아보시는 상품과 다소(계절별) 차이가 날 수 있습니다.
               </p>
               <div className="flex justify-end mt-6">
-                <Button
-                  asChild
-                  className="rounded-none bg-foreground text-background hover:bg-foreground/90"
-                >
-                  <Link to="/cart">장바구니</Link>
+                <Button asChild size="lg" className="rounded-none">
+                  <Link to="/cart">
+                    장바구니 <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </Button>
               </div>
             </div>
