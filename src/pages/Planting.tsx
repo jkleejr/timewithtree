@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
+import treeMeasurements from "@/assets/tree-measurements.png";
 
 const Planting = () => {
   return (
