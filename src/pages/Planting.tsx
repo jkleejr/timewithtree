@@ -64,6 +64,8 @@ const Planting = () => {
               </div>
               <p className="text-primary text-base leading-relaxed">❌ 묘목이 기울어져 있거나 뿌리가 뭉쳐있다</p>
               <p className="text-primary text-base leading-relaxed">❌ 구덩이가 얕아서 뿌리가 밖으로 나온다</p>
+              <p className="text-primary text-base leading-relaxed">⚠️ 비탈진곳 경사면에 심을때는 흙을 수평으로 하고 상단 경사면에 이어서 심지않는다</p>
+              <p className="text-primary text-base leading-relaxed">⚠️ 식재 시 비료나 완숙(가스발생이 끝나지 않은) 거름을 넣고 심을 경우 가스발생으로 인한 흙과 뿌리 밀어냄 현상이 일어나므로 주의바랍니다. 뿌리활착이 끝나비이더라도 첫해는 소량만 주는것이 적절합니다.</p>
             </div>
           </article>
 
