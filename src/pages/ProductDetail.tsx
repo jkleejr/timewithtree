@@ -98,7 +98,14 @@ const ProductDetail = () => {
               {variant.price.currencyCode} {parseFloat(variant.price.amount).toFixed(2)}
             </p>
           )}
-          <p className="leading-relaxed mb-8 whitespace-pre-line font-normal font-serif text-black">{p.description}</p>
+          {p.descriptionHtml ? (
+            <div
+              className="leading-relaxed mb-8 space-y-3 font-normal font-serif text-black"
+              dangerouslySetInnerHTML={{ __html: p.descriptionHtml }}
+            />
+          ) : (
+            <p className="leading-relaxed mb-8 whitespace-pre-line font-normal font-serif text-black">{p.description}</p>
+          )}
 
           {variants.length > 1 && (
             <div className="mb-6">
