@@ -213,14 +213,14 @@ const Index = () => {
             </>
           )}
 
-          <div className="relative z-[5] max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28 h-full grid md:grid-cols-12 gap-10 items-center">
-            <div className="md:col-span-5">
+          <div className="relative z-[5] max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16 h-full flex flex-col gap-8 md:gap-12">
+            <div>
               <p className="text-xs uppercase tracking-[0.25em] text-white/80 mb-3">에어포트</p>
               <h2 className="font-display text-3xl md:text-5xl leading-tight font-bold font-sans text-white drop-shadow-lg">
                 에어포트 재배의 장점
               </h2>
             </div>
-            <div className="md:col-span-6 md:col-start-7 flex flex-col gap-6">
+            <div className="md:max-w-2xl md:ml-auto flex flex-col gap-6">
               <div className="leading-relaxed whitespace-pre-line text-white drop-shadow-md">
                 <p className="mb-4">
                   <span className="font-bold">1️⃣ 뿌리 회전(뺑뺑이) 완전 방지</span>{"\n"}
