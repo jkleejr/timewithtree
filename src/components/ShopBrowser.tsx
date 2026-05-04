@@ -256,9 +256,11 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                                 {p.title}
                               </p>
                             )}
-                            <p className="text-sm font-medium truncate">
-                              {variant.title}
-                            </p>
+                            {variant.title !== "Default Title" && (
+                              <p className="text-sm font-medium truncate">
+                                {variant.title}
+                              </p>
+                            )}
                             <p className="text-xs text-muted-foreground">
                               예상출고시기:{" "}
                               <span className="text-foreground">즉시배송 가능</span>
