@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import type { ShopifyProduct } from "@/lib/shopify";
+import { formatPrice } from "@/lib/utils";
 
 export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
   const p = product.node;
