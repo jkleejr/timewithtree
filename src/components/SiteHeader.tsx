@@ -31,22 +31,24 @@ export const SiteHeader = () => {
           <NavLink to="/shop" className={navClass}>구매하기</NavLink>
         </nav>
         <div className="flex items-center gap-5">
-          <Link
+          <NavLink
             to={user ? "/account" : "/auth"}
-            className="flex items-center text-muted-foreground hover:text-foreground transition-colors"
+            className={navClass}
             aria-label={user ? "내 계정" : "로그인"}
           >
             <User className="h-5 w-5" />
-          </Link>
-          <Link to="/cart" className="relative flex items-center gap-2 text-sm">
-            <ShoppingCart className="h-5 w-5" />
-            <span className="hidden sm:inline">장바구니</span>
-            {totalItems > 0 && (
-              <span className="absolute -top-2 -right-2 sm:static sm:ml-1 inline-flex items-center justify-center h-5 min-w-[20px] px-1 rounded-full bg-accent text-accent-foreground text-[11px] font-medium">
-                {totalItems}
-              </span>
-            )}
-          </Link>
+          </NavLink>
+          <NavLink to="/cart" className={navClass} aria-label="장바구니">
+            <span className="relative flex items-center gap-2">
+              <ShoppingCart className="h-5 w-5" />
+              <span className="hidden sm:inline">장바구니</span>
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 sm:static sm:ml-1 inline-flex items-center justify-center h-5 min-w-[20px] px-1 rounded-full bg-accent text-accent-foreground text-[11px] font-medium">
+                  {totalItems}
+                </span>
+              )}
+            </span>
+          </NavLink>
         </div>
       </div>
     </header>
