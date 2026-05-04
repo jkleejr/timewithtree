@@ -15,6 +15,7 @@ import Cart from "./pages/Cart.tsx";
 import Auth from "./pages/Auth.tsx";
 import Account from "./pages/Account.tsx";
 import Returns from "./pages/Returns.tsx";
+import PickupGuide from "./pages/PickupGuide.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ const AppRoutes = () => {
       <Route path="/auth" element={<Auth />} />
       <Route path="/account" element={<Account />} />
       <Route path="/returns" element={<Returns />} />
+      <Route path="/pickup-guide" element={<PickupGuide />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
     </Routes>

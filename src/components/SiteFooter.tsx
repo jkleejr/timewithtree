@@ -17,6 +17,7 @@ export const SiteFooter = () => (
           <Link to="/aeroponics" className="hover:text-accent transition-colors">에어포트</Link>
           <Link to="/cart" className="hover:text-accent transition-colors">장바구니</Link>
           <Link to="/returns" className="hover:text-accent transition-colors">교환 및 반품안내</Link>
+          <Link to="/pickup-guide" className="hover:text-accent transition-colors">방문 수령시 안내</Link>
         </div>
       </div>
       <div className="md:col-span-8">
