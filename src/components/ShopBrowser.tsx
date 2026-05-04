@@ -106,7 +106,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
             {title}
           </h1>
           <div className="flex items-center justify-between border-t border-border pt-6">
-            <span className="text-sm text-muted-foreground">{sorted.length}개</span>
+            <span className="text-sm text-muted-foreground" />
             <Select value={sort} onValueChange={(v) => setSort(v as SortKey)}>
               <SelectTrigger className="w-[180px] rounded-none">
                 <SelectValue placeholder="Sort" />
