@@ -11,11 +11,9 @@ export const SiteHeader = () => {
 
   const navClass = ({ isActive }: { isActive: boolean }) =>
     [
-      "relative inline-block text-sm tracking-wide transition-colors",
-      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-accent after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left",
-      isActive
-        ? "text-accent after:scale-x-100"
-        : "text-muted-foreground hover:text-accent after:scale-x-0",
+      "relative inline-block text-sm tracking-wide text-foreground",
+      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-foreground after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left",
+      isActive ? "after:scale-x-100" : "after:scale-x-0",
     ].join(" ");
 
   return (
