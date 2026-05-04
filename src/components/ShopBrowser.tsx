@@ -30,6 +30,10 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기" }: ShopB
   const [activeProductId, setActiveProductId] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState(0);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
+  const [pendingAdd, setPendingAdd] = useState<{
+    product: typeof sorted[number];
+    variantId: string;
+  } | null>(null);
 
   const addItem = useCartStore((s) => s.addItem);
   const isAdding = useCartStore((s) => s.isLoading);
