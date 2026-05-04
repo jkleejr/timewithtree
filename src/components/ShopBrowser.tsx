@@ -60,12 +60,14 @@ export const ShopBrowser = ({ showHeader = true, title = "나무 주문" }: Shop
   const setQty = (id: string, q: number) =>
     setQuantities((prev) => ({ ...prev, [id]: Math.max(1, q) }));
 
-  const handleAdd = async (variantIndex: number) => {
-    if (!activeProduct) return;
-    const variant = variants[variantIndex]?.node;
+  const handleAddVariant = async (
+    product: typeof sorted[number],
+    variantId: string,
+  ) => {
+    const variant = product.node.variants.edges.find((v) => v.node.id === variantId)?.node;
     if (!variant) return;
     await addItem({
-      product: activeProduct,
+      product,
       variantId: variant.id,
       variantTitle: variant.title,
       price: variant.price,
@@ -73,7 +75,7 @@ export const ShopBrowser = ({ showHeader = true, title = "나무 주문" }: Shop
       selectedOptions: variant.selectedOptions || [],
     });
     toast.success("장바구니에 담았습니다", {
-      description: `${activeProduct.node.title} — ${variant.title}`,
+      description: `${product.node.title} — ${variant.title}`,
       position: "top-center",
     });
   };
