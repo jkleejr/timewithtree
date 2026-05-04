@@ -9,6 +9,7 @@ import Shop from "./pages/Shop.tsx";
 import ProductDetail from "./pages/ProductDetail.tsx";
 import About from "./pages/About.tsx";
 import Aeroponics from "./pages/Aeroponics.tsx";
+import Planting from "./pages/Planting.tsx";
 import Cart from "./pages/Cart.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -23,6 +24,7 @@ const AppRoutes = () => {
       <Route path="/product/:handle" element={<ProductDetail />} />
       <Route path="/about" element={<About />} />
       <Route path="/aeroponics" element={<Aeroponics />} />
+      <Route path="/planting" element={<Planting />} />
       <Route path="/cart" element={<Cart />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
