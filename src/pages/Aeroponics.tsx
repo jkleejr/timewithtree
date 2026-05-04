@@ -7,7 +7,7 @@ const Aeroponics = () => {
   return (
     <SiteLayout>
       <section className="max-w-4xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-10">
-        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3"></p>
+        <p className="text-3xl font-sans font-semibold text-primary uppercase tracking-[0.25em] mb-3"></p>
         <h1 className="font-display md:text-6xl leading-tight mb-6 font-sans text-4xl">
           🌿 에어포트(Air Pot) 재배 방식이란?
         </h1>
@@ -60,6 +60,27 @@ const Aeroponics = () => {
             <p className="text-muted-foreground leading-relaxed">
               건강한 뿌리 시스템은 지상부 생장에도 직접적인 영향을 미칩니다. 에어포트에서 재배된 자작나무는
               줄기와 가지가 균형 있게 발달하여, 조경 현장에서 바로 사용 가능한 일관된 수형과 품질을 보장합니다.
+            </p>
+          </article>
+
+          <article>
+            <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans">✔ 이식 안정성 보장</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              뿌리가 균일하게 퍼져 있어 이식 시에도 구조가 유지됩니다. 일반 화분처럼 감긴 뿌리를 풀다가 손상될 위험이 없어 고사율이 매우 낮습니다.
+            </p>
+          </article>
+
+          <article>
+            <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans">✔ 빠르고 균일한 성장</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              개체 간 편차가 줄어들고, 동일 조건에서 성장 속도가 더 빠릅니다. 뿌리 품질이 상품성으로 직결되는 조경수·자작나무 재배에 특히 적합한 방식입니다.
+            </p>
+          </article>
+
+          <article>
+            <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans">✔ 이식 성공률 매우 높음</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              에어포트 재배 나무는 일반 노지나 화분 재배 나무에 비해 식재 후 환경 적응력이 탁월합니다.
             </p>
           </article>
         </div>
