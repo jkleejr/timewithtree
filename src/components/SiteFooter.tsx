@@ -6,7 +6,7 @@ export const SiteFooter = () => (
   <footer className="border-t border-border mt-24">
     <div className="max-w-7xl mx-auto px-6 md:px-10 pt-12 pb-10 grid gap-10 md:grid-cols-12 text-sm">
       <div className="md:col-span-4">
-        <img src={logo} alt="나무와 걷는 시간 로고" className="h-16 md:h-20 w-auto mb-4 -ml-2" />
+        <img src={logo} alt="나무와 걷는 시간 로고" className="h-20 md:h-24 w-auto mb-4 -ml-2" />
         <p className="text-muted-foreground max-w-xs">
           ​
         </p>
