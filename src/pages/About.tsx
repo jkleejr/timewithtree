@@ -106,9 +106,9 @@ const About = () => {
             나무높이는 9~15m까지 성장하며, 뿌리는 땅속깊이 직근으로 파고들지 않고, 사방으로 퍼지는 특성이 있다.
             유럽과 미국뿐만 아니라 호주, 일본 등에서 인기조경수로 자리매김되고 있으며, 그 수액은 자일리톨 성분 등 이로운 성분이 많이 함유되어 있어서 국내의 고로쇠 수액처럼 웰빙음료 등에 활용이 가는 추세이다.
           </p>
-          <p className="font-bold text-foreground mt-4 text-3xl">활용</p>
+          <p className="font-bold text-foreground mt-4 text-3xl">​</p>
           <p className="text-primary text-base">
-            가을에는 노란 단풍이 들고, 겨울에는 하얀 껍질이 두드러져 조경 효과가 탁월합니다.
+            ​
           </p>
           <p className="text-primary">
             ​
