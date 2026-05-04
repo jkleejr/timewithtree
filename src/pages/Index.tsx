@@ -226,18 +226,15 @@ const Index = () => {
             </div>
             <div className="md:max-w-2xl md:ml-auto flex flex-col gap-6">
               <div className="bg-background/80 backdrop-blur-sm p-6 md:p-8 rounded-lg shadow-lg">
-                <p className="leading-relaxed whitespace-pre-line text-foreground">
-                  1️⃣ 뿌리 회전 (뺑뺑이)
-                  완전 방지
-                  2️⃣ 잔뿌리 폭발적으로 증가
-                  3️⃣ 과습 & 뿌리썩음 예방
-                  4️⃣ 토양 산소 공급 (이게 진짜 핵심)
-                  5️⃣ 이식(정식) 성공률 매우 높음
-                  6️⃣ 생육 속도 & 균일성 향상
-                  7️⃣ 대형 수목 재배에 특히 유리
-
-
-                </p>
+                <ul className="leading-relaxed text-foreground space-y-2">
+                  <li>1️⃣ 뿌리 회전 (뺑뺑이) 완전 방지</li>
+                  <li>2️⃣ 잔뿌리 폭발적으로 증가</li>
+                  <li>3️⃣ 과습 & 뿌리썩음 예방</li>
+                  <li>4️⃣ 토양 산소 공급 (이게 진짜 핵심)</li>
+                  <li>5️⃣ 이식(정식) 성공률 매우 높음</li>
+                  <li>6️⃣ 생육 속도 & 균일성 향상</li>
+                  <li>7️⃣ 대형 수목 재배에 특히 유리</li>
+                </ul>
               </div>
               <div className="flex justify-end">
                 <Button asChild size="lg" className="rounded-none">
