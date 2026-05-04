@@ -9,10 +9,10 @@ export const BackButton = () => {
       type="button"
       size="lg"
       className="rounded-none"
-      onClick={() => navigate(-1)}
+      onClick={() => navigate("/")}
     >
       <ArrowLeft className="mr-2 h-4 w-4" />
-      뒤로 가기
+      홈으로
     </Button>
   );
 };
