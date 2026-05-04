@@ -40,14 +40,7 @@ const Planting = () => {
           </article>
 
           <article>
-            <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans font-semibold">구덩이 준비</h2>
-            <p className="leading-relaxed text-primary text-base">
-              뿌리 분의 1.5~2배 크기의 구덩이를 파고, 배수가 잘되도록 바닥을 충분히 정리합니다. 점토질 토양이라면 마사토나 퇴비를 섞어 배수성을 개선합니다.
-            </p>
-          </article>
-
-          <article>
-            <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans font-semibold">식재</h2>
+            <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans font-semibold">planting</h2>
             <p className="leading-relaxed text-primary text-base">
               에어포트를 조심스럽게 제거한 뒤 뿌리 분을 그대로 구덩이 중앙에 안착시킵니다. 뿌리 분 윗면이 지면과 같거나 살짝 위로 오도록 깊이를 맞춥니다.
             </p>
