@@ -108,14 +108,14 @@ const About = () => {
           <p className="text-primary">
             ​
           </p>
-          <div className="mt-10 flex justify-between items-center w-full">
-            <BackButton />
-            <Button asChild size="lg" className="rounded-none">
-              <Link to="/shop">
-                구매하기 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
+        </div>
+        <div className="md:col-span-12 mt-10 flex justify-between items-center w-full">
+          <BackButton />
+          <Button asChild size="lg" className="rounded-none">
+            <Link to="/shop">
+              구매하기 <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </section>
     </SiteLayout>
