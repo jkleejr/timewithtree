@@ -256,9 +256,20 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기" }: ShopB
                             >
                               <Minus className="h-3 w-3" />
                             </button>
-                            <span className="w-8 text-center text-sm tabular-nums">
-                              {qty}
-                            </span>
+                            <input
+                              type="number"
+                              min={0}
+                              max={100}
+                              value={qty}
+                              onClick={(e) => (e.target as HTMLInputElement).select()}
+                              onChange={(e) => {
+                                const v = parseInt(e.target.value, 10);
+                                if (isNaN(v)) return setQty(variant.id, 0);
+                                setQty(variant.id, Math.min(100, Math.max(0, v)));
+                              }}
+                              className="w-10 text-center text-sm tabular-nums bg-transparent border-0 focus:outline-none focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                              aria-label="Quantity"
+                            />
                             <button
                               onClick={() => setQty(variant.id, qty + 1)}
                               className="px-2 py-1.5 hover:bg-secondary"
