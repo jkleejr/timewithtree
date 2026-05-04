@@ -19,7 +19,7 @@ export const SiteHeader = () => {
         <nav className="hidden md:flex items-center gap-10">
           <NavLink to="/shop" className={navClass}>구매하기</NavLink>
           <NavLink to="/about" className={navClass}>잭큐몬티 도랜보스</NavLink>
-          <NavLink to="/aeroponics" className={navClass}>에어포닉스</NavLink>
+          <NavLink to="/aeroponics" className={navClass}>에어포트</NavLink>
         </nav>
         <Link to="/cart" className="relative flex items-center gap-2 text-sm">
           <ShoppingBag className="h-5 w-5" />
