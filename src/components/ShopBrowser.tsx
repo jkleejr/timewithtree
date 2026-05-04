@@ -181,7 +181,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기" }: ShopB
               )}
               {activeProduct.node.description && (
                 <div className="mt-6 pt-6 border-t border-border">
-                  <h3 className="font-bold text-lg mb-3 font-sans">
+                  <h3 className="font-bold mb-3 font-sans text-sm">
                     {activeProduct.node.title}
                   </h3>
                   <p className="text-sm leading-relaxed whitespace-pre-wrap text-foreground font-sans">
