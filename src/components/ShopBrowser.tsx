@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { BackButton } from "@/components/BackButton";
 import { useCartStore } from "@/stores/cartStore";
 import type { ShopifyProduct } from "@/lib/shopify";
 import {
@@ -205,6 +206,9 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기" }: ShopB
                   </p>
                 </div>
               )}
+              <div className="mt-6">
+                <BackButton />
+              </div>
             </div>
 
             <div className="md:pt-14">
