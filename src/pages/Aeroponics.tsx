@@ -89,8 +89,8 @@ const Aeroponics = () => {
         <div className="mt-16 flex flex-col items-end gap-16">
           <article className="w-full">
             <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans font-semibold">✔ 빠르고 균일한 성장</h2>
-            <p className="text-3xl font-sans text-primary font-semibold">
-              {"\n"}
+            <p className="text-muted-foreground leading-relaxed">
+              개체 간 편차가 줄어들고, 동일 조건에서 성장 속도가 더 빠릅니다. 뿌리 품질이 상품성으로 직결되는 조경수·자작나무 재배에 특히 적합한 방식입니다.
             </p>
           </article>
 
