@@ -149,7 +149,7 @@ const Index = () => {
             <div className="pointer-events-auto flex flex-col gap-4 md:gap-6">
               <h1 className="font-display text-3xl md:text-5xl leading-tight font-bold font-sans text-white drop-shadow-lg">
                 <span className="block">잭큐몬티 도랜보스</span>
-                <span className="block">(Jacquemontii Doorenbos)</span>
+                <span className="block">Jacquemontii Doorenbos</span>
                 <span className="block">자작나무 농장</span>
               </h1>
               <ul className="md:max-w-2xl space-y-2 text-sm md:text-base leading-relaxed font-sans text-white drop-shadow-md">
