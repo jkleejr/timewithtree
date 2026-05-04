@@ -32,17 +32,17 @@ const Cart = () => {
   return (
     <SiteLayout>
       <section className="max-w-6xl mx-auto px-6 md:px-10 pt-16 pb-24">
-        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">Your cart</p>
+        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">장바구니</p>
         <h1 className="font-display text-4xl md:text-5xl mb-10 font-serif font-bold">
-          {totalItems === 0 ? 'Cart is empty' : `${totalItems} item${totalItems !== 1 ? 's' : ''}`}
+          {totalItems === 0 ? '장바구니가 비어 있습니다' : `${totalItems}개 상품`}
         </h1>
 
         {items.length === 0 ? (
           <div className="border border-dashed border-border py-20 text-center">
             <ShoppingBag className="h-10 w-10 mx-auto mb-4 text-muted-foreground" />
-            <p className="text-muted-foreground mb-6">Your cart is currently empty.</p>
+            <p className="text-muted-foreground mb-6">현재 장바구니에 담긴 상품이 없습니다.</p>
             <Button asChild className="rounded-none">
-              <Link to="/shop">Browse trees</Link>
+              <Link to="/shop">나무 둘러보기</Link>
             </Button>
           </div>
         ) : (
