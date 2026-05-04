@@ -41,7 +41,20 @@ const Planting = () => {
 
           <article>
             <h2 className="font-display md:text-3xl mb-3 font-sans font-semibold text-4xl">묘목 식재전 상식</h2>
-            <p className="leading-relaxed text-primary text-base"></p>
+            <div className="grid gap-4 text-primary text-base leading-relaxed">
+              <div className="border border-border px-4 py-3">
+                (H) - 수고 지면으로 부터 수목의 맨 윗부분 (상순의 끝) 까지의 길이, 수목의 키. (단위 m)
+              </div>
+              <div className="border border-border px-4 py-3">
+                (W) - 수관폭 가지의 끝과 반대쪽 가지의 끝까지의 너비. (단위 m)
+              </div>
+              <div className="border border-border px-4 py-3">
+                (R) - 근원직경 줄기의 지면에 닿는 부분의 지름, 둘레를 π (3.14)로 나눈 값. (단위 cm)
+              </div>
+              <div className="border border-border px-4 py-3">
+                (B) - 흉고직경 지면으로부터 1m20cm 높이의 줄기 지름, 둘레를 π (3.14)로 나눈 값, 보통 가슴높이를 잰 값. (단위 cm)
+              </div>
+            </div>
           </article>
 
           {/* Content removed per user request */}
