@@ -19,7 +19,7 @@ const Planting = () => {
       <section className="max-w-4xl mx-auto px-6 md:px-10 pb-20">
         <div className="border-t border-border pt-12 grid gap-12 font-sans">
           <article>
-            <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans font-semibold">식재방법</h2>
+            <h2 className="font-display md:text-3xl mb-3 font-sans font-semibold text-4xl">식재방법</h2>
             <p className="font-claude-response-body break-words whitespace-pre-wrap leading-[1.7] font-sans text-primary text-base">
               {`1️⃣ 식재할 장소를 정리를 해줍니다.
 
@@ -40,10 +40,8 @@ const Planting = () => {
           </article>
 
           <article>
-            <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans font-semibold">planting</h2>
-            <p className="leading-relaxed text-primary text-base">
-              에어포트를 조심스럽게 제거한 뒤 뿌리 분을 그대로 구덩이 중앙에 안착시킵니다. 뿌리 분 윗면이 지면과 같거나 살짝 위로 오도록 깊이를 맞춥니다.
-            </p>
+            <h2 className="font-display md:text-3xl mb-3 font-sans font-semibold text-4xl">묘목 식재전 상식</h2>
+            <p className="leading-relaxed text-primary text-base"></p>
           </article>
 
           {/* Content removed per user request */}
