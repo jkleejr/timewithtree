@@ -141,24 +141,22 @@ const Index = () => {
           <div className="absolute inset-0 bg-black/30 pointer-events-none" />
 
           {/* Intro overlay */}
-          <div className="absolute inset-0 z-[5] max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col gap-8 md:gap-12 pointer-events-none">
-            <div className="pointer-events-auto">
+          <div className="absolute inset-0 z-[5] max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col gap-6 md:gap-8 pointer-events-none">
+            <div className="pointer-events-auto flex flex-col gap-4 md:gap-6">
               <h1 className="font-display text-3xl md:text-5xl leading-tight font-bold font-sans text-white drop-shadow-lg">
                 잭큐몬티 도랜보스 (Jacquemontii Doorenbos) 자작나무 농장
               </h1>
-            </div>
-            <div className="mt-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6 pointer-events-auto">
-              <ul className="md:max-w-xl space-y-2 text-sm md:text-base leading-relaxed font-sans text-white drop-shadow-md">
+              <ul className="md:max-w-2xl space-y-2 text-sm md:text-base leading-relaxed font-sans text-white drop-shadow-md">
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>네델란드 조직배양한 묘목 수입하여 재배</span></li>
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
               </ul>
-              <div className="flex justify-end shrink-0">
-                <Button asChild size="lg" className="rounded-none">
-                  <Link to="/about">
-                    잭큐몬티 도랜보스 <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
+            </div>
+            <div className="mt-auto flex justify-end pointer-events-auto">
+              <Button asChild size="lg" className="rounded-none">
+                <Link to="/about">
+                  잭큐몬티 도랜보스 <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
