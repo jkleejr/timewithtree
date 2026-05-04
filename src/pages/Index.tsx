@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
-import { ProductCard } from "@/components/ProductCard";
+import { ShopBrowser } from "@/components/ShopBrowser";
 import { FarmGallery } from "@/components/FarmGallery";
 import { Button } from "@/components/ui/button";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
