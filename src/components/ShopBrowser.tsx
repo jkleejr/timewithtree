@@ -206,7 +206,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기" }: ShopB
                   </p>
                 </div>
               )}
-              <div className="mt-6">
+              <div className="mt-16">
                 <BackButton />
               </div>
             </div>
