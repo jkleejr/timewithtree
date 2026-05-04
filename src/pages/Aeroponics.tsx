@@ -46,6 +46,22 @@ const Aeroponics = () => {
               관리하기 때문에, 수형과 수피 색이 일관된 고품질 자작나무를 공급할 수 있습니다.
             </p>
           </article>
+
+          <article>
+            <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans">✔ 이식 스트레스 최소화</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              에어포트에서 자란 나무는 잔뿌리가 풍부하고 뿌리 구조가 안정적이기 때문에, 이식 시에도 뿌리 손상이
+              거의 없습니다. 식재 후 활착이 빠르고 고사율이 현저히 낮아 연중 어느 시기에도 안전하게 식재할 수 있습니다.
+            </p>
+          </article>
+
+          <article>
+            <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans">✔ 균일하고 우수한 수형 형성</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              건강한 뿌리 시스템은 지상부 생장에도 직접적인 영향을 미칩니다. 에어포트에서 재배된 자작나무는
+              줄기와 가지가 균형 있게 발달하여, 조경 현장에서 바로 사용 가능한 일관된 수형과 품질을 보장합니다.
+            </p>
+          </article>
         </div>
 
         <div className="mt-16 flex justify-end">
