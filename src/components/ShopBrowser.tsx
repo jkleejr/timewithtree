@@ -56,9 +56,9 @@ export const ShopBrowser = ({ showHeader = true, title = "나무 주문" }: Shop
     setActiveImage(0);
   };
 
-  const getQty = (id: string) => quantities[id] ?? 1;
+  const getQty = (id: string) => quantities[id] ?? 0;
   const setQty = (id: string, q: number) =>
-    setQuantities((prev) => ({ ...prev, [id]: Math.max(1, q) }));
+    setQuantities((prev) => ({ ...prev, [id]: Math.max(0, q) }));
 
   const handleAddVariant = async (
     product: typeof sorted[number],
