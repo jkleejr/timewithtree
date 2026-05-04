@@ -114,11 +114,11 @@ const Index = () => {
           )}
 
           {/* Intro card overlay on the bottom right */}
-          <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 max-w-sm md:max-w-md bg-white/75 backdrop-blur-md text-black p-5 md:p-6 shadow-xl">
-            <p className="font-serif font-semibold text-base md:text-xl leading-snug mb-3">
+          <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 max-w-sm md:max-w-md bg-white/75 backdrop-blur-md text-black p-5 md:p-6 shadow-xl font-sans">
+            <p className="font-semibold text-base leading-snug mb-3 font-sans md:text-4xl">
               잭큐몬티 도랜보스 (Jacquemontii Doorenbos) 자작나무 농장
             </p>
-            <ul className="space-y-1.5 text-xs md:text-base leading-relaxed font-serif">
+            <ul className="space-y-1.5 text-xs md:text-base leading-relaxed font-sans">
               <li className="flex gap-2"><span aria-hidden="true">-</span><span>네델란드 조직배양한 묘목 수입하여 재배</span></li>
               <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
             </ul>

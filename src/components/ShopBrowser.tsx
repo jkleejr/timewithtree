@@ -84,7 +84,7 @@ export const ShopBrowser = ({ showHeader = true, title = "나무 주문" }: Shop
     <>
       {showHeader && (
         <div className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-20 pb-8">
-          <h1 className="font-display text-4xl md:text-5xl mb-6 font-serif font-bold">
+          <h1 className="font-display text-4xl md:text-5xl mb-6 font-bold font-sans">
             {title}
           </h1>
           <div className="flex items-center justify-between border-t border-border pt-6">
@@ -123,7 +123,7 @@ export const ShopBrowser = ({ showHeader = true, title = "나무 주문" }: Shop
         ) : activeProduct ? (
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             <div className="md:sticky md:top-24 self-start">
-              <h2 className="font-display font-serif font-bold text-2xl md:text-3xl mb-4">
+              <h2 className="font-display font-bold md:text-3xl mb-4 font-sans text-4xl">
                 {activeProduct.node.title}
               </h2>
               <div className="relative aspect-[4/5] bg-secondary overflow-hidden mb-3">
@@ -181,10 +181,10 @@ export const ShopBrowser = ({ showHeader = true, title = "나무 주문" }: Shop
               )}
               {activeProduct.node.description && (
                 <div className="mt-6 pt-6 border-t border-border">
-                  <h3 className="font-serif font-bold text-lg mb-3">
+                  <h3 className="font-bold text-lg mb-3 font-sans">
                     {activeProduct.node.title}
                   </h3>
-                  <p className="text-sm leading-relaxed whitespace-pre-wrap text-foreground font-serif">
+                  <p className="text-sm leading-relaxed whitespace-pre-wrap text-foreground font-sans">
                     {activeProduct.node.description}
                   </p>
                 </div>
@@ -192,7 +192,7 @@ export const ShopBrowser = ({ showHeader = true, title = "나무 주문" }: Shop
             </div>
 
             <div className="md:pt-14">
-              <h2 className="font-display font-serif font-bold text-2xl md:text-3xl mb-4">
+              <h2 className="font-display font-bold md:text-3xl mb-4 font-sans text-4xl">
                 잭큐몬티 자작나무
               </h2>
               <div className="border border-border">
@@ -229,7 +229,7 @@ export const ShopBrowser = ({ showHeader = true, title = "나무 주문" }: Shop
                           )}
                           <div className="flex-1 min-w-0">
                             {vi === 0 && (
-                              <p className="font-serif font-bold text-sm leading-tight truncate">
+                              <p className="font-bold text-sm leading-tight truncate font-sans">
                                 {p.title}
                               </p>
                             )}
