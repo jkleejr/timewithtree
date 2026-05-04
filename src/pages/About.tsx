@@ -107,14 +107,8 @@ const About = () => {
             유럽과 미국뿐만 아니라 호주, 일본 등에서 인기조경수로 자리매김되고 있으며, 그 수액은 자일리톨 성분 등 이로운 성분이 많이 함유되어 있어서 국내의 고로쇠 수액처럼 웰빙음료 등에 활용이 가는 추세이다.
           </p>
           <p className="font-bold text-foreground mt-4 text-3xl">​</p>
-          <p className="text-primary text-base">
-            ​
-          </p>
-          <p className="text-primary">
-            ​
-          </p>
         </div>
-        <div className="md:col-span-12 mt-10 flex justify-between items-center w-full">
+        <div className="md:col-span-12 mt-4 flex justify-between items-center w-full">
           <BackButton />
           <Button asChild size="lg" className="rounded-none">
             <Link to="/shop">
