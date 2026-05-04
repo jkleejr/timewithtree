@@ -106,7 +106,7 @@ const Cart = () => {
                 </div>
                 <div className="flex justify-between items-baseline mb-6">
                   <span className="text-base">합계</span>
-                  <span className="font-display text-2xl tabular-nums">{currency} {subtotal.toFixed(2)}</span>
+                  <span className="font-display text-2xl tabular-nums">{formatPrice(subtotal, currency)}</span>
                 </div>
                 <Button
                   size="lg"
