@@ -8,6 +8,9 @@ import { Button } from "@/components/ui/button";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import heroBirch from "@/assets/hero-birch.jpg";
 import heroBirch2 from "@/assets/hero-birch-2.png";
+import heroBirch3 from "@/assets/hero-birch-3.jpg";
+import heroBirch4 from "@/assets/hero-birch-4.png";
+import heroBirch5 from "@/assets/hero-birch-5.png";
 import farmIntro from "@/assets/farm-intro.jpg";
 import farmJac1 from "@/assets/farm-jac-1.png";
 import farmJac5 from "@/assets/farm-jac-5.png";
@@ -18,6 +21,9 @@ import farmJacBark from "@/assets/farm-jac-bark.jpg";
 const heroImages = [
   { src: heroBirch, alt: "A grove of Korean white birch trees in soft morning light" },
   { src: heroBirch2, alt: "Close-up of a multi-stem Jacquemontii birch and its papery white bark" },
+  { src: heroBirch3, alt: "A pathway through a grove of white birch trees" },
+  { src: heroBirch4, alt: "White birch trees on a manicured lawn with evergreen hedge" },
+  { src: heroBirch5, alt: "Detailed close-up of Jacquemontii birch trunks with autumn foliage" },
 ];
 
 const farmImages = [
@@ -58,17 +64,30 @@ const Index = () => {
       <section className="relative">
         <div className="relative aspect-[16/10] md:aspect-[16/8] w-full overflow-hidden bg-secondary">
           {heroImages.map((img, i) => (
-            <img
+            <div
               key={i}
-              src={img.src}
-              alt={img.alt}
-              width={1920}
-              height={1280}
-              loading={i === 0 ? "eager" : "lazy"}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+              className={`absolute inset-0 transition-opacity duration-700 ${
                 i === heroIndex ? "opacity-100" : "opacity-0"
               }`}
-            />
+              aria-hidden={i !== heroIndex}
+            >
+              {/* Blurred background fills the frame so the foreground can use object-contain without empty bars */}
+              <img
+                src={img.src}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-60"
+              />
+              <img
+                src={img.src}
+                alt={img.alt}
+                width={1920}
+                height={1280}
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding="async"
+                className="relative w-full h-full object-contain"
+              />
+            </div>
           ))}
 
           {heroLen > 1 && (
