@@ -32,17 +32,17 @@ const Cart = () => {
   return (
     <SiteLayout>
       <section className="max-w-6xl mx-auto px-6 md:px-10 pt-16 pb-24">
-        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">Your cart</p>
+        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">장바구니</p>
         <h1 className="font-display text-4xl md:text-5xl mb-10 font-serif font-bold">
-          {totalItems === 0 ? 'Cart is empty' : `${totalItems} item${totalItems !== 1 ? 's' : ''}`}
+          {totalItems === 0 ? '장바구니가 비어 있습니다' : `${totalItems}개 상품`}
         </h1>
 
         {items.length === 0 ? (
           <div className="border border-dashed border-border py-20 text-center">
             <ShoppingBag className="h-10 w-10 mx-auto mb-4 text-muted-foreground" />
-            <p className="text-muted-foreground mb-6">Your cart is currently empty.</p>
+            <p className="text-muted-foreground mb-6">현재 장바구니에 담긴 상품이 없습니다.</p>
             <Button asChild className="rounded-none">
-              <Link to="/shop">Browse trees</Link>
+              <Link to="/shop">나무 둘러보기</Link>
             </Button>
           </div>
         ) : (
@@ -80,7 +80,7 @@ const Cart = () => {
                           </button>
                         </div>
                         <button onClick={() => removeItem(item.variantId)} className="text-sm text-muted-foreground hover:text-destructive inline-flex items-center gap-1">
-                          <Trash2 className="h-3.5 w-3.5" /> Remove
+                          <Trash2 className="h-3.5 w-3.5" /> 삭제
                         </button>
                       </div>
                     </div>
@@ -91,19 +91,19 @@ const Cart = () => {
 
             <aside className="lg:col-span-1">
               <div className="bg-secondary p-6 md:p-8 sticky top-24">
-                <h2 className="font-display text-xl mb-6">Order summary</h2>
+                <h2 className="font-display text-xl mb-6">주문 요약</h2>
                 <div className="space-y-3 text-sm border-b border-border pb-4 mb-4">
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Subtotal</span>
+                    <span className="text-muted-foreground">소계</span>
                     <span className="tabular-nums">{currency} {subtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Shipping</span>
-                    <span className="text-muted-foreground">Calculated at checkout</span>
+                    <span className="text-muted-foreground">배송비</span>
+                    <span className="text-muted-foreground">결제 시 계산</span>
                   </div>
                 </div>
                 <div className="flex justify-between items-baseline mb-6">
-                  <span className="text-base">Total</span>
+                  <span className="text-base">합계</span>
                   <span className="font-display text-2xl tabular-nums">{currency} {subtotal.toFixed(2)}</span>
                 </div>
                 <Button
@@ -115,11 +115,11 @@ const Cart = () => {
                   {isLoading || isSyncing ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
                   ) : (
-                    <>Checkout <ExternalLink className="ml-2 h-4 w-4" /></>
+                    <>결제하기 <ExternalLink className="ml-2 h-4 w-4" /></>
                   )}
                 </Button>
                 <p className="text-xs text-muted-foreground text-center mt-4">
-                  Secure checkout powered by Shopify
+                  Shopify로 안전하게 결제됩니다
                 </p>
               </div>
             </aside>
