@@ -105,7 +105,7 @@ const About = () => {
             가을에는 노란 단풍이 들고, 겨울에는 하얀 껍질이 두드러져 조경 효과가 탁월합니다.
           </p>
           <p className="text-primary">
-            수액은 웰빙 음료로 활용되기도 합니다.
+            ​
           </p>
           <div className="mt-10 flex justify-end w-full">
             <Button asChild size="lg" className="rounded-none">
