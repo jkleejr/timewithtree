@@ -24,7 +24,7 @@ import farmJacBark from "@/assets/farm-jac-bark.jpg";
 const heroImages = [
   { src: heroMain1, alt: "Rows of Jacquemontii Doorenbos birch saplings growing in air-pots at the farm in summer" },
   { src: heroMain3, alt: "Mature Jacquemontii Doorenbos birch trees in air-pots at the farm" },
-  { src: heroBirch, alt: "A grove of Korean white birch trees in soft morning light" },
+  
   { src: heroBirch2, alt: "Close-up of a multi-stem Jacquemontii birch and its papery white bark" },
   { src: heroBirch4, alt: "White birch trees on a manicured lawn with evergreen hedge" },
   { src: heroBirch5, alt: "Detailed close-up of Jacquemontii birch trunks with autumn foliage" },
