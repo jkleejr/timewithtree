@@ -126,6 +126,7 @@ const Cart = () => {
           </div>
         )}
       </section>
+      <CheckoutDialog open={dialogOpen} onOpenChange={setDialogOpen} onGuestCheckout={openCheckout} />
     </SiteLayout>
   );
 };
