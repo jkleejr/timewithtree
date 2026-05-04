@@ -97,7 +97,7 @@ const Aeroponics = () => {
           <article className="w-full">
             <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans font-semibold">⚠️ 단점</h2>
             <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-              {"물이 빨리 마름 → 관수 관리 중요\n\n\n\n가격이 일반 화분보다 비쌈, 바람 강하면 건조 스트레스 가능"}
+              {"물이 빨리 마름 → 관수 관리 중요\n가격이 일반 화분보다 비쌈, 바람 강하면 건조 스트레스 가능"}
             </p>
           </article>
 
