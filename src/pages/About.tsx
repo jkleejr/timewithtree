@@ -85,7 +85,7 @@ const About = () => {
           </div>
         </div>
         <div className="md:col-span-5 md:col-start-8 flex-col gap-6 text-base leading-relaxed text-muted-foreground flex items-start justify-start">
-          <div className="text-primary text-base">
+          <div className="text-primary text-base font-bold">
             <p>학명 : Betula Jacquemontii</p>
             <p>월동 : 내한성 높음</p>
             <p>햇빛 : 양지</p>
