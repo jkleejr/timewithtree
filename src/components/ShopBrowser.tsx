@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Minus, Plus, ShoppingCart, Loader2, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
+import { formatPrice } from "@/lib/utils";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
