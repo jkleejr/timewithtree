@@ -1,17 +1,24 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { ShopBrowser } from "@/components/ShopBrowser";
 import { FarmGallery } from "@/components/FarmGallery";
 import { Button } from "@/components/ui/button";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import heroBirch from "@/assets/hero-birch.jpg";
+import heroBirch2 from "@/assets/hero-birch-2.png";
 import farmIntro from "@/assets/farm-intro.jpg";
 import farmJac1 from "@/assets/farm-jac-1.png";
 import farmJac5 from "@/assets/farm-jac-5.png";
 import farmJac13 from "@/assets/farm-jac-13.png";
 import farmJac17 from "@/assets/farm-jac-17.png";
 import farmJacBark from "@/assets/farm-jac-bark.jpg";
+
+const heroImages = [
+  { src: heroBirch, alt: "A grove of Korean white birch trees in soft morning light" },
+  { src: heroBirch2, alt: "Close-up of a multi-stem Jacquemontii birch and its papery white bark" },
+];
 
 const farmImages = [
   {
