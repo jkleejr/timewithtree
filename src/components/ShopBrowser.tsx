@@ -300,7 +300,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기" }: ShopB
                             className="rounded-none h-9 w-9 relative"
                             onClick={(e) => {
                               e.stopPropagation();
-                              handleAddVariant(product, variant.id);
+                              setPendingAdd({ product, variantId: variant.id });
                             }}
                             disabled={isAdding || qty < 1 || !variant.availableForSale}
                             aria-label="Add to cart"
