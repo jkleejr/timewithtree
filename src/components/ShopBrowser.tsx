@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import { formatPrice } from "@/lib/utils";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
 import { useCartStore } from "@/stores/cartStore";
@@ -226,6 +227,20 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                   )}
                 </div>
               )}
+              <Accordion type="single" collapsible className="mt-8 font-sans font-bold">
+                <AccordionItem value="shipping">
+                  <AccordionTrigger>배송 및 관리</AccordionTrigger>
+                  <AccordionContent className="font-sans font-normal text-foreground whitespace-pre-line">
+                    {`나무는 크기에 따라 뿌리가 드러난 상태(bare-root)나 화분에 심긴 상태로 배송되며, 수피와 뿌리를 보호하기 위해 정성스럽게 포장됩니다.\n\n배수가 잘 되는 토양에 심고, 햇빛이 잘 들거나 약간 그늘진 곳이 적합합니다.\n식재 후 첫 시즌에는 물을 충분히 깊게 주어야 합니다.`}
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="origin">
+                  <AccordionTrigger>원산지</AccordionTrigger>
+                  <AccordionContent className="font-sans font-normal text-foreground">
+                    서늘한 기후와 깨끗한 공기로 밝고 하얀 수피를 자랑하는 대한민국 세종시 고산지대 농장에서 직접 재배되었습니다.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
               {showBackButton && (
                 <div className="mt-16">
                   <BackButton />
