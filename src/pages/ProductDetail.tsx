@@ -95,7 +95,7 @@ const ProductDetail = () => {
         <div className="flex flex-col">
           <h1 className="font-display text-4xl md:text-5xl mb-4 font-bold font-sans">{p.title}</h1>
           {variant && (
-            <p className="text-xl tabular-nums mb-6">
+            <p className="text-xl tabular-nums mb-6 font-sans">
               {formatPrice(variant.price.amount, variant.price.currencyCode)}
             </p>
           )}
@@ -129,12 +129,12 @@ const ProductDetail = () => {
 
           <div className="mb-8">
             <p className="uppercase tracking-widest mb-3 text-xl font-semibold text-primary font-bold font-sans">수량</p>
-            <div className="inline-flex items-center border border-border">
-              <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-3 py-2 hover:bg-secondary">
+            <div className="inline-flex items-center border border-border font-sans">
+              <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-3 py-2 hover:bg-secondary font-sans">
                 <Minus className="h-3 w-3" />
               </button>
-              <span className="w-10 text-center text-sm tabular-nums">{quantity}</span>
-              <button onClick={() => setQuantity(quantity + 1)} className="px-3 py-2 hover:bg-secondary">
+              <span className="w-10 text-center text-sm tabular-nums font-sans">{quantity}</span>
+              <button onClick={() => setQuantity(quantity + 1)} className="px-3 py-2 hover:bg-secondary font-sans">
                 <Plus className="h-3 w-3" />
               </button>
             </div>
