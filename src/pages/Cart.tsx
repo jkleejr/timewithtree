@@ -67,8 +67,13 @@ const Cart = () => {
                         </span>
                       </div>
                       {item.selectedOptions.length > 0 && item.selectedOptions[0].value !== 'Default Title' && (
-                        <p className="text-sm text-muted-foreground mb-3">
+                        <p className="text-sm text-muted-foreground mb-2">
                           {item.selectedOptions.map(o => o.value).join(' · ')}
+                        </p>
+                      )}
+                      {item.product.node.description && (
+                        <p className="text-sm text-muted-foreground whitespace-pre-line mb-3 line-clamp-6">
+                          {item.product.node.description}
                         </p>
                       )}
                       <div className="mt-auto flex items-center justify-between">
