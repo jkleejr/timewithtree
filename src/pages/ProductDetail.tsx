@@ -93,7 +93,7 @@ const ProductDetail = () => {
         </div>
 
         <div className="flex flex-col">
-          <h1 className="font-display text-4xl md:text-5xl mb-4 font-serif font-bold">{p.title}</h1>
+          <h1 className="font-display text-4xl md:text-5xl mb-4 font-bold font-sans">{p.title}</h1>
           {variant && (
             <p className="text-xl tabular-nums mb-6">
               {formatPrice(variant.price.amount, variant.price.currencyCode)}
@@ -110,7 +110,7 @@ const ProductDetail = () => {
 
           {variants.length > 1 && (
             <div className="mb-6">
-              <p className="uppercase tracking-widest mb-3 text-xl font-semibold text-primary font-serif font-bold">Size</p>
+              <p className="uppercase tracking-widest mb-3 text-xl font-semibold text-primary font-bold font-sans">Size</p>
               <div className="flex flex-wrap gap-2">
                 {variants.map((v, i) => (
                   <button
@@ -128,7 +128,7 @@ const ProductDetail = () => {
           )}
 
           <div className="mb-8">
-            <p className="uppercase tracking-widest mb-3 text-xl font-semibold text-primary font-serif font-bold">수량</p>
+            <p className="uppercase tracking-widest mb-3 text-xl font-semibold text-primary font-bold font-sans">수량</p>
             <div className="inline-flex items-center border border-border">
               <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-3 py-2 hover:bg-secondary">
                 <Minus className="h-3 w-3" />
