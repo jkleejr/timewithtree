@@ -274,12 +274,12 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                               <span className="text-foreground">즉시배송 가능</span>
                             </p>
                           </div>
-                          <span className="text-sm tabular-nums font-semibold whitespace-nowrap ml-auto sm:ml-0">
+                          <span className="text-sm tabular-nums font-semibold whitespace-nowrap ml-auto sm:ml-0 font-sans">
                             {formatPrice(variant.price.amount, variant.price.currencyCode)}
                           </span>
                           <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
                             <div
-                              className="inline-flex items-center border border-border"
+                              className="inline-flex items-center border border-border font-sans"
                               onClick={(e) => e.stopPropagation()}
                             >
                               <button
@@ -300,7 +300,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                                   if (isNaN(v)) return setQty(variant.id, 0);
                                   setQty(variant.id, Math.min(100, Math.max(0, v)));
                                 }}
-                                className="w-10 text-center text-sm tabular-nums bg-transparent border-0 focus:outline-none focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                                className="w-10 text-center text-sm tabular-nums bg-transparent border-0 focus:outline-none focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none font-sans"
                                 aria-label="Quantity"
                               />
                               <button
