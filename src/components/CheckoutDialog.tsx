@@ -27,7 +27,7 @@ export const CheckoutDialog = ({ open, onOpenChange, onGuestCheckout }: Checkout
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md rounded-none">
         <DialogHeader>
-          <DialogTitle className="font-display text-2xl">결제 방법을 선택하세요</DialogTitle>
+          <DialogTitle className="font-display text-2xl font-sans">결제 방법을 선택하세요</DialogTitle>
           <DialogDescription>
             로그인 후 결제하시면 주문 내역을 확인하실 수 있습니다.
           </DialogDescription>

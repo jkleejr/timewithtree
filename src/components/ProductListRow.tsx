@@ -70,7 +70,7 @@ export const ProductListRow = ({ product }: { product: ShopifyProduct }) => {
       {/* Right: Info + variant list */}
       <div className="flex flex-col">
         <Link to={`/product/${p.handle}`}>
-          <h2 className="font-display font-serif font-bold text-2xl md:text-3xl mb-3 hover:underline">
+          <h2 className="font-display font-sans font-bold text-2xl md:text-3xl mb-3 hover:underline">
             {p.title}
           </h2>
         </Link>

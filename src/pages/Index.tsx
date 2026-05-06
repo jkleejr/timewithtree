@@ -279,7 +279,7 @@ const Index = () => {
 
 const EmptyProducts = () => (
   <div className="border border-dashed border-border py-20 text-center">
-    <p className="font-display text-2xl mb-2">No products found</p>
+    <p className="font-display text-2xl mb-2 font-sans">No products found</p>
     <p className="text-muted-foreground text-sm">Add your first birch tree to get started.</p>
   </div>
 );

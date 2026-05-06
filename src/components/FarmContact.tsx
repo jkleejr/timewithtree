@@ -46,7 +46,7 @@ export const FarmContact = ({ variant = "section" }: { variant?: Variant }) => {
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-20 grid md:grid-cols-12 gap-10">
         <div className="md:col-span-4">
           <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">Visit & Contact</p>
-          <h2 className="font-display text-3xl md:text-4xl leading-tight">
+          <h2 className="font-display text-3xl md:text-4xl leading-tight font-sans">
             나무와 걷는 시간 농장
           </h2>
           <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
