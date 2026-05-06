@@ -145,14 +145,14 @@ const Index = () => {
           <div className="absolute inset-0 bg-black/30 pointer-events-none" />
 
           {/* Intro overlay */}
-          <div className="absolute inset-0 z-[5] max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16 flex flex-col gap-6 md:gap-8 pointer-events-none">
-            <div className="pointer-events-auto flex flex-col gap-4 md:gap-6">
-              <h1 className="font-display text-3xl md:text-5xl leading-tight font-bold font-sans text-white drop-shadow-lg">
-                <span className="block text-7xl">잭큐몬티 도랜보스</span>
-                <span className="block text-6xl">Jacquemontii Doorenbos</span>
-                <span className="block text-6xl">자작나무 농장</span>
+          <div className="absolute inset-0 z-[5] max-w-7xl mx-auto px-5 sm:px-6 md:px-10 py-8 sm:py-12 md:py-16 flex flex-col gap-4 sm:gap-6 md:gap-8 pointer-events-none">
+            <div className="pointer-events-auto flex flex-col gap-3 sm:gap-4 md:gap-6">
+              <h1 className="font-display leading-tight font-bold font-sans text-white drop-shadow-lg">
+                <span className="block text-3xl sm:text-5xl md:text-7xl">잭큐몬티 도랜보스</span>
+                <span className="block text-2xl sm:text-4xl md:text-6xl">Jacquemontii Doorenbos</span>
+                <span className="block text-2xl sm:text-4xl md:text-6xl">자작나무 농장</span>
               </h1>
-              <ul className="md:max-w-2xl space-y-2 text-lg leading-relaxed font-sans text-white drop-shadow-md">
+              <ul className="md:max-w-2xl space-y-2 text-sm sm:text-base md:text-lg leading-relaxed font-sans text-white drop-shadow-md">
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>네델란드 조직배양한 묘목 수입하여 재배</span></li>
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
               </ul>
@@ -169,11 +169,11 @@ const Index = () => {
       </section>
 
       {/* Planting */}
-      <section className="border-t border-border py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-col gap-8">
+      <section className="border-t border-border py-12 sm:py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-10 flex flex-col gap-6 sm:gap-8">
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">​</p>
-            <h2 className="font-display md:text-5xl leading-tight font-bold font-sans text-6xl">
+            <h2 className="font-display leading-tight font-bold font-sans text-4xl sm:text-5xl md:text-6xl">
               식재방법
             </h2>
           </div>
