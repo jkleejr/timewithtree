@@ -102,8 +102,8 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
   return (
     <>
       {showHeader && (
-        <div className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-20 pb-8">
-          <h1 className="font-display mb-6 font-bold font-sans text-5xl">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-10 pt-12 sm:pt-16 md:pt-20 pb-6 sm:pb-8">
+          <h1 className="font-display mb-6 font-bold font-sans text-4xl sm:text-5xl">
             {title}
           </h1>
           <div className="flex items-center justify-between border-t border-border pt-6">
