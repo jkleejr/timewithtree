@@ -11,7 +11,7 @@ const Planting = () => {
   return (
     <SiteLayout>
       <section className="max-w-4xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-10">
-        <h1 className="font-display leading-tight mb-6 font-sans text-5xl">
+        <h1 className="font-display leading-tight mb-6 font-sans text-4xl sm:text-5xl">
           식재방법
         </h1>
         <p className="text-lg md:text-xl leading-relaxed text-primary">
@@ -22,7 +22,7 @@ const Planting = () => {
       <section className="max-w-4xl mx-auto px-6 md:px-10 pb-20">
         <div className="border-t border-border pt-12 grid gap-12 font-sans">
           <article>
-            <h2 className="font-display md:text-3xl mb-3 font-sans font-semibold text-4xl">식재방법</h2>
+            <h2 className="font-display mb-3 font-sans font-semibold text-2xl sm:text-3xl md:text-3xl">식재방법</h2>
             <p className="font-claude-response-body break-words whitespace-pre-wrap leading-[1.7] font-sans text-primary text-base">
               {`1️⃣ 식재할 장소를 정리를 해줍니다.
 
@@ -43,7 +43,7 @@ const Planting = () => {
           </article>
 
           <article>
-            <h2 className="font-display md:text-3xl mb-3 font-sans font-semibold text-4xl">묘목 식재전 상식</h2>
+            <h2 className="font-display mb-3 font-sans font-semibold text-2xl sm:text-3xl md:text-3xl">묘목 식재전 상식</h2>
             <div className="grid md:grid-cols-[1fr_auto] gap-6 items-start">
               <div className="grid gap-2 text-primary text-base leading-relaxed">
                 <p>(H) - 수고 지면으로 부터 수목의 맨 윗부분 (상순의 끝) 까지의 길이, 수목의 키. (단위 m)</p>
@@ -59,8 +59,8 @@ const Planting = () => {
             </div>
             <div className="mt-8 grid gap-3">
               <div className="flex flex-wrap items-start gap-6">
-                <img src={plantingMistakes} alt="잘못된 식재 예시" className="w-96 md:w-[28rem] h-auto" />
-                <img src={plantingCorrectVsWrong} alt="올바른 식재와 잘못된 식재 비교" className="w-64 md:w-80 h-auto" />
+                <img src={plantingMistakes} alt="잘못된 식재 예시" className="w-full max-w-md md:w-[28rem] h-auto" />
+                <img src={plantingCorrectVsWrong} alt="올바른 식재와 잘못된 식재 비교" className="w-2/3 max-w-xs md:w-80 h-auto" />
               </div>
               <p className="text-primary text-base leading-relaxed">❌ 묘목이 기울어져 있거나 뿌리가 뭉쳐있다</p>
               <p className="text-primary text-base leading-relaxed">❌ 구덩이가 얕아서 뿌리가 밖으로 나온다</p>
