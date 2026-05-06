@@ -11,7 +11,7 @@ const Planting = () => {
   return (
     <SiteLayout>
       <section className="max-w-4xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-10">
-        <h1 className="font-display leading-tight mb-6 font-sans text-5xl">
+        <h1 className="font-display leading-tight mb-6 font-sans text-4xl sm:text-5xl">
           식재방법
         </h1>
         <p className="text-lg md:text-xl leading-relaxed text-primary">
