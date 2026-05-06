@@ -61,7 +61,7 @@ const ProductDetail = () => {
   return (
     <SiteLayout>
       <div className="max-w-7xl mx-auto px-6 md:px-10 pt-8">
-        <Link to="/shop" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground font-serif font-bold">
+        <Link to="/shop" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground font-sans font-bold">
           <ArrowLeft className="h-4 w-4" /> 뒤로 가기
         </Link>
       </div>
@@ -101,11 +101,11 @@ const ProductDetail = () => {
           )}
           {p.descriptionHtml ? (
             <div
-              className="leading-relaxed mb-8 space-y-3 font-normal font-serif text-black"
+              className="leading-relaxed mb-8 space-y-3 font-normal font-sans text-black"
               dangerouslySetInnerHTML={{ __html: p.descriptionHtml }}
             />
           ) : (
-            <p className="leading-relaxed mb-8 whitespace-pre-line font-normal font-serif text-black">{p.description}</p>
+            <p className="leading-relaxed mb-8 whitespace-pre-line font-normal font-sans text-black">{p.description}</p>
           )}
 
           {variants.length > 1 && (
@@ -149,10 +149,10 @@ const ProductDetail = () => {
             {isAdding ? <Loader2 className="h-4 w-4 animate-spin" /> : variant?.availableForSale === false ? 'Sold out' : '장바구니 담기'}
           </Button>
 
-          <Accordion type="single" collapsible className="mt-10 font-serif font-bold">
+          <Accordion type="single" collapsible className="mt-10 font-sans font-bold">
             <AccordionItem value="shipping">
               <AccordionTrigger>배송 및 관리</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground font-serif font-normal text-black">
+              <AccordionContent className="text-muted-foreground font-sans font-normal text-black">
                 나무는 크기에 따라 뿌리가 드러난 상태(bare-root)나 화분에 심긴 상태로 배송되며, 수피와 뿌리를 보호하기 위해 정성스럽게 포장됩니다. {"\n\n"}
                 배수가 잘 되는 토양에 심고, 햇빛이 잘 들거나 약간 그늘진 곳이 적합합니다. {"\n"}
                 식재 후 첫 시즌에는 물을 충분히 깊게 주어야 합니다.
@@ -160,7 +160,7 @@ const ProductDetail = () => {
             </AccordionItem>
             <AccordionItem value="origin">
               <AccordionTrigger>원산지</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground font-serif font-normal text-black">
+              <AccordionContent className="text-muted-foreground font-sans font-normal text-black">
                 서늘한 기후와 깨끗한 공기로 밝고 하얀 수피를 자랑하는 대한민국 강원도 고산지대 농장에서 직접 재배되었습니다.
               </AccordionContent>
             </AccordionItem>
