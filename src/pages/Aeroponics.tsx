@@ -9,7 +9,7 @@ const Aeroponics = () => {
     <SiteLayout>
       <section className="max-w-4xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-10">
         <p className="text-3xl font-sans font-semibold text-primary uppercase tracking-[0.25em] mb-3"></p>
-        <h1 className="font-display leading-tight mb-6 font-sans text-5xl">
+        <h1 className="font-display leading-tight mb-6 font-sans text-3xl sm:text-4xl md:text-5xl">
           🌿 에어포트 (Air Pot) 재배 방식이란?
         </h1>
         <p className="text-lg md:text-xl leading-relaxed text-primary">
