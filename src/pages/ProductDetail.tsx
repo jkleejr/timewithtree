@@ -163,7 +163,7 @@ const ProductDetail = () => {
             <AccordionItem value="origin">
               <AccordionTrigger>원산지</AccordionTrigger>
               <AccordionContent className="text-muted-foreground font-sans font-normal text-black">
-                서늘한 기후와 깨끗한 공기로 밝고 하얀 수피를 자랑하는 대한민국 강원도 고산지대 농장에서 직접 재배되었습니다.
+                서늘한 기후와 깨끗한 공기로 밝고 하얀 수피를 자랑하는 대한민국 세종시 고산지대 농장에서 직접 재배되었습니다.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
