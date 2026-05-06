@@ -15,7 +15,7 @@ const Cart = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const totalItems = items.reduce((s, i) => s + i.quantity, 0);
   const subtotal = items.reduce((s, i) => s + parseFloat(i.price.amount) * i.quantity, 0);
-  const currency = items[0]?.price.currencyCode || 'USD';
+  const currency = items[0]?.price.currencyCode || 'KRW';
 
   const openCheckout = () => {
     const url = getCheckoutUrl();
