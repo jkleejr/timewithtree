@@ -30,6 +30,8 @@ interface ShopBrowserProps {
 
 export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBackButton = true }: ShopBrowserProps) => {
   const { data: products = [], isLoading } = useShopifyProducts(50);
+  const [searchParams] = useSearchParams();
+  const productParam = searchParams.get("product");
   const [sort, setSort] = useState<SortKey>("newest");
   const [activeProductId, setActiveProductId] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState(0);
@@ -38,6 +40,15 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
     product: ShopifyProduct;
     variantId: string;
   } | null>(null);
+
+  useEffect(() => {
+    if (!productParam || products.length === 0) return;
+    const match = products.find((p) => p.node.handle === productParam);
+    if (match) {
+      setActiveProductId(match.node.id);
+      setActiveImage(0);
+    }
+  }, [productParam, products]);
 
   const addItem = useCartStore((s) => s.addItem);
   const isAdding = useCartStore((s) => s.isLoading);
