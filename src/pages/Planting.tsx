@@ -22,7 +22,7 @@ const Planting = () => {
       <section className="max-w-4xl mx-auto px-6 md:px-10 pb-20">
         <div className="border-t border-border pt-12 grid gap-12 font-sans">
           <article>
-            <h2 className="font-display md:text-3xl mb-3 font-sans font-semibold text-4xl">식재방법</h2>
+            <h2 className="font-display mb-3 font-sans font-semibold text-2xl sm:text-3xl md:text-3xl">식재방법</h2>
             <p className="font-claude-response-body break-words whitespace-pre-wrap leading-[1.7] font-sans text-primary text-base">
               {`1️⃣ 식재할 장소를 정리를 해줍니다.
 
