@@ -33,7 +33,7 @@ const ProductDetail = () => {
     return (
       <SiteLayout>
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 text-center">
-          <p className="font-display text-2xl mb-3">Tree not found</p>
+          <p className="font-display text-2xl mb-3 font-sans">Tree not found</p>
           <Link to="/shop" className="text-sm underline">Back to shop</Link>
         </div>
       </SiteLayout>

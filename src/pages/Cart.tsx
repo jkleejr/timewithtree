@@ -59,7 +59,7 @@ const Cart = () => {
                     </div>
                     <div className="flex-1 flex flex-col">
                       <div className="flex justify-between gap-4 mb-1">
-                        <Link to={`/product/${item.product.node.handle}`} className="font-display text-lg hover:text-accent">
+                        <Link to={`/product/${item.product.node.handle}`} className="font-display text-lg hover:text-accent font-sans">
                           {item.product.node.title}
                         </Link>
                         <span className="text-sm tabular-nums whitespace-nowrap">
@@ -103,7 +103,7 @@ const Cart = () => {
 
             <aside className="lg:col-span-1">
               <div className="bg-secondary p-6 md:p-8 sticky top-24">
-                <h2 className="font-display text-xl mb-6">주문 요약</h2>
+                <h2 className="font-display text-xl mb-6 font-sans">주문 요약</h2>
                 <div className="space-y-3 text-sm border-b border-border pb-4 mb-4">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">소계</span>
@@ -116,7 +116,7 @@ const Cart = () => {
                 </div>
                 <div className="flex justify-between items-baseline mb-6">
                   <span className="text-base">합계</span>
-                  <span className="font-display text-2xl tabular-nums">{formatPrice(subtotal, currency)}</span>
+                  <span className="font-display text-2xl tabular-nums font-sans">{formatPrice(subtotal, currency)}</span>
                 </div>
                 <Button
                   size="lg"
