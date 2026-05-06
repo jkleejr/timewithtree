@@ -59,8 +59,8 @@ const Planting = () => {
             </div>
             <div className="mt-8 grid gap-3">
               <div className="flex flex-wrap items-start gap-6">
-                <img src={plantingMistakes} alt="잘못된 식재 예시" className="w-96 md:w-[28rem] h-auto" />
-                <img src={plantingCorrectVsWrong} alt="올바른 식재와 잘못된 식재 비교" className="w-64 md:w-80 h-auto" />
+                <img src={plantingMistakes} alt="잘못된 식재 예시" className="w-full max-w-md md:w-[28rem] h-auto" />
+                <img src={plantingCorrectVsWrong} alt="올바른 식재와 잘못된 식재 비교" className="w-2/3 max-w-xs md:w-80 h-auto" />
               </div>
               <p className="text-primary text-base leading-relaxed">❌ 묘목이 기울어져 있거나 뿌리가 뭉쳐있다</p>
               <p className="text-primary text-base leading-relaxed">❌ 구덩이가 얕아서 뿌리가 밖으로 나온다</p>
