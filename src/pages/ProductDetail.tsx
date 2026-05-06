@@ -61,12 +61,11 @@ const ProductDetail = () => {
   return (
     <SiteLayout>
       <div className="max-w-7xl mx-auto px-6 md:px-10 pt-8">
-        <Link
-          to="/cart"
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-background border border-foreground hover:bg-background hover:text-foreground transition-colors text-sm font-sans font-bold"
-        >
-          <ArrowLeft className="h-4 w-4" /> 장바구니
-        </Link>
+        <Button asChild className="rounded-none font-sans font-bold">
+          <Link to="/cart">
+            <ArrowLeft className="h-4 w-4" /> 장바구니
+          </Link>
+        </Button>
       </div>
 
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-10 grid md:grid-cols-2 gap-10 lg:gap-16">
