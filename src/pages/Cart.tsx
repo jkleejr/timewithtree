@@ -62,7 +62,7 @@ const Cart = () => {
                         <Link to={`/product/${item.product.node.handle}`} className="font-display text-lg hover:text-accent font-sans">
                           {item.product.node.title}
                         </Link>
-                        <span className="text-sm tabular-nums whitespace-nowrap">
+                        <span className="text-sm tabular-nums whitespace-nowrap font-sans">
                           {formatPrice(parseFloat(item.price.amount) * item.quantity, item.price.currencyCode)}
                         </span>
                       </div>
@@ -105,17 +105,17 @@ const Cart = () => {
               <div className="bg-secondary p-6 md:p-8 sticky top-24">
                 <h2 className="font-display text-xl mb-6 font-sans">주문 요약</h2>
                 <div className="space-y-3 text-sm border-b border-border pb-4 mb-4">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">소계</span>
-                    <span className="tabular-nums">{formatPrice(subtotal, currency)}</span>
+                  <div className="flex justify-between font-sans">
+                    <span className="text-muted-foreground font-sans">소계</span>
+                    <span className="tabular-nums font-sans">{formatPrice(subtotal, currency)}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">배송비</span>
-                    <span className="text-muted-foreground">결제 시 계산</span>
+                  <div className="flex justify-between font-sans">
+                    <span className="text-muted-foreground font-sans">배송비</span>
+                    <span className="text-muted-foreground font-sans">결제 시 계산</span>
                   </div>
                 </div>
                 <div className="flex justify-between items-baseline mb-6">
-                  <span className="text-base">합계</span>
+                  <span className="text-base font-sans">합계</span>
                   <span className="font-display text-2xl tabular-nums font-sans">{formatPrice(subtotal, currency)}</span>
                 </div>
                 <Button
