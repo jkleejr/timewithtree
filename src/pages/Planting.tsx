@@ -43,7 +43,7 @@ const Planting = () => {
           </article>
 
           <article>
-            <h2 className="font-display md:text-3xl mb-3 font-sans font-semibold text-4xl">묘목 식재전 상식</h2>
+            <h2 className="font-display mb-3 font-sans font-semibold text-2xl sm:text-3xl md:text-3xl">묘목 식재전 상식</h2>
             <div className="grid md:grid-cols-[1fr_auto] gap-6 items-start">
               <div className="grid gap-2 text-primary text-base leading-relaxed">
                 <p>(H) - 수고 지면으로 부터 수목의 맨 윗부분 (상순의 끝) 까지의 길이, 수목의 키. (단위 m)</p>
