@@ -67,10 +67,20 @@ const Cart = () => {
                         </span>
                       </div>
                       {item.selectedOptions.length > 0 && item.selectedOptions[0].value !== 'Default Title' && (
-                        <p className="text-sm text-muted-foreground mb-3">
+                        <p className="text-sm text-muted-foreground mb-2">
                           {item.selectedOptions.map(o => o.value).join(' · ')}
                         </p>
                       )}
+                      {item.product.node.descriptionHtml ? (
+                        <div
+                          className="text-sm text-muted-foreground prose prose-sm max-w-none mb-3 [&_p]:my-1 line-clamp-6"
+                          dangerouslySetInnerHTML={{ __html: item.product.node.descriptionHtml }}
+                        />
+                      ) : item.product.node.description ? (
+                        <p className="text-sm text-muted-foreground whitespace-pre-line mb-3 line-clamp-6">
+                          {item.product.node.description}
+                        </p>
+                      ) : null}
                       <div className="mt-auto flex items-center justify-between">
                         <div className="inline-flex items-center border border-border">
                           <button onClick={() => updateQuantity(item.variantId, item.quantity - 1)} className="px-2 py-1.5 hover:bg-secondary">
