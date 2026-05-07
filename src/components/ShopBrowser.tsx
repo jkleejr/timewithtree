@@ -105,8 +105,9 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
       quantity: getQty(variant.id),
       selectedOptions: variant.selectedOptions || [],
     });
+    const variantLabel = variant.title && variant.title !== "Default Title" ? ` — ${variant.title}` : "";
     toast.success("장바구니에 담았습니다", {
-      description: `${product.node.title} — ${variant.title}`,
+      description: `${product.node.title}${variantLabel} × ${variant.quantity ?? getQty(variant.id)}`,
       position: "top-center",
     });
   };
