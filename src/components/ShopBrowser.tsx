@@ -122,12 +122,12 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
             <span className="text-sm text-muted-foreground" />
             <Select value={sort} onValueChange={(v) => setSort(v as SortKey)}>
               <SelectTrigger className="w-[180px] rounded-none">
-                <SelectValue placeholder="Sort" />
+                <SelectValue placeholder="정렬" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="newest">Newest</SelectItem>
-                <SelectItem value="price-asc">Price: Low to High</SelectItem>
-                <SelectItem value="price-desc">Price: High to Low</SelectItem>
+                <SelectItem value="newest">최신순</SelectItem>
+                <SelectItem value="price-asc">가격 낮은순</SelectItem>
+                <SelectItem value="price-desc">가격 높은순</SelectItem>
               </SelectContent>
             </Select>
           </div>
