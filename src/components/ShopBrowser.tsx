@@ -217,11 +217,11 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                   </h3>
                   {activeProduct.node.descriptionHtml ? (
                     <div
-                      className="leading-relaxed space-y-3 text-foreground font-sans text-lg"
+                      className="leading-relaxed space-y-3 text-foreground font-sans text-base md:text-lg"
                       dangerouslySetInnerHTML={{ __html: activeProduct.node.descriptionHtml }}
                     />
                   ) : (
-                    <p className="leading-relaxed whitespace-pre-line text-foreground font-sans text-lg">
+                    <p className="leading-relaxed whitespace-pre-line text-foreground font-sans text-base md:text-lg">
                       {activeProduct.node.description}
                     </p>
                   )}
