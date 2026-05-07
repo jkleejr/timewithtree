@@ -107,7 +107,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
     });
     const variantLabel = variant.title && variant.title !== "Default Title" ? ` — ${variant.title}` : "";
     toast.success("장바구니에 담았습니다", {
-      description: `${product.node.title}${variantLabel} × ${variant.quantity ?? getQty(variant.id)}`,
+      description: `${product.node.title}${variantLabel} × ${getQty(variant.id)}`,
       position: "top-center",
     });
   };
