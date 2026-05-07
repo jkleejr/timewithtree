@@ -15,6 +15,7 @@ export const SiteFooter = () => (
           {[
             { to: "/shop", label: "​구매하기" },
             { to: "/about", label: "잭큐몬티 도랜보스" },
+            { to: "/planting", label: "식재방법" },
             { to: "/aeroponics", label: "에어포트" },
             { to: "/cart", label: "장바구니" },
             { to: "/returns", label: "교환 / 환불 규정" },
