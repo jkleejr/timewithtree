@@ -192,7 +192,7 @@ const Index = () => {
 
       {/* Story */}
       <section className="relative">
-        <div className="relative min-h-[640px] sm:min-h-[680px] md:min-h-0 md:aspect-[16/8] w-full overflow-hidden bg-secondary">
+        <div className="relative w-full overflow-hidden bg-secondary md:aspect-[16/8]">
           {airpotImages.map((img, i) => (
             <img
               key={i}
