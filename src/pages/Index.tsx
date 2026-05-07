@@ -173,7 +173,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-10 flex flex-col gap-6 sm:gap-8">
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">​</p>
-            <h2 className="font-display leading-tight font-bold font-sans sm:text-5xl md:text-6xl text-5xl">
+            <h2 className="font-display leading-tight font-bold font-sans text-5xl sm:text-5xl md:text-5xl">
               식재방법
             </h2>
           </div>
