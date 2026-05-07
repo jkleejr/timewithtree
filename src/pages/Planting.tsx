@@ -44,18 +44,16 @@ const Planting = () => {
 
           <article>
             <h2 className="font-display mb-3 font-sans font-semibold text-2xl sm:text-3xl md:text-3xl">묘목 식재전 상식</h2>
-            <div className="grid md:grid-cols-[1fr_auto] gap-6 items-start">
-              <div className="grid gap-2 text-primary text-base leading-relaxed">
-                <p>(H) - 수고 지면으로 부터 수목의 맨 윗부분 (상순의 끝) 까지의 길이, 수목의 키. (단위 m)</p>
-                <p>(W) - 수관폭 가지의 끝과 반대쪽 가지의 끝까지의 너비. (단위 m)</p>
-                <p>(R) - 근원직경 줄기의 지면에 닿는 부분의 지름, 둘레를 π (3.14)로 나눈 값. (단위 cm)</p>
-                <p>(B) - 흉고직경 지면으로부터 1m20cm 높이의 줄기 지름, 둘레를 π (3.14)로 나눈 값, 보통 가슴높이를 잰 값. (단위 cm)</p>
-              </div>
-              <img
-                src={treeMeasurements}
-                alt="수목 측정 기준 (H, W, R, B) 도식"
-                className="w-40 md:w-48 h-auto justify-self-end"
-              />
+            <img
+              src={treeMeasurements}
+              alt="수목 측정 기준 (H, W, R, B) 도식"
+              className="w-40 md:w-48 h-auto mb-4"
+            />
+            <div className="grid gap-2 text-primary text-base leading-relaxed">
+              <p>(H) - 수고 지면으로 부터 수목의 맨 윗부분 (상순의 끝) 까지의 길이, 수목의 키. (단위 m)</p>
+              <p>(W) - 수관폭 가지의 끝과 반대쪽 가지의 끝까지의 너비. (단위 m)</p>
+              <p>(R) - 근원직경 줄기의 지면에 닿는 부분의 지름, 둘레를 π (3.14)로 나눈 값. (단위 cm)</p>
+              <p>(B) - 흉고직경 지면으로부터 1m20cm 높이의 줄기 지름, 둘레를 π (3.14)로 나눈 값, 보통 가슴높이를 잰 값. (단위 cm)</p>
             </div>
             <div className="mt-8 grid gap-3">
               <div className="flex flex-wrap items-start gap-6">
