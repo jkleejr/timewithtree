@@ -115,7 +115,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
   return (
     <>
       {showHeader && (
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-10 pt-12 sm:pt-16 md:pt-20 pb-6 sm:pb-8">
+        <div className="max-w-7xl mx-auto px-12 sm:px-6 md:px-10 pt-12 sm:pt-16 md:pt-20 pb-6 sm:pb-8">
           <h1 className="font-display mb-6 font-bold font-sans text-4xl sm:text-5xl">
             {title}
           </h1>
@@ -135,7 +135,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-10 pb-8">
+      <div className="max-w-7xl mx-auto px-12 sm:px-6 md:px-10 pb-8">
         {isLoading ? (
           <div className="grid md:grid-cols-2 gap-10">
             <div className="aspect-[4/5] bg-secondary animate-pulse" />
