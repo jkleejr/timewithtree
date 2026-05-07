@@ -145,7 +145,7 @@ const Index = () => {
           <div className="absolute inset-0 bg-black/30 pointer-events-none" />
 
           {/* Intro overlay */}
-          <div className="relative md:absolute md:inset-0 z-[5] max-w-7xl mx-auto px-5 sm:px-6 md:px-10 py-8 md:py-16 flex flex-col gap-4 sm:gap-6 md:gap-8 pointer-events-none min-h-full">
+          <div className="relative md:absolute md:inset-0 z-[5] max-w-7xl mx-auto px-12 sm:px-6 md:px-10 py-8 md:py-16 flex flex-col gap-4 sm:gap-6 md:gap-8 pointer-events-none min-h-full">
             <div className="pointer-events-auto flex flex-col gap-2 sm:gap-4 md:gap-6">
               <h1 className="font-display leading-tight font-bold font-sans text-white drop-shadow-lg">
                 <span className="block text-2xl sm:text-4xl md:text-7xl">잭큐몬티 도랜보스</span>
