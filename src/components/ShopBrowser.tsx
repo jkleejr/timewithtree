@@ -402,7 +402,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="rounded-none">취소</AlertDialogCancel>
+            <AlertDialogCancel className="rounded-none hover:bg-background hover:text-foreground">취소</AlertDialogCancel>
             <AlertDialogAction
               className="rounded-none bg-red-600 text-white hover:bg-red-700"
               onClick={() => {
