@@ -39,7 +39,7 @@ export const CheckoutDialog = ({ open, onOpenChange, onGuestCheckout }: Checkout
           <Button
             size="lg"
             variant="outline"
-            className="rounded-none justify-start"
+            className="rounded-none justify-start hover:bg-background hover:text-foreground"
             onClick={() => goAuth("signup")}
           >
             <UserPlus className="mr-2 h-4 w-4" /> 회원가입 후 결제
@@ -47,7 +47,7 @@ export const CheckoutDialog = ({ open, onOpenChange, onGuestCheckout }: Checkout
           <Button
             size="lg"
             variant="ghost"
-            className="rounded-none justify-start"
+            className="rounded-none justify-start hover:bg-background hover:text-foreground"
             onClick={() => {
               onOpenChange(false);
               onGuestCheckout();
