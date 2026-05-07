@@ -148,9 +148,9 @@ const Index = () => {
           <div className="relative md:absolute md:inset-0 z-[5] max-w-7xl mx-auto px-12 sm:px-6 md:px-10 py-8 md:py-16 flex flex-col gap-4 sm:gap-6 md:gap-8 pointer-events-none min-h-full">
             <div className="pointer-events-auto flex flex-col gap-2 sm:gap-4 md:gap-6">
               <h1 className="font-display leading-tight font-bold font-sans text-white drop-shadow-lg">
-                <span className="block text-2xl sm:text-4xl md:text-7xl">잭큐몬티 도랜보스</span>
-                <span className="block text-xl sm:text-3xl md:text-6xl">Jacquemontii Doorenbos</span>
-                <span className="block text-xl sm:text-3xl md:text-6xl">자작나무 농장</span>
+                <span className="block text-4xl sm:text-4xl md:text-7xl">잭큐몬티 도랜보스</span>
+                <span className="block text-3xl sm:text-3xl md:text-6xl">Jacquemontii Doorenbos</span>
+                <span className="block text-3xl sm:text-3xl md:text-6xl">자작나무 농장</span>
               </h1>
               <ul className="md:max-w-2xl space-y-1.5 sm:space-y-2 text-xs sm:text-sm md:text-lg leading-relaxed font-sans text-white drop-shadow-md">
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>네델란드 조직배양한 묘목 수입하여 재배</span></li>
@@ -243,7 +243,7 @@ const Index = () => {
           <div className="relative z-[5] max-w-7xl mx-auto px-12 sm:px-6 md:px-10 py-6 sm:py-10 md:py-12 h-full flex flex-col gap-3 sm:gap-4 md:gap-6">
             <div>
               <p className="text-xs uppercase tracking-[0.25em] text-white/80 mb-2">​</p>
-              <h2 className="font-display leading-tight font-bold font-sans text-white drop-shadow-lg text-2xl sm:text-3xl md:text-5xl">
+              <h2 className="font-display leading-tight font-bold font-sans text-white drop-shadow-lg text-4xl sm:text-3xl md:text-5xl">
                 에어포트 재배의 장점
               </h2>
             </div>
