@@ -240,7 +240,7 @@ const Index = () => {
             </>
           )}
 
-          <div className="relative z-[5] max-w-7xl mx-auto px-5 sm:px-6 md:px-10 py-6 sm:py-10 md:py-12 h-full flex flex-col gap-3 sm:gap-4 md:gap-6">
+          <div className="relative z-[5] max-w-7xl mx-auto px-12 sm:px-6 md:px-10 py-6 sm:py-10 md:py-12 h-full flex flex-col gap-3 sm:gap-4 md:gap-6">
             <div>
               <p className="text-xs uppercase tracking-[0.25em] text-white/80 mb-2">​</p>
               <h2 className="font-display leading-tight font-bold font-sans text-white drop-shadow-lg text-2xl sm:text-3xl md:text-5xl">
