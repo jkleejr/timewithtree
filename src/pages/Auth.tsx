@@ -148,7 +148,7 @@ const Auth = () => {
           type="button"
           variant="outline"
           size="lg"
-          className="w-full rounded-none"
+          className="w-full rounded-none hover:bg-background hover:text-foreground"
           onClick={handleGoogle}
           disabled={loading}
         >
