@@ -95,7 +95,7 @@ const Index = () => {
     <SiteLayout>
       {/* Hero gallery */}
       <section className="relative">
-        <div className="relative aspect-[16/10] md:aspect-[16/8] w-full overflow-hidden bg-secondary">
+        <div className="relative min-h-[640px] sm:min-h-[680px] md:min-h-0 md:aspect-[16/8] w-full overflow-hidden bg-secondary">
           {heroImages.map((img, i) => (
             <img
               key={i}
@@ -127,7 +127,7 @@ const Index = () => {
               >
                 <ChevronRight className="h-3.5 w-3.5" />
               </button>
-              <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+              <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                 {heroImages.map((_, i) => (
                   <button
                     key={i}
@@ -145,19 +145,19 @@ const Index = () => {
           <div className="absolute inset-0 bg-black/30 pointer-events-none" />
 
           {/* Intro overlay */}
-          <div className="absolute inset-0 z-[5] max-w-7xl mx-auto px-5 sm:px-6 md:px-10 py-8 sm:py-12 md:py-16 flex flex-col gap-4 sm:gap-6 md:gap-8 pointer-events-none">
-            <div className="pointer-events-auto flex flex-col gap-3 sm:gap-4 md:gap-6">
+          <div className="absolute inset-0 z-[5] max-w-7xl mx-auto px-5 sm:px-6 md:px-10 py-6 sm:py-10 md:py-16 flex flex-col gap-4 sm:gap-6 md:gap-8 pointer-events-none">
+            <div className="pointer-events-auto flex flex-col gap-2 sm:gap-4 md:gap-6">
               <h1 className="font-display leading-tight font-bold font-sans text-white drop-shadow-lg">
-                <span className="block text-3xl sm:text-5xl md:text-7xl">잭큐몬티 도랜보스</span>
-                <span className="block text-2xl sm:text-4xl md:text-6xl">Jacquemontii Doorenbos</span>
-                <span className="block text-2xl sm:text-4xl md:text-6xl">자작나무 농장</span>
+                <span className="block text-2xl sm:text-4xl md:text-7xl">잭큐몬티 도랜보스</span>
+                <span className="block text-xl sm:text-3xl md:text-6xl">Jacquemontii Doorenbos</span>
+                <span className="block text-xl sm:text-3xl md:text-6xl">자작나무 농장</span>
               </h1>
-              <ul className="md:max-w-2xl space-y-2 text-sm sm:text-base md:text-lg leading-relaxed font-sans text-white drop-shadow-md">
+              <ul className="md:max-w-2xl space-y-1.5 sm:space-y-2 text-xs sm:text-sm md:text-lg leading-relaxed font-sans text-white drop-shadow-md">
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>네델란드 조직배양한 묘목 수입하여 재배</span></li>
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
               </ul>
             </div>
-            <div className="mt-auto flex justify-end pointer-events-auto">
+            <div className="mt-auto pb-8 md:pb-0 flex justify-end pointer-events-auto">
               <Button asChild size="lg" className="rounded-none">
                 <Link to="/about">
                   잭큐몬티 도랜보스 <ArrowRight className="ml-2 h-4 w-4" />
@@ -192,7 +192,7 @@ const Index = () => {
 
       {/* Story */}
       <section className="relative">
-        <div className="relative aspect-[16/10] md:aspect-[16/8] w-full overflow-hidden bg-secondary">
+        <div className="relative min-h-[640px] sm:min-h-[680px] md:min-h-0 md:aspect-[16/8] w-full overflow-hidden bg-secondary">
           {airpotImages.map((img, i) => (
             <img
               key={i}
@@ -225,7 +225,7 @@ const Index = () => {
               >
                 <ChevronRight className="h-3.5 w-3.5" />
               </button>
-              <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+              <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                 {airpotImages.map((_, i) => (
                   <button
                     key={i}
@@ -240,15 +240,15 @@ const Index = () => {
             </>
           )}
 
-          <div className="relative z-[5] max-w-7xl mx-auto px-6 md:px-10 py-8 md:py-12 h-full flex flex-col gap-4 md:gap-6">
+          <div className="relative z-[5] max-w-7xl mx-auto px-5 sm:px-6 md:px-10 py-6 sm:py-10 md:py-12 h-full flex flex-col gap-3 sm:gap-4 md:gap-6">
             <div>
               <p className="text-xs uppercase tracking-[0.25em] text-white/80 mb-2">​</p>
-              <h2 className="font-display leading-tight font-bold font-sans text-white drop-shadow-lg text-3xl md:text-5xl">
+              <h2 className="font-display leading-tight font-bold font-sans text-white drop-shadow-lg text-2xl sm:text-3xl md:text-5xl">
                 에어포트 재배의 장점
               </h2>
             </div>
-            <div className="flex flex-col gap-4 flex-1 min-h-0">
-              <ul className="md:max-w-2xl leading-snug text-sm md:text-base text-white drop-shadow-md space-y-1">
+            <div className="flex flex-col gap-3 sm:gap-4 flex-1 min-h-0">
+              <ul className="md:max-w-2xl leading-snug text-xs sm:text-sm md:text-base text-white drop-shadow-md space-y-1">
                 <li>1️⃣ 뿌리 회전 (뺑뺑이) 완전 방지</li>
                 <li>2️⃣ 잔뿌리 폭발적으로 증가</li>
                 <li>3️⃣ 과습 & 뿌리썩음 예방</li>
@@ -257,7 +257,7 @@ const Index = () => {
                 <li>6️⃣ 생육 속도 & 균일성 향상</li>
                 <li>7️⃣ 대형 수목 재배에 특히 유리</li>
               </ul>
-              <div className="mt-auto flex justify-end">
+              <div className="mt-auto pb-8 md:pb-0 flex justify-end">
                 <Button asChild size="lg" className="rounded-none">
                   <Link to="/aeroponics">
                     에어포트​ 설명 <ArrowRight className="ml-2 h-4 w-4" />
