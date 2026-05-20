@@ -31,7 +31,7 @@ const About = () => {
       <section className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-12">
         <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4"></p>
         <h1 className="font-display max-w-3xl leading-[1.1] font-bold font-sans text-5xl sm:text-5xl md:text-5xl">
-          잭큐몬티 도랜보스 자작나무
+          나무 관련 정보 자작나무
         </h1>
       </section>
 
