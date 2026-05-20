@@ -14,6 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
+      orders: {
+        Row: {
+          admin_note: string | null
+          created_at: string
+          currency: string
+          customer_email: string
+          customer_name: string
+          customer_note: string | null
+          customer_phone: string
+          id: string
+          items: Json
+          order_number: string
+          postal_code: string | null
+          shipping_address: string
+          status: Database["public"]["Enums"]["order_status"]
+          subtotal: number
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          admin_note?: string | null
+          created_at?: string
+          currency?: string
+          customer_email: string
+          customer_name: string
+          customer_note?: string | null
+          customer_phone: string
+          id?: string
+          items: Json
+          order_number?: string
+          postal_code?: string | null
+          shipping_address: string
+          status?: Database["public"]["Enums"]["order_status"]
+          subtotal: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          admin_note?: string | null
+          created_at?: string
+          currency?: string
+          customer_email?: string
+          customer_name?: string
+          customer_note?: string | null
+          customer_phone?: string
+          id?: string
+          items?: Json
+          order_number?: string
+          postal_code?: string | null
+          shipping_address?: string
+          status?: Database["public"]["Enums"]["order_status"]
+          subtotal?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       page_views: {
         Row: {
           created_at: string
@@ -74,6 +131,27 @@ export type Database = {
         }
         Relationships: []
       }
+      store_settings: {
+        Row: {
+          bank_info: string
+          id: string
+          singleton: boolean
+          updated_at: string
+        }
+        Insert: {
+          bank_info?: string
+          id?: string
+          singleton?: boolean
+          updated_at?: string
+        }
+        Update: {
+          bank_info?: string
+          id?: string
+          singleton?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -110,6 +188,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      order_status: "pending" | "paid" | "shipped" | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -238,6 +317,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      order_status: ["pending", "paid", "shipped", "cancelled"],
     },
   },
 } as const
