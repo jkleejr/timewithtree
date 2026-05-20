@@ -115,10 +115,19 @@ export const SiteHeader = () => {
                 <Link
                   to={user ? "/account" : "/auth"}
                   onClick={() => setOpen(false)}
-                  className="px-5 py-4 text-base"
+                  className="px-5 py-4 text-base border-b border-border/60"
                 >
                   {user ? "내 계정" : "로그인"}
                 </Link>
+                {isAdmin && (
+                  <Link
+                    to="/admin"
+                    onClick={() => setOpen(false)}
+                    className="px-5 py-4 text-base"
+                  >
+                    관리자
+                  </Link>
+                )}
               </nav>
             </SheetContent>
           </Sheet>
