@@ -12,6 +12,31 @@ Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
 
   try {
+    // Require service_role JWT — this endpoint must only be called server-to-server
+    // to prevent unauthenticated attackers from flooding admin inboxes.
+    const authHeader = req.headers.get('Authorization')
+    if (!authHeader?.startsWith('Bearer ')) {
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+        status: 401,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
+    }
+    const token = authHeader.replace('Bearer ', '')
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]))
+      if (payload?.role !== 'service_role') {
+        return new Response(JSON.stringify({ error: 'Forbidden' }), {
+          status: 403,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        })
+      }
+    } catch {
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+        status: 401,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
+    }
+
     const { order_id } = await req.json()
     if (!order_id || typeof order_id !== 'string') {
       return new Response(JSON.stringify({ error: 'order_id required' }), {
