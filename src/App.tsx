@@ -22,6 +22,7 @@ import Returns from "./pages/Returns.tsx";
 import PickupGuide from "./pages/PickupGuide.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Admin from "./pages/Admin.tsx";
+import Unsubscribe from "./pages/Unsubscribe.tsx";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const AppRoutes = () => {
       <Route path="/returns" element={<Returns />} />
       <Route path="/pickup-guide" element={<PickupGuide />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/unsubscribe" element={<Unsubscribe />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
     </Routes>
