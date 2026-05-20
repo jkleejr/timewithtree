@@ -7,7 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "@/assets/logo.png";
 
 const NAV_LINKS = [
-  { to: "/about", label: "잭큐몬티 도랜보스" },
+  { to: "/about", label: "나무 관련 정보" },
   { to: "/planting", label: "식재방법" },
   { to: "/aeroponics", label: "에어포트" },
   { to: "/shop", label: "구매하기" },
