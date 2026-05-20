@@ -4,7 +4,8 @@ import { Minus, Plus, ShoppingCart, Loader2, ChevronLeft, ChevronRight, ArrowRig
 import { toast } from "sonner";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import { formatPrice } from "@/lib/utils";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
@@ -119,19 +120,6 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
           <h1 className="font-display mb-6 font-bold font-sans text-4xl sm:text-5xl">
             {title}
           </h1>
-          <div className="flex items-center justify-between border-t border-border pt-6">
-            <span className="text-base text-muted-foreground" />
-            <Select value={sort} onValueChange={(v) => setSort(v as SortKey)}>
-              <SelectTrigger className="w-[180px] rounded-none">
-                <SelectValue placeholder="정렬" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="newest">최신순</SelectItem>
-                <SelectItem value="price-asc">가격 낮은순</SelectItem>
-                <SelectItem value="price-desc">가격 높은순</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
         </div>
       )}
 
