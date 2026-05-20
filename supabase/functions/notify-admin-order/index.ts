@@ -2,9 +2,8 @@ import { createClient } from 'npm:@supabase/supabase-js@2.45.0'
 import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors'
 
 const ADMIN_EMAILS = [
+  'timewithtree@gmail.com',
   'jklwjr@gmail.com',
-  'arminko2023@gmail.com',
-  'bj.euphoria@gmail.com',
 ]
 
 Deno.serve(async (req) => {
