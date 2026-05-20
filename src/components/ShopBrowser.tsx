@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { Minus, Plus, ShoppingCart, Loader2, ChevronLeft, ChevronRight } from "lucide-react";
+import { Minus, Plus, ShoppingCart, Loader2, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import { formatPrice } from "@/lib/utils";
