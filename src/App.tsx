@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { useCartSync } from "@/hooks/useCartSync";
+import { usePageTracking } from "@/hooks/usePageTracking";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import Index from "./pages/Index.tsx";
 import Shop from "./pages/Shop.tsx";
@@ -18,11 +19,13 @@ import Account from "./pages/Account.tsx";
 import Returns from "./pages/Returns.tsx";
 import PickupGuide from "./pages/PickupGuide.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import Admin from "./pages/Admin.tsx";
 
 const queryClient = new QueryClient();
 
 const AppRoutes = () => {
   useCartSync();
+  usePageTracking();
   return (
     <>
     <ScrollToTop />
@@ -38,6 +41,7 @@ const AppRoutes = () => {
       <Route path="/account" element={<Account />} />
       <Route path="/returns" element={<Returns />} />
       <Route path="/pickup-guide" element={<PickupGuide />} />
+      <Route path="/admin" element={<Admin />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
     </Routes>

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, ShoppingCart, User, X } from "lucide-react";
+import { Menu, ShoppingCart, Shield, User, X } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { useAuth } from "@/contexts/AuthContext";
+import { useIsAdmin } from "@/hooks/useIsAdmin";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "@/assets/logo.png";
 
@@ -17,6 +18,7 @@ export const SiteHeader = () => {
   const items = useCartStore((s) => s.items);
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
   const { user } = useAuth();
+  const { isAdmin } = useIsAdmin();
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
@@ -41,6 +43,11 @@ export const SiteHeader = () => {
           ))}
         </nav>
         <div className="flex items-center gap-3 sm:gap-5">
+          {isAdmin && (
+            <NavLink to="/admin" className={navClass} aria-label="관리자">
+              <Shield className="h-5 w-5" />
+            </NavLink>
+          )}
           <NavLink
             to={user ? "/account" : "/auth"}
             className={navClass}
