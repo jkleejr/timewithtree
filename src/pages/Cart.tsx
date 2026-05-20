@@ -1,34 +1,21 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Loader2, Minus, Plus, Trash2, ExternalLink, ShoppingCart } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { Loader2, Minus, Plus, Trash2, ShoppingCart } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { BackButton } from "@/components/BackButton";
 import { Button } from "@/components/ui/button";
-import { CheckoutDialog } from "@/components/CheckoutDialog";
 import { useCartStore } from "@/stores/cartStore";
-import { useAuth } from "@/contexts/AuthContext";
 import { formatPrice } from "@/lib/utils";
 
 const Cart = () => {
-  const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl } = useCartStore();
-  const { user } = useAuth();
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const { items, isLoading, isSyncing, updateQuantity, removeItem } = useCartStore();
+  const navigate = useNavigate();
   const totalItems = items.reduce((s, i) => s + i.quantity, 0);
   const subtotal = items.reduce((s, i) => s + parseFloat(i.price.amount) * i.quantity, 0);
   const currency = items[0]?.price.currencyCode || 'KRW';
 
-  const openCheckout = () => {
-    const url = getCheckoutUrl();
-    if (url) window.open(url, '_blank');
-  };
-
   const handleCheckout = () => {
-    if (!getCheckoutUrl()) return;
-    if (user) {
-      openCheckout();
-    } else {
-      setDialogOpen(true);
-    }
+    if (items.length === 0) return;
+    navigate('/checkout');
   };
 
   return (
@@ -122,16 +109,16 @@ const Cart = () => {
                   size="lg"
                   className="w-full rounded-none"
                   onClick={handleCheckout}
-                  disabled={isLoading || isSyncing || !getCheckoutUrl()}
+                  disabled={isLoading || isSyncing || items.length === 0}
                 >
                   {isLoading || isSyncing ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
                   ) : (
-                    <>결제하기 <ExternalLink className="ml-2 h-4 w-4" /></>
+                    <>주문하기</>
                   )}
                 </Button>
                 <p className="text-xs text-muted-foreground text-center mt-4">
-                  Shopify로 안전하게 결제됩니다
+                  계좌이체로 결제됩니다
                 </p>
               </div>
             </aside>
@@ -141,7 +128,6 @@ const Cart = () => {
           <BackButton />
         </div>
       </section>
-      <CheckoutDialog open={dialogOpen} onOpenChange={setDialogOpen} onGuestCheckout={openCheckout} />
     </SiteLayout>
   );
 };
