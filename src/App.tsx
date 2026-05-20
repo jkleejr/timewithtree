@@ -22,6 +22,7 @@ import Returns from "./pages/Returns.tsx";
 import PickupGuide from "./pages/PickupGuide.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Admin from "./pages/Admin.tsx";
+import Unsubscribe from "./pages/Unsubscribe.tsx";
 
 const queryClient = new QueryClient();
 
