@@ -47,6 +47,7 @@ const AppRoutes = () => {
       <Route path="/returns" element={<Returns />} />
       <Route path="/pickup-guide" element={<PickupGuide />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/unsubscribe" element={<Unsubscribe />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
     </Routes>
