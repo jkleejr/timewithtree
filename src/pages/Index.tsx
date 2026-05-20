@@ -158,7 +158,7 @@ const Index = () => {
             <div className="mt-auto pb-8 md:pb-0 flex justify-end pointer-events-auto">
               <Button asChild size="lg" className="rounded-none">
                 <Link to="/about">
-                  잭큐몬티 도랜보스 <ArrowRight className="ml-2 h-4 w-4" />
+                  나무 관련 정보 <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>
