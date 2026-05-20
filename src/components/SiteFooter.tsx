@@ -13,10 +13,10 @@ export const SiteFooter = () => (
         <div className="flex flex-col items-start gap-2 mt-6">
           <span className="text-xs uppercase tracking-widest text-muted-foreground mb-1">목차</span>
           {[
-            { to: "/about", label: "나무 관련 정보" },
-            { to: "/planting", label: "식재방법" },
-            { to: "/aeroponics", label: "에어포트" },
+            { to: "/about", label: "자작나무 소개" },
+            { to: "/aeroponics", label: "에어포트 재배" },
             { to: "/shop", label: "​구매하기" },
+            { to: "/planting", label: "나무 관련 정보" },
             { to: "/auth", label: "로그인" },
             { to: "/cart", label: "장바구니" },
             { to: "/returns", label: "교환 / 환불 규정" },
