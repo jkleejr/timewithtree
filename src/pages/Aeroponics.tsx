@@ -43,7 +43,7 @@ const Aeroponics = () => {
           <article>
             <h2 className="font-display text-2xl md:text-3xl mb-3 font-sans font-semibold">✔ 토양 산소 공급 최적화</h2>
             <p className="leading-relaxed text-primary">
-              네덜란드에서 조직배양한 잭큐몬티 도랜보스(Jacquemontii Doorenbos) 묘목을 들여와 동일한 환경에서
+              네덜란드에서 조직배양한 나무 관련 정보(Jacquemontii Doorenbos) 묘목을 들여와 동일한 환경에서
               관리하기 때문에, 수형과 수피 색이 일관된 고품질 자작나무를 공급할 수 있습니다.
             </p>
           </article>
