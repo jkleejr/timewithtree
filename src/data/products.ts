@@ -57,7 +57,7 @@ const VARIANTS = [
   { id: "jacq-dagan", title: "다간형", amount: "200000" },
 ];
 
-const DESCRIPTION = `네덜란드에서 조직배양한 묘목을 국내에서 재배한 잭큐몬티 자작나무입니다.\n에어포트(Air-Pot)에서 재배되어 뿌리 품질이 우수하고, 연중 식재가 가능하며 식재 후 활착이 매우 빠릅니다.\n\n• 사이즈: R3 / R4 / R5 / 다간형\n• 즉시 배송 가능`;
+const DESCRIPTION = `네덜란드에서 조직배양한 묘목을 국내에서 재배한 구매하기입니다.\n에어포트(Air-Pot)에서 재배되어 뿌리 품질이 우수하고, 연중 식재가 가능하며 식재 후 활착이 매우 빠릅니다.\n\n• 사이즈: R3 / R4 / R5 / 다간형\n• 즉시 배송 가능`;
 
 export const LOCAL_PRODUCTS: ShopifyProduct[] = [
   {
