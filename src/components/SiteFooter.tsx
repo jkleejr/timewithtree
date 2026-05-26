@@ -39,7 +39,7 @@ export const SiteFooter = () => (
     <div className="border-t border-border">
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 text-xs text-muted-foreground flex justify-between">
         <span>© {new Date().getFullYear()} 나무와 걷는 시간</span>
-        <span>Secure checkout by Shopify</span>
+        <span>주문 문의: timewithtree@gmail.com</span>
       </div>
     </div>
   </footer>
