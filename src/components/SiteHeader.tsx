@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Menu, ShoppingCart, Shield, User, X } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { useAuth } from "@/contexts/AuthContext";
@@ -7,8 +7,12 @@ import { useIsAdmin } from "@/hooks/useIsAdmin";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "@/assets/logo.png";
 
-const NAV_LINKS = [
+type NavLinkItem = { to: string; label: string; hash?: string };
+
+const NAV_LINKS: NavLinkItem[] = [
   { to: "/about", label: "자작나무 소개" },
+  { to: "/", hash: "airpot", label: "에어포트 재배" },
+  { to: "/", hash: "info", label: "나무 관련 정보" },
   { to: "/shop", label: "구매하기" },
 ];
 
@@ -19,6 +23,18 @@ export const SiteHeader = () => {
   const { isAdmin } = useIsAdmin();
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleHashNav = (e: React.MouseEvent, hash: string) => {
+    if (location.pathname === "/") {
+      e.preventDefault();
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      e.preventDefault();
+      navigate(`/#${hash}`);
+    }
+  };
 
   const navClass = ({ isActive }: { isActive: boolean }) =>
     [
@@ -27,6 +43,8 @@ export const SiteHeader = () => {
       isActive ? "after:scale-x-100 text-accent" : "after:scale-x-0",
     ].join(" ");
 
+  const baseNavClass = "relative inline-block text-sm tracking-wide text-foreground transition-colors hover:text-accent after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-accent after:scale-x-0 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left";
+
   return (
     <header className="sticky top-0 z-40 bg-background/85 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 h-16 md:h-22 flex items-center justify-between gap-3">
@@ -34,11 +52,22 @@ export const SiteHeader = () => {
           <img src={logo} alt="나무와 걷는 시간" className="h-10 md:h-16 w-auto -my-1 md:-my-2" />
         </Link>
         <nav className="hidden md:flex items-center gap-10">
-          {NAV_LINKS.map((l) => (
-            <NavLink key={l.to} to={l.to} className={navClass}>
-              {l.label}
-            </NavLink>
-          ))}
+          {NAV_LINKS.map((l) =>
+            l.hash ? (
+              <a
+                key={l.label}
+                href={`/#${l.hash}`}
+                onClick={(e) => handleHashNav(e, l.hash!)}
+                className={baseNavClass}
+              >
+                {l.label}
+              </a>
+            ) : (
+              <NavLink key={l.to} to={l.to} className={navClass}>
+                {l.label}
+              </NavLink>
+            )
+          )}
         </nav>
         <div className="flex items-center gap-3 sm:gap-5">
           {isAdmin && (
@@ -84,12 +113,15 @@ export const SiteHeader = () => {
               </div>
               <nav className="flex flex-col py-2">
                 {NAV_LINKS.map((l) => {
-                  const active = location.pathname === l.to;
+                  const active = !l.hash && location.pathname === l.to;
                   return (
                     <Link
-                      key={l.to}
-                      to={l.to}
-                      onClick={() => setOpen(false)}
+                      key={l.label}
+                      to={l.hash ? `/#${l.hash}` : l.to}
+                      onClick={(e) => {
+                        setOpen(false);
+                        if (l.hash) handleHashNav(e, l.hash);
+                      }}
                       className={`px-5 py-4 text-base border-b border-border/60 ${
                         active ? "font-semibold bg-secondary/50" : ""
                       }`}
