@@ -213,15 +213,33 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
               )}
               <Accordion type="single" collapsible className="mt-8 font-sans font-bold">
                 <AccordionItem value="shipping">
-                  <AccordionTrigger>배송 및 관리</AccordionTrigger>
-                  <AccordionContent className="font-sans font-normal text-foreground whitespace-pre-line">
-                    {`나무는 크기에 따라 뿌리가 드러난 상태(bare-root)나 화분에 심긴 상태로 배송되며, 수피와 뿌리를 보호하기 위해 정성스럽게 포장됩니다.\n\n배수가 잘 되는 토양에 심고, 햇빛이 잘 들거나 약간 그늘진 곳이 적합합니다.\n식재 후 첫 시즌에는 물을 충분히 깊게 주어야 합니다.`}
+                  <AccordionTrigger>나무 배송 안내</AccordionTrigger>
+                  <AccordionContent className="font-sans font-normal text-foreground">
+                    <div className="space-y-4 text-sm md:text-base leading-relaxed">
+                      <p>
+                        〮 나무는 에어포트에 식재된 상태로 배송됩니다.<br />
+                        <span className="block pl-3">식재시 반드시 에어포트 몸통과 하단 받침대를 분리 후 나무만 식재하세요.</span>
+                      </p>
+                      <div>
+                        <p>〮 용달 배송 안내</p>
+                        <ul className="mt-2 pl-5 space-y-2 list-disc">
+                          <li>
+                            본 상품은 일반 택배로 배송이 불가하며, 용달(화물차)로만 배송됩니다.
+                            <br />
+                            <span className="text-muted-foreground">(용달은 일반 택배가 아닌 화물차 배송 서비스를 의미합니다)</span>
+                          </li>
+                          <li>
+                            용달 배송비는 상품 금액과 별도로 청구되며, 용달 배송비는 용달(화물차)에 직접 지불하시면 됩니다.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="origin">
                   <AccordionTrigger>원산지</AccordionTrigger>
                   <AccordionContent className="font-sans font-normal text-foreground">
-                    서늘한 기후와 깨끗한 공기로 밝고 하얀 수피를 자랑하는 대한민국 세종시 고산지대 농장에서 직접 재배되었습니다.
+                    네덜란드에서 조직배양한 묘목을 국내에서 재배
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
