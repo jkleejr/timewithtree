@@ -63,7 +63,7 @@ export const LOCAL_PRODUCTS: ShopifyProduct[] = [
   {
     node: {
       id: "local-jacquemontii",
-      title: "잭큐몬트 자작나무",
+      title: "잭큐몬티 자작나무",
       description: DESCRIPTION,
       descriptionHtml: `<p>${DESCRIPTION.replace(/\n\n/g, "</p><p>").replace(/\n/g, "<br/>")}</p>`,
       handle: "jacquemontii-birch",
