@@ -252,7 +252,7 @@ const Index = () => {
               </h3>
             </div>
             <div className="grid md:grid-cols-12 gap-8 md:gap-10 items-stretch">
-              <figure className="md:col-span-5 bg-secondary/40 border border-border p-6 md:p-8 flex items-center justify-center">
+              <figure className="md:col-span-5 flex items-center justify-center">
                 <img
                   src={treeMeasurements}
                   alt="수목 측정 기준 (H, W, R, B) 도식"
@@ -295,10 +295,10 @@ const Index = () => {
             </div>
             <div className="grid md:grid-cols-12 gap-8 md:gap-10 items-start">
               <div className="md:col-span-5 grid gap-4">
-                <figure className="bg-secondary/40 border border-border p-4">
+                <figure>
                   <img src={plantingMistakes} alt="잘못된 식재 예시" loading="lazy" className="w-full h-auto" />
                 </figure>
-                <figure className="bg-secondary/40 border border-border p-4">
+                <figure>
                   <img src={plantingCorrectVsWrong} alt="올바른 식재와 잘못된 식재 비교" loading="lazy" className="w-full h-auto" />
                 </figure>
               </div>
