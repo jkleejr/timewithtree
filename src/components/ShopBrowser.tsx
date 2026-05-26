@@ -169,6 +169,8 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                       src={images[activeImage].node.url}
                       alt={images[activeImage].node.altText || activeProduct.node.title}
                       className="w-full h-full object-cover"
+                      decoding="async"
+                      fetchPriority="high"
                     />
                   </button>
                 ) : (
