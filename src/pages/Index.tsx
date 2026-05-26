@@ -246,7 +246,7 @@ const Index = () => {
           {/* 묘목 식재 전 상식 */}
           <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
             <div className="md:col-span-4">
-              <h3 className="font-display font-bold font-sans text-2xl md:text-3xl mb-4">
+              <h3 className="font-display font-bold font-sans md:text-3xl mb-4 text-5xl">
                 묘목 식재 전 상식
               </h3>
               <img
