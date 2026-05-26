@@ -79,9 +79,9 @@ export const LOCAL_PRODUCTS: ShopifyProduct[] = [
       },
       variantImages: {
         R3: [
-          { node: { url: r3Img1, altText: "R3 잭큐몬티 자작나무 수피 클로즈업" } },
-          { node: { url: r3Img2, altText: "R3 잭큐몬티 자작나무 줄기 측정" } },
-          { node: { url: r3Img3, altText: "R3 일자형 잭큐몬티 자작나무 전체 모습" } },
+          { node: { url: r3Img1, altText: "R3 구매하기 수피 클로즈업" } },
+          { node: { url: r3Img2, altText: "R3 구매하기 줄기 측정" } },
+          { node: { url: r3Img3, altText: "R3 일자형 구매하기 전체 모습" } },
         ],
         R4: [
           { node: { url: r4Img1, altText: "R4 잭큐몬티 자작나무 둘레 측정" } },
