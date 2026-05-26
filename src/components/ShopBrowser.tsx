@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { Minus, Plus, ShoppingCart, Loader2, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { Minus, Plus, ShoppingCart, Loader2, ChevronLeft, ChevronRight, ArrowRight, X } from "lucide-react";
 import { toast } from "sonner";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import { formatPrice } from "@/lib/utils";
@@ -10,7 +10,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
 import { useCartStore } from "@/stores/cartStore";
-import type { ShopifyProduct } from "@/lib/shopify";
+import type { ShopifyProduct } from "@/data/products";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,7 +23,6 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
-type SortKey = "newest" | "price-asc" | "price-desc";
 
 interface ShopBrowserProps {
   showHeader?: boolean;
