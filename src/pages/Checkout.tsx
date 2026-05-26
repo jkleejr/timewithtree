@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { Check, Copy, CreditCard, Loader2, Wallet } from "lucide-react";
+import { Check, Copy, Loader2 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { BackButton } from "@/components/BackButton";
 import { Button } from "@/components/ui/button";
@@ -241,37 +241,36 @@ const Checkout = () => {
               </div>
 
               {/* 결제수단 선택 */}
-              <div className="grid grid-cols-2 gap-3">
-                <button
-                  type="button"
-                  onClick={() => setPaymentMethod("bank")}
-                  className={cn(
-                    "border p-4 flex flex-col items-center gap-2 transition-colors",
-                    paymentMethod === "bank"
-                      ? "border-primary bg-primary/5"
-                      : "border-border hover:border-foreground/40",
-                  )}
-                >
-                  <Wallet className="h-5 w-5" />
-                  <span className="text-sm font-medium">무통장 입금</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPaymentMethod("card")}
-                  className={cn(
-                    "border p-4 flex flex-col items-center gap-2 transition-colors relative",
-                    paymentMethod === "card"
-                      ? "border-primary bg-primary/5"
-                      : "border-border hover:border-foreground/40",
-                  )}
-                >
-                  <CreditCard className="h-5 w-5" />
-                  <span className="text-sm font-medium">신용카드</span>
-                  <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                    준비 중
-                  </span>
-                </button>
+              <div className="flex items-center justify-between gap-3 pt-2">
+                <span className="text-sm text-muted-foreground">결제수단</span>
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setPaymentMethod("card")}
+                    className={cn(
+                      "px-5 py-2 text-sm border transition-colors min-w-[100px]",
+                      paymentMethod === "card"
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-primary text-primary bg-background hover:bg-primary/5",
+                    )}
+                  >
+                    신용카드
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPaymentMethod("bank")}
+                    className={cn(
+                      "px-5 py-2 text-sm border transition-colors min-w-[100px]",
+                      paymentMethod === "bank"
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-primary text-primary bg-background hover:bg-primary/5",
+                    )}
+                  >
+                    무통장 입금
+                  </button>
+                </div>
               </div>
+
 
               {paymentMethod === "bank" && (
                 <div className="space-y-5">
