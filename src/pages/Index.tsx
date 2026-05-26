@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { ShopBrowser } from "@/components/ShopBrowser";
+import { Button } from "@/components/ui/button";
 import heroMain1 from "@/assets/hero-main-1.jpg";
 import heroMain3 from "@/assets/hero-main-3.jpg";
 import heroBirch2 from "@/assets/hero-birch-2.png";
