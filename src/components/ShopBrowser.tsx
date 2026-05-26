@@ -419,6 +419,50 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
+        <DialogContent className="max-w-5xl w-[95vw] p-0 bg-background border-none rounded-none [&>button]:hidden">
+          {activeProduct && images[activeImage] && (
+            <div className="relative">
+              <img
+                src={images[activeImage].node.url}
+                alt={images[activeImage].node.altText || activeProduct.node.title}
+                className="w-full max-h-[85vh] object-contain bg-black"
+              />
+              <button
+                onClick={() => setLightboxOpen(false)}
+                className="absolute top-3 right-3 bg-background/90 hover:bg-background p-2 rounded-full shadow"
+                aria-label="닫기"
+              >
+                <X className="h-5 w-5" />
+              </button>
+              {images.length > 1 && (
+                <>
+                  <button
+                    onClick={() =>
+                      setActiveImage((i) => (i - 1 + images.length) % images.length)
+                    }
+                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-background/90 hover:bg-background p-3 rounded-full shadow"
+                    aria-label="이전 사진"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                  <button
+                    onClick={() => setActiveImage((i) => (i + 1) % images.length)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-background/90 hover:bg-background p-3 rounded-full shadow"
+                    aria-label="다음 사진"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-background/80 px-3 py-1 rounded-full text-xs tabular-nums">
+                    {activeImage + 1} / {images.length}
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   );
 };
