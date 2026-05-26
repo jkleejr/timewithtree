@@ -328,7 +328,7 @@ const Index = () => {
       </section>
 
       {/* Shop */}
-      <section className="border-t border-border pt-6 md:pt-10 pb-8 md:pb-12">
+      <section id="shop" className="border-t border-border pt-6 md:pt-10 pb-8 md:pb-12">
         <ShopBrowser showBackButton={false} />
       </section>
     </SiteLayout>
