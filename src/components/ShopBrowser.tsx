@@ -68,15 +68,16 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
   const activeProduct =
     sorted.find((p) => p.node.id === activeProductId) ?? sorted[0];
   const variants = activeProduct?.node.variants.edges ?? [];
-  const activeVariantTitle = variants[0]?.node.title;
+  const activeVariant = variants.find((v) => v.node.id === activeVariantId)?.node ?? variants[0]?.node;
   const images =
-    (activeProduct && activeVariantTitle
-      ? activeProduct.node.variantImages?.[activeVariantTitle]
+    (activeProduct && activeVariant?.title
+      ? activeProduct.node.variantImages?.[activeVariant.title]
       : undefined) ?? activeProduct?.node.images.edges ?? [];
 
-
-  const selectProduct = (id: string) => {
+  const selectProduct = (id: string, variantId?: string) => {
+    const selectedProduct = sorted.find((p) => p.node.id === id);
     setActiveProductId(id);
+    setActiveVariantId(variantId ?? selectedProduct?.node.variants.edges[0]?.node.id ?? null);
     setActiveImage(0);
   };
 
