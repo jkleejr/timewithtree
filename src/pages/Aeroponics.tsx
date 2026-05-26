@@ -79,7 +79,7 @@ const Aeroponics = () => {
                   }`}
                 >
                   <div className="flex items-baseline gap-4 mb-4">
-                    <span className="font-display text-4xl md:text-5xl font-bold tabular-nums text-[hsl(var(--primary))] opacity-90" style={{ color: "rgb(85, 138, 73)" }}>
+                    <span className="font-display text-4xl md:text-5xl font-bold tabular-nums text-[hsl(var(--primary))] opacity-90" >
                       {num}
                     </span>
                     <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold">
@@ -100,9 +100,9 @@ const Aeroponics = () => {
 
         <div className="mt-16">
           <div className="relative border border-border bg-secondary/40 p-8 md:p-10 pl-10 md:pl-12">
-            <span className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: "rgb(85, 138, 73)" }} />
+            <span className="absolute left-0 top-0 bottom-0 w-1"  />
             <div className="flex items-center gap-2 mb-4">
-              <AlertTriangle className="h-4 w-4" style={{ color: "rgb(85, 138, 73)" }} />
+              <AlertTriangle className="h-4 w-4"  />
               <p className="text-xs uppercase tracking-[0.25em] font-semibold text-muted-foreground">
                 참고 / NOTES
               </p>
