@@ -279,10 +279,8 @@ export const ShopBrowser = ({ showHeader = true, title = "잭큐몬티 자작나
             </div>
 
             <div className="md:pt-14">
-              <h2 className="font-display font-bold mb-4 font-sans text-2xl sm:text-3xl md:text-3xl">
-                잭큐몬티 자작나무
-              </h2>
               <div className="border border-border">
+
                 <ul className="divide-y divide-border">
                   {sorted.flatMap((product) => {
                     const p = product.node;
