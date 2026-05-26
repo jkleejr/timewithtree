@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { Minus, Plus, ShoppingCart, Loader2, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { Minus, Plus, ShoppingCart, Loader2, ChevronLeft, ChevronRight, ArrowRight, X } from "lucide-react";
 import { toast } from "sonner";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import { formatPrice } from "@/lib/utils";
@@ -10,7 +10,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
 import { useCartStore } from "@/stores/cartStore";
-import type { ShopifyProduct } from "@/lib/shopify";
+import type { ShopifyProduct } from "@/data/products";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,7 +23,6 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
-type SortKey = "newest" | "price-asc" | "price-desc";
 
 interface ShopBrowserProps {
   showHeader?: boolean;
@@ -34,14 +34,15 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
   const { data: products = [], isLoading } = useShopifyProducts(50);
   const [searchParams] = useSearchParams();
   const productParam = searchParams.get("product");
-  const [sort, setSort] = useState<SortKey>("newest");
   const [activeProductId, setActiveProductId] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [pendingAdd, setPendingAdd] = useState<{
     product: ShopifyProduct;
     variantId: string;
   } | null>(null);
+
 
   useEffect(() => {
     if (!productParam || products.length === 0) return;
@@ -60,23 +61,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
     for (const it of cartItems) map[it.variantId] = (map[it.variantId] ?? 0) + it.quantity;
     return map;
   }, [cartItems]);
-
-  const sorted = useMemo(() => {
-    const arr = [...products];
-    if (sort === "price-asc")
-      arr.sort(
-        (a, b) =>
-          parseFloat(a.node.priceRange.minVariantPrice.amount) -
-          parseFloat(b.node.priceRange.minVariantPrice.amount),
-      );
-    if (sort === "price-desc")
-      arr.sort(
-        (a, b) =>
-          parseFloat(b.node.priceRange.minVariantPrice.amount) -
-          parseFloat(a.node.priceRange.minVariantPrice.amount),
-      );
-    return arr;
-  }, [products, sort]);
+  const sorted = products;
 
   const activeProduct =
     sorted.find((p) => p.node.id === activeProductId) ?? sorted[0];
@@ -148,11 +133,18 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
               </h2>
               <div className="relative aspect-[4/5] bg-secondary overflow-hidden mb-3">
                 {images[activeImage] ? (
-                  <img
-                    src={images[activeImage].node.url}
-                    alt={images[activeImage].node.altText || activeProduct.node.title}
-                    className="w-full h-full object-cover"
-                  />
+                  <button
+                    type="button"
+                    onClick={() => setLightboxOpen(true)}
+                    className="block w-full h-full cursor-zoom-in"
+                    aria-label="사진 확대 보기"
+                  >
+                    <img
+                      src={images[activeImage].node.url}
+                      alt={images[activeImage].node.altText || activeProduct.node.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">
                     No image
@@ -184,7 +176,10 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                   {images.slice(0, 5).map((img, i) => (
                     <button
                       key={i}
-                      onClick={() => setActiveImage(i)}
+                      onClick={() => {
+                        setActiveImage(i);
+                        setLightboxOpen(true);
+                      }}
                       className={`aspect-square overflow-hidden border ${
                         i === activeImage ? "border-foreground" : "border-transparent"
                       }`}
@@ -218,15 +213,33 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
               )}
               <Accordion type="single" collapsible className="mt-8 font-sans font-bold">
                 <AccordionItem value="shipping">
-                  <AccordionTrigger>배송 및 관리</AccordionTrigger>
-                  <AccordionContent className="font-sans font-normal text-foreground whitespace-pre-line">
-                    {`나무는 크기에 따라 뿌리가 드러난 상태(bare-root)나 화분에 심긴 상태로 배송되며, 수피와 뿌리를 보호하기 위해 정성스럽게 포장됩니다.\n\n배수가 잘 되는 토양에 심고, 햇빛이 잘 들거나 약간 그늘진 곳이 적합합니다.\n식재 후 첫 시즌에는 물을 충분히 깊게 주어야 합니다.`}
+                  <AccordionTrigger>나무 배송 안내</AccordionTrigger>
+                  <AccordionContent className="font-sans font-normal text-foreground">
+                    <div className="space-y-4 text-sm md:text-base leading-relaxed">
+                      <p>
+                        〮 나무는 에어포트에 식재된 상태로 배송됩니다.<br />
+                        <span className="block pl-3">식재시 반드시 에어포트 몸통과 하단 받침대를 분리 후 나무만 식재하세요.</span>
+                      </p>
+                      <div>
+                        <p>〮 용달 배송 안내</p>
+                        <ul className="mt-2 pl-5 space-y-2 list-disc">
+                          <li>
+                            본 상품은 일반 택배로 배송이 불가하며, 용달(화물차)로만 배송됩니다.
+                            <br />
+                            <span className="text-muted-foreground">(용달은 일반 택배가 아닌 화물차 배송 서비스를 의미합니다)</span>
+                          </li>
+                          <li>
+                            용달 배송비는 상품 금액과 별도로 청구되며, 용달 배송비는 용달(화물차)에 직접 지불하시면 됩니다.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="origin">
                   <AccordionTrigger>원산지</AccordionTrigger>
                   <AccordionContent className="font-sans font-normal text-foreground">
-                    서늘한 기후와 깨끗한 공기로 밝고 하얀 수피를 자랑하는 대한민국 세종시 고산지대 농장에서 직접 재배되었습니다.
+                    네덜란드에서 조직배양한 묘목을 국내에서 재배
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
@@ -406,6 +419,50 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
+        <DialogContent className="max-w-5xl w-[95vw] p-0 bg-background border-none rounded-none [&>button]:hidden">
+          {activeProduct && images[activeImage] && (
+            <div className="relative">
+              <img
+                src={images[activeImage].node.url}
+                alt={images[activeImage].node.altText || activeProduct.node.title}
+                className="w-full max-h-[85vh] object-contain bg-black"
+              />
+              <button
+                onClick={() => setLightboxOpen(false)}
+                className="absolute top-3 right-3 bg-background/90 hover:bg-background p-2 rounded-full shadow"
+                aria-label="닫기"
+              >
+                <X className="h-5 w-5" />
+              </button>
+              {images.length > 1 && (
+                <>
+                  <button
+                    onClick={() =>
+                      setActiveImage((i) => (i - 1 + images.length) % images.length)
+                    }
+                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-background/90 hover:bg-background p-3 rounded-full shadow"
+                    aria-label="이전 사진"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                  <button
+                    onClick={() => setActiveImage((i) => (i + 1) % images.length)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-background/90 hover:bg-background p-3 rounded-full shadow"
+                    aria-label="다음 사진"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-background/80 px-3 py-1 rounded-full text-xs tabular-nums">
+                    {activeImage + 1} / {images.length}
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   );
 };
