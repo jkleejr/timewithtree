@@ -116,6 +116,16 @@ const Index = () => {
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>네덜란드에서 조직배양한 묘목 재배</span></li>
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
               </ul>
+              <div className="mt-2 sm:mt-4">
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="rounded-none bg-transparent border-white text-white hover:bg-white hover:text-foreground"
+                >
+                  <Link to="/about">자작나무 소개</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
