@@ -182,6 +182,41 @@ const ProductDetail = () => {
                 네덜란드에서 조직배양한 묘목을 국내에서 재배
               </AccordionContent>
             </AccordionItem>
+            <AccordionItem value="pickup">
+              <AccordionTrigger>방문 구입 또는 직접 나무 수령시 안내</AccordionTrigger>
+              <AccordionContent className="font-sans font-normal text-black">
+                <div className="space-y-4 text-sm md:text-base leading-relaxed">
+                  <p>
+                    저희 나무와 걷는 시간 농장은 세종시 장군면 송문리와 공주시 정안면 대산리의 2개 지역에 농장이 있습니다.
+                  </p>
+                  <ul className="pl-5 space-y-3 list-disc">
+                    <li>
+                      농장 방문을 통해 구입을 원하시거나 온라인 주문 후 직접 나무를 가져가실 경우 아래의 번호로 전화 주시면 상세 안내 드리겠습니다.
+                    </li>
+                    <li>
+                      방문 수령 시 나무 상태를 직접 확인하신 후 선택하여 구매하실 수 있습니다.
+                      <br />
+                      <span className="font-semibold">연락처 : 010-8925-6251</span>
+                    </li>
+                    <li>
+                      영업 시간
+                      <div className="mt-1 pl-3 space-y-1">
+                        <p>평일 : 오전 9시 ~ 오후 6시 <span className="text-muted-foreground">(방문 2시간 전에 전화 연락 후 방문 부탁드립니다.)</span></p>
+                        <p>주말 : 방문 1일 전 전화 연락 후 방문 <span className="text-muted-foreground">(개인 사정으로 방문이 어려울 수도 있습니다.)</span></p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="returns">
+              <AccordionTrigger>교환 / 환불 규정</AccordionTrigger>
+              <AccordionContent className="font-sans font-normal text-black">
+                <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                  상세 내용은 추후 업데이트 예정입니다.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
           </Accordion>
         </div>
       </section>
