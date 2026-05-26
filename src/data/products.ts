@@ -84,10 +84,10 @@ export const LOCAL_PRODUCTS: ShopifyProduct[] = [
           { node: { url: r3Img3, altText: "R3 일자형 구매하기 전체 모습" } },
         ],
         R4: [
-          { node: { url: r4Img1, altText: "R4 잭큐몬티 자작나무 둘레 측정" } },
-          { node: { url: r4Img2, altText: "R4 잭큐몬티 자작나무 줄기 클로즈업" } },
-          { node: { url: r4Img3, altText: "R4 잭큐몬티 자작나무 전체 모습" } },
-          { node: { url: r4Img4, altText: "R4 일자형 잭큐몬티 자작나무 농장 전경" } },
+          { node: { url: r4Img1, altText: "R4 구매하기 둘레 측정" } },
+          { node: { url: r4Img2, altText: "R4 구매하기 줄기 클로즈업" } },
+          { node: { url: r4Img3, altText: "R4 구매하기 전체 모습" } },
+          { node: { url: r4Img4, altText: "R4 일자형 구매하기 농장 전경" } },
         ],
         R5: [
           { node: { url: r5Img1, altText: "R5 잭큐몬티 자작나무 수피 클로즈업" } },
