@@ -329,7 +329,7 @@ const Index = () => {
 
       {/* Shop */}
       <section id="shop" className="border-t border-border pt-6 md:pt-10 pb-8 md:pb-12">
-        <ShopBrowser showBackButton={false} />
+        <ShopBrowser showBackButton={false} title="잭큐몬트 자작나무" />
       </section>
     </SiteLayout>
   );
