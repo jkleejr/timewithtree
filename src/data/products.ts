@@ -1,11 +1,10 @@
 // Local product catalog — replaces Shopify product source.
 // To change prices, descriptions, or images, edit this file directly.
 
-import heroMain1 from "@/assets/hero-main-1.jpg";
-import heroMain3 from "@/assets/hero-main-3.jpg";
-import heroBirch3 from "@/assets/hero-birch-3.jpg";
-import farmJac1 from "@/assets/farm-jac-1.png";
-import dagan1 from "@/assets/dagan-1.jpg";
+import r3Img1 from "@/assets/r3-1.jpg";
+import r3Img2 from "@/assets/r3-2.jpg";
+import r3Img3 from "@/assets/r3-3.jpg";
+
 
 // Type intentionally mirrors the previous Shopify shape so existing
 // components can consume products without refactoring.
@@ -59,13 +58,12 @@ export const LOCAL_PRODUCTS: ShopifyProduct[] = [
       },
       images: {
         edges: [
-          { node: { url: heroMain1, altText: "잭큐몬티 자작나무 — 농장 전경" } },
-          { node: { url: heroMain3, altText: "성목으로 자란 잭큐몬티 자작나무" } },
-          { node: { url: heroBirch3, altText: "잭큐몬티 자작나무 수피 클로즈업" } },
-          { node: { url: farmJac1, altText: "농장에서 자라는 잭큐몬티 자작나무" } },
-          { node: { url: dagan1, altText: "다간형 잭큐몬티 자작나무" } },
+          { node: { url: r3Img1, altText: "R3 잭큐몬티 자작나무 수피 클로즈업" } },
+          { node: { url: r3Img2, altText: "R3 잭큐몬티 자작나무 줄기 측정" } },
+          { node: { url: r3Img3, altText: "R3 일자형 잭큐몬티 자작나무 전체 모습" } },
         ],
       },
+
       variants: {
         edges: VARIANTS.map((v) => ({
           node: {
