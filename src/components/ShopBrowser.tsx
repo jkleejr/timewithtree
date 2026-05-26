@@ -216,7 +216,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                         src={img.node.url}
                         alt=""
                         className="w-full h-full object-cover"
-                        loading="lazy"
+                        decoding="async"
                       />
                     </button>
                   ))}
