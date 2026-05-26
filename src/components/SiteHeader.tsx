@@ -13,7 +13,7 @@ const NAV_LINKS: NavLinkItem[] = [
   { to: "/about", label: "자작나무 소개" },
   { to: "/", hash: "airpot", label: "에어포트 재배" },
   { to: "/", hash: "info", label: "나무 관련 정보" },
-  { to: "/shop", label: "구매하기" },
+  { to: "/", hash: "shop", label: "구매하기" },
 ];
 
 export const SiteHeader = () => {
