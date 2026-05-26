@@ -133,11 +133,18 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
               </h2>
               <div className="relative aspect-[4/5] bg-secondary overflow-hidden mb-3">
                 {images[activeImage] ? (
-                  <img
-                    src={images[activeImage].node.url}
-                    alt={images[activeImage].node.altText || activeProduct.node.title}
-                    className="w-full h-full object-cover"
-                  />
+                  <button
+                    type="button"
+                    onClick={() => setLightboxOpen(true)}
+                    className="block w-full h-full cursor-zoom-in"
+                    aria-label="사진 확대 보기"
+                  >
+                    <img
+                      src={images[activeImage].node.url}
+                      alt={images[activeImage].node.altText || activeProduct.node.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">
                     No image
@@ -169,7 +176,10 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                   {images.slice(0, 5).map((img, i) => (
                     <button
                       key={i}
-                      onClick={() => setActiveImage(i)}
+                      onClick={() => {
+                        setActiveImage(i);
+                        setLightboxOpen(true);
+                      }}
                       className={`aspect-square overflow-hidden border ${
                         i === activeImage ? "border-foreground" : "border-transparent"
                       }`}
