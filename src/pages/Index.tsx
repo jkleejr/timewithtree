@@ -46,12 +46,25 @@ const plantingSteps = [
 const Index = () => {
   const [heroIndex, setHeroIndex] = useState(0);
   const heroLen = heroImages.length;
+  const location = useLocation();
 
   useEffect(() => {
     if (heroLen <= 1) return;
     const id = setInterval(() => setHeroIndex((i) => (i + 1) % heroLen), 10000);
     return () => clearInterval(id);
   }, [heroLen]);
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      // Defer to next tick so the section is mounted
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+    }
+  }, [location.hash, location.key]);
+
 
   return (
     <SiteLayout>
