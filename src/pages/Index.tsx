@@ -247,7 +247,7 @@ const Index = () => {
           <div className="mt-4 border-t border-border pt-12 md:pt-16">
             <div className="mb-8 md:mb-10">
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Tree Measurements</p>
-              <h3 className="font-display font-bold font-sans text-3xl md:text-4xl leading-tight">
+              <h3 className="font-display font-bold font-sans md:text-4xl leading-tight text-5xl">
                 묘목 식재 전 상식
               </h3>
             </div>
@@ -289,7 +289,7 @@ const Index = () => {
           <div className="mt-12 md:mt-16 border-t border-border pt-12 md:pt-16">
             <div className="mb-8 md:mb-10">
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Common Mistakes</p>
-              <h3 className="font-display font-bold font-sans text-3xl md:text-4xl leading-tight">
+              <h3 className="font-display font-bold font-sans md:text-4xl leading-tight text-5xl">
                 잘못된 식재 예시
               </h3>
             </div>
