@@ -61,23 +61,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
     for (const it of cartItems) map[it.variantId] = (map[it.variantId] ?? 0) + it.quantity;
     return map;
   }, [cartItems]);
-
-  const sorted = useMemo(() => {
-    const arr = [...products];
-    if (sort === "price-asc")
-      arr.sort(
-        (a, b) =>
-          parseFloat(a.node.priceRange.minVariantPrice.amount) -
-          parseFloat(b.node.priceRange.minVariantPrice.amount),
-      );
-    if (sort === "price-desc")
-      arr.sort(
-        (a, b) =>
-          parseFloat(b.node.priceRange.minVariantPrice.amount) -
-          parseFloat(a.node.priceRange.minVariantPrice.amount),
-      );
-    return arr;
-  }, [products, sort]);
+  const sorted = products;
 
   const activeProduct =
     sorted.find((p) => p.node.id === activeProductId) ?? sorted[0];
