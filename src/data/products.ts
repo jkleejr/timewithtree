@@ -10,6 +10,8 @@ import r4Img3 from "@/assets/r4-3.jpg";
 import r4Img4 from "@/assets/r4-4.jpg";
 import daganImg1 from "@/assets/dagan-1.jpg";
 import daganImg2 from "@/assets/dagan-2.jpg";
+import r5Img1 from "@/assets/r5-1.jpg";
+import r5Img2 from "@/assets/r5-2.jpg";
 
 
 
@@ -86,6 +88,10 @@ export const LOCAL_PRODUCTS: ShopifyProduct[] = [
           { node: { url: r4Img2, altText: "R4 잭큐몬티 자작나무 줄기 클로즈업" } },
           { node: { url: r4Img3, altText: "R4 잭큐몬티 자작나무 전체 모습" } },
           { node: { url: r4Img4, altText: "R4 일자형 잭큐몬티 자작나무 농장 전경" } },
+        ],
+        R5: [
+          { node: { url: r5Img1, altText: "R5 잭큐몬티 자작나무 수피 클로즈업" } },
+          { node: { url: r5Img2, altText: "R5 잭큐몬티 자작나무 전체 모습" } },
         ],
         "다간형": [
           { node: { url: daganImg1, altText: "다간형 잭큐몬티 자작나무 전체 모습" } },
