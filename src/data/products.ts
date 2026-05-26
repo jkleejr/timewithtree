@@ -9,7 +9,8 @@ import r4Img2 from "@/assets/r4-2.jpg";
 import r4Img3 from "@/assets/r4-3.jpg";
 import r4Img4 from "@/assets/r4-4.jpg";
 import daganImg1 from "@/assets/dagan-1.jpg";
-import daganImg2 from "@/assets/dagan-2.jpg";
+import r5Img1 from "@/assets/r5-1.jpg";
+import r5Img2 from "@/assets/r5-2.jpg";
 
 
 
