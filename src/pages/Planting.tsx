@@ -49,40 +49,35 @@ const Planting = () => {
       <section className="max-w-5xl mx-auto px-6 md:px-10 pb-20 space-y-20">
         {/* STEPS */}
         <div>
-          <div className="border-t border-border">
+          <div className="border-t border-b border-border">
             <div className="grid grid-cols-1 md:grid-cols-2">
-              {steps.map((text, i) => {
-                const isLast = i === steps.length - 1;
-                const isSecondLast = i === steps.length - 2;
-                return (
-                  <article
-                    key={i}
-                    className={`p-8 md:p-10 ${i % 2 === 0 ? "md:border-r border-border" : ""} ${
-                      !(isLast || (isSecondLast && steps.length % 2 === 1)) ? "border-b border-border" : "md:border-b-0 border-b last:border-b-0"
-                    }`}
-                  >
-                    <p className="font-display text-xl md:text-2xl font-bold text-accent tracking-wider mb-4">
-                      STEP {i + 1}
-                    </p>
-                    <p className="leading-relaxed text-primary text-sm md:text-base">{text}</p>
-                  </article>
-                );
-              })}
+              {steps.map((text, i) => (
+                <article
+                  key={i}
+                  className={`p-8 md:p-10 border-b border-border last:border-b-0 md:[&:nth-last-child(2)]:border-b-0 ${
+                    i % 2 === 0 ? "md:border-r" : ""
+                  }`}
+                >
+                  <p className="font-display text-xl md:text-2xl font-bold text-accent tracking-wider mb-4">
+                    STEP {i + 1}
+                  </p>
+                  <p className="leading-relaxed text-primary text-sm md:text-base">{text}</p>
+                </article>
+              ))}
+              {/* 멀칭 — STEP 7 옆 빈 칸 채우기 */}
+              <article className="relative p-8 md:p-10 bg-accent/10">
+                <span className="absolute left-0 top-0 bottom-0 w-1 bg-accent" />
+                <div className="flex items-center gap-2 mb-4">
+                  <Leaf className="h-5 w-5 text-accent" />
+                  <p className="font-display text-xl md:text-2xl font-bold text-accent tracking-wider">
+                    멀칭
+                  </p>
+                </div>
+                <p className="leading-relaxed text-primary text-sm md:text-base">
+                  잡초 방지와 수분 증발을 막기 위해 제초매트, 부직포, 낙엽 또는 짚으로 잘 덮어줍니다.
+                </p>
+              </article>
             </div>
-          </div>
-
-          {/* 멀칭 강조 박스 */}
-          <div className="relative mt-8 border border-border bg-secondary/40 p-8 md:p-10 pl-10 md:pl-12">
-            <span className="absolute left-0 top-0 bottom-0 w-1 bg-accent" />
-            <div className="flex items-center gap-2 mb-3">
-              <Leaf className="h-4 w-4 text-accent" />
-              <p className="text-xs uppercase tracking-[0.25em] font-semibold text-muted-foreground">
-                MULCHING / 멀칭
-              </p>
-            </div>
-            <p className="leading-relaxed text-primary">
-              잡초 방지와 수분 증발을 막기 위해 제초매트, 부직포, 낙엽 또는 짚으로 잘 덮어줍니다.
-            </p>
           </div>
         </div>
 
