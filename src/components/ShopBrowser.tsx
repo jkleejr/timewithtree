@@ -35,6 +35,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
   const [searchParams] = useSearchParams();
   const productParam = searchParams.get("product");
   const [activeProductId, setActiveProductId] = useState<string | null>(null);
+  const [activeVariantId, setActiveVariantId] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
@@ -49,6 +50,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
     const match = products.find((p) => p.node.handle === productParam);
     if (match) {
       setActiveProductId(match.node.id);
+      setActiveVariantId(match.node.variants.edges[0]?.node.id ?? null);
       setActiveImage(0);
     }
   }, [productParam, products]);
@@ -273,9 +275,9 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                         <li
                           key={variant.id}
                           className={`flex flex-wrap sm:flex-nowrap items-center gap-x-3 gap-y-3 px-3 sm:px-4 py-3 cursor-pointer transition-colors ${
-                            isActive ? "bg-secondary/40" : "hover:bg-secondary/20"
+                            isActive && activeVariant?.id === variant.id ? "bg-secondary/40" : "hover:bg-secondary/20"
                           }`}
-                          onClick={() => selectProduct(p.id)}
+                          onClick={() => selectProduct(p.id, variant.id)}
                         >
                           {vi === 0 ? (
                             <div className="w-12 h-12 bg-secondary overflow-hidden flex-shrink-0">
