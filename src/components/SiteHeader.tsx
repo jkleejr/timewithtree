@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Menu, ShoppingCart, Shield, User, X } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { useAuth } from "@/contexts/AuthContext";
@@ -7,8 +7,12 @@ import { useIsAdmin } from "@/hooks/useIsAdmin";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "@/assets/logo.png";
 
-const NAV_LINKS = [
+type NavLinkItem = { to: string; label: string; hash?: string };
+
+const NAV_LINKS: NavLinkItem[] = [
   { to: "/about", label: "자작나무 소개" },
+  { to: "/", hash: "airpot", label: "에어포트 재배" },
+  { to: "/", hash: "info", label: "나무 관련 정보" },
   { to: "/shop", label: "구매하기" },
 ];
 
