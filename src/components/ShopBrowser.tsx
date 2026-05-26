@@ -35,6 +35,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
   const [searchParams] = useSearchParams();
   const productParam = searchParams.get("product");
   const [activeProductId, setActiveProductId] = useState<string | null>(null);
+  const [activeVariantId, setActiveVariantId] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
@@ -49,6 +50,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
     const match = products.find((p) => p.node.handle === productParam);
     if (match) {
       setActiveProductId(match.node.id);
+      setActiveVariantId(match.node.variants.edges[0]?.node.id ?? null);
       setActiveImage(0);
     }
   }, [productParam, products]);
@@ -65,11 +67,17 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
 
   const activeProduct =
     sorted.find((p) => p.node.id === activeProductId) ?? sorted[0];
-  const images = activeProduct?.node.images.edges ?? [];
   const variants = activeProduct?.node.variants.edges ?? [];
+  const activeVariant = variants.find((v) => v.node.id === activeVariantId)?.node ?? variants[0]?.node;
+  const images =
+    (activeProduct && activeVariant?.title
+      ? activeProduct.node.variantImages?.[activeVariant.title]
+      : undefined) ?? activeProduct?.node.images.edges ?? [];
 
-  const selectProduct = (id: string) => {
+  const selectProduct = (id: string, variantId?: string) => {
+    const selectedProduct = sorted.find((p) => p.node.id === id);
     setActiveProductId(id);
+    setActiveVariantId(variantId ?? selectedProduct?.node.variants.edges[0]?.node.id ?? null);
     setActiveImage(0);
   };
 
@@ -259,8 +267,8 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                   {sorted.flatMap((product) => {
                     const p = product.node;
                     const isActive = p.id === activeProduct.node.id;
-                    const thumb = p.images.edges[0]?.node;
                     return p.variants.edges.map((v, vi) => {
+                      const thumb = p.variantImages?.[v.node.title]?.[0]?.node ?? p.images.edges[0]?.node;
                       const variant = v.node;
                       const qty = getQty(variant.id);
                       const inCart = cartQtyByVariant[variant.id] ?? 0;
@@ -268,9 +276,9 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                         <li
                           key={variant.id}
                           className={`flex flex-wrap sm:flex-nowrap items-center gap-x-3 gap-y-3 px-3 sm:px-4 py-3 cursor-pointer transition-colors ${
-                            isActive ? "bg-secondary/40" : "hover:bg-secondary/20"
+                            isActive && activeVariant?.id === variant.id ? "bg-secondary/40" : "hover:bg-secondary/20"
                           }`}
-                          onClick={() => selectProduct(p.id)}
+                          onClick={() => selectProduct(p.id, variant.id)}
                         >
                           {vi === 0 ? (
                             <div className="w-12 h-12 bg-secondary overflow-hidden flex-shrink-0">
