@@ -1,18 +1,45 @@
-## Set the leaf image as the site favicon (browser tab icon only)
+## 변경 사항 요약
 
-The user wants the uploaded leaf image used **only as the favicon** (the icon shown in the browser tab / bookmarks). The on-page header logo stays unchanged.
+### 1. 메뉴 정리 (`src/components/SiteHeader.tsx`)
+상단 메뉴를 두 개만 남깁니다:
+- 자작나무 소개 (`/about`) — 별도 페이지 유지
+- 구매하기 (`/shop`) — 별도 페이지 유지
 
-### Steps
+제거되는 메뉴 항목:
+- 에어포트 재배 → 메인 페이지에 인라인
+- 나무 관련 정보 → 메인 페이지에 인라인
 
-1. **Copy the uploaded image into `public/`** as `public/favicon.png` (using the uploaded `leaf_logo_transparent.png`). Files in `public/` are served at the site root.
-2. **Update `index.html`** to reference the new favicon:
-   - Replace the existing `<link rel="icon" ...>` line with `<link rel="icon" type="image/png" href="/favicon.png" />`.
-3. **Delete the old `public/favicon.ico`** if present, so browsers don't fall back to it via the default `/favicon.ico` request.
+### 2. 메인 페이지 재구성 (`src/pages/Index.tsx`)
 
-### Not changing
+현재 메인 페이지의 "에어포트 재배의 장점" 섹션과 "식재방법" 섹션을, 별도 페이지로 이동하지 않고 메인 페이지에서 직접 풀 콘텐츠로 보여주도록 확장합니다. "자세히 보기" 버튼은 제거합니다.
 
-- `src/components/SiteHeader.tsx` and the existing `src/assets/logo.png` — the on-screen header logo remains exactly as it is.
+새 메인 페이지 구조 (위에서 아래로):
+1. Hero 갤러리 (현재 유지) — "나무 관련 정보" 버튼은 제거 (메뉴와 중복되지 않고 별도 페이지도 없어짐)
+2. **에어포트 재배 (확장)** — 기존 7개 장점 리스트 + 에어포트 확대 사진 2장 + 짧은 설명, 시각적으로 강한 split/grid 레이아웃. "자세히 보기" 제거
+3. **나무 관련 정보 / 식재방법 (확장)** — 기존 `Planting.tsx` 의 핵심 내용을 메인 페이지에 인라인. "식재방법 자세히 보기" 제거
+4. Shop (ShopBrowser — 현재 유지)
 
-### Note
+### 3. 디자인 개선
+상세 페이지의 텍스트 위주 디자인을 메인 페이지에 그대로 옮기지 않고, 다음 방식으로 시각화:
+- 에어포트 장점 → 7개 항목을 카드형 그리드 (2~3 컬럼) + 큰 숫자/아이콘 강조
+- 에어포트 확대 사진 2장을 섹션 안에 큰 비주얼로 배치 (텍스트와 나란히)
+- 식재방법 → 단계별(step 1, 2, 3...) 비주얼 카드 또는 타임라인
+- 모든 색상은 design system 토큰(`text-primary`, `bg-secondary` 등) 사용
 
-After deploying, browsers aggressively cache favicons. The new icon may take a hard refresh (or some time) to appear on `timewithtree.co.kr`.
+### 4. 에어포트 확대 사진 (신규 에셋 2장)
+`src/assets/airpot-1.jpg` ~ `airpot-4.jpg` 중 통기 구멍이 잘 보이는 사진 2장을 골라 `imagegen--edit_image` 로 에어포트 부분만 크롭/확대한 버전을 생성:
+- `src/assets/airpot-closeup-1.jpg` — 측면 통기 구멍 클로즈업
+- `src/assets/airpot-closeup-2.jpg` — 에어포트 안 뿌리/줄기 베이스 클로즈업
+
+### 5. 라우트는 유지
+`/aeroponics`, `/planting` 라우트와 페이지 파일 자체는 삭제하지 않고 그대로 둡니다 (외부 링크/북마크 보호). 메뉴와 메인 페이지 버튼에서 링크만 제거합니다. 이후에 완전히 제거할지 별도로 결정 가능.
+
+## 영향 받는 파일
+
+- `src/components/SiteHeader.tsx` — `NAV_LINKS` 축소
+- `src/pages/Index.tsx` — 에어포트 / 식재방법 섹션을 확장 및 디자인 개선, "자세히 보기" 버튼 제거, hero의 "나무 관련 정보" 버튼 제거
+- `src/assets/airpot-closeup-1.jpg`, `src/assets/airpot-closeup-2.jpg` — 신규 생성 (기존 사진에서 크롭/확대)
+
+## 확인 사항
+
+식재방법(`Planting.tsx`)의 어느 정도까지를 메인에 인라인할지: 핵심 단계만 (짧게) vs 현재 페이지 전체 내용. 별도 페이지가 사라지므로 **전체 내용을 인라인**하는 것을 기본으로 잡았습니다. 짧은 요약만 원하시면 implement 단계에서 알려주세요.

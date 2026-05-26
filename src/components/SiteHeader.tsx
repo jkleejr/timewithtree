@@ -9,9 +9,7 @@ import logo from "@/assets/logo.png";
 
 const NAV_LINKS = [
   { to: "/about", label: "자작나무 소개" },
-  { to: "/aeroponics", label: "에어포트 재배" },
   { to: "/shop", label: "구매하기" },
-  { to: "/planting", label: "나무 관련 정보" },
 ];
 
 export const SiteHeader = () => {
