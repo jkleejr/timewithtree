@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { Check, Copy, CreditCard, Loader2, Wallet } from "lucide-react";
+import { Check, Copy, Loader2 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { BackButton } from "@/components/BackButton";
 import { Button } from "@/components/ui/button";
