@@ -4,10 +4,19 @@
 import r3Img1 from "@/assets/r3-1.jpg";
 import r3Img2 from "@/assets/r3-2.jpg";
 import r3Img3 from "@/assets/r3-3.jpg";
+import r4Img1 from "@/assets/r4-1.jpg";
+import r4Img2 from "@/assets/r4-2.jpg";
+import r4Img3 from "@/assets/r4-3.jpg";
+import r4Img4 from "@/assets/r4-4.jpg";
+
 
 
 // Type intentionally mirrors the previous Shopify shape so existing
 // components can consume products without refactoring.
+export interface ShopifyProductImage {
+  node: { url: string; altText: string | null };
+}
+
 export interface ShopifyProduct {
   node: {
     id: string;
@@ -19,8 +28,9 @@ export interface ShopifyProduct {
       minVariantPrice: { amount: string; currencyCode: string };
     };
     images: {
-      edges: Array<{ node: { url: string; altText: string | null } }>;
+      edges: ShopifyProductImage[];
     };
+    variantImages?: Record<string, ShopifyProductImage[]>;
     variants: {
       edges: Array<{
         node: {
@@ -63,6 +73,20 @@ export const LOCAL_PRODUCTS: ShopifyProduct[] = [
           { node: { url: r3Img3, altText: "R3 일자형 잭큐몬티 자작나무 전체 모습" } },
         ],
       },
+      variantImages: {
+        R3: [
+          { node: { url: r3Img1, altText: "R3 잭큐몬티 자작나무 수피 클로즈업" } },
+          { node: { url: r3Img2, altText: "R3 잭큐몬티 자작나무 줄기 측정" } },
+          { node: { url: r3Img3, altText: "R3 일자형 잭큐몬티 자작나무 전체 모습" } },
+        ],
+        R4: [
+          { node: { url: r4Img1, altText: "R4 잭큐몬티 자작나무 둘레 측정" } },
+          { node: { url: r4Img2, altText: "R4 잭큐몬티 자작나무 줄기 클로즈업" } },
+          { node: { url: r4Img3, altText: "R4 잭큐몬티 자작나무 전체 모습" } },
+          { node: { url: r4Img4, altText: "R4 일자형 잭큐몬티 자작나무 농장 전경" } },
+        ],
+      },
+
 
       variants: {
         edges: VARIANTS.map((v) => ({
