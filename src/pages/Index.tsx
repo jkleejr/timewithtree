@@ -244,38 +244,85 @@ const Index = () => {
           </div>
 
           {/* 묘목 식재 전 상식 */}
-          <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
-            <div className="md:col-span-4">
-              <h3 className="font-display font-bold font-sans md:text-3xl mb-4 text-5xl">
+          <div className="mt-4 border-t border-border pt-12 md:pt-16">
+            <div className="mb-8 md:mb-10">
+              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Tree Measurements</p>
+              <h3 className="font-display font-bold font-sans text-3xl md:text-4xl leading-tight">
                 묘목 식재 전 상식
               </h3>
-              <img
-                src={treeMeasurements}
-                alt="수목 측정 기준 (H, W, R, B) 도식"
-                loading="lazy"
-                className="w-40 md:w-48 h-auto"
-              />
             </div>
-            <ul className="md:col-span-8 grid gap-2 text-sm md:text-base leading-relaxed text-primary font-sans">
-              <li><strong>(H) 수고</strong> — 지면으로부터 수목의 맨 윗부분(상순의 끝)까지의 길이, 수목의 키. (단위 m)</li>
-              <li><strong>(W) 수관폭</strong> — 가지의 끝과 반대쪽 가지의 끝까지의 너비. (단위 m)</li>
-              <li><strong>(R) 근원직경</strong> — 줄기의 지면에 닿는 부분의 지름, 둘레를 π(3.14)로 나눈 값. (단위 cm)</li>
-              <li><strong>(B) 흉고직경</strong> — 지면으로부터 1m20cm 높이의 줄기 지름, 둘레를 π(3.14)로 나눈 값. (단위 cm)</li>
-            </ul>
+            <div className="grid md:grid-cols-12 gap-8 md:gap-10 items-stretch">
+              <figure className="md:col-span-5 bg-secondary/40 border border-border p-6 md:p-8 flex items-center justify-center">
+                <img
+                  src={treeMeasurements}
+                  alt="수목 측정 기준 (H, W, R, B) 도식"
+                  loading="lazy"
+                  className="w-full max-w-[280px] h-auto"
+                />
+              </figure>
+              <dl className="md:col-span-7 grid gap-px bg-border border border-border self-stretch content-start">
+                {[
+                  { k: "H", label: "수고", desc: "지면으로부터 수목의 맨 윗부분(상순의 끝)까지의 길이, 수목의 키.", unit: "m" },
+                  { k: "W", label: "수관폭", desc: "가지의 끝과 반대쪽 가지의 끝까지의 너비.", unit: "m" },
+                  { k: "R", label: "근원직경", desc: "줄기의 지면에 닿는 부분의 지름, 둘레를 π(3.14)로 나눈 값.", unit: "cm" },
+                  { k: "B", label: "흉고직경", desc: "지면으로부터 1m20cm 높이의 줄기 지름, 둘레를 π(3.14)로 나눈 값.", unit: "cm" },
+                ].map((item) => (
+                  <div key={item.k} className="bg-background flex items-start gap-4 p-4 md:p-5">
+                    <span className="font-display font-bold text-2xl md:text-3xl text-accent tabular-nums w-10 flex-shrink-0 leading-none pt-0.5">
+                      {item.k}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-sans font-bold text-base md:text-lg text-foreground leading-tight mb-1">
+                        {item.label}
+                      </p>
+                      <p className="text-sm leading-relaxed text-primary font-sans">
+                        {item.desc} <span className="text-muted-foreground">(단위 {item.unit})</span>
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </div>
 
           {/* 잘못된 식재 경고 */}
-          <div className="mt-12 md:mt-16 grid md:grid-cols-12 gap-8 md:gap-12 items-start">
-            <div className="md:col-span-6 flex flex-wrap items-start gap-4">
-              <img src={plantingMistakes} alt="잘못된 식재 예시" loading="lazy" className="w-full max-w-md h-auto" />
-              <img src={plantingCorrectVsWrong} alt="올바른 식재와 잘못된 식재 비교" loading="lazy" className="w-2/3 max-w-xs h-auto" />
+          <div className="mt-12 md:mt-16 border-t border-border pt-12 md:pt-16">
+            <div className="mb-8 md:mb-10">
+              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Common Mistakes</p>
+              <h3 className="font-display font-bold font-sans text-3xl md:text-4xl leading-tight">
+                잘못된 식재 예시
+              </h3>
             </div>
-            <ul className="md:col-span-6 grid gap-3 text-sm md:text-base leading-relaxed text-primary font-sans">
-              <li>❌ 묘목이 기울어져 있거나 뿌리가 뭉쳐있다</li>
-              <li>❌ 구덩이가 얕아서 뿌리가 밖으로 나온다</li>
-              <li>⚠️ 비탈진 경사면에 심을 때는 흙을 수평으로 하고 상단 경사면에 이어서 심지 않는다</li>
-              <li>⚠️ 식재 시 비료나 완숙(가스 발생이 끝나지 않은) 거름을 넣고 심을 경우, 가스 발생으로 인한 흙·뿌리 밀어냄 현상이 일어나므로 주의 바랍니다. 뿌리 활착이 끝나더라도 첫해는 소량만 주는 것이 적절합니다.</li>
-            </ul>
+            <div className="grid md:grid-cols-12 gap-8 md:gap-10 items-start">
+              <div className="md:col-span-5 grid gap-4">
+                <figure className="bg-secondary/40 border border-border p-4">
+                  <img src={plantingMistakes} alt="잘못된 식재 예시" loading="lazy" className="w-full h-auto" />
+                </figure>
+                <figure className="bg-secondary/40 border border-border p-4">
+                  <img src={plantingCorrectVsWrong} alt="올바른 식재와 잘못된 식재 비교" loading="lazy" className="w-full h-auto" />
+                </figure>
+              </div>
+              <ul className="md:col-span-7 grid gap-3 self-start">
+                <li className="flex gap-4 p-4 md:p-5 bg-destructive/5 border-l-4 border-destructive">
+                  <span className="font-display font-bold text-destructive text-lg leading-none pt-0.5">✕</span>
+                  <p className="text-sm md:text-base leading-relaxed text-primary font-sans">묘목이 기울어져 있거나 뿌리가 뭉쳐있다</p>
+                </li>
+                <li className="flex gap-4 p-4 md:p-5 bg-destructive/5 border-l-4 border-destructive">
+                  <span className="font-display font-bold text-destructive text-lg leading-none pt-0.5">✕</span>
+                  <p className="text-sm md:text-base leading-relaxed text-primary font-sans">구덩이가 얕아서 뿌리가 밖으로 나온다</p>
+                </li>
+                <li className="flex gap-4 p-4 md:p-5 bg-accent/10 border-l-4 border-accent">
+                  <span className="font-display font-bold text-accent text-lg leading-none pt-0.5">!</span>
+                  <p className="text-sm md:text-base leading-relaxed text-primary font-sans">비탈진 경사면에 심을 때는 흙을 수평으로 하고 상단 경사면에 이어서 심지 않는다</p>
+                </li>
+                <li className="flex gap-4 p-4 md:p-5 bg-accent/10 border-l-4 border-accent">
+                  <span className="font-display font-bold text-accent text-lg leading-none pt-0.5">!</span>
+                  <p className="text-sm md:text-base leading-relaxed text-primary font-sans">
+                    식재 시 비료나 완숙(가스 발생이 끝나지 않은) 거름을 넣고 심을 경우, 가스 발생으로 인한 흙·뿌리 밀어냄 현상이 일어나므로 주의 바랍니다. 뿌리 활착이 끝나더라도 첫해는 소량만 주는 것이 적절합니다.
+                  </p>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
