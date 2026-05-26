@@ -1,15 +1,46 @@
-## Shop page updates
+## 교환/환불 규정 + 방문 수령 안내 추가
 
-Two changes to `src/components/ShopBrowser.tsx` (the 구매하기 page):
+두 페이지(구매하기 `ShopBrowser`, 상품 상세 `ProductDetail`)의 하단 Accordion에 항목 2개를 추가합니다.
 
-### 1. Top heading: "잭큐몬티 자작나무"
-Replace the current page title "구매하기" at the very top with **"잭큐몬티 자작나무"**, matching the reference. The duplicate "잭큐몬티 자작나무" heading currently shown above the variant list (right column) will be removed since it would now be redundant.
+### 1) 교환 / 환불 규정 박스
 
-### 2. Red "용달" badge before each price
-In every variant row in the product list, add a small red outlined box containing the text **용달** immediately to the left of the price (e.g. `[용달] 40,000원`). Styled with a red border + red text on white background, compact padding, matching the reference screenshot.
+`나무 배송 안내` / `원산지` 다음, **그리고 방문 수령 안내 다음**에 `교환 / 환불 규정` Accordion 항목을 추가합니다.
 
-### Technical notes
-- File: `src/components/ShopBrowser.tsx` only
-- Title change: update the `<h1>` in the header block (and the `title` default prop) to "잭큐몬티 자작나무"; delete the right-column `<h2>잭큐몬티 자작나무</h2>`
-- Badge: inline `<span>` with `border border-red-600 text-red-600 text-xs px-1.5 py-0.5` next to the price span
-- No backend/data changes
+- 내용은 아직 미정이므로 임시 placeholder 표시:
+  > "상세 내용은 추후 업데이트 예정입니다."
+- 추후 사용자가 내용을 제공하면 텍스트만 교체합니다.
+
+### 2) 방문 구입 또는 직접 나무 수령시 안내
+
+`원산지` 바로 다음에 새 Accordion 항목 추가. 내용:
+
+```
+저희 나무와 걷는 시간 농장은 세종시 장군면 송문리와 
+공주시 정안면 대산리의 2개 지역에 농장이 있습니다.
+
+· 농장 방문을 통해 구입을 원하시거나 온라인 주문 후 직접 
+  나무를 가져가실 경우 아래의 번호로 전화 주시면 상세 안내 드리겠습니다.
+
+· 방문 수령 시 나무 상태를 직접 확인하신 후 선택하여 구매하실 수 있습니다.
+   연락처 : 010-8925-6251
+
+· 영업 시간
+   평일 : 오전 9시 ~ 오후 6시
+         (방문 2시간 전에 전화 연락 후 방문 부탁드립니다.)
+   주말 : 방문 1일 전 전화 연락 후 방문
+         (개인 사정으로 방문이 어려울 수도 있습니다.)
+```
+
+### 최종 Accordion 순서
+
+1. 나무 배송 안내 (기존)
+2. 원산지 (기존)
+3. 방문 구입 또는 직접 나무 수령시 안내 (신규)
+4. 교환 / 환불 규정 (신규, placeholder)
+
+### 변경 파일
+
+- `src/components/ShopBrowser.tsx` — Accordion에 항목 2개 추가
+- `src/pages/ProductDetail.tsx` — Accordion에 항목 2개 추가
+
+기존 `/returns` 및 `/pickup-guide` 라우트 페이지는 그대로 둡니다(푸터 링크 유지).
