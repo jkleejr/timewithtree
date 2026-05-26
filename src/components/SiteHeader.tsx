@@ -113,12 +113,15 @@ export const SiteHeader = () => {
               </div>
               <nav className="flex flex-col py-2">
                 {NAV_LINKS.map((l) => {
-                  const active = location.pathname === l.to;
+                  const active = !l.hash && location.pathname === l.to;
                   return (
                     <Link
-                      key={l.to}
-                      to={l.to}
-                      onClick={() => setOpen(false)}
+                      key={l.label}
+                      to={l.hash ? `/#${l.hash}` : l.to}
+                      onClick={(e) => {
+                        setOpen(false);
+                        if (l.hash) handleHashNav(e, l.hash);
+                      }}
                       className={`px-5 py-4 text-base border-b border-border/60 ${
                         active ? "font-semibold bg-secondary/50" : ""
                       }`}
