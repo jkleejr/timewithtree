@@ -55,6 +55,24 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
     }
   }, [productParam, products]);
 
+  // Preload all variant images so switching variants is instant
+  useEffect(() => {
+    if (products.length === 0) return;
+    const urls = new Set<string>();
+    for (const p of products) {
+      for (const e of p.node.images.edges) urls.add(e.node.url);
+      if (p.node.variantImages) {
+        for (const arr of Object.values(p.node.variantImages)) {
+          for (const e of arr) urls.add(e.node.url);
+        }
+      }
+    }
+    urls.forEach((url) => {
+      const img = new Image();
+      img.src = url;
+    });
+  }, [products]);
+
   const addItem = useCartStore((s) => s.addItem);
   const isAdding = useCartStore((s) => s.isLoading);
   const cartItems = useCartStore((s) => s.items);
@@ -151,6 +169,8 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                       src={images[activeImage].node.url}
                       alt={images[activeImage].node.altText || activeProduct.node.title}
                       className="w-full h-full object-cover"
+                      decoding="async"
+                      fetchPriority="high"
                     />
                   </button>
                 ) : (
