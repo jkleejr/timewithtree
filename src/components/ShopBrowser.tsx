@@ -30,7 +30,7 @@ interface ShopBrowserProps {
   showBackButton?: boolean;
 }
 
-export const ShopBrowser = ({ showHeader = true, title = "잭큐몬티 자작나무", showBackButton = true }: ShopBrowserProps) => {
+export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBackButton = true }: ShopBrowserProps) => {
   const { data: products = [], isLoading } = useShopifyProducts(50);
   const [searchParams] = useSearchParams();
   const productParam = searchParams.get("product");

@@ -57,13 +57,13 @@ const VARIANTS = [
   { id: "jacq-dagan", title: "다간형", amount: "200000" },
 ];
 
-const DESCRIPTION = `네덜란드에서 조직배양한 묘목을 국내에서 재배한 잭큐몬티 자작나무입니다.\n에어포트(Air-Pot)에서 재배되어 뿌리 품질이 우수하고, 연중 식재가 가능하며 식재 후 활착이 매우 빠릅니다.\n\n• 사이즈: R3 / R4 / R5 / 다간형\n• 즉시 배송 가능`;
+const DESCRIPTION = `네덜란드에서 조직배양한 묘목을 국내에서 재배한 구매하기입니다.\n에어포트(Air-Pot)에서 재배되어 뿌리 품질이 우수하고, 연중 식재가 가능하며 식재 후 활착이 매우 빠릅니다.\n\n• 사이즈: R3 / R4 / R5 / 다간형\n• 즉시 배송 가능`;
 
 export const LOCAL_PRODUCTS: ShopifyProduct[] = [
   {
     node: {
       id: "local-jacquemontii",
-      title: "잭큐몬티 자작나무",
+      title: "구매하기",
       description: DESCRIPTION,
       descriptionHtml: `<p>${DESCRIPTION.replace(/\n\n/g, "</p><p>").replace(/\n/g, "<br/>")}</p>`,
       handle: "jacquemontii-birch",
@@ -72,30 +72,30 @@ export const LOCAL_PRODUCTS: ShopifyProduct[] = [
       },
       images: {
         edges: [
-          { node: { url: r3Img1, altText: "R3 잭큐몬티 자작나무 수피 클로즈업" } },
-          { node: { url: r3Img2, altText: "R3 잭큐몬티 자작나무 줄기 측정" } },
-          { node: { url: r3Img3, altText: "R3 일자형 잭큐몬티 자작나무 전체 모습" } },
+          { node: { url: r3Img1, altText: "R3 구매하기 수피 클로즈업" } },
+          { node: { url: r3Img2, altText: "R3 구매하기 줄기 측정" } },
+          { node: { url: r3Img3, altText: "R3 일자형 구매하기 전체 모습" } },
         ],
       },
       variantImages: {
         R3: [
-          { node: { url: r3Img1, altText: "R3 잭큐몬티 자작나무 수피 클로즈업" } },
-          { node: { url: r3Img2, altText: "R3 잭큐몬티 자작나무 줄기 측정" } },
-          { node: { url: r3Img3, altText: "R3 일자형 잭큐몬티 자작나무 전체 모습" } },
+          { node: { url: r3Img1, altText: "R3 구매하기 수피 클로즈업" } },
+          { node: { url: r3Img2, altText: "R3 구매하기 줄기 측정" } },
+          { node: { url: r3Img3, altText: "R3 일자형 구매하기 전체 모습" } },
         ],
         R4: [
-          { node: { url: r4Img1, altText: "R4 잭큐몬티 자작나무 둘레 측정" } },
-          { node: { url: r4Img2, altText: "R4 잭큐몬티 자작나무 줄기 클로즈업" } },
-          { node: { url: r4Img3, altText: "R4 잭큐몬티 자작나무 전체 모습" } },
-          { node: { url: r4Img4, altText: "R4 일자형 잭큐몬티 자작나무 농장 전경" } },
+          { node: { url: r4Img1, altText: "R4 구매하기 둘레 측정" } },
+          { node: { url: r4Img2, altText: "R4 구매하기 줄기 클로즈업" } },
+          { node: { url: r4Img3, altText: "R4 구매하기 전체 모습" } },
+          { node: { url: r4Img4, altText: "R4 일자형 구매하기 농장 전경" } },
         ],
         R5: [
-          { node: { url: r5Img1, altText: "R5 잭큐몬티 자작나무 수피 클로즈업" } },
-          { node: { url: r5Img2, altText: "R5 잭큐몬티 자작나무 전체 모습" } },
+          { node: { url: r5Img1, altText: "R5 구매하기 수피 클로즈업" } },
+          { node: { url: r5Img2, altText: "R5 구매하기 전체 모습" } },
         ],
         "다간형": [
-          { node: { url: daganImg1, altText: "다간형 잭큐몬티 자작나무 전체 모습" } },
-          { node: { url: daganImg2, altText: "다간형 잭큐몬티 자작나무 농장 전경" } },
+          { node: { url: daganImg1, altText: "다간형 구매하기 전체 모습" } },
+          { node: { url: daganImg2, altText: "다간형 구매하기 농장 전경" } },
         ],
       },
 
