@@ -90,8 +90,8 @@ export const LOCAL_PRODUCTS: ShopifyProduct[] = [
           { node: { url: r4Img4, altText: "R4 일자형 구매하기 농장 전경" } },
         ],
         R5: [
-          { node: { url: r5Img1, altText: "R5 잭큐몬티 자작나무 수피 클로즈업" } },
-          { node: { url: r5Img2, altText: "R5 잭큐몬티 자작나무 전체 모습" } },
+          { node: { url: r5Img1, altText: "R5 구매하기 수피 클로즈업" } },
+          { node: { url: r5Img2, altText: "R5 구매하기 전체 모습" } },
         ],
         "다간형": [
           { node: { url: daganImg1, altText: "다간형 잭큐몬티 자작나무 전체 모습" } },
