@@ -30,7 +30,7 @@ interface ShopBrowserProps {
   showBackButton?: boolean;
 }
 
-export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBackButton = true }: ShopBrowserProps) => {
+export const ShopBrowser = ({ showHeader = true, title = "잭큐몬티 자작나무", showBackButton = true }: ShopBrowserProps) => {
   const { data: products = [], isLoading } = useShopifyProducts(50);
   const [searchParams] = useSearchParams();
   const productParam = searchParams.get("product");
@@ -279,10 +279,8 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
             </div>
 
             <div className="md:pt-14">
-              <h2 className="font-display font-bold mb-4 font-sans text-2xl sm:text-3xl md:text-3xl">
-                잭큐몬티 자작나무
-              </h2>
               <div className="border border-border">
+
                 <ul className="divide-y divide-border">
                   {sorted.flatMap((product) => {
                     const p = product.node;
@@ -326,9 +324,14 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                               <span className="text-foreground">즉시배송 가능</span>
                             </p>
                           </div>
-                          <span className="text-sm tabular-nums font-semibold whitespace-nowrap ml-auto sm:ml-0 font-sans">
-                            {formatPrice(variant.price.amount, variant.price.currencyCode)}
-                          </span>
+                          <div className="flex items-center gap-1.5 whitespace-nowrap ml-auto sm:ml-0">
+                            <span className="border border-red-600 text-red-600 text-[10px] font-semibold px-1.5 py-0.5 leading-none">
+                              용달
+                            </span>
+                            <span className="text-sm tabular-nums font-semibold font-sans">
+                              {formatPrice(variant.price.amount, variant.price.currencyCode)}
+                            </span>
+                          </div>
                           <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
                             <div
                               className="inline-flex items-center border border-border font-sans"
