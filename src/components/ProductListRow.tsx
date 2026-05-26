@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Minus, Plus, ShoppingCart, Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import type { ShopifyProduct } from "@/lib/shopify";
+import type { ShopifyProduct } from "@/data/products";
 import { formatPrice } from "@/lib/utils";
 import { useCartStore } from "@/stores/cartStore";
 import { Button } from "@/components/ui/button";
