@@ -280,20 +280,16 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                           }`}
                           onClick={() => selectProduct(p.id, variant.id)}
                         >
-                          {vi === 0 ? (
-                            <div className="w-12 h-12 bg-secondary overflow-hidden flex-shrink-0">
-                              {thumb && (
-                                <img
-                                  src={thumb.url}
-                                  alt={p.title}
-                                  className="w-full h-full object-cover"
-                                  loading="lazy"
-                                />
-                              )}
-                            </div>
-                          ) : (
-                            <div className="w-12 flex-shrink-0" />
-                          )}
+                          <div className="w-12 h-12 bg-secondary overflow-hidden flex-shrink-0">
+                            {thumb && (
+                              <img
+                                src={thumb.url}
+                                alt={`${p.title} ${variant.title}`}
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                              />
+                            )}
+                          </div>
                           <div className="flex-1 min-w-0">
                             {vi === 0 && (
                               <p className="font-bold leading-tight truncate font-sans text-sm sm:text-base">
