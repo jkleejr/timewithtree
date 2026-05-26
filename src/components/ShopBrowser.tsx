@@ -65,8 +65,13 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
 
   const activeProduct =
     sorted.find((p) => p.node.id === activeProductId) ?? sorted[0];
-  const images = activeProduct?.node.images.edges ?? [];
   const variants = activeProduct?.node.variants.edges ?? [];
+  const activeVariantTitle = variants[0]?.node.title;
+  const images =
+    (activeProduct && activeVariantTitle
+      ? activeProduct.node.variantImages?.[activeVariantTitle]
+      : undefined) ?? activeProduct?.node.images.edges ?? [];
+
 
   const selectProduct = (id: string) => {
     setActiveProductId(id);
@@ -259,8 +264,8 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
                   {sorted.flatMap((product) => {
                     const p = product.node;
                     const isActive = p.id === activeProduct.node.id;
-                    const thumb = p.images.edges[0]?.node;
                     return p.variants.edges.map((v, vi) => {
+                      const thumb = p.variantImages?.[v.node.title]?.[0]?.node ?? p.images.edges[0]?.node;
                       const variant = v.node;
                       const qty = getQty(variant.id);
                       const inCart = cartQtyByVariant[variant.id] ?? 0;
