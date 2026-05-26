@@ -34,14 +34,15 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBac
   const { data: products = [], isLoading } = useShopifyProducts(50);
   const [searchParams] = useSearchParams();
   const productParam = searchParams.get("product");
-  const [sort, setSort] = useState<SortKey>("newest");
   const [activeProductId, setActiveProductId] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [pendingAdd, setPendingAdd] = useState<{
     product: ShopifyProduct;
     variantId: string;
   } | null>(null);
+
 
   useEffect(() => {
     if (!productParam || products.length === 0) return;
