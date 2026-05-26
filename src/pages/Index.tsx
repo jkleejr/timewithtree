@@ -129,23 +129,22 @@ const Index = () => {
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>네덜란드에서 조직배양한 묘목 재배</span></li>
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
               </ul>
-              <div className="mt-2 sm:mt-4">
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="rounded-none bg-transparent border-white text-white hover:bg-white hover:text-foreground"
-                >
-                  <Link to="/about">자작나무 소개</Link>
-                </Button>
-              </div>
+            </div>
+            <div className="pointer-events-auto mt-auto self-end">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-none bg-white text-foreground border border-white hover:bg-white/90 shadow-lg"
+              >
+                <Link to="/about">자작나무 소개</Link>
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
       {/* 에어포트 재배 (inline, expanded) */}
-      <section className="border-t border-border bg-secondary/30 py-16 md:py-24">
+      <section id="airpot" className="scroll-mt-24 border-t border-border bg-secondary/30 py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="max-w-3xl mb-12 md:mb-16">
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">Air-Pot Cultivation</p>
