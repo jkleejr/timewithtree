@@ -211,25 +211,25 @@ const Index = () => {
                   </article>
                 );
               })}
-            </div>
-
-            {/* Caveat — full-width banner, visually distinct */}
-            <aside className="mt-10 md:mt-12 bg-background border border-border border-l-4 border-l-accent p-6 md:p-8 flex items-start gap-5 md:gap-6">
-              <span aria-hidden="true" className="text-2xl md:text-3xl leading-none pt-0.5">⚠️</span>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-baseline gap-3 mb-2">
-                  <p className="font-sans text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground">
+              <article className="bg-background p-5 md:p-7 flex flex-col gap-4 min-h-[170px] md:min-h-[200px] border-l-4 border-l-accent col-span-2 md:col-span-1">
+                <div className="flex items-center justify-between">
+                  <span aria-hidden="true" className="text-xl md:text-2xl leading-none">⚠️</span>
+                  <span className="font-sans text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground">
                     주의사항
-                  </p>
-                  <h3 className="font-sans font-bold text-base md:text-lg text-foreground">단점</h3>
+                  </span>
                 </div>
-                <p className="text-sm md:text-base leading-relaxed text-primary">
-                  일반 화분보다 <span className="font-semibold text-foreground">물이 빨리 마르므로 관수 관리가 중요</span>합니다.
-                  가격이 일반 화분보다 비싸며, 바람이 강한 환경에서는 건조 스트레스에 유의해야 합니다.
-                </p>
-              </div>
-            </aside>
+                <div className="mt-auto">
+                  <h3 className="font-sans font-bold text-sm md:text-base text-foreground leading-tight mb-1.5">
+                    단점
+                  </h3>
+                  <p className="text-xs md:text-sm text-primary leading-snug">
+                    일반 화분보다 <span className="font-semibold text-foreground">물이 빨리 마르므로 관수 관리가 중요</span>합니다. 가격이 비싸고 바람이 강한 환경에서는 건조 스트레스에 유의해야 합니다.
+                  </p>
+                </div>
+              </article>
+            </div>
           </div>
+
         </div>
       </section>
 
