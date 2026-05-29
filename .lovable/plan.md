@@ -1,51 +1,37 @@
-## 두 섹션 디자인 개선 계획
+## Verification of 구매하기 checklist
 
-현재 두 페이지(`Aeroponics.tsx`, `Planting.tsx`)는 단순한 세로 텍스트 나열이거나 번호만 강조된 2단 그리드라 정보량 대비 시각적 위계가 약합니다. 브랜드(자연/농장, 차분한 톤, 녹색 액센트)를 유지하면서 에디토리얼한 느낌으로 다듬습니다.
+I audited `ShopBrowser.tsx`, `Auth.tsx`, and `Cart.tsx` against your list.
 
-### 공통 방향
+### ✅ Already done
 
-- 섹션 상단에 **PLANTING GUIDE / AIR POT CULTIVATION** 식의 영문 eyebrow + 큰 한글 헤드라인 + 리드 문단으로 통일된 인트로 헤더
-- 카드 사이 얇은 hairline divider (현재 스타일 유지)와 충분한 패딩으로 "신문/매뉴얼" 같은 정돈된 느낌
-- 모바일 1열 / 태블릿~데스크탑 2열 그리드 (`md:grid-cols-2`), 카드 내부는 여유 있는 여백
-- 색상은 기존 디자인 토큰(`text-primary`, `border-border`, 녹색 accent) 사용. 새 색 추가 없음
+**2) Image click to zoom** — `ShopBrowser.tsx` lines 168–181 wrap the main product image in a button that opens a full-screen lightbox (`Dialog`, lines 491–532) with prev/next + close.
 
-### 1) `Aeroponics.tsx` — 에어포트 재배
+**3) "최신순 / 가격 낮은 순 / 가격 높은 순" sort removed** — no sort dropdown remains in `ShopBrowser.tsx` or `Shop.tsx`. The product list just uses `const sorted = products;` (no UI control).
 
-현재 9개 article이 단순 세로 나열되어 있고, 하단에 중복된 "✔ 빠르고 균일한 성장" 항목 + ⚠️ 단점 박스가 따로 떠 있어 구조가 어색합니다.
+**4) 나무 배송 안내 accordion** — `ShopBrowser.tsx` lines 249–272 already contain the exact copy you specified, inside an `Accordion` that expands on click:
+- 에어포트 식재 안내 + 받침대 분리 문구
+- 용달 배송 안내 (택배 불가, 화물차, 별도 청구, 직접 지불)
 
-개선:
+**5) 원산지 accordion** — lines 273–278 show "네덜란드에서 조직배양한 묘목을 국내에서 재배" on click.
 
-- 9개 → 중복 제거 후 **8개 benefit 카드**를 `01 ~ 08` 번호 시스템으로 정리 (스크린샷 스타일 유지·확장)
-- 각 카드 구성:
-  - 큰 녹색 번호 `01` (display 폰트, tabular-nums)
-  - 작은 카테고리 라벨 (예: ROOT SYSTEM, GROWTH, TRANSPLANT) — 영문 uppercase tracking
-  - 한글 제목 (semibold)
-  - 본문 한 단락
-- 카드 사이를 border로 구분한 **bento-style grid** (행/열 hairline) — 현재 스크린샷의 정렬은 좋으니 유지하고, 라벨·여백·typography만 다듬음
-- 마지막 ⚠️ **단점(참고)** 박스는 그리드와 분리된 별도의 강조 박스로 재구성: 좌측에 얇은 녹색 세로선 + "참고 NOTES" eyebrow + 항목 bullet 리스트로 정돈
-- 인트로에 비어있는 `<p>` 제거하고 "AIR POT CULTIVATION" eyebrow 추가
+**Login & Cart pages** — both load and function:
+- `/auth` (`Auth.tsx`) uses Lovable Cloud auth with email/password validation via zod.
+- `/cart` (`Cart.tsx`) reads from `useCartStore`, supports quantity update / remove / checkout navigation.
 
-### 2) `Planting.tsx` — 나무 관련 정보 · 식재방법
+### ⚠️ Needs your action — item 1 (prices)
 
-현재 단일 article 안에 `STEP 1 … STEP 7`이 이모지 번호와 함께 한 문단으로 묶여 있어, 스크린샷에 보이는 "STEP 단위 카드 그리드"와 실제 코드가 일치하지 않습니다. (스크린샷은 이상적인 형태로 보입니다.)
+Product prices are **not** stored in this codebase. They are pulled live from your Shopify store via the Storefront API (`useShopifyProducts`). To set:
+- R3 = ₩120,000
+- R4 = ₩160,000
+- R5 = ₩200,000
+- 다간형 = ₩200,000
 
-개선:
+…they must be updated on the variants inside your **Shopify admin** (Products → variant → Price). Once saved there, the storefront will reflect them automatically — no code change needed.
 
-- 7개 식재 단계를 배열로 분리 → `STEP 1 … STEP 7` 카드 그리드 (2열, hairline divider)
-- 각 카드: 녹색 `STEP N` 라벨 + 단계 본문
-- 그 아래 **🌿 멀칭** 항목을 별도 강조 박스(왼쪽 녹색 세로선 + 아이콘 + 설명)로 분리
-- **묘목 식재 전 상식** 섹션:
-  - 현재 측정 다이어그램 이미지 + 4개 약어 설명 → 정의 리스트(`H / W / R / B`) 스타일로 정돈 (왼쪽 큰 글자 약어, 오른쪽 설명)
-  - 잘못된 식재/올바른 식재 비교 이미지는 캡션 추가 + 2열 정렬 정리, ❌/⚠️ 주의사항은 카드형 노트로 분리
-- 인트로 리드 문단 보강: 스크린샷처럼 "에어포트에서 자란 자작나무는 연중 식재가 가능하며 활착이 매우 빠릅니다." 한 줄 추가
+### Suggested next step
 
-### 변경 파일
+Switch to build mode if you'd like me to:
+1. QA the live preview by clicking through Shop → image zoom → accordions → add-to-cart → cart → login (and report anything broken with screenshots), and/or
+2. Pull current Shopify prices to confirm whether R3/R4/R5/다간형 are already correct or still need editing in Shopify.
 
-- `src/pages/Aeroponics.tsx` — 데이터 배열 추출 + bento 카드 그리드 + 단점/참고 박스 분리
-- `src/pages/Planting.tsx` — STEP 배열 추출 + 카드 그리드 + 멀칭/주의사항 강조 박스 분리
-
-### 다루지 않는 것
-
-- 새로운 이미지 생성/교체 (`tree-measurements.png` 등 기존 자산 그대로 사용)
-- 라우팅, 데이터 구조, 백엔드 변경
-- 색상 토큰 추가 (기존 디자인 시스템 내에서 처리)
+No code changes are required for items 2–5; item 1 is a Shopify admin edit.
