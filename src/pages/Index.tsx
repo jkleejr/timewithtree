@@ -219,7 +219,7 @@ const Index = () => {
               <div className="flex-1 min-w-0">
                 <div className="flex items-baseline gap-3 mb-2">
                   <p className="font-sans text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground">
-                    Caution
+                    주의사항
                   </p>
                   <h3 className="font-sans font-bold text-base md:text-lg text-foreground">단점</h3>
                 </div>
