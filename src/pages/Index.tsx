@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, RotateCcw, Sprout, Droplets, Wind, ShieldCheck, TrendingUp, TreePine, type LucideIcon } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { ShopBrowser } from "@/components/ShopBrowser";
 import { Button } from "@/components/ui/button";
@@ -23,14 +23,14 @@ const heroImages = [
   { src: heroBirch5, alt: "Detailed close-up of Jacquemontii birch trunks with autumn foliage" },
 ];
 
-const airpotBenefits = [
-  { num: "01", title: "뿌리 회전 완전 방지", desc: "옆면 통기 구멍으로 뿌리 끝이 공기와 만나 자연 건조되면서 뺑뺑이 현상 없이 방사형으로 발달합니다." },
-  { num: "02", title: "잔뿌리 폭발적 증가", desc: "뿌리 끝이 지속적으로 분지되어 양분·수분 흡수력이 크게 향상됩니다." },
-  { num: "03", title: "과습 & 뿌리썩음 예방", desc: "옆면 전체가 통풍구 역할을 해 배수와 증발이 동시에 이루어집니다." },
-  { num: "04", title: "토양 산소 공급", desc: "뿌리 호흡이 활발해져 건강한 뿌리 시스템을 형성합니다." },
-  { num: "05", title: "이식 성공률 매우 높음", desc: "잔뿌리가 풍부해 식재 후 활착이 빠르고 고사율이 현저히 낮습니다." },
-  { num: "06", title: "생육 속도 & 균일성 향상", desc: "개체 간 편차가 줄고 동일 조건에서 성장 속도가 빨라집니다." },
-  { num: "07", title: "대형 수목 재배에 유리", desc: "뿌리 품질이 상품성으로 직결되는 조경수 재배에 특히 적합합니다." },
+const airpotBenefits: { num: string; icon: LucideIcon; title: string; desc: string }[] = [
+  { num: "01", icon: RotateCcw, title: "뿌리 회전 방지", desc: "서클링 현상 차단" },
+  { num: "02", icon: Sprout, title: "잔뿌리 폭발적 증가", desc: "양분·수분 흡수력 향상" },
+  { num: "03", icon: Droplets, title: "과습 & 뿌리썩음 예방", desc: "배수와 통기 동시 작용" },
+  { num: "04", icon: Wind, title: "토양 산소 공급", desc: "활발한 뿌리 호흡" },
+  { num: "05", icon: ShieldCheck, title: "이식 성공률 높음", desc: "활착 빠름, 고사율 낮음" },
+  { num: "06", icon: TrendingUp, title: "생육 속도 & 균일성", desc: "개체 편차 감소" },
+  { num: "07", icon: TreePine, title: "대형 수목 재배 유리", desc: "조경수 상품성 확보" },
 ];
 
 const plantingSteps = [
@@ -188,25 +188,29 @@ const Index = () => {
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground pt-8 md:pt-10 mb-8 md:mb-10">
               Key Benefits
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-24">
-              {airpotBenefits.map((b, i) => (
-                <article
-                  key={b.num}
-                  className={`flex gap-6 md:gap-8 py-6 md:py-8 border-t border-border ${
-                    i === 0 ? "md:border-t-0" : ""
-                  } ${i === 1 ? "md:border-t-0" : ""}`}
-                >
-                  <span className="font-display text-3xl md:text-4xl font-bold text-accent/30 tabular-nums leading-none pt-1 w-12 md:w-14 flex-shrink-0">
-                    {b.num}
-                  </span>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-sans font-bold text-base md:text-lg text-foreground mb-2 leading-tight">
-                      {b.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-primary">{b.desc}</p>
-                  </div>
-                </article>
-              ))}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-border border border-border">
+              {airpotBenefits.map((b) => {
+                const Icon = b.icon;
+                return (
+                  <article
+                    key={b.num}
+                    className="bg-background p-5 md:p-7 flex flex-col gap-4 min-h-[170px] md:min-h-[200px]"
+                  >
+                    <div className="flex items-center justify-between">
+                      <Icon className="h-6 w-6 md:h-7 md:w-7 text-accent" strokeWidth={1.5} aria-hidden="true" />
+                      <span className="font-display text-xs md:text-sm font-semibold text-muted-foreground tabular-nums tracking-wider">
+                        {b.num}
+                      </span>
+                    </div>
+                    <div className="mt-auto">
+                      <h3 className="font-sans font-bold text-sm md:text-base text-foreground leading-tight mb-1.5">
+                        {b.title}
+                      </h3>
+                      <p className="text-xs md:text-sm text-muted-foreground leading-snug">{b.desc}</p>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
 
             {/* Caveat — full-width banner, visually distinct */}
