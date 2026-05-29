@@ -183,28 +183,48 @@ const Index = () => {
             </figure>
           </div>
 
-          {/* Benefits grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
-            {airpotBenefits.map((b) => (
-              <article key={b.num} className="bg-background p-6 md:p-8 flex flex-col gap-3">
-                <span className="font-display text-3xl md:text-4xl font-bold text-accent tabular-nums">
-                  {b.num}
-                </span>
-                <h3 className="font-display font-semibold font-sans text-lg md:text-xl text-foreground">
-                  {b.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-primary">{b.desc}</p>
-              </article>
-            ))}
-            <article className="bg-background p-6 md:p-8 flex flex-col gap-3 border-l-4 border-accent">
-              <span className="font-sans text-xs uppercase tracking-[0.2em] text-muted-foreground">참고</span>
-              <h3 className="font-display font-semibold font-sans text-lg md:text-xl text-foreground">
-                ⚠️ 단점
-              </h3>
-              <p className="text-sm leading-relaxed text-primary">
-                물이 빨리 마름 → 관수 관리 중요. 가격이 일반 화분보다 비싸고, 바람 강하면 건조 스트레스 가능.
-              </p>
-            </article>
+          {/* Benefits — editorial list */}
+          <div className="border-t border-border">
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground pt-8 md:pt-10 mb-8 md:mb-10">
+              Key Benefits
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-24">
+              {airpotBenefits.map((b, i) => (
+                <article
+                  key={b.num}
+                  className={`flex gap-6 md:gap-8 py-6 md:py-8 border-t border-border ${
+                    i === 0 ? "md:border-t-0" : ""
+                  } ${i === 1 ? "md:border-t-0" : ""}`}
+                >
+                  <span className="font-display text-3xl md:text-4xl font-bold text-accent/30 tabular-nums leading-none pt-1 w-12 md:w-14 flex-shrink-0">
+                    {b.num}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-sans font-bold text-base md:text-lg text-foreground mb-2 leading-tight">
+                      {b.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-primary">{b.desc}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            {/* Caveat — full-width banner, visually distinct */}
+            <aside className="mt-10 md:mt-12 bg-background border border-border border-l-4 border-l-accent p-6 md:p-8 flex items-start gap-5 md:gap-6">
+              <span aria-hidden="true" className="text-2xl md:text-3xl leading-none pt-0.5">⚠️</span>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-baseline gap-3 mb-2">
+                  <p className="font-sans text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground">
+                    Caution
+                  </p>
+                  <h3 className="font-sans font-bold text-base md:text-lg text-foreground">단점</h3>
+                </div>
+                <p className="text-sm md:text-base leading-relaxed text-primary">
+                  일반 화분보다 <span className="font-semibold text-foreground">물이 빨리 마르므로 관수 관리가 중요</span>합니다.
+                  가격이 일반 화분보다 비싸며, 바람이 강한 환경에서는 건조 스트레스에 유의해야 합니다.
+                </p>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
