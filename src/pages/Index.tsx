@@ -188,25 +188,29 @@ const Index = () => {
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground pt-8 md:pt-10 mb-8 md:mb-10">
               Key Benefits
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-24">
-              {airpotBenefits.map((b, i) => (
-                <article
-                  key={b.num}
-                  className={`flex gap-6 md:gap-8 py-6 md:py-8 border-t border-border ${
-                    i === 0 ? "md:border-t-0" : ""
-                  } ${i === 1 ? "md:border-t-0" : ""}`}
-                >
-                  <span className="font-display text-3xl md:text-4xl font-bold text-accent/30 tabular-nums leading-none pt-1 w-12 md:w-14 flex-shrink-0">
-                    {b.num}
-                  </span>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-sans font-bold text-base md:text-lg text-foreground mb-2 leading-tight">
-                      {b.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-primary">{b.desc}</p>
-                  </div>
-                </article>
-              ))}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-border border border-border">
+              {airpotBenefits.map((b) => {
+                const Icon = b.icon;
+                return (
+                  <article
+                    key={b.num}
+                    className="bg-background p-5 md:p-7 flex flex-col gap-4 min-h-[170px] md:min-h-[200px]"
+                  >
+                    <div className="flex items-center justify-between">
+                      <Icon className="h-6 w-6 md:h-7 md:w-7 text-accent" strokeWidth={1.5} aria-hidden="true" />
+                      <span className="font-display text-xs md:text-sm font-semibold text-muted-foreground tabular-nums tracking-wider">
+                        {b.num}
+                      </span>
+                    </div>
+                    <div className="mt-auto">
+                      <h3 className="font-sans font-bold text-sm md:text-base text-foreground leading-tight mb-1.5">
+                        {b.title}
+                      </h3>
+                      <p className="text-xs md:text-sm text-muted-foreground leading-snug">{b.desc}</p>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
 
             {/* Caveat — full-width banner, visually distinct */}
