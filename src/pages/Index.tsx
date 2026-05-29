@@ -206,7 +206,7 @@ const Index = () => {
                       <h3 className="font-sans font-bold text-sm md:text-base text-foreground leading-tight mb-1.5">
                         {b.title}
                       </h3>
-                      <p className="text-xs md:text-sm text-muted-foreground leading-snug">{b.desc}</p>
+                      <p className="text-xs md:text-sm text-primary leading-snug">{b.desc}</p>
                     </div>
                   </article>
                 );
@@ -253,7 +253,7 @@ const Index = () => {
               <article key={s.num} className="bg-background p-5 md:p-6 flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <span className="font-display text-2xl font-bold text-accent tabular-nums">
-                    STEP {s.num}
+                    {s.num}단계
                   </span>
                 </div>
                 <p className="text-sm leading-relaxed text-primary">{s.text}</p>
@@ -271,7 +271,7 @@ const Index = () => {
           <div className="mt-4 border-t border-border pt-12 md:pt-16">
             <div className="mb-8 md:mb-10">
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">수목 측정</p>
-              <h3 className="font-display font-bold font-sans md:text-5xl leading-tight text-5xl">
+              <h3 className="font-display font-bold font-sans text-3xl md:text-4xl leading-tight">
                 묘목 식재 전 상식
               </h3>
             </div>
@@ -313,7 +313,7 @@ const Index = () => {
           <div className="mt-12 md:mt-16 border-t border-border pt-12 md:pt-16">
             <div className="mb-8 md:mb-10">
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">흔한 실수</p>
-              <h3 className="font-display font-bold font-sans md:text-4xl leading-tight text-5xl">
+              <h3 className="font-display font-bold font-sans text-3xl md:text-4xl leading-tight">
                 잘못된 식재 예시
               </h3>
             </div>
@@ -352,7 +352,7 @@ const Index = () => {
       </section>
 
       {/* Shop */}
-      <section id="shop" className="border-t border-border pt-6 md:pt-10 pb-8 md:pb-12">
+      <section id="shop" className="border-t border-border py-16 md:py-24">
         <ShopBrowser showBackButton={false} title="구매하기" label="상점" />
       </section>
     </SiteLayout>
