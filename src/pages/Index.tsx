@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, RotateCcw, Sprout, Droplets, Wind, ShieldCheck, TrendingUp, TreePine, type LucideIcon } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { ShopBrowser } from "@/components/ShopBrowser";
 import { Button } from "@/components/ui/button";
