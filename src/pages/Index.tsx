@@ -185,10 +185,15 @@ const Index = () => {
 
           {/* Benefits — editorial list */}
           <div className="border-t border-border">
-            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground pt-8 md:pt-10 mb-8 md:mb-10">
-              주요 장점
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-border border border-border">
+            <div className="flex items-baseline justify-between pt-8 md:pt-10 mb-8 md:mb-10 gap-6">
+              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+                주요 장점
+              </p>
+              <p className="text-xs text-muted-foreground tabular-nums">
+                07 가지 핵심 + 01 주의사항
+              </p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border border border-border">
               {airpotBenefits.map((b) => {
                 const Icon = b.icon;
                 return (
@@ -211,24 +216,25 @@ const Index = () => {
                   </article>
                 );
               })}
-              <article className="bg-background p-5 md:p-7 flex flex-col gap-4 min-h-[170px] md:min-h-[200px] border-l-4 border-l-accent col-span-2 md:col-span-1">
+              <article className="bg-accent/5 p-5 md:p-7 flex flex-col gap-4 min-h-[170px] md:min-h-[200px]">
                 <div className="flex items-center justify-between">
-                  <span aria-hidden="true" className="text-xl md:text-2xl leading-none">⚠️</span>
-                  <span className="font-sans text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground">
+                  <span aria-hidden="true" className="inline-flex h-6 w-6 md:h-7 md:w-7 items-center justify-center rounded-full border border-accent/40 text-accent text-xs md:text-sm font-semibold">!</span>
+                  <span className="font-sans text-[10px] md:text-xs uppercase tracking-[0.25em] text-accent">
                     주의사항
                   </span>
                 </div>
                 <div className="mt-auto">
                   <h3 className="font-sans font-bold text-sm md:text-base text-foreground leading-tight mb-1.5">
-                    단점
+                    관수 관리 필요
                   </h3>
                   <p className="text-xs md:text-sm text-primary leading-snug">
-                    일반 화분보다 <span className="font-semibold text-foreground">물이 빨리 마르므로 관수 관리가 중요</span>합니다. 가격이 비싸고 바람이 강한 환경에서는 건조 스트레스에 유의해야 합니다.
+                    일반 화분보다 <span className="font-semibold text-foreground">물이 빨리 마르므로 관수 관리가 중요</span>합니다. 바람이 강한 환경에서는 건조 스트레스에 유의하세요.
                   </p>
                 </div>
               </article>
             </div>
           </div>
+
 
         </div>
       </section>
