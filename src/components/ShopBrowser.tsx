@@ -27,10 +27,11 @@ import {
 interface ShopBrowserProps {
   showHeader?: boolean;
   title?: string;
+  label?: string;
   showBackButton?: boolean;
 }
 
-export const ShopBrowser = ({ showHeader = true, title = "구매하기", showBackButton = true }: ShopBrowserProps) => {
+export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, showBackButton = true }: ShopBrowserProps) => {
   const { data: products = [], isLoading } = useShopifyProducts(50);
   const [searchParams] = useSearchParams();
   const productParam = searchParams.get("product");
