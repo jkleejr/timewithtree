@@ -353,8 +353,8 @@ const Index = () => {
 
       {/* Shop */}
       <section id="shop" className="border-t border-border pt-6 md:pt-10 pb-8 md:pb-12">
-        <ShopBrowser showBackButton={false} title="구매하기" label="Shop" />
         <ShopBrowser showBackButton={false} title="구매하기" label="상점" />
+      </section>
     </SiteLayout>
   );
 };
