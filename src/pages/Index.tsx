@@ -23,14 +23,14 @@ const heroImages = [
   { src: heroBirch5, alt: "Detailed close-up of Jacquemontii birch trunks with autumn foliage" },
 ];
 
-const airpotBenefits = [
-  { num: "01", title: "뿌리 회전 완전 방지", desc: "옆면 통기 구멍으로 뿌리 끝이 공기와 만나 자연 건조되면서 뺑뺑이 현상 없이 방사형으로 발달합니다." },
-  { num: "02", title: "잔뿌리 폭발적 증가", desc: "뿌리 끝이 지속적으로 분지되어 양분·수분 흡수력이 크게 향상됩니다." },
-  { num: "03", title: "과습 & 뿌리썩음 예방", desc: "옆면 전체가 통풍구 역할을 해 배수와 증발이 동시에 이루어집니다." },
-  { num: "04", title: "토양 산소 공급", desc: "뿌리 호흡이 활발해져 건강한 뿌리 시스템을 형성합니다." },
-  { num: "05", title: "이식 성공률 매우 높음", desc: "잔뿌리가 풍부해 식재 후 활착이 빠르고 고사율이 현저히 낮습니다." },
-  { num: "06", title: "생육 속도 & 균일성 향상", desc: "개체 간 편차가 줄고 동일 조건에서 성장 속도가 빨라집니다." },
-  { num: "07", title: "대형 수목 재배에 유리", desc: "뿌리 품질이 상품성으로 직결되는 조경수 재배에 특히 적합합니다." },
+const airpotBenefits: { num: string; icon: LucideIcon; title: string; desc: string }[] = [
+  { num: "01", icon: RotateCcw, title: "뿌리 회전 방지", desc: "서클링 현상 차단" },
+  { num: "02", icon: Sprout, title: "잔뿌리 폭발적 증가", desc: "양분·수분 흡수력 향상" },
+  { num: "03", icon: Droplets, title: "과습 & 뿌리썩음 예방", desc: "배수와 통기 동시 작용" },
+  { num: "04", icon: Wind, title: "토양 산소 공급", desc: "활발한 뿌리 호흡" },
+  { num: "05", icon: ShieldCheck, title: "이식 성공률 높음", desc: "활착 빠름, 고사율 낮음" },
+  { num: "06", icon: TrendingUp, title: "생육 속도 & 균일성", desc: "개체 편차 감소" },
+  { num: "07", icon: TreePine, title: "대형 수목 재배 유리", desc: "조경수 상품성 확보" },
 ];
 
 const plantingSteps = [
