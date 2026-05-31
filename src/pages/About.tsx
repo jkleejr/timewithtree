@@ -110,7 +110,7 @@ const About = () => {
         <div className="md:col-span-12 flex justify-between items-center w-full">
           <BackButton />
           <Button asChild size="lg" className="rounded-none">
-            <Link to="/#shop">
+            <Link to={{ pathname: "/", hash: "#shop" }}>
               구매하기
             </Link>
           </Button>
