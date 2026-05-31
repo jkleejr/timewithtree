@@ -1,38 +1,38 @@
 ## Goal
-Update only the **content** in the footer. Keep current layout, colors, fonts, and the existing two-area structure (left: brand/목차, right: FarmContact grid).
 
-## Content changes
+On the homepage hero gallery ("잭큐몬티 자작나무 농장"), improve image sharpness on full-screen displays and slightly shift the 1st and 4th images so a bit more of the top is visible.
 
-**Right side — replace the current 농장 주소 / 연락처 / 상담 가능 시간 grid in `FarmContact` (footer variant) with a single 회사 정보 block:**
+## Findings
 
-```
-나무와 걷는 시간
+The hero source images are only ~1368–1476 px wide:
+- `hero-main-1.jpg` 1368×1824
+- `hero-main-3.jpg` 1368×1824
+- `hero-birch-2.png` 1476×1408
+- `hero-birch-4.png` 1474×1046
+- `hero-birch-5.png` 1476×1402
 
-상호 : 나무와 걷는 시간
-사업자등록번호 : 302-93-11822
-통신판매신고 :
-문의전화 : 010-8925-6251
-이메일 : timewithtree@gmail.com
-제1농장 : 세종시 장군면 송문리
-제2농장 : 충청남도 공주시 정안면 대산리
-```
+The `<img>` tag declares `width={1920} height={1280}` and the container stretches full-width with `object-cover`. On large monitors the browser upscales these source files, which is why they look soft. The image size on screen will not change — only how crisply it renders.
 
-- Phone → `tel:01089256251` link
-- Email → `mailto:timewithtree@gmail.com` link
-- 통신판매신고 left blank
-- Brand wordmark at top of block
+## Plan
 
-**Bottom bar:** update right-side text from `주문 문의: timewithtree@gmail.com` to drop the email (now in the block) — or keep, your call. Left side stays `© {year} 나무와 걷는 시간`.
+### 1. Regenerate the 5 hero images at higher resolution
 
-**Left side (목차 nav grid):** unchanged.
+Use the image generation tool to recreate each hero image at 1920×1280 (matching the declared size and the 16:8 aspect of the hero), preserving subject and composition as closely as possible. Overwrite the existing files in `src/assets/` so no import changes are needed.
 
-The on-page Visit & Contact section (FarmContact `variant="section"` on the home page) is **not changed** — only the `variant="footer"` rendering is updated.
+If the user prefers not to regenerate (since AI regen can shift composition slightly), an alternative is to keep current files and just accept the soft rendering — but visual quality cannot improve without higher-resolution sources.
 
-## Files touched
-- `src/components/FarmContact.tsx` — replace the `variant === "footer"` return with the new info block. `variant === "section"` (homepage) untouched.
-- `src/components/SiteFooter.tsx` — no structural change; possibly tweak the bottom bar email text per your call.
+### 2. Shift the 1st and 4th images down slightly (show more top)
 
-No color/token/font/layout-grid changes. No new components.
+In `src/pages/Index.tsx`, the hero map renders each image with `object-cover`. Add a per-image `objectPosition` so images 1 and 4 (indexes 0 and 3 — `hero-main-1` and `hero-birch-4`) render with `object-position: center 35%` instead of the default `center center`. This shifts the visible window upward, revealing a little more of the top of the photo. The other three images keep the default centering.
 
-## One question
-Bottom bar right currently reads `주문 문의: timewithtree@gmail.com`. Keep it or remove it (since email is now in the info block)?
+This is a tiny CSS-only change, no layout shift, image size unchanged.
+
+## Technical details
+
+- File touched: `src/pages/Index.tsx` — add `style={{ objectPosition: i === 0 || i === 3 ? "center 35%" : "center center" }}` (or equivalent Tailwind `object-[center_35%]`) on the hero `<img>`.
+- Asset regen: 5 calls to the image generator at 1920×1280, overwriting existing filenames.
+- No changes to imports, layout, container sizing, or responsive behavior.
+
+## Open question
+
+Do you want me to regenerate the 5 hero photos at higher resolution (composition may shift very slightly), or skip the regen and only apply the position shift?

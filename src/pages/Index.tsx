@@ -80,6 +80,7 @@ const Index = () => {
               height={1280}
               loading={i === 0 ? "eager" : "lazy"}
               decoding="async"
+              style={{ objectPosition: i === 0 || i === 3 ? "center 38%" : "center center" }}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
                 i === heroIndex ? "opacity-100" : "opacity-0"
               }`}
