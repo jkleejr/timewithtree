@@ -440,7 +440,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                 ⓘ 생물 특성상 실제 받아보시는 상품과 다소(계절별) 차이가 날 수 있습니다.
               </p>
               <div className="flex justify-end mt-6">
-                <Button asChild size="lg" className="rounded-none hover:text-accent">
+                <Button asChild size="lg" className="rounded-none">
                   <Link to="/cart">
                     장바구니
                   </Link>
