@@ -134,7 +134,7 @@ const Index = () => {
               <Button
                 asChild
                 size="lg"
-                className="rounded-none bg-black text-white hover:text-accent shadow-lg"
+                className="rounded-none bg-black text-white shadow-lg"
               >
                 <Link to="/about">자작나무 소개</Link>
               </Button>
