@@ -442,7 +442,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
               <div className="flex justify-end mt-6">
                 <Button asChild size="lg" className="rounded-none hover:text-accent">
                   <Link to="/cart">
-                    장바구니 <ArrowRight className="ml-2 h-4 w-4" />
+                    장바구니
                   </Link>
                 </Button>
               </div>
