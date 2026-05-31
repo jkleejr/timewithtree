@@ -111,7 +111,7 @@ const About = () => {
           <BackButton />
           <Button asChild size="lg" className="rounded-none">
             <Link to="/shop">
-              구매하기 <ArrowRight className="ml-2 h-4 w-4" />
+              구매하기
             </Link>
           </Button>
         </div>
