@@ -230,7 +230,7 @@ const Checkout = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">용달배송</span>
-                  <span>별도 (착불)</span>
+                  <span>별도</span>
                 </div>
                 <div className="border-t border-border pt-3 flex justify-between items-baseline">
                   <span className="font-medium">총주문금액</span>
