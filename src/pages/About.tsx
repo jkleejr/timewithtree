@@ -29,9 +29,9 @@ const About = () => {
   return (
     <SiteLayout>
       <section className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-12">
-        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4"></p>
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">소개</p>
         <h1 className="font-display max-w-3xl leading-[1.1] font-bold font-sans text-5xl sm:text-5xl md:text-5xl">
-          구매하기
+          자작나무 소개
         </h1>
       </section>
 
