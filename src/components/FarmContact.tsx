@@ -12,7 +12,7 @@ export const FarmContact = ({ variant = "section" }: { variant?: Variant }) => {
   if (variant === "footer") {
     return (
       <div className="text-sm space-y-4">
-        <div className="font-display text-xl md:text-2xl">나무와 걷는 시간</div>
+        <div className="font-display text-xl md:text-2xl whitespace-pre">{" "}</div>
         <div className="space-y-1">
           <InfoRow label="상호">나무와 걷는 시간</InfoRow>
           <InfoRow label="사업자등록번호">302-93-11822</InfoRow>
