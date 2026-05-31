@@ -12,8 +12,9 @@ Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
 
   try {
-    // Require service_role JWT — this endpoint must only be called server-to-server
-    // to prevent unauthenticated attackers from flooding admin inboxes.
+    // verify_jwt=true in config.toml means the gateway has already verified
+    // the JWT signature. We additionally require the service_role claim so
+    // only server-to-server callers (DB trigger / other edge functions) succeed.
     const authHeader = req.headers.get('Authorization')
     if (!authHeader?.startsWith('Bearer ')) {
       return new Response(JSON.stringify({ error: 'Unauthorized' }), {
