@@ -15,32 +15,33 @@ const navLinks = [
 
 export const SiteFooter = () => (
   <footer className="border-t border-border mt-24">
-    <div className="max-w-7xl mx-auto px-6 md:px-10 pt-12 pb-10 grid gap-10 md:grid-cols-12 text-sm">
-      <div className="md:col-span-8">
-        <img src={logo} alt="나무와 걷는 시간 로고" className="h-16 md:h-20 w-auto max-w-full object-contain mb-4 -ml-2 shrink-0" />
+    <div className="max-w-7xl mx-auto px-6 md:px-10 pt-14 pb-12 grid gap-12 md:gap-16 md:grid-cols-12 text-sm">
+      <div className="md:col-span-7 flex flex-col">
+        <Link to="/" className="inline-flex items-center gap-3 mb-6 -ml-1">
+          <img src={logo} alt="나무와 걷는 시간 로고" className="h-12 w-auto object-contain shrink-0" />
+          <span className="font-display text-xl md:text-2xl tracking-tight">나무와 걷는 시간</span>
+        </Link>
         <FarmContact variant="footer" />
       </div>
-      <div className="md:col-span-4 flex flex-col">
-        <div className="mt-2">
-          <span className="block text-xs uppercase tracking-widest text-muted-foreground mb-3">목차</span>
-          <div className="grid grid-cols-2 gap-x-6 gap-y-2">
-            {navLinks.map(({ to, label }) => (
-              <Link
-                key={to}
-                to={to}
-                className="relative inline-block w-fit transition-colors hover:text-accent after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:h-0.5 after:w-full after:bg-accent after:scale-x-0 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
-              >
-                {label}
-              </Link>
-            ))}
-          </div>
-        </div>
+      <div className="md:col-span-5 md:pl-6 md:border-l md:border-border">
+        <span className="block text-xs uppercase tracking-widest text-muted-foreground mb-3">목차</span>
+        <nav className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+          {navLinks.map(({ to, label }) => (
+            <Link
+              key={to}
+              to={to}
+              className="relative inline-block w-fit transition-colors hover:text-accent after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:h-0.5 after:w-full after:bg-accent after:scale-x-0 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
+            >
+              {label}
+            </Link>
+          ))}
+        </nav>
       </div>
     </div>
     <div className="border-t border-border">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 text-xs text-muted-foreground flex justify-between">
-        <span>© {new Date().getFullYear()} 나무와 걷는 시간</span>
-        <span>주문 문의: timewithtree@gmail.com</span>
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 text-xs text-muted-foreground flex flex-col sm:flex-row gap-2 sm:justify-between">
+        <span>© {new Date().getFullYear()} 나무와 걷는 시간. All rights reserved.</span>
+        <span>주문 문의: <a href="mailto:timewithtree@gmail.com" className="hover:text-accent transition-colors">timewithtree@gmail.com</a></span>
       </div>
     </div>
   </footer>

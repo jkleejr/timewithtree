@@ -3,20 +3,21 @@ import { MapPin, Phone, Clock } from "lucide-react";
 type Variant = "section" | "footer";
 
 const InfoRow = ({ label, children }: { label: string; children?: React.ReactNode }) => (
-  <p className="leading-relaxed">
-    <span className="text-muted-foreground">{label} :</span> {children}
-  </p>
+  <div className="grid grid-cols-[7rem_1fr] gap-x-3 leading-relaxed">
+    <dt className="text-muted-foreground">{label}</dt>
+    <dd>{children}</dd>
+  </div>
 );
 
 export const FarmContact = ({ variant = "section" }: { variant?: Variant }) => {
   if (variant === "footer") {
     return (
-      <div className="text-sm space-y-4">
-        <div className="font-display text-xl md:text-2xl whitespace-pre">{" "}</div>
-        <div className="space-y-1">
+      <div className="text-sm">
+        <span className="block text-xs uppercase tracking-widest text-muted-foreground mb-3">회사 정보</span>
+        <dl className="space-y-1.5">
           <InfoRow label="상호">나무와 걷는 시간</InfoRow>
           <InfoRow label="사업자등록번호">302-93-11822</InfoRow>
-          <InfoRow label="통신판매신고"> </InfoRow>
+          <InfoRow label="통신판매신고">—</InfoRow>
           <InfoRow label="문의전화">
             <a href="tel:01089256251" className="hover:text-accent transition-colors">
               010-8925-6251
@@ -29,7 +30,7 @@ export const FarmContact = ({ variant = "section" }: { variant?: Variant }) => {
           </InfoRow>
           <InfoRow label="제1농장">세종시 장군면 송문리</InfoRow>
           <InfoRow label="제2농장">충청남도 공주시 정안면 대산리</InfoRow>
-        </div>
+        </dl>
       </div>
     );
   }
