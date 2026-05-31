@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { Check, Copy, Loader2 } from "lucide-react";
+import { Check, Copy, Loader2, Search } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { BackButton } from "@/components/BackButton";
 import { Button } from "@/components/ui/button";
@@ -11,51 +11,83 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useCartStore } from "@/stores/cartStore";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import { useDaumPostcode } from "@/hooks/useDaumPostcode";
 import { cn, formatPrice } from "@/lib/utils";
 import { toast } from "sonner";
 import { z } from "zod";
 
 const BANK_ACCOUNT = "NH농협은행 301-0327-2621-11";
 
-const orderSchema = z.object({
-  customer_name: z.string().trim().min(1, "이름을 입력해주세요").max(100),
-  customer_phone: z.string().trim().min(1, "연락처를 입력해주세요").max(30),
-  customer_email: z.string().trim().email("올바른 이메일을 입력해주세요").max(255),
-  shipping_address: z.string().trim().min(1, "배송지를 입력해주세요").max(500),
-  postal_code: z.string().trim().max(20).optional().or(z.literal("")),
-  customer_note: z.string().trim().max(1000).optional().or(z.literal("")),
-  depositor_name: z.string().trim().min(1, "입금자명을 입력해주세요").max(100),
+type PartyForm = {
+  name: string;
+  phone: string;
+  tel: string;
+  postal: string;
+  address1: string;
+  address2: string;
+  address_note: string;
+};
+
+const emptyParty: PartyForm = {
+  name: "",
+  phone: "",
+  tel: "",
+  postal: "",
+  address1: "",
+  address2: "",
+  address_note: "",
+};
+
+const partySchema = z.object({
+  name: z.string().trim().min(1, "이름을 입력해주세요").max(100),
+  phone: z.string().trim().min(1, "핸드폰 번호를 입력해주세요").max(30),
+  tel: z.string().trim().max(30).optional().or(z.literal("")),
+  postal: z.string().trim().min(1, "우편번호를 입력해주세요").max(20),
+  address1: z.string().trim().min(1, "주소를 입력해주세요").max(300),
+  address2: z.string().trim().max(300).optional().or(z.literal("")),
+  address_note: z.string().trim().max(200).optional().or(z.literal("")),
 });
+
+const ordererSchema = partySchema.extend({
+  email: z.string().trim().email("올바른 이메일을 입력해주세요").max(255),
+});
+
+function composeAddress(p: PartyForm) {
+  const parts = [`[${p.postal}]`, p.address1, p.address2].filter(Boolean);
+  const base = parts.join(" ").trim();
+  return p.address_note ? `${base} (참고: ${p.address_note})` : base;
+}
 
 const Checkout = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { items, clearCart } = useCartStore();
+  const { open: openPostcode } = useDaumPostcode();
+
   const [submitting, setSubmitting] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<"bank" | "card">("bank");
   const [copied, setCopied] = useState(false);
-  const [sameAsOrderer, setSameAsOrderer] = useState(true);
-  const [form, setForm] = useState({
-    customer_name: "",
-    customer_phone: "",
-    customer_email: "",
-    shipping_address: "",
-    postal_code: "",
-    customer_note: "",
-    depositor_name: "",
+
+  const [orderer, setOrderer] = useState<PartyForm & { email: string }>({
+    ...emptyParty,
+    email: "",
   });
+  const [recipient, setRecipient] = useState<PartyForm>({ ...emptyParty });
+  const [sameAsOrderer, setSameAsOrderer] = useState(true);
+  const [deliveryMessage, setDeliveryMessage] = useState("");
+
+  const [depositorName, setDepositorName] = useState("");
+  const [depositorSame, setDepositorSame] = useState(true);
 
   useEffect(() => {
-    if (user?.email && !form.customer_email) {
-      setForm((f) => ({ ...f, customer_email: user.email || "" }));
+    if (user?.email && !orderer.email) {
+      setOrderer((o) => ({ ...o, email: user.email || "" }));
     }
-  }, [user, form.customer_email]);
+  }, [user, orderer.email]);
 
   useEffect(() => {
-    if (sameAsOrderer) {
-      setForm((f) => ({ ...f, depositor_name: f.customer_name }));
-    }
-  }, [sameAsOrderer, form.customer_name]);
+    if (depositorSame) setDepositorName(orderer.name);
+  }, [depositorSame, orderer.name]);
 
   const subtotal = items.reduce((s, i) => s + parseFloat(i.price.amount) * i.quantity, 0);
   const currency = items[0]?.price.currencyCode || "KRW";
@@ -73,17 +105,46 @@ const Checkout = () => {
     }
   };
 
+  const searchOrdererAddress = () =>
+    openPostcode(({ postalCode, address }) =>
+      setOrderer((o) => ({ ...o, postal: postalCode, address1: address })),
+    );
+
+  const searchRecipientAddress = () =>
+    openPostcode(({ postalCode, address }) =>
+      setRecipient((r) => ({ ...r, postal: postalCode, address1: address })),
+    );
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (paymentMethod === "card") {
       toast.info("신용카드 결제는 준비 중입니다. 무통장입금으로 진행해주세요.");
       return;
     }
-    const parsed = orderSchema.safeParse(form);
-    if (!parsed.success) {
-      toast.error(parsed.error.errors[0].message);
+
+    const ordererParsed = ordererSchema.safeParse(orderer);
+    if (!ordererParsed.success) {
+      toast.error("주문자 정보: " + ordererParsed.error.errors[0].message);
       return;
     }
+
+    const effectiveRecipient: PartyForm = sameAsOrderer
+      ? { ...orderer, name: orderer.name, phone: orderer.phone }
+      : recipient;
+
+    if (!sameAsOrderer) {
+      const recipParsed = partySchema.safeParse(recipient);
+      if (!recipParsed.success) {
+        toast.error("받으시는 분: " + recipParsed.error.errors[0].message);
+        return;
+      }
+    }
+
+    if (!depositorName.trim()) {
+      toast.error("입금자명을 입력해주세요");
+      return;
+    }
+
     setSubmitting(true);
 
     const orderItems = items.map((i) => ({
@@ -97,23 +158,24 @@ const Checkout = () => {
       line_total: parseFloat(i.price.amount) * i.quantity,
     }));
 
-    const noteWithDepositor = [
-      `[입금자명] ${parsed.data.depositor_name}`,
-      parsed.data.customer_note,
-    ]
-      .filter(Boolean)
-      .join("\n");
+    const noteLines = [
+      `[입금자명] ${depositorName.trim()}`,
+      `[받는분] ${effectiveRecipient.name} / ${effectiveRecipient.phone}` +
+        (effectiveRecipient.tel ? ` / ${effectiveRecipient.tel}` : ""),
+      orderer.tel ? `[주문자 전화] ${orderer.tel}` : "",
+      deliveryMessage ? `[전하시는 말씀] ${deliveryMessage.trim()}` : "",
+    ].filter(Boolean);
 
     const { data, error } = await supabase
       .from("orders")
       .insert({
         user_id: user?.id ?? null,
-        customer_name: parsed.data.customer_name,
-        customer_phone: parsed.data.customer_phone,
-        customer_email: parsed.data.customer_email,
-        shipping_address: parsed.data.shipping_address,
-        postal_code: parsed.data.postal_code || null,
-        customer_note: noteWithDepositor,
+        customer_name: orderer.name,
+        customer_phone: orderer.phone,
+        customer_email: orderer.email,
+        shipping_address: composeAddress(effectiveRecipient),
+        postal_code: effectiveRecipient.postal || null,
+        customer_note: noteLines.join("\n"),
         items: orderItems,
         subtotal,
         currency,
@@ -129,9 +191,7 @@ const Checkout = () => {
       return;
     }
 
-    void supabase.functions.invoke("notify-admin-order", {
-      body: { order_id: data.id },
-    });
+    void supabase.functions.invoke("notify-admin-order", { body: { order_id: data.id } });
 
     clearCart();
     navigate(`/order-success?n=${encodeURIComponent(data.order_number)}`);
@@ -145,71 +205,54 @@ const Checkout = () => {
 
         <div className="grid lg:grid-cols-3 gap-12">
           <form onSubmit={handleSubmit} className="lg:col-span-2 space-y-6">
-            {/* 주문자 정보 */}
-            <div className="border border-border p-6 md:p-8 space-y-5">
-              <h2 className="font-display text-xl font-sans mb-2">주문자 정보</h2>
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="customer_name">이름 *</Label>
-                  <Input
-                    id="customer_name"
-                    value={form.customer_name}
-                    onChange={(e) => setForm({ ...form, customer_name: e.target.value })}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="customer_phone">연락처 *</Label>
-                  <Input
-                    id="customer_phone"
-                    placeholder="010-0000-0000"
-                    value={form.customer_phone}
-                    onChange={(e) => setForm({ ...form, customer_phone: e.target.value })}
-                    required
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="customer_email">이메일 *</Label>
-                <Input
-                  id="customer_email"
-                  type="email"
-                  value={form.customer_email}
-                  onChange={(e) => setForm({ ...form, customer_email: e.target.value })}
-                  required
-                />
-              </div>
-            </div>
+            {/* 주문자 / 수령인 2-column */}
+            <div className="grid md:grid-cols-2 gap-6">
+              <PartyCard
+                title="주문하시는 분"
+                values={orderer}
+                onChange={(patch) => setOrderer((o) => ({ ...o, ...patch }))}
+                onSearchAddress={searchOrdererAddress}
+                emailField
+              />
 
-            {/* 배송지 */}
-            <div className="border border-border p-6 md:p-8 space-y-5">
-              <h2 className="font-display text-xl font-sans mb-2">배송지</h2>
-              <div className="space-y-2">
-                <Label htmlFor="postal_code">우편번호</Label>
-                <Input
-                  id="postal_code"
-                  value={form.postal_code}
-                  onChange={(e) => setForm({ ...form, postal_code: e.target.value })}
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="shipping_address">주소 *</Label>
-                <Textarea
-                  id="shipping_address"
-                  rows={3}
-                  value={form.shipping_address}
-                  onChange={(e) => setForm({ ...form, shipping_address: e.target.value })}
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="customer_note">배송 메모 (선택)</Label>
-                <Textarea
-                  id="customer_note"
-                  rows={2}
-                  value={form.customer_note}
-                  onChange={(e) => setForm({ ...form, customer_note: e.target.value })}
-                />
+              <div className="border border-border p-6 md:p-7 space-y-5">
+                <div className="flex items-center justify-between">
+                  <h2 className="font-display text-xl font-sans">받으시는 분</h2>
+                  <label className="flex items-center gap-2 text-sm cursor-pointer">
+                    <Checkbox
+                      checked={sameAsOrderer}
+                      onCheckedChange={(c) => {
+                        const v = c === true;
+                        setSameAsOrderer(v);
+                        if (v) setRecipient({ ...emptyParty });
+                      }}
+                    />
+                    <span>주문자와 동일</span>
+                  </label>
+                </div>
+
+                {sameAsOrderer ? (
+                  <p className="text-sm text-muted-foreground py-6 text-center border border-dashed border-border">
+                    주문자 정보로 배송됩니다.
+                  </p>
+                ) : (
+                  <PartyFields
+                    values={recipient}
+                    onChange={(patch) => setRecipient((r) => ({ ...r, ...patch }))}
+                    onSearchAddress={searchRecipientAddress}
+                  />
+                )}
+
+                <div className="space-y-2 pt-2">
+                  <Label htmlFor="delivery_message" className="text-sm">전하시는 말씀</Label>
+                  <Textarea
+                    id="delivery_message"
+                    rows={3}
+                    value={deliveryMessage}
+                    onChange={(e) => setDeliveryMessage(e.target.value)}
+                    placeholder="배송 시 요청사항을 적어주세요 (선택)"
+                  />
+                </div>
               </div>
             </div>
 
@@ -217,12 +260,9 @@ const Checkout = () => {
             <div className="border border-border p-6 md:p-8 space-y-6">
               <div>
                 <h2 className="font-display text-xl font-sans">결제정보</h2>
-                <p className="text-sm text-muted-foreground mt-2">
-                  결제는 무통장입금만 가능합니다.
-                </p>
+                <p className="text-sm text-muted-foreground mt-2">결제는 무통장입금만 가능합니다.</p>
               </div>
 
-              {/* 금액 요약 */}
               <div className="bg-secondary p-5 space-y-3 text-sm">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">주문총액</span>
@@ -240,7 +280,6 @@ const Checkout = () => {
                 </div>
               </div>
 
-              {/* 결제수단 선택 */}
               <div className="flex items-center justify-between gap-3 pt-2">
                 <span className="text-sm text-muted-foreground">결제수단</span>
                 <div className="flex gap-2">
@@ -270,7 +309,6 @@ const Checkout = () => {
                   </button>
                 </div>
               </div>
-
 
               {paymentMethod === "bank" && (
                 <div className="space-y-5">
@@ -304,18 +342,18 @@ const Checkout = () => {
                     <Label htmlFor="depositor_name">입금자명 *</Label>
                     <Input
                       id="depositor_name"
-                      value={form.depositor_name}
+                      value={depositorName}
                       onChange={(e) => {
-                        setSameAsOrderer(false);
-                        setForm({ ...form, depositor_name: e.target.value });
+                        setDepositorSame(false);
+                        setDepositorName(e.target.value);
                       }}
                       placeholder="입금자명"
                       required
                     />
                     <label className="flex items-center gap-2 text-sm cursor-pointer">
                       <Checkbox
-                        checked={sameAsOrderer}
-                        onCheckedChange={(c) => setSameAsOrderer(c === true)}
+                        checked={depositorSame}
+                        onCheckedChange={(c) => setDepositorSame(c === true)}
                       />
                       <span>주문자 이름과 동일</span>
                     </label>
@@ -392,5 +430,115 @@ const Checkout = () => {
     </SiteLayout>
   );
 };
+
+// ─── helpers ──────────────────────────────────────────────────────────────
+
+type PartyCardProps = {
+  title: string;
+  values: PartyForm & { email?: string };
+  onChange: (patch: Partial<PartyForm & { email: string }>) => void;
+  onSearchAddress: () => void;
+  emailField?: boolean;
+};
+
+const PartyCard = ({ title, values, onChange, onSearchAddress, emailField }: PartyCardProps) => (
+  <div className="border border-border p-6 md:p-7 space-y-5">
+    <h2 className="font-display text-xl font-sans">{title}</h2>
+    <PartyFields
+      values={values}
+      onChange={onChange}
+      onSearchAddress={onSearchAddress}
+      email={emailField ? values.email ?? "" : undefined}
+      onEmailChange={emailField ? (v) => onChange({ email: v }) : undefined}
+    />
+  </div>
+);
+
+type PartyFieldsProps = {
+  values: PartyForm;
+  onChange: (patch: Partial<PartyForm>) => void;
+  onSearchAddress: () => void;
+  email?: string;
+  onEmailChange?: (v: string) => void;
+};
+
+const Row = ({ label, children }: { label: string; children: React.ReactNode }) => (
+  <div className="grid grid-cols-[68px_1fr] items-center gap-3">
+    <Label className="text-sm text-muted-foreground">{label}</Label>
+    <div className="min-w-0">{children}</div>
+  </div>
+);
+
+const PartyFields = ({ values, onChange, onSearchAddress, email, onEmailChange }: PartyFieldsProps) => (
+  <div className="space-y-3">
+    <Row label="이름 *">
+      <Input value={values.name} onChange={(e) => onChange({ name: e.target.value })} required />
+    </Row>
+    <Row label="핸드폰 *">
+      <Input
+        placeholder="010-0000-0000"
+        value={values.phone}
+        onChange={(e) => onChange({ phone: e.target.value })}
+        required
+      />
+    </Row>
+    <Row label="전화번호">
+      <Input value={values.tel} onChange={(e) => onChange({ tel: e.target.value })} />
+    </Row>
+    {onEmailChange !== undefined && (
+      <Row label="이메일 *">
+        <Input
+          type="email"
+          value={email ?? ""}
+          onChange={(e) => onEmailChange(e.target.value)}
+          required
+        />
+      </Row>
+    )}
+    <Row label="주소 *">
+      <div className="flex gap-2">
+        <Input
+          placeholder="우편번호"
+          value={values.postal}
+          onChange={(e) => onChange({ postal: e.target.value })}
+          readOnly
+          className="max-w-[140px] bg-secondary"
+        />
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          onClick={onSearchAddress}
+          className="rounded-none shrink-0"
+        >
+          <Search className="h-4 w-4" /> 주소 검색
+        </Button>
+      </div>
+    </Row>
+    <Row label="">
+      <Input
+        placeholder="기본주소"
+        value={values.address1}
+        onChange={(e) => onChange({ address1: e.target.value })}
+        readOnly
+        className="bg-secondary"
+      />
+    </Row>
+    <Row label="">
+      <Input
+        placeholder="상세주소"
+        value={values.address2}
+        onChange={(e) => onChange({ address2: e.target.value })}
+      />
+    </Row>
+    <Row label="">
+      <Input
+        placeholder="참고항목 (선택)"
+        value={values.address_note}
+        onChange={(e) => onChange({ address_note: e.target.value })}
+      />
+    </Row>
+  </div>
+);
 
 export default Checkout;
