@@ -23,7 +23,7 @@ export const SiteFooter = () => (
         </Link>
         <FarmContact variant="footer" />
       </div>
-      <div className="md:col-span-5 md:pl-6 md:border-l md:border-border">
+      <div className="md:col-span-5">
         <span className="block text-xs uppercase tracking-widest text-muted-foreground mb-3">목차</span>
         <nav className="grid grid-cols-2 gap-x-6 gap-y-2.5">
           {navLinks.map(({ to, label }) => (
