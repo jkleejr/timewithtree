@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Loader2, Minus, Plus, ArrowLeft } from "lucide-react";
+import { Loader2, Minus, Plus } from "lucide-react";
 import { toast } from "sonner";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
@@ -63,7 +63,7 @@ const ProductDetail = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-10 pt-8">
         <Button asChild className="rounded-none font-sans font-bold">
           <Link to="/cart">
-            <ArrowLeft className="h-4 w-4" /> 장바구니
+            장바구니
           </Link>
         </Button>
       </div>

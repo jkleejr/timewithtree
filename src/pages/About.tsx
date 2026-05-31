@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
@@ -111,7 +111,7 @@ const About = () => {
           <BackButton />
           <Button asChild size="lg" className="rounded-none">
             <Link to="/shop">
-              구매하기 <ArrowRight className="ml-2 h-4 w-4" />
+              구매하기
             </Link>
           </Button>
         </div>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, AlertTriangle } from "lucide-react";
+import { AlertTriangle } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
@@ -131,7 +131,7 @@ const Aeroponics = () => {
           <BackButton />
           <Button asChild size="lg" className="rounded-none">
             <Link to="/shop">
-              구매하기 <ArrowRight className="ml-2 h-4 w-4" />
+              구매하기
             </Link>
           </Button>
         </div>
