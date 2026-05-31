@@ -17,9 +17,8 @@ export const SiteFooter = () => (
   <footer className="border-t border-border mt-24">
     <div className="max-w-7xl mx-auto px-6 md:px-10 pt-14 pb-12 grid gap-12 md:gap-16 md:grid-cols-12 text-sm">
       <div className="md:col-span-7 flex flex-col">
-        <Link to="/" className="inline-flex items-center gap-3 mb-6 -ml-1">
-          <img src={logo} alt="나무와 걷는 시간 로고" className="h-12 w-auto object-contain shrink-0" />
-          <span className="font-display text-xl md:text-2xl tracking-tight">나무와 걷는 시간</span>
+        <Link to="/" className="inline-flex items-center mb-8 -ml-1">
+          <img src={logo} alt="나무와 걷는 시간 로고" className="h-20 w-auto object-contain" />
         </Link>
         <FarmContact variant="footer" />
       </div>
