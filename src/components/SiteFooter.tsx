@@ -16,8 +16,11 @@ const navLinks = [
 export const SiteFooter = () => (
   <footer className="border-t border-border mt-24">
     <div className="max-w-7xl mx-auto px-6 md:px-10 pt-12 pb-10 grid gap-10 md:grid-cols-12 text-sm">
-      <div className="md:col-span-4 flex flex-col">
+      <div className="md:col-span-8">
         <img src={logo} alt="나무와 걷는 시간 로고" className="h-16 md:h-20 w-auto max-w-full object-contain mb-4 -ml-2 shrink-0" />
+        <FarmContact variant="footer" />
+      </div>
+      <div className="md:col-span-4 flex flex-col">
         <div className="mt-2">
           <span className="block text-xs uppercase tracking-widest text-muted-foreground mb-3">목차</span>
           <div className="grid grid-cols-2 gap-x-6 gap-y-2">
@@ -32,9 +35,6 @@ export const SiteFooter = () => (
             ))}
           </div>
         </div>
-      </div>
-      <div className="md:col-span-8">
-        <FarmContact variant="footer" />
       </div>
     </div>
     <div className="border-t border-border">
