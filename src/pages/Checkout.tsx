@@ -191,7 +191,8 @@ const Checkout = () => {
       return;
     }
 
-    void supabase.functions.invoke("notify-admin-order", { body: { order_id: data.id } });
+    // Admin notification is sent server-side via a database trigger
+    // (notify_admin_on_new_order) when the order row is inserted.
 
     clearCart();
     navigate(`/order-success?n=${encodeURIComponent(data.order_number)}`);
