@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Leaf, AlertTriangle } from "lucide-react";
+import { Leaf, AlertTriangle } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
