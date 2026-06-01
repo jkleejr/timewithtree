@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { Menu, ShoppingCart, Shield, User, X } from "lucide-react";
+import { Menu, ShoppingCart, Shield, User } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
