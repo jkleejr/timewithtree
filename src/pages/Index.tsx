@@ -235,6 +235,15 @@ const Index = () => {
               </p>
             </div>
           </div>
+          <div className="mt-12 md:mt-16 flex justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-none bg-black text-white shadow-lg"
+            >
+              <a href="#shop">구매하기</a>
+            </Button>
+          </div>
         </div>
       </section>
 
