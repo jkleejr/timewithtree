@@ -153,16 +153,16 @@ const Index = () => {
       </section>
 
       {/* 자작나무 소개 */}
-      <section id="about" className="scroll-mt-24 border-t border-border py-16 md:py-24">
+      <section id="about" className="scroll-mt-24 border-t border-border py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="mb-12 md:mb-16">
+          <div className="mb-8 md:mb-10">
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">소개</p>
             <h2 className="font-display max-w-3xl leading-[1.1] font-bold font-sans text-4xl md:text-5xl">
               자작나무 소개
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-12 gap-10">
+          <div className="grid md:grid-cols-12 gap-8">
             <div className="md:col-span-6">
               <div className="relative w-full aspect-[3/4] overflow-hidden bg-secondary">
                 {aboutImages.map((img, i) => (
@@ -235,7 +235,7 @@ const Index = () => {
               </p>
             </div>
           </div>
-          <div className="mt-12 md:mt-16 flex justify-end">
+          <div className="mt-8 md:mt-10 flex justify-end">
             <Button
               asChild
               size="lg"
@@ -248,9 +248,9 @@ const Index = () => {
       </section>
 
       {/* 에어포트 재배 (inline, expanded) */}
-      <section id="airpot" className="scroll-mt-24 border-t border-border bg-secondary/30 py-16 md:py-24">
+      <section id="airpot" className="scroll-mt-24 border-t border-border bg-secondary/30 py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="max-w-3xl mb-12 md:mb-16">
+          <div className="max-w-3xl mb-8 md:mb-10">
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">에어포트 재배</p>
             <h2 className="font-display font-bold font-sans text-4xl md:text-5xl leading-tight mb-5">
               에어포트 재배
@@ -262,7 +262,7 @@ const Index = () => {
           </div>
 
           {/* Air-pot close-up photos */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-10">
             <figure className="overflow-hidden bg-background">
               <img
                 src={airpotCloseup1}
@@ -289,7 +289,7 @@ const Index = () => {
 
           {/* Benefits — editorial list */}
           <div className="border-t border-border">
-            <div className="flex items-baseline justify-between pt-8 md:pt-10 mb-8 md:mb-10 gap-6">
+            <div className="flex items-baseline justify-between pt-6 md:pt-8 mb-6 md:mb-8 gap-6">
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
                 주요 장점
               </p>
@@ -344,9 +344,9 @@ const Index = () => {
       </section>
 
       {/* 나무 관련 정보 / 식재방법 (inline, expanded) */}
-      <section id="info" className="scroll-mt-24 border-t border-border py-16 md:py-24">
+      <section id="info" className="scroll-mt-24 border-t border-border py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="max-w-3xl mb-12 md:mb-16">
+          <div className="max-w-3xl mb-8 md:mb-10">
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">식재 가이드</p>
             <h2 className="font-display font-bold font-sans text-4xl md:text-5xl leading-tight mb-5">
               나무 관련 정보 · 식재방법
@@ -358,7 +358,7 @@ const Index = () => {
           </div>
 
           {/* Step cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border mb-10">
             {plantingSteps.map((s) => (
               <article key={s.num} className="bg-background p-5 md:p-6 flex flex-col gap-3">
                 <div className="flex items-center gap-3">
@@ -378,7 +378,7 @@ const Index = () => {
           </div>
 
           {/* 묘목 식재 전 상식 */}
-          <div className="mt-4 border-t border-border pt-12 md:pt-16">
+          <div className="mt-2 border-t border-border pt-8 md:pt-10">
             <div className="mb-8 md:mb-10">
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">수목 측정</p>
               <h3 className="font-display font-bold font-sans md:text-4xl leading-tight text-4xl">
@@ -420,7 +420,7 @@ const Index = () => {
           </div>
 
           {/* 잘못된 식재 경고 */}
-          <div className="mt-12 md:mt-16 border-t border-border pt-12 md:pt-16">
+          <div className="mt-8 md:mt-10 border-t border-border pt-8 md:pt-10">
             <div className="mb-8 md:mb-10">
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">흔한 실수</p>
               <h3 className="font-display font-bold font-sans md:text-4xl leading-tight text-4xl">
