@@ -48,7 +48,17 @@ export const SiteHeader = () => {
   return (
     <header className="sticky top-0 z-40 bg-background/85 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 h-16 md:h-22 flex items-center justify-between gap-3">
-        <Link to="/" className="flex items-center min-w-0" aria-label="나무와 걷는 시간 — 홈">
+        <Link
+          to="/"
+          onClick={(e) => {
+            if (location.pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            }
+          }}
+          className="flex items-center min-w-0"
+          aria-label="나무와 걷는 시간 — 홈"
+        >
           <img src={logo} alt="나무와 걷는 시간" className="h-10 md:h-16 w-auto -my-1 md:-my-2" />
         </Link>
         <nav className="hidden md:flex items-center gap-10">
