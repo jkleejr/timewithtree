@@ -14,6 +14,15 @@ import airpotCloseup2 from "@/assets/airpot-closeup-2.jpg";
 import treeMeasurements from "@/assets/tree-measurements.png";
 import plantingMistakes from "@/assets/planting-mistakes.png";
 import plantingCorrectVsWrong from "@/assets/planting-correct-vs-wrong.png";
+import aboutBark from "@/assets/about-doorenbos.jpg";
+import aboutBark2 from "@/assets/about-doorenbos-2.jpg";
+import aboutBark3 from "@/assets/about-doorenbos-3.jpg";
+
+const aboutImages = [
+  { src: aboutBark, alt: "에어포트에서 자라는 자작나무" },
+  { src: aboutBark2, alt: "자작나무의 하얀 수피 클로즈업" },
+  { src: aboutBark3, alt: "에어포트에서 줄지어 자라는 자작나무" },
+];
 
 const heroImages = [
   { src: heroMain1, alt: "Rows of Jacquemontii Doorenbos birch saplings growing in air-pots at the farm in summer" },
