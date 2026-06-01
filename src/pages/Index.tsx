@@ -54,6 +54,16 @@ const plantingSteps = [
 
 const Index = () => {
   const [heroIndex, setHeroIndex] = useState(0);
+  const [aboutIndex, setAboutIndex] = useState(0);
+  const aboutLen = aboutImages.length;
+  const heroLen = heroImages.length;
+  const location = useLocation();
+
+  useEffect(() => {
+    if (aboutLen <= 1) return;
+    const id = setInterval(() => setAboutIndex((i) => (i + 1) % aboutLen), 10000);
+    return () => clearInterval(id);
+  }, [aboutLen]);
   const heroLen = heroImages.length;
   const location = useLocation();
 
