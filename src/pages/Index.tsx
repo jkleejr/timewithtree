@@ -148,15 +148,6 @@ const Index = () => {
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
               </ul>
             </div>
-            <div className="pointer-events-auto mt-auto self-end">
-              <Button
-                asChild
-                size="lg"
-                className="rounded-none bg-black text-white shadow-lg"
-              >
-                <Link to="/about">자작나무 소개</Link>
-              </Button>
-            </div>
           </div>
         </div>
       </section>
