@@ -185,7 +185,7 @@ const Checkout = () => {
       .single();
 
     if (error || !data) {
-      console.error(error);
+      console.error("Order insert failed", error?.code);
       toast.error("주문 접수에 실패했습니다. 다시 시도해주세요.");
       setSubmitting(false);
       return;

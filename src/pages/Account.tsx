@@ -32,7 +32,7 @@ const Account = () => {
       .eq("id", user.id)
       .maybeSingle()
       .then(({ data, error }) => {
-        if (error) console.error(error);
+        if (error) console.error("Profile load failed", error?.code);
         if (data) {
           setForm({
             full_name: data.full_name ?? "",
