@@ -10,7 +10,7 @@ import logo from "@/assets/logo.png";
 type NavLinkItem = { to: string; label: string; hash?: string };
 
 const NAV_LINKS: NavLinkItem[] = [
-  { to: "/about", label: "자작나무 소개" },
+  { to: "/", hash: "about", label: "자작나무 소개" },
   { to: "/", hash: "airpot", label: "에어포트 재배" },
   { to: "/", hash: "info", label: "나무 관련 정보" },
   { to: "/", hash: "shop", label: "구매하기" },
