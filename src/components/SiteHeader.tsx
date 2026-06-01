@@ -101,15 +101,8 @@ export const SiteHeader = () => {
               <Menu className="h-6 w-6" />
             </SheetTrigger>
             <SheetContent side="right" className="w-[80vw] max-w-xs p-0">
-              <div className="flex items-center justify-between px-5 py-4 border-b border-border">
+              <div className="flex items-center px-5 py-4 border-b border-border">
                 <img src={logo} alt="" className="h-10 w-auto" />
-                <button
-                  onClick={() => setOpen(false)}
-                  aria-label="메뉴 닫기"
-                  className="h-9 w-9 inline-flex items-center justify-center"
-                >
-                  <X className="h-5 w-5" />
-                </button>
               </div>
               <nav className="flex flex-col py-2">
                 {NAV_LINKS.map((l) => {
