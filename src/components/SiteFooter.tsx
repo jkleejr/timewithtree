@@ -3,10 +3,10 @@ import { FarmContact } from "./FarmContact";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
-  { to: "/about", label: "자작나무 소개" },
-  { to: "/aeroponics", label: "에어포트 재배" },
-  { to: "/shop", label: "​구매하기" },
-  { to: "/planting", label: "나무 관련 정보" },
+  { to: "/#about", label: "자작나무 소개" },
+  { to: "/#airpot", label: "에어포트 재배" },
+  { to: "/#shop", label: "구매하기" },
+  { to: "/#info", label: "나무 관련 정보" },
   { to: "/auth", label: "로그인" },
   { to: "/cart", label: "장바구니" },
   { to: "/returns", label: "교환 / 환불 규정" },
