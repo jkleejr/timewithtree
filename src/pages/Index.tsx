@@ -64,8 +64,6 @@ const Index = () => {
     const id = setInterval(() => setAboutIndex((i) => (i + 1) % aboutLen), 10000);
     return () => clearInterval(id);
   }, [aboutLen]);
-  const heroLen = heroImages.length;
-  const location = useLocation();
 
   useEffect(() => {
     if (heroLen <= 1) return;
