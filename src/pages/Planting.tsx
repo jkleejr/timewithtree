@@ -49,37 +49,66 @@ const Planting = () => {
       <section className="max-w-5xl mx-auto px-6 md:px-10 pb-20 space-y-20">
         {/* STEPS */}
         <div>
-          <div className="border-t border-b border-border">
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              {steps.map((text, i) => (
-                <article
-                  key={i}
-                  className={`p-8 md:p-10 border-b border-border last:border-b-0 md:[&:nth-last-child(2)]:border-b-0 ${
-                    i % 2 === 0 ? "md:border-r" : ""
-                  }`}
-                >
-                  <p className="font-display text-xl md:text-2xl font-bold text-accent tracking-wider mb-4">
-                    STEP {i + 1}
-                  </p>
-                  <p className="leading-relaxed text-primary text-sm md:text-base">{text}</p>
-                </article>
-              ))}
-              {/* 멀칭 — STEP 7 옆 빈 칸 채우기 */}
-              <article className="relative p-8 md:p-10 bg-accent/10">
-                <span className="absolute left-0 top-0 bottom-0 w-1 bg-accent" />
-                <div className="flex items-center gap-2 mb-4">
-                  <Leaf className="h-5 w-5 text-accent" />
-                  <p className="font-display text-xl md:text-2xl font-bold text-accent tracking-wider">
-                    멀칭
+          <div className="flex items-baseline justify-between mb-6">
+            <p className="text-xs md:text-sm font-sans font-semibold text-primary uppercase tracking-[0.25em] opacity-70">
+              식 재 &nbsp; 가 이 드
+            </p>
+            <p className="text-xs md:text-sm text-muted-foreground tracking-wider">
+              07 단계 + 01 멀칭
+            </p>
+          </div>
+          <div className="border-t border-border">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+              {steps.map((s, i) => {
+                const Icon = s.icon;
+                const num = String(i + 1).padStart(2, "0");
+                const row = Math.floor(i / 4); // 0 or 1
+                const col = i % 4;
+                return (
+                  <article
+                    key={i}
+                    className={`relative p-6 md:p-8 min-h-[220px] flex flex-col border-b border-border ${
+                      col < 3 ? "md:border-r" : ""
+                    } ${row === 1 ? "md:border-b-0" : ""}`}
+                  >
+                    <div className="flex items-start justify-between mb-10">
+                      <Icon className="h-6 w-6 text-accent" strokeWidth={1.5} />
+                      <span className="font-display text-sm font-semibold tabular-nums text-muted-foreground tracking-wider">
+                        {num}
+                      </span>
+                    </div>
+                    <div className="mt-auto">
+                      <h3 className="font-display text-lg md:text-xl font-bold font-sans mb-2 text-primary">
+                        {s.title}
+                      </h3>
+                      <p className="leading-relaxed text-muted-foreground text-sm">
+                        {s.body}
+                      </p>
+                    </div>
+                  </article>
+                );
+              })}
+              {/* 멀칭 — highlighted */}
+              <article className="relative p-6 md:p-8 min-h-[220px] flex flex-col border-b border-border md:border-b-0 bg-accent/10">
+                <div className="flex items-start justify-between mb-10">
+                  <Leaf className="h-6 w-6 text-accent" strokeWidth={1.5} />
+                  <span className="font-display text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">
+                    멀 칭
+                  </span>
+                </div>
+                <div className="mt-auto">
+                  <h3 className="font-display text-lg md:text-xl font-bold font-sans mb-2 text-primary">
+                    멀칭 마감
+                  </h3>
+                  <p className="leading-relaxed text-muted-foreground text-sm">
+                    잡초 방지와 수분 증발을 막기 위해 제초매트, 부직포, 낙엽 또는 짚으로 잘 덮어줍니다.
                   </p>
                 </div>
-                <p className="leading-relaxed text-primary text-sm md:text-base">
-                  잡초 방지와 수분 증발을 막기 위해 제초매트, 부직포, 낙엽 또는 짚으로 잘 덮어줍니다.
-                </p>
               </article>
             </div>
           </div>
         </div>
+
 
         {/* 묘목 식재 전 상식 */}
         <div>
