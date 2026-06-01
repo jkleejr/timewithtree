@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Leaf, AlertTriangle } from "lucide-react";
+import { Leaf, AlertTriangle, Shovel, Scissors, Sprout, Layers, Mountain, Droplets, MapPin } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
@@ -8,13 +8,13 @@ import plantingMistakes from "@/assets/planting-mistakes.png";
 import plantingCorrectVsWrong from "@/assets/planting-correct-vs-wrong.png";
 
 const steps = [
-  "식재할 장소를 정리해줍니다.",
-  "필요 이상으로 긴 가지나 뿌리는 정리해줍니다.",
-  "뿌리분 뿌리보다 1.5배 크기로 구덩이를 팝니다.",
-  "뿌리가 휘거나 구부러지지 않게 곧게 펴서 구덩이에 넣고 흙을 2/3 정도 채워줍니다.",
-  "뿌리 사이에 흙이 잘 채워지도록 묘목을 흔들어 준 후 곧게 세워줍니다.",
-  "나머지 흙으로 지면보다 약간 높게 흙을 덮어줍니다.",
-  "식재 후 물을 충분히 주고 뿌리가 활착될 때까지 지속적으로 물 관리를 해줍니다.",
+  { icon: MapPin, title: "장소 정리", body: "식재할 장소를 정리해줍니다." },
+  { icon: Scissors, title: "가지·뿌리 정리", body: "필요 이상으로 긴 가지나 뿌리는 정리해줍니다." },
+  { icon: Shovel, title: "구덩이 파기", body: "뿌리분 뿌리보다 1.5배 크기로 구덩이를 팝니다." },
+  { icon: Sprout, title: "묘목 식재", body: "뿌리가 휘거나 구부러지지 않게 곧게 펴서 구덩이에 넣고 흙을 2/3 정도 채워줍니다." },
+  { icon: Layers, title: "흙 채우기", body: "뿌리 사이에 흙이 잘 채워지도록 묘목을 흔들어 준 후 곧게 세워줍니다." },
+  { icon: Mountain, title: "마무리 복토", body: "나머지 흙으로 지면보다 약간 높게 흙을 덮어줍니다." },
+  { icon: Droplets, title: "물 관리", body: "식재 후 물을 충분히 주고 뿌리가 활착될 때까지 지속적으로 물 관리를 해줍니다." },
 ];
 
 const measurements = [
