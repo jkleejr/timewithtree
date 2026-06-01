@@ -235,7 +235,7 @@ const Index = () => {
               </p>
             </div>
           </div>
-          <div className="mt-12 md:mt-16 flex justify-center">
+          <div className="mt-12 md:mt-16 flex justify-end">
             <Button
               asChild
               size="lg"
