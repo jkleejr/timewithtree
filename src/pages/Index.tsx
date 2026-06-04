@@ -423,7 +423,7 @@ const Index = () => {
           <div className="mt-8 md:mt-10 border-t border-border pt-8 md:pt-10">
             <div className="mb-8 md:mb-10">
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">흔한 실수</p>
-              <h3 className="font-display font-bold font-sans md:text-4xl leading-tight text-5xl">
+              <h3 className="font-display font-bold font-sans leading-tight text-5xl">
                 잘못된 식재 예시
               </h3>
             </div>
