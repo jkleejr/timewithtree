@@ -24,12 +24,14 @@ const OrderSuccess = () => {
           <br />
           입금 계좌 정보가 표시되지 않았다면, 곧 입력하신 이메일로 안내가 발송됩니다.
         </p>
-        <div className="flex gap-3 justify-center">
-          <Button asChild className="rounded-none">
-            <Link to="/shop">계속 쇼핑하기</Link>
-          </Button>
+        <div className="flex flex-wrap gap-3 justify-center">
+          {orderNumber && (
+            <Button asChild className="rounded-none">
+              <Link to={`/orders/${encodeURIComponent(orderNumber)}`}>주문 상세 보기</Link>
+            </Button>
+          )}
           <Button asChild variant="outline" className="rounded-none">
-            <Link to="/account">내 주문 보기</Link>
+            <Link to="/shop">계속 쇼핑하기</Link>
           </Button>
         </div>
       </section>
