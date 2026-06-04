@@ -428,12 +428,12 @@ const Index = () => {
               </h3>
             </div>
             <div className="grid md:grid-cols-12 gap-8 md:gap-10 items-start">
-              <div className="md:col-span-5 grid gap-4">
+              <div className="md:col-span-4 grid gap-4">
                 <figure>
-                  <img src={plantingMistakes} alt="잘못된 식재 예시" loading="lazy" className="w-full h-auto" />
+                  <img src={plantingMistakes} alt="잘못된 식재 예시" loading="lazy" className="w-full h-auto max-w-sm" />
                 </figure>
                 <figure>
-                  <img src={plantingCorrectVsWrong} alt="올바른 식재와 잘못된 식재 비교" loading="lazy" className="w-full h-auto" />
+                  <img src={plantingCorrectVsWrong} alt="올바른 식재와 잘못된 식재 비교" loading="lazy" className="w-full h-auto max-w-sm" />
                 </figure>
               </div>
               <ul className="md:col-span-7 grid gap-3 self-start">
