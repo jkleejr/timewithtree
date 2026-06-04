@@ -77,7 +77,7 @@ const OrderDetail = () => {
     if (user) {
       const { data, error } = await supabase
         .from("orders")
-        .select("*")
+        .select("id, order_number, user_id, customer_name, customer_phone, customer_email, shipping_address, postal_code, items, subtotal, currency, status, customer_note, created_at, updated_at")
         .eq("order_number", orderNumber)
         .maybeSingle();
       if (!error && data) {
