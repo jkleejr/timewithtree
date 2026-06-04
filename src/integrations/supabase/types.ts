@@ -304,6 +304,33 @@ export type Database = {
         }
         Returns: boolean
       }
+      lookup_order: {
+        Args: { p_email: string; p_order_number: string }
+        Returns: {
+          admin_note: string | null
+          created_at: string
+          currency: string
+          customer_email: string
+          customer_name: string
+          customer_note: string | null
+          customer_phone: string
+          id: string
+          items: Json
+          order_number: string
+          postal_code: string | null
+          shipping_address: string
+          status: Database["public"]["Enums"]["order_status"]
+          subtotal: number
+          updated_at: string
+          user_id: string | null
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "orders"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
       move_to_dlq: {
         Args: {
           dlq_name: string
