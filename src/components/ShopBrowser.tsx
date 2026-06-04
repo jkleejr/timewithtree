@@ -140,7 +140,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-12 sm:px-6 md:px-10 pb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 pb-8">
         {isLoading ? (
           <div className="grid md:grid-cols-2 gap-10">
             <div className="aspect-[4/5] bg-secondary animate-pulse" />
