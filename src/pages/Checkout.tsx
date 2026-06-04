@@ -196,7 +196,7 @@ const Checkout = () => {
     // (notify_admin_on_new_order) when the order row is inserted.
 
     clearCart();
-    navigate(`/order-success?n=${encodeURIComponent(data.order_number)}`);
+    navigate(`/order-success?n=${encodeURIComponent(data.order_number)}&email=${encodeURIComponent(orderer.email)}`);
   };
 
   return (
