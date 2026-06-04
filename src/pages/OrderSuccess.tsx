@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button";
 const OrderSuccess = () => {
   const [params] = useSearchParams();
   const orderNumber = params.get("n");
+  const email = params.get("email");
+  const detailHref = orderNumber
+    ? `/orders/${encodeURIComponent(orderNumber)}${email ? `?email=${encodeURIComponent(email)}` : ""}`
+    : null;
 
   return (
     <SiteLayout>
@@ -25,9 +29,9 @@ const OrderSuccess = () => {
           입금 계좌 정보가 표시되지 않았다면, 곧 입력하신 이메일로 안내가 발송됩니다.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
-          {orderNumber && (
+          {detailHref && (
             <Button asChild className="rounded-none">
-              <Link to={`/orders/${encodeURIComponent(orderNumber)}`}>주문 상세 보기</Link>
+              <Link to={detailHref}>주문 상세 보기</Link>
             </Button>
           )}
           <Button asChild variant="outline" className="rounded-none">
