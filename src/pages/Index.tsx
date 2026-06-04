@@ -436,7 +436,7 @@ const Index = () => {
                   <img src={plantingCorrectVsWrong} alt="올바른 식재와 잘못된 식재 비교" loading="lazy" className="w-full h-auto max-w-sm" />
                 </figure>
               </div>
-              <ul className="md:col-span-7 grid gap-3 self-start">
+              <ul className="md:col-span-8 grid gap-3 self-start">
                 <li className="flex gap-4 p-4 md:p-5 bg-destructive/5 border-l-4 border-destructive">
                   <span className="font-display font-bold text-destructive text-lg leading-none pt-0.5">✕</span>
                   <p className="text-sm md:text-base leading-relaxed text-primary font-sans">묘목이 기울어져 있거나 뿌리가 뭉쳐있다</p>
