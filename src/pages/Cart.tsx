@@ -3,6 +3,7 @@ import { Loader2, Minus, Plus, Trash2, ShoppingCart } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { BackButton } from "@/components/BackButton";
 import { Button } from "@/components/ui/button";
+import { OrderPolicyNotice } from "@/components/OrderPolicyNotice";
 import { useCartStore } from "@/stores/cartStore";
 import { formatPrice } from "@/lib/utils";
 
@@ -35,6 +36,8 @@ const Cart = () => {
             </Button>
           </div>
         ) : (
+          <>
+          <OrderPolicyNotice className="mb-8" />
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2 divide-y divide-border border-y border-border">
               {items.map((item) => {
@@ -123,6 +126,7 @@ const Cart = () => {
               </div>
             </aside>
           </div>
+          </>
         )}
         <div className="mt-12">
           <BackButton />

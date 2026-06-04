@@ -12,6 +12,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useDaumPostcode } from "@/hooks/useDaumPostcode";
+import { OrderPolicyNotice } from "@/components/OrderPolicyNotice";
 import { cn, formatPrice } from "@/lib/utils";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -203,6 +204,8 @@ const Checkout = () => {
       <section className="max-w-6xl mx-auto px-6 md:px-10 pt-16 pb-24">
         <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">결제</p>
         <h1 className="font-display text-4xl md:text-5xl mb-10 font-bold font-sans">주문 결제</h1>
+
+        <OrderPolicyNotice className="mb-8" />
 
         <div className="grid lg:grid-cols-3 gap-12">
           <form onSubmit={handleSubmit} className="lg:col-span-2 space-y-6">
