@@ -134,7 +134,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
               {label}
             </p>
           )}
-          <h1 className="font-display mb-6 font-bold font-sans md:text-4xl leading-tight text-5xl">
+          <h1 className="font-display mb-6 font-bold font-sans text-5xl">
             {title}
           </h1>
         </div>
