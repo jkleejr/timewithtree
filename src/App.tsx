@@ -16,6 +16,7 @@ import Planting from "./pages/Planting.tsx";
 import Cart from "./pages/Cart.tsx";
 import Checkout from "./pages/Checkout.tsx";
 import OrderSuccess from "./pages/OrderSuccess.tsx";
+import OrderDetail from "./pages/OrderDetail.tsx";
 import Auth from "./pages/Auth.tsx";
 import Account from "./pages/Account.tsx";
 import Returns from "./pages/Returns.tsx";
@@ -42,6 +43,7 @@ const AppRoutes = () => {
       <Route path="/cart" element={<Cart />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/order-success" element={<OrderSuccess />} />
+      <Route path="/orders/:orderNumber" element={<OrderDetail />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/account" element={<Account />} />
       <Route path="/returns" element={<Returns />} />
