@@ -463,6 +463,15 @@ const Index = () => {
                 </li>
               </ul>
             </div>
+            <div className="mt-8 md:mt-10 flex justify-end">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-none bg-black text-white shadow-lg"
+              >
+                <a href="#shop">구매하기</a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
