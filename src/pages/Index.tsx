@@ -350,7 +350,7 @@ const Index = () => {
       </section>
 
       {/* 나무 관련 정보 / 식재방법 (inline, expanded) */}
-      <section id="info" className="scroll-mt-24 border-t border-border py-10 md:py-14">
+      <section id="info" className="scroll-mt-24 border-t border-border pt-10 md:pt-14 pb-4 md:pb-6">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="max-w-3xl mb-8 md:mb-10">
             
