@@ -156,7 +156,7 @@ const Index = () => {
       <section id="about" className="scroll-mt-24 border-t border-border py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="mb-8 md:mb-10">
-            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">소개</p>
+            
             <h2 className="font-display max-w-3xl leading-[1.1] font-bold font-sans text-4xl md:text-5xl">
               자작나무 소개
             </h2>
@@ -251,7 +251,7 @@ const Index = () => {
       <section id="airpot" className="scroll-mt-24 border-t border-border bg-secondary/30 py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="max-w-3xl mb-8 md:mb-10">
-            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">에어포트 재배</p>
+            
             <h2 className="font-display font-bold font-sans text-4xl md:text-5xl leading-tight mb-5">
               에어포트 재배
             </h2>
@@ -345,14 +345,14 @@ const Index = () => {
 
       {/* Shop */}
       <section id="shop" className="border-t border-border pb-8 md:pb-12">
-        <ShopBrowser showBackButton={false} title="구매하기" label="상점" />
+        <ShopBrowser showBackButton={false} title="구매하기" />
       </section>
 
       {/* 나무 관련 정보 / 식재방법 (inline, expanded) */}
       <section id="info" className="scroll-mt-24 border-t border-border py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="max-w-3xl mb-8 md:mb-10">
-            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">식재 가이드</p>
+            
             <h2 className="font-display font-bold font-sans text-4xl md:text-5xl leading-tight mb-5">
               나무 관련 정보 · 식재방법
             </h2>
@@ -385,7 +385,7 @@ const Index = () => {
           {/* 묘목 식재 전 상식 */}
           <div className="mt-2 border-t border-border pt-8 md:pt-10">
             <div className="mb-8 md:mb-10">
-              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">수목 측정</p>
+              
               <h3 className="font-display font-bold font-sans leading-tight text-5xl">
                 묘목 식재 전 상식
               </h3>
@@ -427,7 +427,7 @@ const Index = () => {
           {/* 잘못된 식재 경고 */}
           <div className="mt-8 md:mt-10 border-t border-border pt-8 md:pt-10">
             <div className="mb-8 md:mb-10">
-              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">흔한 실수</p>
+              
               <h3 className="font-display font-bold font-sans leading-tight text-5xl">
                 잘못된 식재 예시
               </h3>
