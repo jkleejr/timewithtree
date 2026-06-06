@@ -289,14 +289,15 @@ const Index = () => {
 
           {/* Benefits — editorial list */}
           <div className="border-t border-border">
-            <div className="flex items-baseline justify-between pt-6 md:pt-8 mb-6 md:mb-8 gap-6">
-              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+            <div className="flex items-baseline justify-between pt-8 md:pt-10 mb-6 md:mb-8 gap-6">
+              <h3 className="font-display font-bold font-sans text-4xl md:text-5xl leading-tight">
                 주요 장점
-              </p>
+              </h3>
               <p className="text-xs text-muted-foreground tabular-nums">
                 07 가지 핵심 + 01 주의사항
               </p>
             </div>
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border border border-border">
               {airpotBenefits.map((b) => {
                 const Icon = b.icon;
