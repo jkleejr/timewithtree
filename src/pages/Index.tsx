@@ -463,7 +463,7 @@ const Index = () => {
                 </li>
               </ul>
             </div>
-            <div className="mt-8 md:mt-10 flex justify-end">
+            <div className="mt-4 md:mt-6 flex justify-end">
               <Button
                 asChild
                 size="lg"
