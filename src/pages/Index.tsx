@@ -343,6 +343,11 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Shop */}
+      <section id="shop" className="border-t border-border pb-8 md:pb-12">
+        <ShopBrowser showBackButton={false} title="구매하기" label="상점" />
+      </section>
+
       {/* 나무 관련 정보 / 식재방법 (inline, expanded) */}
       <section id="info" className="scroll-mt-24 border-t border-border py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
@@ -461,10 +466,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Shop */}
-      <section id="shop" className="border-t border-border pb-8 md:pb-12">
-        <ShopBrowser showBackButton={false} title="구매하기" label="상점" />
-      </section>
     </SiteLayout>
   );
 };
