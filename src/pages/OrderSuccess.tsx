@@ -6,10 +6,7 @@ import { Button } from "@/components/ui/button";
 const OrderSuccess = () => {
   const [params] = useSearchParams();
   const orderNumber = params.get("n");
-  const email = params.get("email");
-  const detailHref = orderNumber
-    ? `/orders/${encodeURIComponent(orderNumber)}${email ? `?email=${encodeURIComponent(email)}` : ""}`
-    : null;
+  const detailHref = orderNumber ? `/orders/${encodeURIComponent(orderNumber)}` : null;
 
   return (
     <SiteLayout>
