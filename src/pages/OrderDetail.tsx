@@ -60,13 +60,20 @@ function parseNote(note: string | null) {
 
 const OrderDetail = () => {
   const { orderNumber = "" } = useParams();
-  const [params] = useSearchParams();
   const { user } = useAuth();
+
+  const storedEmail = (() => {
+    try {
+      return sessionStorage.getItem(`order_email:${orderNumber}`) ?? "";
+    } catch {
+      return "";
+    }
+  })();
 
   const [order, setOrder] = useState<OrderRow | null>(null);
   const [loading, setLoading] = useState(true);
   const [needsLookup, setNeedsLookup] = useState(false);
-  const [lookupEmail, setLookupEmail] = useState(params.get("email") ?? "");
+  const [lookupEmail, setLookupEmail] = useState(storedEmail);
   const [lookingUp, setLookingUp] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -101,6 +108,11 @@ const OrderDetail = () => {
         setOrder(row as unknown as OrderRow);
         setNeedsLookup(false);
         setLoading(false);
+        try {
+          sessionStorage.setItem(`order_email:${orderNumber}`, email);
+        } catch {
+          // ignore
+        }
         return;
       }
       toast.error("주문 정보를 찾을 수 없습니다. 주문번호와 이메일을 확인해주세요.");
@@ -111,8 +123,7 @@ const OrderDetail = () => {
   };
 
   useEffect(() => {
-    const initialEmail = params.get("email") ?? undefined;
-    fetchOrder(initialEmail);
+    fetchOrder(storedEmail || undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderNumber, user?.id]);
 
