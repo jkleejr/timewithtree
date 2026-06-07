@@ -87,7 +87,7 @@ const Index = () => {
     <SiteLayout>
       {/* Hero gallery */}
       <section className="relative">
-        <div className="relative w-full overflow-hidden bg-secondary md:aspect-[16/8]">
+        <div className="relative w-full overflow-hidden bg-secondary aspect-[4/5] md:aspect-[16/8]">
           {heroImages.map((img, i) => (
             <img
               key={i}
