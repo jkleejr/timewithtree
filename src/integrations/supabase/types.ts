@@ -104,16 +104,26 @@ export type Database = {
       orders: {
         Row: {
           admin_note: string | null
+          bank_account: string | null
           created_at: string
           currency: string
           customer_email: string
           customer_name: string
           customer_note: string | null
           customer_phone: string
+          customer_tel: string | null
+          delivery_message: string | null
+          depositor_name: string | null
           id: string
           items: Json
           order_number: string
+          payment_method: string
           postal_code: string | null
+          recipient_address: string | null
+          recipient_name: string | null
+          recipient_phone: string | null
+          recipient_postal_code: string | null
+          recipient_tel: string | null
           shipping_address: string
           status: Database["public"]["Enums"]["order_status"]
           subtotal: number
@@ -122,16 +132,26 @@ export type Database = {
         }
         Insert: {
           admin_note?: string | null
+          bank_account?: string | null
           created_at?: string
           currency?: string
           customer_email: string
           customer_name: string
           customer_note?: string | null
           customer_phone: string
+          customer_tel?: string | null
+          delivery_message?: string | null
+          depositor_name?: string | null
           id?: string
           items: Json
           order_number?: string
+          payment_method?: string
           postal_code?: string | null
+          recipient_address?: string | null
+          recipient_name?: string | null
+          recipient_phone?: string | null
+          recipient_postal_code?: string | null
+          recipient_tel?: string | null
           shipping_address: string
           status?: Database["public"]["Enums"]["order_status"]
           subtotal: number
@@ -140,16 +160,26 @@ export type Database = {
         }
         Update: {
           admin_note?: string | null
+          bank_account?: string | null
           created_at?: string
           currency?: string
           customer_email?: string
           customer_name?: string
           customer_note?: string | null
           customer_phone?: string
+          customer_tel?: string | null
+          delivery_message?: string | null
+          depositor_name?: string | null
           id?: string
           items?: Json
           order_number?: string
+          payment_method?: string
           postal_code?: string | null
+          recipient_address?: string | null
+          recipient_name?: string | null
+          recipient_phone?: string | null
+          recipient_postal_code?: string | null
+          recipient_tel?: string | null
           shipping_address?: string
           status?: Database["public"]["Enums"]["order_status"]
           subtotal?: number

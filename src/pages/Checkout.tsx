@@ -159,24 +159,26 @@ const Checkout = () => {
       line_total: parseFloat(i.price.amount) * i.quantity,
     }));
 
-    const noteLines = [
-      `[입금자명] ${depositorName.trim()}`,
-      `[받는분] ${effectiveRecipient.name} / ${effectiveRecipient.phone}` +
-        (effectiveRecipient.tel ? ` / ${effectiveRecipient.tel}` : ""),
-      orderer.tel ? `[주문자 전화] ${orderer.tel}` : "",
-      deliveryMessage ? `[전하시는 말씀] ${deliveryMessage.trim()}` : "",
-    ].filter(Boolean);
-
     const { data, error } = await supabase
       .from("orders")
       .insert({
         user_id: user?.id ?? null,
         customer_name: orderer.name,
         customer_phone: orderer.phone,
+        customer_tel: orderer.tel || null,
         customer_email: orderer.email,
         shipping_address: composeAddress(effectiveRecipient),
         postal_code: effectiveRecipient.postal || null,
-        customer_note: noteLines.join("\n"),
+        recipient_name: sameAsOrderer ? null : effectiveRecipient.name,
+        recipient_phone: sameAsOrderer ? null : effectiveRecipient.phone,
+        recipient_tel: sameAsOrderer ? null : (effectiveRecipient.tel || null),
+        recipient_address: sameAsOrderer ? null : composeAddress(effectiveRecipient),
+        recipient_postal_code: sameAsOrderer ? null : (effectiveRecipient.postal || null),
+        delivery_message: deliveryMessage.trim() || null,
+        payment_method: "bank_transfer",
+        depositor_name: depositorName.trim(),
+        bank_account: BANK_ACCOUNT,
+        customer_note: null,
         items: orderItems,
         subtotal,
         currency,
