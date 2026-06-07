@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Check, Copy, Loader2, Printer } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { BackButton } from "@/components/BackButton";
