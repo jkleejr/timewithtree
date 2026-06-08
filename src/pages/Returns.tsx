@@ -32,21 +32,21 @@ const Returns = () => {
       <section className="max-w-4xl mx-auto px-6 md:px-10 py-16 md:py-24">
         <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-10">교환 / 환불 규정</h1>
 
-        <div className="space-y-5 text-base leading-relaxed text-foreground/90">
+        <div className="space-y-5 text-base md:text-lg leading-relaxed text-foreground/90">
           {paragraphs.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
         </div>
 
         <h2 className="text-xl md:text-2xl font-semibold mt-12 mb-5">교환 및 반품안내</h2>
-        <div className="space-y-5 text-base leading-relaxed text-foreground/90">
+        <div className="space-y-5 text-base md:text-lg leading-relaxed text-foreground/90">
           {exchangeReturn.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
         </div>
 
         <h2 className="text-xl md:text-2xl font-semibold mt-12 mb-5">환불안내</h2>
-        <div className="space-y-3 text-base leading-relaxed text-foreground/90">
+        <div className="space-y-3 text-base md:text-lg leading-relaxed text-foreground/90">
           {refunds.map((p, i) => (
             <p key={i}>{p}</p>
           ))}

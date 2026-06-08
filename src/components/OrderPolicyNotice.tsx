@@ -11,7 +11,7 @@ export const OrderPolicyNotice = ({ className = "" }: OrderPolicyNoticeProps) =>
         <AlertCircle className="h-8 w-8 md:h-9 md:w-9" />
         <span className="mt-1 text-[11px] tracking-wider">필독하세요!</span>
       </div>
-      <ul className="text-sm leading-relaxed space-y-1.5 list-disc pl-4 marker:text-muted-foreground">
+      <ul className="text-base md:text-lg leading-relaxed space-y-1.5 list-disc pl-4 marker:text-muted-foreground">
         <li>택배비 또는 용달비는 고객님이 부담합니다.</li>
         <li>제주도, 섬, 도서산간지역의 배송비는 결제금액과 관계없이 고객 부담입니다.</li>
         <li>품절 또는 삭제된 옵션의 상품이 있을 경우 주문이 되지 않습니다. 해당 항목을 삭제 후 다시 주문해주세요.</li>
