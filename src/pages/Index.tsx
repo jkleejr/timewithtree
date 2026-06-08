@@ -281,7 +281,7 @@ const Index = () => {
                 loading="lazy"
                 className="w-full aspect-[4/3] object-cover"
               />
-              <figcaption className="px-4 py-3 text-xs md:text-sm text-muted-foreground font-sans">
+              <figcaption className="px-4 py-3 text-xs md:text-sm text-foreground font-sans">
                 에어포트에서 자란 자작나무 — 안정적인 뿌리 구조로 연중 식재가 가능합니다.
               </figcaption>
             </figure>
