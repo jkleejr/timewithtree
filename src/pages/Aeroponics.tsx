@@ -54,10 +54,10 @@ const Aeroponics = () => {
         <p className="text-xs md:text-sm font-sans font-semibold text-primary uppercase tracking-[0.25em] mb-4 opacity-70">
           AIR POT CULTIVATION
         </p>
-        <h1 className="font-display leading-tight mb-6 font-sans text-3xl sm:text-4xl md:text-5xl font-bold">
+        <h1 className="font-display leading-tight mb-6 font-sans text-4xl md:text-5xl font-bold">
           🌿 에어포트 (Air Pot) 재배 방식이란?
         </h1>
-        <p className="text-lg md:text-xl leading-relaxed text-primary max-w-3xl">
+        <p className="text-base md:text-lg leading-relaxed text-primary max-w-3xl">
           저희 자작나무는 일반 화분이 아닌 에어포트에서 재배됩니다. 에어포트란 옆면 전체에 통기 구멍이 있는 특수 용기로, 뿌리 품질을 근본적으로 높여주는 재배 방식입니다.
         </p>
       </section>

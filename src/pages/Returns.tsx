@@ -30,7 +30,7 @@ const Returns = () => {
   return (
     <SiteLayout>
       <section className="max-w-4xl mx-auto px-6 md:px-10 py-16 md:py-24">
-        <h1 className="text-3xl md:text-5xl font-semibold tracking-tight mb-10">교환 / 환불 규정</h1>
+        <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-10">교환 / 환불 규정</h1>
 
         <div className="space-y-5 text-base leading-relaxed text-foreground/90">
           {paragraphs.map((p, i) => (
