@@ -160,9 +160,6 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
         ) : activeProduct ? (
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             <div className="md:sticky md:top-24 self-start">
-              <h2 className="font-display font-bold mb-4 font-sans sm:text-3xl md:text-3xl text-3xl">
-                {activeProduct.node.title}
-              </h2>
               <div className="relative aspect-[4/5] bg-secondary overflow-hidden mb-3">
                 {images[activeImage] ? (
                   <button
