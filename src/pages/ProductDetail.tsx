@@ -112,7 +112,7 @@ const ProductDetail = () => {
 
           {variants.length > 1 && (
             <div className="mb-6">
-              <p className="uppercase tracking-widest mb-3 text-xl font-semibold text-primary font-bold font-sans">Size</p>
+              <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">Size</p>
               <div className="flex flex-wrap gap-2">
                 {variants.map((v, i) => (
                   <button
