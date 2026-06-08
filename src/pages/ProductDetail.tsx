@@ -130,7 +130,7 @@ const ProductDetail = () => {
           )}
 
           <div className="mb-8">
-            <p className="uppercase tracking-widest mb-3 text-xl font-semibold text-primary font-bold font-sans">수량</p>
+            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">수량</p>
             <div className="inline-flex items-center border border-border font-sans">
               <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-3 py-2 hover:bg-secondary font-sans">
                 <Minus className="h-3 w-3" />
