@@ -304,7 +304,7 @@ const Index = () => {
                 return (
                   <article
                     key={b.num}
-                    className="bg-background p-5 md:p-7 flex flex-col gap-4 min-h-[170px] md:min-h-[200px]"
+                    className="bg-accent/5 p-5 md:p-7 flex flex-col gap-4 min-h-[170px] md:min-h-[200px]"
                   >
                     <div className="flex items-center justify-between">
                       <Icon className="h-6 w-6 md:h-7 md:w-7 text-accent" strokeWidth={1.5} aria-hidden="true" />
