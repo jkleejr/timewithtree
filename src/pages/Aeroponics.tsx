@@ -89,7 +89,7 @@ const Aeroponics = () => {
                   <h2 className="font-display text-xl md:text-2xl font-bold font-sans mb-3 text-primary">
                     {b.title}
                   </h2>
-                  <p className="leading-relaxed text-primary text-sm md:text-base">
+                  <p className="leading-relaxed text-primary text-base md:text-lg">
                     {b.body}
                   </p>
                 </article>

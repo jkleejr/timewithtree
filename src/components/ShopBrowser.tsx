@@ -153,7 +153,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
         ) : sorted.length === 0 ? (
           <div className="border border-dashed border-border py-20 text-center">
             <p className="font-display text-2xl mb-2 font-sans">No products found</p>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground text-base md:text-lg">
               Add your first birch tree to get started.
             </p>
           </div>
@@ -246,7 +246,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                 <AccordionItem value="shipping">
                   <AccordionTrigger>나무 배송 안내</AccordionTrigger>
                   <AccordionContent className="font-sans font-normal text-foreground">
-                    <div className="space-y-4 text-sm md:text-base leading-relaxed">
+                    <div className="space-y-4 text-base md:text-lg leading-relaxed">
                       <p>
                         〮 나무는 에어포트에 식재된 상태로 배송됩니다.<br />
                         <span className="block pl-3">식재시 반드시 에어포트 몸통과 하단 받침대를 분리 후 나무만 식재하세요.</span>
@@ -276,7 +276,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                 <AccordionItem value="pickup">
                   <AccordionTrigger>방문 구입 또는 직접 나무 수령시 안내</AccordionTrigger>
                   <AccordionContent className="font-sans font-normal text-foreground">
-                    <div className="space-y-4 text-sm md:text-base leading-relaxed">
+                    <div className="space-y-4 text-base md:text-lg leading-relaxed">
                       <p>
                         저희 나무와 걷는 시간 농장은 세종시 장군면 송문리와 공주시 정안면 대산리의 2개 지역에 농장이 있습니다.
                       </p>
@@ -303,7 +303,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                 <AccordionItem value="returns">
                   <AccordionTrigger>교환 / 환불 규정</AccordionTrigger>
                   <AccordionContent className="font-sans font-normal text-foreground">
-                    <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                <p className="text-base md:text-lg leading-relaxed text-muted-foreground">
                       상세 내용은 추후 업데이트 예정입니다.
                     </p>
                   </AccordionContent>
@@ -452,7 +452,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
           <AlertDialogHeader>
             <AlertDialogTitle>용달 배송안내</AlertDialogTitle>
             <AlertDialogDescription asChild>
-              <div className="space-y-3 text-sm leading-relaxed">
+              <div className="space-y-3 text-base md:text-lg leading-relaxed">
                 <p>
                   본 상품은 일반 택배로 배송이 불가하며, <strong>용달(화물차)</strong>로
                   배송됩니다. 그래도 주문하시겠습니까?
@@ -461,7 +461,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                   용달 배송비는 별도로 청구되며, 정확한 금액은 사무실로 직접
                   문의해 주시기 바랍니다.
                 </p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-base md:text-lg text-muted-foreground">
                   (용달은 일반 택배가 아닌 화물차 배송 서비스를 의미합니다)
                 </p>
               </div>

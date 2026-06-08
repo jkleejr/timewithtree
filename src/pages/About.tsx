@@ -84,24 +84,24 @@ const About = () => {
             )}
           </div>
         </div>
-        <div className="md:col-span-6 md:col-start-7 flex-col gap-6 text-base leading-relaxed text-muted-foreground flex items-start justify-start">
-          <div className="text-primary text-base font-bold font-sans">
+        <div className="md:col-span-6 md:col-start-7 flex-col gap-6 text-base md:text-lg leading-relaxed text-muted-foreground flex items-start justify-start">
+          <div className="text-primary text-base md:text-lg font-bold font-sans">
             <p className="font-sans">학명 : Betula Jacquemontii</p>
             <p className="font-sans">월동 : 내한성 높음</p>
             <p className="font-sans">햇빛 : 양지</p>
             <p className="font-sans">물 : 겉흙이 마르면(과습주의)</p>
           </div>
           <p className="font-bold text-foreground mt-4 text-2xl md:text-3xl">핵심 특징 및 관리</p>
-          <p className="text-primary text-base">
+          <p className="text-primary text-base md:text-lg">
             히말라야 서부지역에 자생하는 자작나무 중에서 발견된, 수피가 유난히 밝고 흰색인 변종을 유럽에서 원예용으로 개량하여 탄생시킨 품종으로 프랑스 자연주의자의 이름을 따서 '잭큐몬티'라는 이름이 붙여졌다.
           </p>
-          <p className="text-primary text-base">
+          <p className="text-primary text-base md:text-lg">
             일반 자작나무 품종은 추운지역에서만 자작나무 고유의 아름다운 수피 색상을 발현시키고 생육이 양호한 특성이 있어서 국내에서는 일부지역에서만 자작나무 고유의 수피감상이 가능한 반면, 이품종의 경우엔 유럽의 기후에 맞게 개량되어 국내 모든 지역에서 품종 고유의 수피 매력을 발현시키는 장점을 가지고 있다.
           </p>
-          <p className="text-primary text-base">
+          <p className="text-primary text-base md:text-lg">
             자작나무 중 가장 밝은 백색을 띠며 성장속도가 빠르다. 수피는 줄기뿐만 아니라 가지까지도 형광성을 지닌 특이한 흰색이라서 여러그루를 식재시 가을 단풍과 겨울나목이 다른 품종과 달리 매우 몽환적인 느낌을 주는 매력이 있어 1993년 영국 왕립현회로부터 최고의 권위있는 훈장을 수상하였다고 한다.
           </p>
-          <p className="text-primary text-base whitespace-pre-line">
+          <p className="text-primary text-base md:text-lg whitespace-pre-line">
             전국 노지월동이 가능하고, 성장속도가 빠른 속성수이다.
             나무높이는 9~15m까지 성장하며, 뿌리는 땅속깊이 직근으로 파고들지 않고, 사방으로 퍼지는 특성이 있다.
             유럽과 미국뿐만 아니라 호주, 일본 등에서 인기조경수로 자리매김되고 있으며, 그 수액은 자일리톨 성분 등 이로운 성분이 많이 함유되어 있어서 국내의 고로쇠 수액처럼 웰빙음료 등에 활용이 가는 추세이다.

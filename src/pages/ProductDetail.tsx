@@ -103,11 +103,11 @@ const ProductDetail = () => {
           )}
           {p.descriptionHtml ? (
             <div
-              className="leading-relaxed mb-8 space-y-3 font-normal font-sans text-black"
+              className="leading-relaxed mb-8 space-y-3 font-normal font-sans text-black text-base md:text-lg"
               dangerouslySetInnerHTML={{ __html: p.descriptionHtml }}
             />
           ) : (
-            <p className="leading-relaxed mb-8 whitespace-pre-line font-normal font-sans text-black">{p.description}</p>
+            <p className="leading-relaxed mb-8 whitespace-pre-line font-normal font-sans text-black text-base md:text-lg">{p.description}</p>
           )}
 
           {variants.length > 1 && (
@@ -155,7 +155,7 @@ const ProductDetail = () => {
             <AccordionItem value="shipping">
               <AccordionTrigger>나무 배송 안내</AccordionTrigger>
               <AccordionContent className="font-sans font-normal text-black">
-                <div className="space-y-4 text-sm md:text-base leading-relaxed">
+                <div className="space-y-4 text-base md:text-lg leading-relaxed">
                   <p>
                     〮 나무는 에어포트에 식재된 상태로 배송됩니다.<br />
                     <span className="block pl-3">식재시 반드시 에어포트 몸통과 하단 받침대를 분리 후 나무만 식재하세요.</span>
@@ -185,7 +185,7 @@ const ProductDetail = () => {
             <AccordionItem value="pickup">
               <AccordionTrigger>방문 구입 또는 직접 나무 수령시 안내</AccordionTrigger>
               <AccordionContent className="font-sans font-normal text-black">
-                <div className="space-y-4 text-sm md:text-base leading-relaxed">
+                <div className="space-y-4 text-base md:text-lg leading-relaxed">
                   <p>
                     저희 나무와 걷는 시간 농장은 세종시 장군면 송문리와 공주시 정안면 대산리의 2개 지역에 농장이 있습니다.
                   </p>
@@ -212,7 +212,7 @@ const ProductDetail = () => {
             <AccordionItem value="returns">
               <AccordionTrigger>교환 / 환불 규정</AccordionTrigger>
               <AccordionContent className="font-sans font-normal text-black">
-                <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                <p className="text-base md:text-lg leading-relaxed text-muted-foreground">
                   상세 내용은 추후 업데이트 예정입니다.
                 </p>
               </AccordionContent>

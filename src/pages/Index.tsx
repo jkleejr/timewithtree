@@ -143,7 +143,7 @@ const Index = () => {
               <h1 className="font-display font-bold font-sans leading-tight text-4xl md:text-5xl text-white drop-shadow-lg">
                 잭큐몬티 자작나무 농장
               </h1>
-              <ul className="md:max-w-2xl space-y-1.5 sm:space-y-2 text-sm md:text-lg leading-relaxed font-sans text-white drop-shadow-md">
+              <ul className="md:max-w-2xl space-y-1.5 sm:space-y-2 text-base md:text-lg leading-relaxed font-sans text-white drop-shadow-md">
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>네덜란드에서 조직배양한 묘목 재배</span></li>
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
               </ul>
@@ -219,16 +219,16 @@ const Index = () => {
                 <p className="font-sans">물 : 겉흙이 마르면(과습주의)</p>
               </div>
               <p className="font-bold text-foreground mt-4 text-2xl md:text-3xl">핵심 특징 및 관리</p>
-              <p className="text-primary text-base">
+              <p className="text-primary text-base md:text-lg">
                 히말라야 서부지역에 자생하는 자작나무 중에서 발견된, 수피가 유난히 밝고 흰색인 변종을 유럽에서 원예용으로 개량하여 탄생시킨 품종으로 프랑스 자연주의자의 이름을 따서 '잭큐몬티'라는 이름이 붙여졌다.
               </p>
-              <p className="text-primary text-base">
+              <p className="text-primary text-base md:text-lg">
                 일반 자작나무 품종은 추운지역에서만 자작나무 고유의 아름다운 수피 색상을 발현시키고 생육이 양호한 특성이 있어서 국내에서는 일부지역에서만 자작나무 고유의 수피감상이 가능한 반면, 이품종의 경우엔 유럽의 기후에 맞게 개량되어 국내 모든 지역에서 품종 고유의 수피 매력을 발현시키는 장점을 가지고 있다.
               </p>
-              <p className="text-primary text-base">
+              <p className="text-primary text-base md:text-lg">
                 자작나무 중 가장 밝은 백색을 띠며 성장속도가 빠르다. 수피는 줄기뿐만 아니라 가지까지도 형광성을 지닌 특이한 흰색이라서 여러그루를 식재시 가을 단풍과 겨울나목이 다른 품종과 달리 매우 몽환적인 느낌을 주는 매력이 있어 1993년 영국 왕립현회로부터 최고의 권위있는 훈장을 수상하였다고 한다.
               </p>
-              <p className="text-primary text-base whitespace-pre-line">
+              <p className="text-primary text-base md:text-lg whitespace-pre-line">
                 전국 노지월동이 가능하고, 성장속도가 빠른 속성수이다.
                 나무높이는 9~15m까지 성장하며, 뿌리는 땅속깊이 직근으로 파고들지 않고, 사방으로 퍼지는 특성이 있다.
                 유럽과 미국뿐만 아니라 호주, 일본 등에서 인기조경수로 자리매김되고 있으며, 그 수액은 자일리톨 성분 등 이로운 성분이 많이 함유되어 있어서 국내의 고로쇠 수액처럼 웰빙음료 등에 활용이 가는 추세이다.
@@ -316,7 +316,7 @@ const Index = () => {
                       <h3 className="font-sans font-bold text-sm md:text-base text-foreground leading-tight mb-1.5">
                         {b.title}
                       </h3>
-                      <p className="text-xs md:text-sm text-primary leading-snug">{b.desc}</p>
+                      <p className="text-base md:text-lg text-primary leading-snug">{b.desc}</p>
                     </div>
                   </article>
                 );
@@ -332,7 +332,7 @@ const Index = () => {
                   <h3 className="font-sans font-bold text-sm md:text-base text-foreground leading-tight mb-1.5">
                     관수 관리 필요
                   </h3>
-                  <p className="text-xs md:text-sm text-primary leading-snug">
+                  <p className="text-base md:text-lg text-primary leading-snug">
                     일반 화분보다 <span className="font-semibold text-foreground">물이 빨리 마르므로 관수 관리가 중요</span>합니다. 바람이 강한 환경에서는 건조 스트레스에 유의하세요.
                   </p>
                 </div>
@@ -372,12 +372,12 @@ const Index = () => {
                     {s.num}단계
                   </span>
                 </div>
-                <p className="text-sm leading-relaxed text-primary">{s.text}</p>
+                <p className="text-base md:text-lg leading-relaxed text-primary">{s.text}</p>
               </article>
             ))}
             <article className="bg-accent/10 p-5 md:p-6 flex flex-col gap-3">
               <span className="font-display text-2xl font-bold text-accent">🌿 멀칭</span>
-              <p className="text-sm leading-relaxed text-primary">
+              <p className="text-base md:text-lg leading-relaxed text-primary">
                 잡초 방지와 수분 증발을 막기 위해 제초매트, 부직포, 낙엽 또는 짚으로 잘 덮어줍니다.
               </p>
             </article>
@@ -415,7 +415,7 @@ const Index = () => {
                       <p className="font-sans font-bold text-base md:text-lg text-foreground leading-tight mb-1">
                         {item.label}
                       </p>
-                      <p className="text-sm leading-relaxed text-primary font-sans">
+                      <p className="text-base md:text-lg leading-relaxed text-primary font-sans">
                         {item.desc} <span className="text-muted-foreground">(단위 {item.unit})</span>
                       </p>
                     </div>
@@ -445,19 +445,19 @@ const Index = () => {
               <ul className="md:col-span-8 grid gap-3 self-center md:mt-6">
                 <li className="flex gap-4 p-4 md:p-5 bg-destructive/5 border-l-4 border-destructive">
                   <span className="font-display font-bold text-destructive text-lg leading-none pt-0.5">✕</span>
-                  <p className="text-sm md:text-base leading-relaxed text-primary font-sans">묘목이 기울어져 있거나 뿌리가 뭉쳐있다</p>
+                  <p className="text-base md:text-lg leading-relaxed text-primary font-sans">묘목이 기울어져 있거나 뿌리가 뭉쳐있다</p>
                 </li>
                 <li className="flex gap-4 p-4 md:p-5 bg-destructive/5 border-l-4 border-destructive">
                   <span className="font-display font-bold text-destructive text-lg leading-none pt-0.5">✕</span>
-                  <p className="text-sm md:text-base leading-relaxed text-primary font-sans">구덩이가 얕아서 뿌리가 밖으로 나온다</p>
+                  <p className="text-base md:text-lg leading-relaxed text-primary font-sans">구덩이가 얕아서 뿌리가 밖으로 나온다</p>
                 </li>
                 <li className="flex gap-4 p-4 md:p-5 bg-accent/10 border-l-4 border-accent">
                   <span className="font-display font-bold text-accent text-lg leading-none pt-0.5">!</span>
-                  <p className="text-sm md:text-base leading-relaxed text-primary font-sans">비탈진 경사면에 심을 때는 흙을 수평으로 하고 상단 경사면에 이어서 심지 않는다</p>
+                  <p className="text-base md:text-lg leading-relaxed text-primary font-sans">비탈진 경사면에 심을 때는 흙을 수평으로 하고 상단 경사면에 이어서 심지 않는다</p>
                 </li>
                 <li className="flex gap-4 p-4 md:p-5 bg-accent/10 border-l-4 border-accent">
                   <span className="font-display font-bold text-accent text-lg leading-none pt-0.5">!</span>
-                  <p className="text-sm md:text-base leading-relaxed text-primary font-sans">
+                  <p className="text-base md:text-lg leading-relaxed text-primary font-sans">
                     식재 시 비료나 완숙(가스 발생이 끝나지 않은) 거름을 넣고 심을 경우, 가스 발생으로 인한 흙·뿌리 밀어냄 현상이 일어나므로 주의 바랍니다. 뿌리 활착이 끝나더라도 첫해는 소량만 주는 것이 적절합니다.
                   </p>
                 </li>

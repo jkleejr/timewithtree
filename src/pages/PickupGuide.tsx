@@ -6,7 +6,7 @@ const PickupGuide = () => {
       <section className="max-w-4xl mx-auto px-6 md:px-10 py-16 md:py-24 text-primary">
         <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-10">방문 구입 또는 직접 나무 수령시 안내</h1>
 
-        <div className="space-y-10 text-base leading-relaxed text-primary">
+        <div className="space-y-10 text-base md:text-lg leading-relaxed text-primary">
           <div>
             <p className="text-primary">
               저희 나무와 걷는 시간 농장은 세종시 장군면 송문리와 공주시 정안면 대산리의 2개 지역에 농장이 있습니다.

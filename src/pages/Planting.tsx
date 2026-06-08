@@ -81,7 +81,7 @@ const Planting = () => {
                       <h3 className="font-display text-lg md:text-xl font-bold font-sans mb-2 text-primary">
                         {s.title}
                       </h3>
-                      <p className="leading-relaxed text-muted-foreground text-sm">
+                      <p className="leading-relaxed text-muted-foreground text-base md:text-lg">
                         {s.body}
                       </p>
                     </div>
@@ -100,7 +100,7 @@ const Planting = () => {
                   <h3 className="font-display text-lg md:text-xl font-bold font-sans mb-2 text-primary">
                     멀칭 마감
                   </h3>
-                  <p className="leading-relaxed text-muted-foreground text-sm">
+                  <p className="leading-relaxed text-muted-foreground text-base md:text-lg">
                     잡초 방지와 수분 증발을 막기 위해 제초매트, 부직포, 낙엽 또는 짚으로 잘 덮어줍니다.
                   </p>
                 </div>
@@ -128,7 +128,7 @@ const Planting = () => {
                 <div key={m.code} className="grid grid-cols-[60px_1fr] md:grid-cols-[80px_140px_1fr] gap-4 py-4 items-baseline">
                   <dt className="font-display text-3xl md:text-4xl font-bold text-accent tabular-nums">{m.code}</dt>
                   <dd className="text-primary font-semibold hidden md:block">{m.name}</dd>
-                  <dd className="text-primary text-sm md:text-base leading-relaxed">
+                  <dd className="text-primary text-base md:text-lg leading-relaxed">
                     <span className="md:hidden font-semibold block mb-1">{m.name}</span>
                     {m.body}
                   </dd>
@@ -162,7 +162,7 @@ const Planting = () => {
                 주의사항 / CAUTIONS
               </p>
             </div>
-            <ul className="space-y-3">
+            <ul className="space-y-3 text-base md:text-lg">
               {cautions.map((c, i) => (
                 <li key={i} className="flex gap-3 text-primary leading-relaxed">
                   <span className="shrink-0">{c.icon}</span>
