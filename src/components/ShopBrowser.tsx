@@ -452,7 +452,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
           <AlertDialogHeader>
             <AlertDialogTitle>용달 배송안내</AlertDialogTitle>
             <AlertDialogDescription asChild>
-              <div className="space-y-3 text-sm leading-relaxed">
+              <div className="space-y-3 text-base md:text-lg leading-relaxed">
                 <p>
                   본 상품은 일반 택배로 배송이 불가하며, <strong>용달(화물차)</strong>로
                   배송됩니다. 그래도 주문하시겠습니까?
