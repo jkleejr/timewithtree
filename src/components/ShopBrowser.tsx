@@ -303,7 +303,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                 <AccordionItem value="returns">
                   <AccordionTrigger>교환 / 환불 규정</AccordionTrigger>
                   <AccordionContent className="font-sans font-normal text-foreground">
-                    <p className="text-base md:text-lg leading-relaxed text-muted-foreground">
+                    <p className="text-base md:text-lg leading-relaxed text-foreground">
                       상세 내용은 추후 업데이트 예정입니다.
                     </p>
                   </AccordionContent>
