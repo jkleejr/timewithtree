@@ -143,7 +143,7 @@ const Index = () => {
               <h1 className="font-display font-bold font-sans leading-tight text-4xl md:text-5xl text-white drop-shadow-lg">
                 잭큐몬티 자작나무 농장
               </h1>
-              <ul className="md:max-w-2xl space-y-1.5 sm:space-y-2 text-sm md:text-lg leading-relaxed font-sans text-white drop-shadow-md">
+              <ul className="md:max-w-2xl space-y-1.5 sm:space-y-2 text-base md:text-lg leading-relaxed font-sans text-white drop-shadow-md">
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>네덜란드에서 조직배양한 묘목 재배</span></li>
                 <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
               </ul>

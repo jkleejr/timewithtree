@@ -153,7 +153,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
         ) : sorted.length === 0 ? (
           <div className="border border-dashed border-border py-20 text-center">
             <p className="font-display text-2xl mb-2 font-sans">No products found</p>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground text-base md:text-lg">
               Add your first birch tree to get started.
             </p>
           </div>
