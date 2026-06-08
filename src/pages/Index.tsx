@@ -333,7 +333,7 @@ const Index = () => {
                     관수 관리 필요
                   </h3>
                   <p className="text-base md:text-lg text-primary leading-snug">
-                    일반 화분보다 <span className="font-semibold text-foreground">물이 빨리 마르므로 관수 관리가 중요</span>합니다. 바람이 강한 환경에서는 건조 스트레스에 유의하세요.
+                    일반 화분보다 <span className="font-semibold text-foreground">물이 빨리 마르니 관수 관리</span>에 유의하세요.
                   </p>
                 </div>
               </article>
