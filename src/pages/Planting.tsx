@@ -117,11 +117,11 @@ const Planting = () => {
           </p>
           <h2 className="font-display text-2xl md:text-3xl font-bold font-sans mb-8">묘목 식재 전 상식</h2>
 
-          <div className="grid md:grid-cols-[400px_1fr] gap-8 md:gap-12 items-start">
+          <div className="grid md:grid-cols-[480px_1fr] gap-8 md:gap-12 items-start">
             <img
               src={treeMeasurements}
               alt="수목 측정 기준 (H, W, R, B) 도식"
-              className="w-64 md:w-full h-auto"
+              className="w-72 md:w-full h-auto"
             />
             <dl className="divide-y divide-border border-t border-b border-border">
               {measurements.map((m) => (
