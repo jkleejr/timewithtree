@@ -334,12 +334,12 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                       return (
                         <li
                           key={variant.id}
-                          className={`flex flex-wrap sm:flex-nowrap items-center gap-x-3 gap-y-3 px-3 sm:px-4 py-3 cursor-pointer transition-colors ${
+                          className={`grid grid-cols-[48px_1fr] lg:flex lg:items-center gap-x-3 gap-y-3 px-3 sm:px-4 py-3 cursor-pointer transition-colors ${
                             isActive && activeVariant?.id === variant.id ? "bg-secondary/40" : "hover:bg-secondary/20"
                           }`}
                           onClick={() => selectProduct(p.id, variant.id)}
                         >
-                          <div className="w-12 h-12 bg-secondary overflow-hidden flex-shrink-0">
+                          <div className="w-12 h-12 bg-secondary overflow-hidden flex-shrink-0 row-span-1">
                             {thumb && (
                               <img
                                 src={thumb.url}
@@ -349,9 +349,8 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                               />
                             )}
                           </div>
-                          <div className="flex-1 min-w-0">
+                          <div className="flex-1 min-w-0 break-keep">
                             {variant.title !== "Default Title" && (
-
                               <p className="text-sm font-medium truncate">
                                 {variant.title}
                               </p>
@@ -361,70 +360,73 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                               <span className="text-foreground">즉시배송 가능</span>
                             </p>
                           </div>
-                          <div className="flex items-center gap-1.5 whitespace-nowrap ml-auto sm:ml-0">
-                            <span className="border border-red-600 text-red-600 text-[10px] font-semibold px-1.5 py-0.5 leading-none">
-                              용달
-                            </span>
-                            <span className="text-sm tabular-nums font-semibold font-sans">
-                              {formatPrice(variant.price.amount, variant.price.currencyCode)}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-                            <div
-                              className="inline-flex items-center border border-border font-sans"
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              <button
-                                onClick={() => setQty(variant.id, qty - 1)}
-                                className="px-2 py-1.5 hover:bg-secondary"
-                                aria-label="Decrease"
-                              >
-                                <Minus className="h-3 w-3" />
-                              </button>
-                              <input
-                                type="number"
-                                min={0}
-                                max={100}
-                                value={qty}
-                                onClick={(e) => (e.target as HTMLInputElement).select()}
-                                onChange={(e) => {
-                                  const v = parseInt(e.target.value, 10);
-                                  if (isNaN(v)) return setQty(variant.id, 0);
-                                  setQty(variant.id, Math.min(100, Math.max(0, v)));
-                                }}
-                                className="w-10 text-center text-sm tabular-nums bg-transparent border-0 focus:outline-none focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none font-sans"
-                                aria-label="Quantity"
-                              />
-                              <button
-                                onClick={() => setQty(variant.id, qty + 1)}
-                                className="px-2 py-1.5 hover:bg-secondary"
-                                aria-label="Increase"
-                              >
-                                <Plus className="h-3 w-3" />
-                              </button>
+                          <div className="col-span-2 lg:col-auto flex items-center justify-between lg:justify-end gap-2 lg:gap-3 flex-wrap">
+                            <div className="flex items-center gap-1.5 whitespace-nowrap">
+                              <span className="border border-red-600 text-red-600 text-[10px] font-semibold px-1.5 py-0.5 leading-none">
+                                용달
+                              </span>
+                              <span className="text-sm tabular-nums font-semibold font-sans">
+                                {formatPrice(variant.price.amount, variant.price.currencyCode)}
+                              </span>
                             </div>
-                            <Button
-                              size="icon"
-                              variant="outline"
-                              className="rounded-none h-9 w-9 relative flex-shrink-0"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setPendingAdd({ product, variantId: variant.id });
-                              }}
-                              disabled={isAdding || qty < 1 || !variant.availableForSale}
-                              aria-label="Add to cart"
-                            >
-                              {isAdding ? (
-                                <Loader2 className="h-4 w-4 animate-spin" />
-                              ) : (
-                                <ShoppingCart className="h-4 w-4" />
+                            <div className="flex items-center gap-2">
+                              <div
+                                className="inline-flex items-center border border-border font-sans"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <button
+                                  onClick={() => setQty(variant.id, qty - 1)}
+                                  className="px-2 py-1.5 hover:bg-secondary"
+                                  aria-label="Decrease"
+                                >
+                                  <Minus className="h-3 w-3" />
+                                </button>
+                                <input
+                                  type="number"
+                                  min={0}
+                                  max={100}
+                                  value={qty}
+                                  onClick={(e) => (e.target as HTMLInputElement).select()}
+                                  onChange={(e) => {
+                                    const v = parseInt(e.target.value, 10);
+                                    if (isNaN(v)) return setQty(variant.id, 0);
+                                    setQty(variant.id, Math.min(100, Math.max(0, v)));
+                                  }}
+                                  className="w-10 text-center text-sm tabular-nums bg-transparent border-0 focus:outline-none focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none font-sans"
+                                  aria-label="Quantity"
+                                />
+                                <button
+                                  onClick={() => setQty(variant.id, qty + 1)}
+                                  className="px-2 py-1.5 hover:bg-secondary"
+                                  aria-label="Increase"
+                                >
+                                  <Plus className="h-3 w-3" />
+                                </button>
+                              </div>
+                              <Button
+                                size="icon"
+                                variant="outline"
+                                className="rounded-none h-9 w-9 relative flex-shrink-0"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setPendingAdd({ product, variantId: variant.id });
+                                }}
+                                disabled={isAdding || qty < 1 || !variant.availableForSale}
+                                aria-label="Add to cart"
+                              >
+                                {isAdding ? (
+                                  <Loader2 className="h-4 w-4 animate-spin" />
+                                ) : (
+                                  <ShoppingCart className="h-4 w-4" />
+
                               )}
                               {inCart > 0 && (
                                 <span className="absolute -top-2 -right-2 bg-foreground text-background text-[10px] font-semibold rounded-full h-5 min-w-5 px-1 flex items-center justify-center tabular-nums">
                                   {inCart}
                                 </span>
                               )}
-                            </Button>
+                              </Button>
+                            </div>
                           </div>
                         </li>
                       );
