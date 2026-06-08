@@ -351,7 +351,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                           </div>
                           <div className="flex-1 min-w-0 break-keep">
                             {variant.title !== "Default Title" && (
-                              <p className="text-sm font-medium truncate">
+                              <p className="text-base font-bold truncate">
                                 {variant.title}
                               </p>
                             )}
