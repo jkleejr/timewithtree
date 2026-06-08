@@ -57,9 +57,24 @@ const Cart = () => {
                         </span>
                       </div>
                       {item.selectedOptions.length > 0 && item.selectedOptions[0].value !== 'Default Title' && (
-                        <p className="text-sm text-muted-foreground mb-2">
-                          {item.selectedOptions.map(o => o.value).join(' · ')}
-                        </p>
+                        <>
+                          <p className="text-sm text-muted-foreground mb-1">
+                            {item.selectedOptions.map(o => o.value).join(' · ')}
+                          </p>
+                          {(() => {
+                            const variant = item.selectedOptions.map(o => o.value).join(' ');
+                            const descriptions: Record<string, string> = {
+                              'R3': '뿌리목 직경 약 3cm의 어린 자작나무로, 좁은 공간이나 화분 식재에 적합한 사이즈입니다.',
+                              'R4': '뿌리목 직경 약 4cm의 중간 사이즈 자작나무로, 정원이나 마당의 포인트 식재에 알맞습니다.',
+                              'R5': '뿌리목 직경 약 5cm의 성장한 자작나무로, 풍성한 수형과 안정감 있는 조경 효과를 제공합니다.',
+                              '다간형': '한 그루에서 여러 줄기가 자라는 다간형 자작나무로, 자연스럽고 풍성한 수형이 돋보이는 조경수입니다.',
+                            };
+                            const desc = descriptions[variant];
+                            return desc ? (
+                              <p className="text-sm text-muted-foreground mb-2 leading-relaxed">{desc}</p>
+                            ) : null;
+                          })()}
+                        </>
                       )}
                       <div className="mt-auto flex items-center justify-between">
                         <div className="inline-flex items-center border border-border">
