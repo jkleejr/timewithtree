@@ -312,7 +312,7 @@ const Index = () => {
                         {b.num}
                       </span>
                     </div>
-                    <div className="mt-auto">
+                    <div className="flex-1 flex flex-col justify-center items-center text-center">
                       <h3 className="font-sans font-bold text-sm md:text-base text-foreground leading-tight mb-1.5">
                         {b.title}
                       </h3>
@@ -328,7 +328,7 @@ const Index = () => {
                     주의사항
                   </span>
                 </div>
-                <div className="mt-auto">
+                <div className="flex-1 flex flex-col justify-center items-center text-center">
                   <h3 className="font-sans font-bold text-sm md:text-base text-foreground leading-tight mb-1.5">
                     관수 관리 필요
                   </h3>
