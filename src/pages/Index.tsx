@@ -445,19 +445,19 @@ const Index = () => {
               <ul className="md:col-span-8 grid gap-3 self-center md:mt-6">
                 <li className="flex gap-4 p-4 md:p-5 bg-destructive/5 border-l-4 border-destructive">
                   <span className="font-display font-bold text-destructive text-lg leading-none pt-0.5">✕</span>
-                  <p className="text-sm md:text-base leading-relaxed text-primary font-sans">묘목이 기울어져 있거나 뿌리가 뭉쳐있다</p>
+                  <p className="text-base md:text-lg leading-relaxed text-primary font-sans">묘목이 기울어져 있거나 뿌리가 뭉쳐있다</p>
                 </li>
                 <li className="flex gap-4 p-4 md:p-5 bg-destructive/5 border-l-4 border-destructive">
                   <span className="font-display font-bold text-destructive text-lg leading-none pt-0.5">✕</span>
-                  <p className="text-sm md:text-base leading-relaxed text-primary font-sans">구덩이가 얕아서 뿌리가 밖으로 나온다</p>
+                  <p className="text-base md:text-lg leading-relaxed text-primary font-sans">구덩이가 얕아서 뿌리가 밖으로 나온다</p>
                 </li>
                 <li className="flex gap-4 p-4 md:p-5 bg-accent/10 border-l-4 border-accent">
                   <span className="font-display font-bold text-accent text-lg leading-none pt-0.5">!</span>
-                  <p className="text-sm md:text-base leading-relaxed text-primary font-sans">비탈진 경사면에 심을 때는 흙을 수평으로 하고 상단 경사면에 이어서 심지 않는다</p>
+                  <p className="text-base md:text-lg leading-relaxed text-primary font-sans">비탈진 경사면에 심을 때는 흙을 수평으로 하고 상단 경사면에 이어서 심지 않는다</p>
                 </li>
                 <li className="flex gap-4 p-4 md:p-5 bg-accent/10 border-l-4 border-accent">
                   <span className="font-display font-bold text-accent text-lg leading-none pt-0.5">!</span>
-                  <p className="text-sm md:text-base leading-relaxed text-primary font-sans">
+                  <p className="text-base md:text-lg leading-relaxed text-primary font-sans">
                     식재 시 비료나 완숙(가스 발생이 끝나지 않은) 거름을 넣고 심을 경우, 가스 발생으로 인한 흙·뿌리 밀어냄 현상이 일어나므로 주의 바랍니다. 뿌리 활착이 끝나더라도 첫해는 소량만 주는 것이 적절합니다.
                   </p>
                 </li>
