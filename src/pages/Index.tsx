@@ -366,7 +366,7 @@ const Index = () => {
           {/* Step cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border mb-10">
             {plantingSteps.map((s) => (
-              <article key={s.num} className="bg-background p-5 md:p-6 flex flex-col gap-3">
+              <article key={s.num} className="bg-accent/10 p-5 md:p-6 flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <span className="font-display text-2xl font-bold text-accent tabular-nums">
                     {s.num}단계
@@ -375,7 +375,7 @@ const Index = () => {
                 <p className="text-base md:text-lg leading-relaxed text-primary">{s.text}</p>
               </article>
             ))}
-            <article className="bg-accent/10 p-5 md:p-6 flex flex-col gap-3">
+            <article className="bg-background p-5 md:p-6 flex flex-col gap-3">
               <span className="font-display text-2xl font-bold text-accent">🌿 멀칭</span>
               <p className="text-base md:text-lg leading-relaxed text-primary">
                 잡초 방지와 수분 증발을 막기 위해 제초매트, 부직포, 낙엽 또는 짚으로 잘 덮어줍니다.
