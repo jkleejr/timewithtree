@@ -38,10 +38,10 @@ const Planting = () => {
         <p className="text-xs md:text-sm font-sans font-semibold text-primary uppercase tracking-[0.25em] mb-4 opacity-70">
           PLANTING GUIDE
         </p>
-        <h1 className="font-display leading-tight mb-6 font-sans text-4xl sm:text-5xl font-bold">
+        <h1 className="font-display leading-tight mb-6 font-sans text-4xl md:text-5xl font-bold">
           구매하기
         </h1>
-        <p className="text-lg md:text-xl leading-relaxed text-primary max-w-3xl">
+        <p className="text-base md:text-lg leading-relaxed text-primary max-w-3xl">
           에어포트에서 자란 자작나무는 연중 식재가 가능하며 활착이 매우 빠릅니다. 아래의 식재 방법을 참고하여 건강하게 키워보세요.
         </p>
       </section>

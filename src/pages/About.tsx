@@ -30,7 +30,7 @@ const About = () => {
     <SiteLayout>
       <section className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-12">
         <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">소개</p>
-        <h1 className="font-display max-w-3xl leading-[1.1] font-bold font-sans text-5xl sm:text-5xl md:text-5xl">
+        <h1 className="font-display max-w-3xl leading-[1.1] font-bold font-sans text-4xl md:text-5xl">
           자작나무 소개
         </h1>
       </section>
@@ -91,7 +91,7 @@ const About = () => {
             <p className="font-sans">햇빛 : 양지</p>
             <p className="font-sans">물 : 겉흙이 마르면(과습주의)</p>
           </div>
-          <p className="font-bold text-foreground mt-4 text-3xl">핵심 특징 및 관리</p>
+          <p className="font-bold text-foreground mt-4 text-2xl md:text-3xl">핵심 특징 및 관리</p>
           <p className="text-primary text-base">
             히말라야 서부지역에 자생하는 자작나무 중에서 발견된, 수피가 유난히 밝고 흰색인 변종을 유럽에서 원예용으로 개량하여 탄생시킨 품종으로 프랑스 자연주의자의 이름을 따서 '잭큐몬티'라는 이름이 붙여졌다.
           </p>

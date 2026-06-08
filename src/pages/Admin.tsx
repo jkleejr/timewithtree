@@ -406,7 +406,7 @@ const Admin = () => {
     <div className="min-h-screen flex flex-col">
       <SiteHeader />
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-10 py-10">
-        <h1 className="text-3xl font-semibold tracking-tight mb-8">관리자</h1>
+        <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-8">관리자</h1>
         <Tabs defaultValue="orders" className="space-y-6">
           <TabsList>
             <TabsTrigger value="orders">주문 관리</TabsTrigger>

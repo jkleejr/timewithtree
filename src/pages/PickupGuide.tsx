@@ -4,7 +4,7 @@ const PickupGuide = () => {
   return (
     <SiteLayout>
       <section className="max-w-4xl mx-auto px-6 md:px-10 py-16 md:py-24 text-primary">
-        <h1 className="text-3xl md:text-5xl font-semibold tracking-tight mb-10">방문 구입 또는 직접 나무 수령시 안내</h1>
+        <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-10">방문 구입 또는 직접 나무 수령시 안내</h1>
 
         <div className="space-y-10 text-base leading-relaxed text-primary">
           <div>

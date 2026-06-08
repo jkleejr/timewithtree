@@ -12,7 +12,7 @@ const OrderSuccess = () => {
     <SiteLayout>
       <section className="max-w-2xl mx-auto px-6 md:px-10 pt-20 pb-24 text-center">
         <CheckCircle2 className="h-14 w-14 mx-auto text-accent mb-6" />
-        <h1 className="font-display text-3xl md:text-4xl mb-4 font-bold font-sans">
+        <h1 className="font-display text-4xl md:text-5xl mb-4 font-bold font-sans">
           주문이 접수되었습니다
         </h1>
         {orderNumber && (

@@ -164,7 +164,7 @@ const OrderDetail = () => {
       <SiteLayout>
         <section className="max-w-md mx-auto px-6 md:px-10 pt-20 pb-24">
           <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">비회원 주문조회</p>
-          <h1 className="font-display text-3xl mb-6 font-bold font-sans">주문 조회</h1>
+          <h1 className="font-display text-4xl md:text-5xl mb-6 font-bold font-sans">주문 조회</h1>
           <p className="text-sm text-muted-foreground mb-6">
             주문 시 입력하신 이메일을 입력해주세요.
           </p>
@@ -213,7 +213,7 @@ const OrderDetail = () => {
         <div className="flex items-center justify-between mb-6">
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">주문상세내역</p>
-            <h1 className="font-display text-3xl md:text-4xl font-bold font-sans">주문 상세</h1>
+            <h1 className="font-display text-4xl md:text-5xl font-bold font-sans">주문 상세</h1>
           </div>
           <Button
             type="button"
