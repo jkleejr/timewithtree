@@ -269,7 +269,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                 </AccordionItem>
                 <AccordionItem value="origin">
                   <AccordionTrigger>원산지</AccordionTrigger>
-                  <AccordionContent className="font-sans font-normal text-foreground">
+                  <AccordionContent className="font-sans font-normal text-foreground text-base md:text-lg leading-relaxed">
                     네덜란드에서 조직배양한 묘목을 국내에서 재배
                   </AccordionContent>
                 </AccordionItem>
