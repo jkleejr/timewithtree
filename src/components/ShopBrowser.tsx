@@ -425,7 +425,8 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                                   {inCart}
                                 </span>
                               )}
-                            </Button>
+                              </Button>
+                            </div>
                           </div>
                         </li>
                       );
