@@ -350,12 +350,8 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                             )}
                           </div>
                           <div className="flex-1 min-w-0">
-                            {vi === 0 && (
-                              <p className="font-bold leading-tight truncate font-sans text-sm sm:text-base">
-                                {p.title}
-                              </p>
-                            )}
                             {variant.title !== "Default Title" && (
+
                               <p className="text-sm font-medium truncate">
                                 {variant.title}
                               </p>
