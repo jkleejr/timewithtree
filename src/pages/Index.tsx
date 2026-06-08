@@ -163,7 +163,7 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-12 gap-8">
-            <div className="md:col-span-6">
+            <div className="md:col-span-6 md:sticky md:top-24 md:self-start">
               <div className="relative w-full aspect-[3/4] overflow-hidden bg-secondary">
                 {aboutImages.map((img, i) => (
                   <img
