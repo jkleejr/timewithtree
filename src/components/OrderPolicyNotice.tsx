@@ -8,10 +8,10 @@ export const OrderPolicyNotice = ({ className = "" }: OrderPolicyNoticeProps) =>
   return (
     <div className={`bg-secondary/60 border border-border p-5 md:p-6 flex gap-4 md:gap-6 ${className}`}>
       <div className="shrink-0 flex flex-col items-center text-muted-foreground">
-        <AlertCircle className="h-12 w-12 md:h-14 md:w-14" strokeWidth={1.5} />
-        <span className="mt-1 text-[11px] tracking-wider">필독하세요!</span>
+        <AlertCircle className="h-16 w-16 md:h-20 md:w-20" strokeWidth={1.5} />
+        <span className="mt-2 text-sm md:text-base tracking-wider">필독하세요!</span>
       </div>
-      <ul className="text-sm md:text-base leading-relaxed space-y-1.5 list-disc pl-4 marker:text-muted-foreground">
+      <ul className="text-xs md:text-sm leading-relaxed space-y-1.5 list-disc pl-4 marker:text-muted-foreground">
         <li>택배비 또는 용달비는 고객님이 부담합니다.</li>
         <li>제주도, 섬, 도서산간지역의 배송비는 결제금액과 관계없이 고객 부담입니다.</li>
         <li>품절 또는 삭제된 옵션의 상품이 있을 경우 주문이 되지 않습니다. 해당 항목을 삭제 후 다시 주문해주세요.</li>
