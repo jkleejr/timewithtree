@@ -387,7 +387,7 @@ const Index = () => {
           <div className="mt-2 border-t border-border pt-8 md:pt-10">
             <div className="mb-8 md:mb-10">
               
-              <h3 className="font-display font-bold font-sans leading-tight text-3xl md:text-4xl">
+              <h3 className="font-display font-bold font-sans leading-tight text-4xl md:text-5xl">
                 묘목 식재 전 상식
               </h3>
             </div>
