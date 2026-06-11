@@ -64,9 +64,6 @@ const Cart = () => {
                       </div>
                       {item.selectedOptions.length > 0 && item.selectedOptions[0].value !== 'Default Title' && (
                         <>
-                          <p className="text-sm text-muted-foreground mb-1">
-                            {item.selectedOptions.map(o => o.value).join(' · ')}
-                          </p>
                           {(() => {
                             const variant = item.selectedOptions.map(o => o.value).join(' ');
                             const descriptions: Record<string, string> = {
