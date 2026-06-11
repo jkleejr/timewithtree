@@ -290,7 +290,7 @@ const Index = () => {
           {/* Benefits — editorial list */}
           <div className="border-t border-border">
             <div className="flex items-baseline justify-between pt-8 md:pt-10 mb-6 md:mb-8 gap-6">
-              <h3 className="font-display font-bold font-sans text-3xl md:text-4xl leading-tight">
+              <h3 className="font-display font-bold font-sans text-4xl md:text-5xl leading-tight">
                 주요 장점
               </h3>
               <p className="text-xs text-muted-foreground tabular-nums">
