@@ -41,16 +41,22 @@ const Cart = () => {
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2 divide-y divide-border border-y border-border">
               {items.map((item) => {
-                const img = item.product.node.images?.edges?.[0]?.node;
+                const variantValue = item.selectedOptions[0]?.value;
+                const variantImgs = variantValue ? item.product.node.variantImages?.[variantValue] : undefined;
+                const img = variantImgs?.[0]?.node || item.product.node.images?.edges?.[0]?.node;
+                const showVariantPrefix = variantValue && variantValue !== 'Default Title';
+                const displayTitle = showVariantPrefix
+                  ? `${variantValue}, ${item.product.node.title}`
+                  : item.product.node.title;
                 return (
                   <div key={item.variantId} className="py-6 flex gap-4 md:gap-6">
                     <div className="w-24 h-32 md:w-28 md:h-36 bg-secondary flex-shrink-0 overflow-hidden">
-                      {img && <img src={img.url} alt={img.altText || item.product.node.title} className="w-full h-full object-cover" />}
+                      {img && <img src={img.url} alt={img.altText || displayTitle} className="w-full h-full object-cover" />}
                     </div>
                     <div className="flex-1 flex flex-col">
                       <div className="flex justify-between gap-4 mb-1">
                         <Link to={`/product/${item.product.node.handle}`} className="font-display text-lg hover:text-accent font-sans">
-                          {item.product.node.title}
+                          {displayTitle}
                         </Link>
                         <span className="text-sm tabular-nums whitespace-nowrap font-sans">
                           {formatPrice(parseFloat(item.price.amount) * item.quantity, item.price.currencyCode)}
