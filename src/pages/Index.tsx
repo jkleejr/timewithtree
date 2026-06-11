@@ -397,7 +397,7 @@ const Index = () => {
                   src={treeMeasurements}
                   alt="수목 측정 기준 (H, W, R, B) 도식"
                   loading="lazy"
-                  className="w-full max-w-[280px] h-auto"
+                  className="w-full max-w-[340px] h-auto"
                 />
               </figure>
               <dl className="md:col-span-7 grid gap-px bg-border border border-border self-stretch content-start">
