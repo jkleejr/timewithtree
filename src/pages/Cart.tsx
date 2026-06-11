@@ -74,7 +74,7 @@ const Cart = () => {
                             };
                             const desc = descriptions[variant];
                             return desc ? (
-                              <p className="text-sm text-muted-foreground mb-2 leading-relaxed">{desc}</p>
+                              <p className="text-base md:text-lg text-muted-foreground mb-2 leading-relaxed">{desc}</p>
                             ) : null;
                           })()}
                         </>
