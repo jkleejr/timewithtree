@@ -249,10 +249,10 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                     <div className="space-y-4 text-base md:text-lg leading-relaxed">
                       <p>
                         〮 나무는 에어포트에 식재된 상태로 배송됩니다.<br />
-                        <span className="block pl-3">식재시 반드시 에어포트 몸통과 하단 받침대를 분리 후 나무만 식재하세요.</span>
+                        식재시 반드시 에어포트 몸통과 하단 받침대를 분리 후 나무만 식재하세요.
                       </p>
                       <div>
-                        <p>〮 용달 배송 안내</p>
+                        <p>차량(용달)배송 안내</p>
                         <ul className="mt-2 pl-5 space-y-2 list-disc">
                           <li>
                             본 상품은 일반 택배로 배송이 불가하며, 용달(화물차)로만 배송됩니다.
