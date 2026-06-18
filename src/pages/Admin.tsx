@@ -281,7 +281,7 @@ const OrdersSection = () => {
       ) : (
         <>
         <p className="text-xs text-muted-foreground mb-3">
-          * 주문 상태를 변경하면 고객에게 자동으로 안내 이메일이 발송됩니다 (입금 확인 / 배송 시작 / 주문 취소).
+          * 상태를 변경해도 고객에게 자동 메일은 발송되지 않습니다. 배송을 시작하면 각 주문의 <strong>배송중 알림 메일</strong> 버튼을 눌러 고객에게 안내해 주세요.
         </p>
         <div className="space-y-4">
           {orders.map((o) => (
