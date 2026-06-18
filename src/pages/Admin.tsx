@@ -68,6 +68,7 @@ type Order = {
   status: OrderStatus;
   customer_note: string | null;
   admin_note: string | null;
+  shipped_email_sent_at: string | null;
   created_at: string;
 };
 
@@ -201,6 +202,7 @@ const OrdersSection = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [sendingShipId, setSendingShipId] = useState<string | null>(null);
 
   const load = () => {
     setLoading(true);
@@ -226,6 +228,29 @@ const OrdersSection = () => {
       toast.success("주문 상태가 변경되었습니다");
       setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status } : o)));
     }
+  };
+
+  const sendShippedEmail = async (id: string) => {
+    setSendingShipId(id);
+    const { data, error } = await supabase.functions.invoke("send-shipped-notification", {
+      body: { order_id: id },
+    });
+    setSendingShipId(null);
+    if (error) {
+      toast.error("배송중 알림 메일 발송 실패");
+      return;
+    }
+    if (data?.alreadySent) {
+      toast.info("이미 배송중 알림이 발송된 주문입니다");
+    } else {
+      toast.success("배송중 알림 메일이 발송되었습니다");
+    }
+    const sentAt = data?.sentAt ?? new Date().toISOString();
+    setOrders((prev) =>
+      prev.map((o) =>
+        o.id === id ? { ...o, status: "shipped", shipped_email_sent_at: sentAt } : o,
+      ),
+    );
   };
 
   const counts = useMemo(() => {
@@ -256,7 +281,7 @@ const OrdersSection = () => {
       ) : (
         <>
         <p className="text-xs text-muted-foreground mb-3">
-          * 주문 상태를 변경하면 고객에게 자동으로 안내 이메일이 발송됩니다 (입금 확인 / 배송 시작 / 주문 취소).
+          * 상태를 변경해도 고객에게 자동 메일은 발송되지 않습니다. 배송을 시작하면 각 주문의 <strong>배송중 알림 메일</strong> 버튼을 눌러 고객에게 안내해 주세요.
         </p>
         <div className="space-y-4">
           {orders.map((o) => (
@@ -272,7 +297,21 @@ const OrdersSection = () => {
                       {new Date(o.created_at).toLocaleString("ko-KR")}
                     </p>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap justify-end">
+                    <Button
+                      size="sm"
+                      variant={o.shipped_email_sent_at ? "outline" : "default"}
+                      disabled={!!o.shipped_email_sent_at || sendingShipId === o.id}
+                      onClick={() => sendShippedEmail(o.id)}
+                    >
+                      {sendingShipId === o.id ? (
+                        <Loader2 className="h-3 w-3 animate-spin" />
+                      ) : o.shipped_email_sent_at ? (
+                        "메일 발송됨 ✓"
+                      ) : (
+                        "배송중 알림 메일"
+                      )}
+                    </Button>
                     <Select
                       value={o.status}
                       onValueChange={(v) => updateStatus(o.id, v as OrderStatus)}

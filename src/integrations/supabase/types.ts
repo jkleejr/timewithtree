@@ -124,6 +124,7 @@ export type Database = {
           recipient_phone: string | null
           recipient_postal_code: string | null
           recipient_tel: string | null
+          shipped_email_sent_at: string | null
           shipping_address: string
           status: Database["public"]["Enums"]["order_status"]
           subtotal: number
@@ -152,6 +153,7 @@ export type Database = {
           recipient_phone?: string | null
           recipient_postal_code?: string | null
           recipient_tel?: string | null
+          shipped_email_sent_at?: string | null
           shipping_address: string
           status?: Database["public"]["Enums"]["order_status"]
           subtotal: number
@@ -180,6 +182,7 @@ export type Database = {
           recipient_phone?: string | null
           recipient_postal_code?: string | null
           recipient_tel?: string | null
+          shipped_email_sent_at?: string | null
           shipping_address?: string
           status?: Database["public"]["Enums"]["order_status"]
           subtotal?: number
