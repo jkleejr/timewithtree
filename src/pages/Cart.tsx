@@ -102,6 +102,23 @@ const Cart = () => {
             <aside className="lg:col-span-1">
               <div className="bg-secondary p-6 md:p-8 sticky top-24">
                 <h2 className="font-display text-xl mb-6 font-sans">주문 요약</h2>
+                <ul className="space-y-2 text-sm border-b border-border pb-4 mb-4">
+                  {items.map((item) => {
+                    const variantValue = item.selectedOptions[0]?.value;
+                    const showVariantPrefix = variantValue && variantValue !== 'Default Title';
+                    const displayTitle = showVariantPrefix ? variantValue : item.product.node.title;
+                    return (
+                      <li key={item.variantId} className="flex justify-between gap-3 font-sans">
+                        <span className="text-muted-foreground truncate">
+                          {displayTitle} <span className="tabular-nums">× {item.quantity}</span>
+                        </span>
+                        <span className="tabular-nums whitespace-nowrap">
+                          {formatPrice(parseFloat(item.price.amount) * item.quantity, item.price.currencyCode)}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
                 <div className="space-y-3 text-sm border-b border-border pb-4 mb-4">
                   <div className="flex justify-between font-sans">
                     <span className="text-muted-foreground font-sans">상품금액</span>
