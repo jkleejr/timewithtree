@@ -464,7 +464,7 @@ const Checkout = () => {
 
           <aside className="lg:col-span-1">
             <div className="bg-secondary p-6 md:p-8 sticky top-24 text-black">
-              <h2 className="font-display text-xl mb-6 font-sans text-black">주문 요약</h2>
+              <h2 className="font-display text-2xl mb-6 font-bold font-sans text-black">주문 요약</h2>
               <div className="space-y-3 mb-4">
                 {items.map((i) => {
                   const variantValue = i.selectedOptions[0]?.value;
