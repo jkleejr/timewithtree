@@ -287,6 +287,19 @@ const Index = () => {
             </figure>
           </div>
 
+          <div className="mb-8 md:mb-10 flex justify-end">
+            <Button
+              asChild
+              size="lg"
+              className="group relative rounded-none bg-black hover:bg-black/90 text-white shadow-lg px-8 py-3 transition-all duration-300"
+            >
+              <a href="#shop" className="relative inline-block font-medium font-sans">
+                구매하기
+                <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              </a>
+            </Button>
+          </div>
+
           {/* Benefits — editorial list */}
           <div className="border-t border-border">
             <div className="flex items-baseline justify-between pt-8 md:pt-10 mb-6 md:mb-8 gap-6">
