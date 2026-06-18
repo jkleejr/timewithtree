@@ -252,6 +252,10 @@ const OrdersSection = () => {
       {orders.length === 0 ? (
         <Card><CardContent className="py-12 text-center text-muted-foreground">아직 주문이 없습니다.</CardContent></Card>
       ) : (
+        <>
+        <p className="text-xs text-muted-foreground mb-3">
+          * 주문 상태를 변경하면 고객에게 자동으로 안내 이메일이 발송됩니다 (입금 확인 / 배송 시작 / 주문 취소).
+        </p>
         <div className="space-y-4">
           {orders.map((o) => (
             <Card key={o.id}>
@@ -317,6 +321,7 @@ const OrdersSection = () => {
             </Card>
           ))}
         </div>
+        </>
       )}
     </div>
   );
