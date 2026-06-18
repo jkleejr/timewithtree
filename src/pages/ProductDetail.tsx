@@ -160,6 +160,12 @@ const ProductDetail = () => {
           </Button>
 
           <Accordion type="single" collapsible className="mt-10 font-sans font-bold">
+            <AccordionItem value="origin">
+              <AccordionTrigger>원산지</AccordionTrigger>
+              <AccordionContent className="font-sans font-normal text-black">
+                네덜란드에서 조직배양한 묘목을 국내에서 재배
+              </AccordionContent>
+            </AccordionItem>
             <AccordionItem value="shipping">
               <AccordionTrigger>나무 배송 안내</AccordionTrigger>
               <AccordionContent className="font-sans font-normal text-black">
@@ -184,10 +190,20 @@ const ProductDetail = () => {
                 </div>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="origin">
-              <AccordionTrigger>원산지</AccordionTrigger>
+            <AccordionItem value="soldout">
+              <AccordionTrigger>품절안내 / 대체 안내</AccordionTrigger>
               <AccordionContent className="font-sans font-normal text-black">
-                네덜란드에서 조직배양한 묘목을 국내에서 재배
+                <p className="text-base md:text-lg leading-relaxed text-muted-foreground">
+                  상세 내용은 추후 업데이트 예정입니다.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="shipping-area">
+              <AccordionTrigger>발송안내 / 도서산간안내</AccordionTrigger>
+              <AccordionContent className="font-sans font-normal text-black">
+                <p className="text-base md:text-lg leading-relaxed text-muted-foreground">
+                  상세 내용은 추후 업데이트 예정입니다.
+                </p>
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="pickup">
