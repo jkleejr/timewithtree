@@ -41,7 +41,7 @@ const emptyParty: PartyForm = {
 
 const partySchema = z.object({
   name: z.string().trim().min(1, "이름을 입력해주세요").max(100),
-  phone: z.string().trim().min(1, "핸드폰 번호를 입력해주세요").max(30),
+  phone: z.string().trim().min(1, "전화번호를 입력해주세요").max(30),
   tel: z.string().trim().max(30).optional().or(z.literal("")),
   postal: z.string().trim().min(1, "우편번호를 입력해주세요").max(20),
   address1: z.string().trim().min(1, "주소를 입력해주세요").max(300),
