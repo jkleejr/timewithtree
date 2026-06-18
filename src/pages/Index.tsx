@@ -460,7 +460,7 @@ const Index = () => {
                 잘못된 식재 예시
               </h3>
             </div>
-            <div className="grid md:grid-cols-12 gap-8 md:gap-10 items-start">
+            <div className="grid md:grid-cols-12 gap-8 md:gap-10 items-center">
               <div className="md:col-span-4 grid gap-4">
                 <figure>
                   <img src={plantingMistakes} alt="잘못된 식재 예시" loading="lazy" className="w-full h-auto max-w-sm" />
@@ -469,7 +469,7 @@ const Index = () => {
                   <img src={plantingCorrectVsWrong} alt="올바른 식재와 잘못된 식재 비교" loading="lazy" className="w-full h-auto max-w-sm" />
                 </figure>
               </div>
-              <ul className="md:col-span-8 grid gap-3 self-center md:mt-6">
+              <ul className="md:col-span-8 grid gap-3">
                 <li className="flex gap-4 p-4 md:p-5 bg-destructive/5 border-l-4 border-destructive">
                   <span className="font-display font-bold text-destructive text-lg leading-none pt-0.5">✕</span>
                   <p className="text-base md:text-lg leading-relaxed text-primary font-sans">묘목이 기울어져 있거나 뿌리가 뭉쳐있다</p>
