@@ -463,44 +463,44 @@ const Checkout = () => {
           </form>
 
           <aside className="lg:col-span-1">
-            <div className="bg-secondary p-6 md:p-8 sticky top-24">
-              <h2 className="font-display text-xl mb-6 font-sans">주문 요약</h2>
+            <div className="bg-secondary p-6 md:p-8 sticky top-24 text-black">
+              <h2 className="font-display text-xl mb-6 font-sans text-black">주문 요약</h2>
               <div className="space-y-3 mb-4">
                 {items.map((i) => {
                   const variantValue = i.selectedOptions[0]?.value;
                   const showVariant = variantValue && variantValue !== 'Default Title';
                   const displayTitle = showVariant ? variantValue : i.product.node.title;
                   return (
-                    <div key={i.variantId} className="flex justify-between text-sm gap-3">
-                      <span className="flex-1">
+                    <div key={i.variantId} className="flex justify-between text-sm gap-3 text-black">
+                      <span className="flex-1 text-black">
                         {displayTitle}
-                        <span className="text-muted-foreground"> × {i.quantity}</span>
+                        <span className="text-black"> × {i.quantity}</span>
                       </span>
-                      <span className="tabular-nums whitespace-nowrap">
+                      <span className="tabular-nums whitespace-nowrap text-black">
                         {formatPrice(parseFloat(i.price.amount) * i.quantity, i.price.currencyCode)}
                       </span>
                     </div>
                   );
                 })}
               </div>
-              <div className="border-t border-border pt-4 space-y-2 text-sm">
+              <div className="border-t border-black/10 pt-4 space-y-2 text-sm text-black">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">상품 금액</span>
-                  <span className="tabular-nums">{formatPrice(subtotal, currency)}</span>
+                  <span className="text-black">상품 금액</span>
+                  <span className="tabular-nums text-black">{formatPrice(subtotal, currency)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">용달배송</span>
-                  <span>별도</span>
+                  <span className="text-black">용달배송</span>
+                  <span className="text-black">별도</span>
                 </div>
-                <div className="border-t border-border pt-3 flex justify-between items-baseline">
-                  <span className="text-base font-sans">총 결제 금액</span>
-                  <span className="font-display text-2xl tabular-nums font-sans">
+                <div className="border-t border-black/10 pt-3 flex justify-between items-baseline">
+                  <span className="text-base font-sans text-black">총 결제 금액</span>
+                  <span className="font-display text-2xl tabular-nums font-sans text-black">
                     {formatPrice(subtotal, currency)}
                   </span>
                 </div>
               </div>
               <p className="text-xs text-muted-foreground mt-4">
-                <Link to="/cart" className="underline">장바구니로 돌아가기</Link>
+                <Link to="/cart" className="underline hover:text-black transition-colors">장바구니로 돌아가기</Link>
               </p>
             </div>
           </aside>
