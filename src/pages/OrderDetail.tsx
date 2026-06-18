@@ -392,8 +392,7 @@ const OrderDetail = () => {
             <PartyRows
               rows={[
                 ["이름", order.customer_name],
-                ["핸드폰", order.customer_phone],
-                ["전화번호", note["주문자 전화"] ?? "—"],
+                ["전화번호", order.customer_phone],
                 ["이메일", order.customer_email],
               ]}
             />
@@ -404,7 +403,7 @@ const OrderDetail = () => {
             <PartyRows
               rows={[
                 ["이름", note["받는분"]?.split(" / ")[0] ?? order.customer_name],
-                ["핸드폰", note["받는분"]?.split(" / ")[1] ?? order.customer_phone],
+                ["전화번호", note["받는분"]?.split(" / ")[1] ?? order.customer_phone],
                 ["주소", order.shipping_address],
                 ["배송일 지정", note["배송일"] ?? "지정 안 함"],
                 ["배송시 요청사항", note["전하시는 말씀"] ?? "—"],
