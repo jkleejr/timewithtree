@@ -269,18 +269,18 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                     네덜란드에서 조직배양한 묘목을 국내에서 재배
                   </AccordionContent>
                 </AccordionItem>
-                <AccordionItem value="soldout">
-                  <AccordionTrigger>품절안내 / 대체 안내</AccordionTrigger>
-                  <AccordionContent className="font-sans font-normal text-foreground text-base md:text-lg leading-relaxed">
-                    {/* TODO: 내용 추가 예정 */}
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="shipping-notice">
-                  <AccordionTrigger>발송안내 / 도서산간안내</AccordionTrigger>
-                  <AccordionContent className="font-sans font-normal text-foreground text-base md:text-lg leading-relaxed">
-                    {/* TODO: 내용 추가 예정 */}
-                  </AccordionContent>
-                </AccordionItem>
+                 <AccordionItem value="soldout">
+                   <AccordionTrigger>품절안내 / 대체 안내</AccordionTrigger>
+                   <AccordionContent className="font-sans font-normal text-foreground text-base md:text-lg leading-relaxed">
+                     주문 및 결제를 완료하신 상품이 품절인 경우 고객님과의 연락을 통해 환불 또는 대체 출고 조치를 해드립니다. 
+                   </AccordionContent>
+                 </AccordionItem>
+                 <AccordionItem value="shipping-notice">
+                   <AccordionTrigger>발송안내 / 도서산간안내</AccordionTrigger>
+                   <AccordionContent className="font-sans font-normal text-foreground text-base md:text-lg leading-relaxed">
+                     상품 발송은 주문 후 3일 (주말제외) 이내에 진행되며, 제주도 등의 섬 지역(도서, 산간) 으로의 배송이 불가합니다.
+                   </AccordionContent>
+                 </AccordionItem>
                 <AccordionItem value="pickup">
                   <AccordionTrigger>방문 구입 또는 직접 나무 수령시 안내</AccordionTrigger>
                   <AccordionContent className="font-sans font-normal text-foreground">
