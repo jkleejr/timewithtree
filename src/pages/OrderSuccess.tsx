@@ -114,6 +114,8 @@ const OrderSuccess = () => {
           </h1>
           <p className="text-muted-foreground leading-relaxed mb-2">
             최대한 빠르게 배송 준비를 진행하겠습니다.
+            <br />
+            품절일 경우 전화로 안내드리겠습니다.
           </p>
           {orderNumber && (
             <p className="text-sm text-muted-foreground mt-4">
