@@ -61,7 +61,7 @@ export const SiteHeader = () => {
         >
           <img src={logo} alt="나무와 걷는 시간" className="h-10 md:h-16 w-auto -my-1 md:-my-2" />
         </Link>
-        <nav className="hidden md:flex items-center gap-10">
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-10">
           {NAV_LINKS.map((l) =>
             l.hash ? (
               <a
@@ -95,9 +95,9 @@ export const SiteHeader = () => {
           <NavLink to="/cart" className={navClass} aria-label="장바구니">
             <span className="relative flex items-center gap-2">
               <ShoppingCart className="h-5 w-5" />
-              <span className="hidden md:inline">장바구니</span>
+              <span className="hidden lg:inline">장바구니</span>
               {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 md:static md:ml-1 inline-flex items-center justify-center h-5 min-w-[20px] px-1 rounded-full bg-accent text-accent-foreground text-[11px] font-medium">
+                <span className="absolute -top-2 -right-2 lg:static lg:ml-1 inline-flex items-center justify-center h-5 min-w-[20px] px-1 rounded-full bg-accent text-accent-foreground text-[11px] font-medium">
                   {totalItems}
                 </span>
               )}
@@ -105,7 +105,7 @@ export const SiteHeader = () => {
           </NavLink>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
-              className="md:hidden inline-flex items-center justify-center h-10 w-10 -mr-2"
+              className="lg:hidden inline-flex items-center justify-center h-10 w-10 -mr-2"
               aria-label="메뉴 열기"
             >
               <Menu className="h-6 w-6" />
