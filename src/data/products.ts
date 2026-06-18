@@ -74,7 +74,8 @@ const DESCRIPTION_HTML = `<p>네덜란드에서 수입하여 국내에서 재배
   <li>사이즈: R3 / R4 / R5 / 다간형</li>
   <li>즉시 배송 가능</li>
 </ul>
-<p class="mt-4 leading-relaxed whitespace-pre-line text-foreground">※ R은 Radius를 뜻하며 근원직경 (줄기의 지면에 닿는 부분의 지름)을 표기하는 방식입니다.<br/>R3는 줄기 지름이 3cm, R4는 줄기 지름이 4cm, R5는 줄기지름이 5cm 입니다.</p>`;
+<p class="mt-4 leading-relaxed whitespace-pre-line text-foreground">R은 Radius를 뜻하며 근원직경 (줄기의 지면에 닿는 부분의 지름)을 표기하는 방식입니다.
+R3는 줄기 지름이 3cm, R4는 줄기 지름이 4cm, R5는 줄기지름이 5cm 입니다.</p>`;
 
 export const LOCAL_PRODUCTS: ShopifyProduct[] = [
   {
