@@ -105,7 +105,7 @@ export const SiteHeader = () => {
           </NavLink>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
-              className="md:hidden inline-flex items-center justify-center h-10 w-10 -mr-2"
+              className="lg:hidden inline-flex items-center justify-center h-10 w-10 -mr-2"
               aria-label="메뉴 열기"
             >
               <Menu className="h-6 w-6" />
