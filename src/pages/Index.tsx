@@ -61,7 +61,7 @@ const Index = () => {
 
   useEffect(() => {
     if (aboutLen <= 1) return;
-    const id = setInterval(() => setAboutIndex((i) => (i + 1) % aboutLen), 10000);
+    const id = setInterval(() => setAboutIndex((i) => (i + 1) % aboutLen), 15000);
     return () => clearInterval(id);
   }, [aboutLen]);
 
