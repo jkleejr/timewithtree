@@ -125,7 +125,7 @@ const ProductDetail = () => {
                 {variants.map((v, i) => (
                   <button
                     key={v.node.id}
-                    onClick={() => setVariantIndex(i)}
+                    onClick={() => { setVariantIndex(i); setActiveImage(0); }}
                     className={`px-4 py-2 text-sm border transition-colors ${
                       i === variantIndex ? 'border-foreground bg-foreground text-background' : 'border-border hover:border-foreground'
                     }`}
