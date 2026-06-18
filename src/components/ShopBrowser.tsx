@@ -308,14 +308,60 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                     </div>
                   </AccordionContent>
                 </AccordionItem>
-                <AccordionItem value="returns">
-                  <AccordionTrigger>교환 / 환불 규정</AccordionTrigger>
-                  <AccordionContent className="font-sans font-normal text-foreground">
-                    <p className="text-base md:text-lg leading-relaxed text-foreground">
-                      상세 내용은 추후 업데이트 예정입니다.
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
+                 <AccordionItem value="returns">
+                   <AccordionTrigger>교환 / 환불 규정</AccordionTrigger>
+                   <AccordionContent className="font-sans font-normal text-foreground text-base md:text-lg leading-relaxed">
+                     <div className="space-y-6">
+                       <div>
+                         <p className="font-bold text-foreground mb-2">반품 / 교환 /환불 / 취소 / 불가의 사유</p>
+                         <p className="mb-3 text-muted-foreground">상품 수령 후 반품/교환/환불/취소 불가의 사유는 아래와 같습니다.</p>
+                         <ul className="pl-5 space-y-2 list-disc mb-4">
+                           <li>단순변심(크기, 색상 등 개인 기호에 맞지 않아서)의 경우 조치 불가</li>
+                           <li>식재 후 나무가 고사하는 경우는 고객님의 식재환경/관리방법 등 확인 불가하기 때문에 조치 불가</li>
+                           <li>저희 농장과 협의없이 반품한 경우 조치 불가</li>
+                           <li>주문 접수 이후 배송 준비 단계와 배송 중 단계 부터는 취소, 변경이 불가합니다.</li>
+                         </ul>
+                         <p className="text-sm bg-muted p-3 rounded-lg border border-border/50">
+                           단, 기타 사유로 인해 당사와 협의 후, 상품 반품시 왕복 화물용달 비용이 발생할 수 있으며 회수 도중 가치 훼손이 발생할 경우 어떠한 조치도 불가합니다. 
+                         </p>
+                         <p className="mt-3">
+                           상품의 교환, 취소, 반품의 경우 반드시 아래의 전화로 사전 통화를 하셔야 가능합니다.<br />
+                           <strong className="text-foreground">010-8925-6251</strong>
+                         </p>
+                       </div>
+
+                       <div className="border-t border-border/50 pt-4">
+                         <p className="font-bold text-foreground mb-2">교환 또는 반품이 가능한 경우</p>
+                         <ul className="pl-5 space-y-2 list-disc">
+                           <li>판매자의 실수로 다른상품이 배송된 경우</li>
+                           <li>
+                             묘목이 심하게 파손되어 수령즉시 판매자에게 연락한 경우<br />
+                             <span className="text-sm text-muted-foreground">(수령당일 010-8925-6251 으로 문의부탁드립니다.)</span>
+                           </li>
+                         </ul>
+                       </div>
+
+                       <div className="border-t border-border/50 pt-4">
+                         <p className="font-bold text-foreground mb-2">환불의 경우 / 교환의 경우</p>
+                         <ul className="pl-5 space-y-2 list-disc">
+                           <li>생물 특성상 2일 이내 수령하신 나무의 뿌리가 상했거나 줄기가 마른 경우, 당사에 문의 접수 후 상품의 사진을 받아 판단하여 교환 또는 환불 진행이 가능합니다.</li>
+                           <li>납품된 나무의 규격이 구매하신 나무와 다를 경우 구매하신 규격의 상품으로 재공급 또는 영수한 금액으로 환불해 드립니다.</li>
+                         </ul>
+                       </div>
+
+                       <div className="border-t border-border/50 pt-4">
+                         <p className="font-bold text-foreground mb-2">환불 시점</p>
+                         <p className="mb-2 text-sm text-muted-foreground">
+                           환불 접수 완료 후 결제수단 별 환불시점은 아래와 같이 소요됩니다.<br />
+                           (반품환불은 상품 회수 &gt; 입고확인 &gt; 환불승인단계를 거쳐 진행되오니 참고 부탁드립니다.)
+                         </p>
+                         <ul className="pl-5 space-y-1 list-disc">
+                           <li>무통장입금 : 2영업일 이내 환불신청 계좌로 입금</li>
+                         </ul>
+                       </div>
+                     </div>
+                   </AccordionContent>
+                 </AccordionItem>
               </Accordion>
             </div>
 
