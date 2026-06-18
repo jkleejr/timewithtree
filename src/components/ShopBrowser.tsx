@@ -273,6 +273,18 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                     네덜란드에서 조직배양한 묘목을 국내에서 재배
                   </AccordionContent>
                 </AccordionItem>
+                <AccordionItem value="soldout">
+                  <AccordionTrigger>품절안내 / 대체 안내</AccordionTrigger>
+                  <AccordionContent className="font-sans font-normal text-foreground text-base md:text-lg leading-relaxed">
+                    {/* TODO: 내용 추가 예정 */}
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="shipping-notice">
+                  <AccordionTrigger>발송안내 / 도서산간안내</AccordionTrigger>
+                  <AccordionContent className="font-sans font-normal text-foreground text-base md:text-lg leading-relaxed">
+                    {/* TODO: 내용 추가 예정 */}
+                  </AccordionContent>
+                </AccordionItem>
                 <AccordionItem value="pickup">
                   <AccordionTrigger>방문 구입 또는 직접 나무 수령시 안내</AccordionTrigger>
                   <AccordionContent className="font-sans font-normal text-foreground">
