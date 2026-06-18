@@ -81,10 +81,28 @@ const Checkout = () => {
   const [depositorSame, setDepositorSame] = useState(true);
 
   useEffect(() => {
-    if (user?.email && !orderer.email) {
-      setOrderer((o) => ({ ...o, email: user.email || "" }));
-    }
-  }, [user, orderer.email]);
+    if (!user) return;
+    let cancelled = false;
+    (async () => {
+      const { data } = await supabase
+        .from("profiles")
+        .select("full_name, phone, address, postal_code")
+        .eq("id", user.id)
+        .maybeSingle();
+      if (cancelled) return;
+      setOrderer((o) => ({
+        ...o,
+        email: o.email || user.email || "",
+        name: o.name || data?.full_name || "",
+        phone: o.phone || data?.phone || "",
+        postal: o.postal || data?.postal_code || "",
+        address1: o.address1 || data?.address || "",
+      }));
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
 
   useEffect(() => {
     if (depositorSame) setDepositorName(orderer.name);
@@ -203,6 +221,21 @@ const Checkout = () => {
     } catch {
       // ignore storage errors
     }
+
+    // Save orderer info to profile for next time (logged-in users only)
+    if (user) {
+      const savedAddress = [orderer.address1, orderer.address2].filter(Boolean).join(" ").trim();
+      await supabase
+        .from("profiles")
+        .update({
+          full_name: orderer.name || null,
+          phone: orderer.phone || null,
+          address: savedAddress || null,
+          postal_code: orderer.postal || null,
+        })
+        .eq("id", user.id);
+    }
+
     navigate(`/order-success?n=${encodeURIComponent(data.order_number)}`);
   };
 
