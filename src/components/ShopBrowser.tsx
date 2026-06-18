@@ -407,10 +407,16 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                                 {variant.title}
                               </p>
                             )}
-                            <p className="text-primary text-xs sm:text-sm">
-                              예상출고시기:{" "}
-                              <span className="text-foreground">즉시배송 가능</span>
-                            </p>
+                            {variant.description ? (
+                              <p className="text-muted-foreground text-xs sm:text-sm mt-0.5">
+                                {variant.description}
+                              </p>
+                            ) : (
+                              <p className="text-primary text-xs sm:text-sm">
+                                예상출고시기:{" "}
+                                <span className="text-foreground">즉시배송 가능</span>
+                              </p>
+                            )}
                           </div>
                           <div className="col-span-2 lg:col-auto flex items-center justify-between lg:justify-end gap-2 lg:gap-3 flex-wrap">
                             <div className="flex items-center gap-1.5 whitespace-nowrap">

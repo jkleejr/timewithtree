@@ -97,9 +97,16 @@ const ProductDetail = () => {
         <div className="flex flex-col">
           <h1 className="font-display text-4xl md:text-5xl mb-4 font-bold font-sans">{p.title}</h1>
           {variant && (
-            <p className="text-xl tabular-nums mb-6 font-sans">
-              {formatPrice(variant.price.amount, variant.price.currencyCode)}
-            </p>
+            <div className="mb-6">
+              <p className="text-xl tabular-nums font-sans mb-1">
+                {formatPrice(variant.price.amount, variant.price.currencyCode)}
+              </p>
+              {variant.description && (
+                <p className="text-sm text-muted-foreground break-keep">
+                  {variant.description}
+                </p>
+              )}
+            </div>
           )}
           {p.descriptionHtml ? (
             <div
