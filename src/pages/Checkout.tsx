@@ -330,9 +330,10 @@ const Checkout = () => {
                           <p className="text-xs text-muted-foreground mb-1">계좌번호</p>
                           <p className="font-medium tabular-nums">{BANK_ACCOUNT}</p>
                         </div>
-                        <p className="text-xs text-muted-foreground">
-                          계좌명 : <span className="font-medium text-foreground">고준서</span>
-                        </p>
+                        <div>
+                          <p className="text-xs text-muted-foreground mb-1">계좌명</p>
+                          <p className="font-medium text-foreground">고준서</p>
+                        </div>
                       </div>
                       <Button
                         type="button"
