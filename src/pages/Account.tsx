@@ -251,7 +251,13 @@ const Account = () => {
                           {formatDate(order.created_at)}
                         </p>
                       </div>
-                      <span className="text-xs px-2 py-1 border border-border bg-secondary">
+                      <span
+                        className={
+                          order.status === "pending"
+                            ? "text-xs px-2 py-1 border border-emerald-200 bg-emerald-50 text-emerald-800 font-medium"
+                            : "text-xs px-2 py-1 border border-border bg-secondary"
+                        }
+                      >
                         {STATUS_LABEL[order.status]}
                       </span>
                     </div>
