@@ -209,11 +209,13 @@ const OrderSuccess = () => {
           </p>
         )}
 
-        <div className="flex flex-wrap gap-3 justify-center mt-10">
-          {detailHref && (
+        <div className="flex justify-between items-center w-full mt-10">
+          {detailHref ? (
             <Button asChild className="rounded-none">
               <Link to={detailHref}>주문 상세 보기</Link>
             </Button>
+          ) : (
+            <div />
           )}
           <Button asChild variant="outline" className="rounded-none">
             <Link to="/shop">계속 쇼핑하기</Link>
