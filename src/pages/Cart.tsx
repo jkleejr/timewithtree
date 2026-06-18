@@ -100,38 +100,38 @@ const Cart = () => {
             </div>
 
             <aside className="lg:col-span-1">
-              <div className="bg-secondary p-6 md:p-8 sticky top-24">
-                <h2 className="font-display text-xl mb-6 font-sans">주문 요약</h2>
-                <ul className="space-y-2 text-sm border-b border-border pb-4 mb-4">
+              <div className="bg-secondary p-6 md:p-8 sticky top-24 text-black">
+                <h2 className="font-display text-xl mb-6 font-sans text-black">주문 요약</h2>
+                <ul className="space-y-2 text-sm border-b border-black/10 pb-4 mb-4 text-black">
                   {items.map((item) => {
                     const variantValue = item.selectedOptions[0]?.value;
                     const showVariantPrefix = variantValue && variantValue !== 'Default Title';
                     const displayTitle = showVariantPrefix ? variantValue : item.product.node.title;
                     return (
-                      <li key={item.variantId} className="flex justify-between gap-3 font-sans">
-                        <span className="text-muted-foreground truncate">
-                          {displayTitle} <span className="tabular-nums">× {item.quantity}</span>
+                      <li key={item.variantId} className="flex justify-between gap-3 font-sans text-black">
+                        <span className="text-black truncate">
+                          {displayTitle} <span className="tabular-nums text-black">× {item.quantity}</span>
                         </span>
-                        <span className="tabular-nums whitespace-nowrap">
+                        <span className="tabular-nums whitespace-nowrap text-black">
                           {formatPrice(parseFloat(item.price.amount) * item.quantity, item.price.currencyCode)}
                         </span>
                       </li>
                     );
                   })}
                 </ul>
-                <div className="space-y-3 text-sm border-b border-border pb-4 mb-4">
-                  <div className="flex justify-between font-sans">
-                    <span className="text-muted-foreground font-sans">상품금액</span>
-                    <span className="tabular-nums font-sans">{formatPrice(subtotal, currency)}</span>
+                <div className="space-y-3 text-sm border-b border-black/10 pb-4 mb-4 text-black">
+                  <div className="flex justify-between font-sans text-black">
+                    <span className="text-black font-sans">상품금액</span>
+                    <span className="tabular-nums font-sans text-black">{formatPrice(subtotal, currency)}</span>
                   </div>
-                  <div className="flex justify-between font-sans">
-                    <span className="text-muted-foreground font-sans">배송비</span>
-                    <span className="text-muted-foreground font-sans">별도</span>
+                  <div className="flex justify-between font-sans text-black">
+                    <span className="text-black font-sans">배송비</span>
+                    <span className="text-black font-sans">별도</span>
                   </div>
                 </div>
-                <div className="flex justify-between items-baseline mb-6">
-                  <span className="text-base font-sans">총 결제 금액</span>
-                  <span className="font-display text-2xl tabular-nums font-sans">{formatPrice(subtotal, currency)}</span>
+                <div className="flex justify-between items-baseline mb-6 text-black">
+                  <span className="text-base font-sans text-black">총 결제 금액</span>
+                  <span className="font-display text-2xl tabular-nums font-sans text-black">{formatPrice(subtotal, currency)}</span>
                 </div>
                 <Button
                   size="lg"
