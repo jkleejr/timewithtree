@@ -88,9 +88,15 @@ export const ProductListRow = ({ product }: { product: ShopifyProduct }) => {
                   {variant.title !== "Default Title" && (
                     <p className="text-sm font-medium">{variant.title}</p>
                   )}
-                  <p className="text-primary text-base md:text-lg break-keep">
-                    예상출고시기: <span className="text-foreground">즉시배송 가능</span>
-                  </p>
+                  {variant.description ? (
+                    <p className="text-muted-foreground text-sm mt-0.5 break-keep">
+                      {variant.description}
+                    </p>
+                  ) : (
+                    <p className="text-primary text-base md:text-lg break-keep">
+                      예상출고시기: <span className="text-foreground">즉시배송 가능</span>
+                    </p>
+                  )}
                 </div>
                 <div className="flex items-center justify-between gap-3 sm:justify-end sm:flex-none">
                   <span className="text-sm tabular-nums font-semibold whitespace-nowrap">
