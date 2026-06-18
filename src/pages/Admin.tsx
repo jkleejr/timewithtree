@@ -229,7 +229,7 @@ const OrdersSection = () => {
   };
 
   const counts = useMemo(() => {
-    const c = { all: orders.length, pending: 0, paid: 0, shipped: 0, cancelled: 0 };
+    const c = { all: orders.length, pending: 0, paid: 0, shipped: 0, completed: 0, cancelled: 0 };
     for (const o of orders) c[o.status] += 1;
     return c;
   }, [orders]);
@@ -238,8 +238,8 @@ const OrdersSection = () => {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-        {(["all", "pending", "paid", "shipped", "cancelled"] as const).map((k) => (
+      <div className="grid grid-cols-2 sm:grid-cols-6 gap-3">
+        {(["all", "pending", "paid", "shipped", "completed", "cancelled"] as const).map((k) => (
           <Card key={k}>
             <CardContent className="p-4">
               <p className="text-xs text-muted-foreground mb-1">
