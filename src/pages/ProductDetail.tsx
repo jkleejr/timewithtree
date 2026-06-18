@@ -243,7 +243,7 @@ const ProductDetail = () => {
             {isAdding ? <Loader2 className="h-4 w-4 animate-spin" /> : variant?.availableForSale === false ? 'Sold out' : '장바구니 담기'}
           </Button>
 
-          <Accordion type="single" collapsible className="mt-10 font-sans font-bold">
+          <Accordion type="single" collapsible className="mt-10 font-sans font-bold md:hidden">
             <AccordionItem value="origin">
               <AccordionTrigger>원산지</AccordionTrigger>
               <AccordionContent className="font-sans font-normal text-black">
