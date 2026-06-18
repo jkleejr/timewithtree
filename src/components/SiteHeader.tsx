@@ -95,9 +95,9 @@ export const SiteHeader = () => {
           <NavLink to="/cart" className={navClass} aria-label="장바구니">
             <span className="relative flex items-center gap-2">
               <ShoppingCart className="h-5 w-5" />
-              <span className="hidden md:inline">장바구니</span>
+              <span className="hidden lg:inline">장바구니</span>
               {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 md:static md:ml-1 inline-flex items-center justify-center h-5 min-w-[20px] px-1 rounded-full bg-accent text-accent-foreground text-[11px] font-medium">
+                <span className="absolute -top-2 -right-2 lg:static lg:ml-1 inline-flex items-center justify-center h-5 min-w-[20px] px-1 rounded-full bg-accent text-accent-foreground text-[11px] font-medium">
                   {totalItems}
                 </span>
               )}
