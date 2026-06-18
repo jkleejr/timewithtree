@@ -202,6 +202,7 @@ const OrdersSection = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [sendingShipId, setSendingShipId] = useState<string | null>(null);
 
   const load = () => {
     setLoading(true);
@@ -227,6 +228,29 @@ const OrdersSection = () => {
       toast.success("주문 상태가 변경되었습니다");
       setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status } : o)));
     }
+  };
+
+  const sendShippedEmail = async (id: string) => {
+    setSendingShipId(id);
+    const { data, error } = await supabase.functions.invoke("send-shipped-notification", {
+      body: { order_id: id },
+    });
+    setSendingShipId(null);
+    if (error) {
+      toast.error("배송중 알림 메일 발송 실패");
+      return;
+    }
+    if (data?.alreadySent) {
+      toast.info("이미 배송중 알림이 발송된 주문입니다");
+    } else {
+      toast.success("배송중 알림 메일이 발송되었습니다");
+    }
+    const sentAt = data?.sentAt ?? new Date().toISOString();
+    setOrders((prev) =>
+      prev.map((o) =>
+        o.id === id ? { ...o, status: "shipped", shipped_email_sent_at: sentAt } : o,
+      ),
+    );
   };
 
   const counts = useMemo(() => {
