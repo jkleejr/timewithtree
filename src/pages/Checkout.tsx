@@ -221,6 +221,21 @@ const Checkout = () => {
     } catch {
       // ignore storage errors
     }
+
+    // Save orderer info to profile for next time (logged-in users only)
+    if (user) {
+      const savedAddress = [orderer.address1, orderer.address2].filter(Boolean).join(" ").trim();
+      await supabase
+        .from("profiles")
+        .update({
+          full_name: orderer.name || null,
+          phone: orderer.phone || null,
+          address: savedAddress || null,
+          postal_code: orderer.postal || null,
+        })
+        .eq("id", user.id);
+    }
+
     navigate(`/order-success?n=${encodeURIComponent(data.order_number)}`);
   };
 
