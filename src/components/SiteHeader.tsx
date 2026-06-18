@@ -61,7 +61,7 @@ export const SiteHeader = () => {
         >
           <img src={logo} alt="나무와 걷는 시간" className="h-10 md:h-16 w-auto -my-1 md:-my-2" />
         </Link>
-        <nav className="hidden md:flex items-center gap-10">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-10">
           {NAV_LINKS.map((l) =>
             l.hash ? (
               <a
