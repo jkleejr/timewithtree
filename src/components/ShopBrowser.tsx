@@ -243,6 +243,12 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                 </div>
               )}
               <Accordion type="single" collapsible className="mt-8 font-sans font-bold">
+                <AccordionItem value="origin">
+                  <AccordionTrigger>원산지</AccordionTrigger>
+                  <AccordionContent className="font-sans font-normal text-foreground text-base md:text-lg leading-relaxed">
+                    네덜란드에서 조직배양한 묘목을 국내에서 재배
+                  </AccordionContent>
+                </AccordionItem>
                 <AccordionItem value="shipping">
                   <AccordionTrigger>나무 배송 안내</AccordionTrigger>
                   <AccordionContent className="font-sans font-normal text-foreground">
@@ -261,12 +267,6 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                         </ul>
                       </div>
                     </div>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="origin">
-                  <AccordionTrigger>원산지</AccordionTrigger>
-                  <AccordionContent className="font-sans font-normal text-foreground text-base md:text-lg leading-relaxed">
-                    네덜란드에서 조직배양한 묘목을 국내에서 재배
                   </AccordionContent>
                 </AccordionItem>
                  <AccordionItem value="soldout">
