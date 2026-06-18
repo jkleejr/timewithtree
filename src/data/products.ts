@@ -43,6 +43,7 @@ export interface ShopifyProduct {
           price: { amount: string; currencyCode: string };
           availableForSale: boolean;
           selectedOptions: Array<{ name: string; value: string }>;
+          description?: string;
         };
       }>;
     };
@@ -51,10 +52,10 @@ export interface ShopifyProduct {
 }
 
 const VARIANTS = [
-  { id: "jacq-r3", title: "R3, 잭큐몬티 자작나무", amount: "120000" },
-  { id: "jacq-r4", title: "R4, 잭큐몬티 자작나무", amount: "160000" },
-  { id: "jacq-r5", title: "R5, 잭큐몬티 자작나무", amount: "200000" },
-  { id: "jacq-dagan", title: "다간형", amount: "200000" },
+  { id: "jacq-r3", title: "R3, 잭큐몬티 자작나무", amount: "100000", description: "근원직경 (줄기의 지면에 닿는 부분의 지름)이 3cm인 자작나무 묘목" },
+  { id: "jacq-r4", title: "R4, 잭큐몬티 자작나무", amount: "120000", description: "근원직경 (줄기의 지면에 닿는 부분의 지름)이 4cm인 자작나무 묘목" },
+  { id: "jacq-r5", title: "R5, 잭큐몬티 자작나무", amount: "150000", description: "근원직경 (줄기의 지면에 닿는 부분의 지름)이 5cm의 자작나무 묘목" },
+  { id: "jacq-dagan", title: "다간형", amount: "150000", description: "한 나무에서 여러 줄기가 자라는 다간형 자작나무" },
 ];
 
 const DESCRIPTION = `네덜란드에서 수입하여 국내에서 재배한 자작나무 묘목입니다.
