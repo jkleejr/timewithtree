@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronLeft, ChevronRight, RotateCcw, Sprout, Droplets, Wind, ShieldCheck, TrendingUp, TreePine, FlaskConical, Snowflake, Sun, Award, BookOpen, Mountain, Sparkles, type LucideIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight, RotateCcw, Sprout, Droplets, Wind, ShieldCheck, TrendingUp, TreePine, type LucideIcon } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { ShopBrowser } from "@/components/ShopBrowser";
 import { Button } from "@/components/ui/button";
@@ -155,22 +155,15 @@ const Index = () => {
       {/* 자작나무 소개 */}
       <section id="about" className="scroll-mt-24 border-t border-border py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="mb-8 md:mb-10 flex items-end justify-between gap-6 flex-wrap">
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Botanical Profile</p>
-              <h2 className="font-display max-w-3xl leading-[1.1] font-bold font-sans text-4xl md:text-5xl">
-                자작나무 소개
-              </h2>
-            </div>
-            <div className="hidden md:flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground">
-              <span className="h-px w-10 bg-border" />
-              Betula Jacquemontii
-            </div>
+          <div className="mb-8 md:mb-10">
+            
+            <h2 className="font-display max-w-3xl leading-[1.1] font-bold font-sans text-4xl md:text-5xl">
+              자작나무 소개
+            </h2>
           </div>
 
           <div className="grid md:grid-cols-12 gap-8 lg:gap-12 items-start">
-            {/* Left: image + award badge */}
-            <div className="md:col-span-5 md:sticky md:top-28 space-y-5">
+            <div className="md:col-span-5 md:sticky md:top-28">
               <div className="relative w-full aspect-[3/4] overflow-hidden bg-secondary rounded-lg">
                 {aboutImages.map((img, i) => (
                   <img
@@ -217,98 +210,45 @@ const Index = () => {
                   </>
                 )}
               </div>
-
-              {/* Award badge */}
-              <div className="border border-border bg-secondary/40 rounded-lg p-5 flex items-start gap-4">
-                <div className="shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Award className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">1993 RHS Award</p>
-                  <p className="text-sm font-semibold text-foreground leading-snug">
-                    영국 왕립원예협회 최고 권위 훈장 수상
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Royal Horticultural Society Award of Garden Merit
-                  </p>
-                </div>
-              </div>
             </div>
-
-            {/* Right: specs + cards */}
-            <div className="md:col-span-7 flex flex-col gap-6">
-              {/* Spec grid */}
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                {[
-                  { icon: FlaskConical, label: "학명", value: "Betula Jacquemontii", italic: true },
-                  { icon: Sun, label: "햇빛", value: "양지" },
-                  { icon: Snowflake, label: "월동", value: "내한성 높음" },
-                  { icon: Droplets, label: "물", value: "겉흙이 마르면 (과습주의)" },
-                ].map((s) => (
-                  <div
-                    key={s.label}
-                    className="border border-border rounded-lg p-4 sm:p-5 bg-background hover:bg-secondary/30 transition-colors"
-                  >
-                    <div className="flex items-center gap-2 text-muted-foreground mb-2">
-                      <s.icon className="h-4 w-4" />
-                      <span className="text-xs uppercase tracking-wider">{s.label}</span>
-                    </div>
-                    <p className={`text-foreground font-bold text-sm sm:text-base leading-snug ${s.italic ? "italic" : ""}`}>
-                      {s.value}
-                    </p>
+            <div className="md:col-span-7 flex flex-col gap-6 text-base leading-relaxed text-muted-foreground items-start justify-start">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6 border-b border-border/50 pb-6 w-full text-sm sm:text-base font-bold font-sans">
+                <div className="space-y-3">
+                  <div>
+                    <span className="text-xs text-muted-foreground font-medium block mb-0.5">학명</span>
+                    <span className="text-primary text-base sm:text-lg">Betula Jacquemontii</span>
                   </div>
-                ))}
+                  <div>
+                    <span className="text-xs text-muted-foreground font-medium block mb-0.5">월동</span>
+                    <span className="text-primary">내한성 높음</span>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div>
+                    <span className="text-xs text-muted-foreground font-medium block mb-0.5">햇빛</span>
+                    <span className="text-primary">양지</span>
+                  </div>
+                  <div>
+                    <span className="text-xs text-muted-foreground font-medium block mb-0.5">물</span>
+                    <span className="text-primary">겉흙이 마르면(과습주의)</span>
+                  </div>
+                </div>
               </div>
-
-              <p className="font-bold text-foreground text-2xl md:text-3xl mt-2">핵심 특징 및 관리</p>
-
-              {/* Themed content cards */}
-              {[
-                {
-                  icon: BookOpen,
-                  tag: "기원 & 이야기",
-                  title: "프랑스 자연주의자의 이름을 딴 품종",
-                  body: "히말라야 서부지역에 자생하는 자작나무 중에서 발견된, 수피가 유난히 밝고 흰색인 변종을 유럽에서 원예용으로 개량하여 탄생시킨 품종으로 프랑스 자연주의자의 이름을 따서 '잭큐몬티'라는 이름이 붙여졌다.",
-                },
-                {
-                  icon: Mountain,
-                  tag: "생육 장점",
-                  title: "국내 전 지역에서 발현되는 순백의 수피",
-                  body: "일반 자작나무 품종은 추운지역에서만 자작나무 고유의 아름다운 수피 색상을 발현시키고 생육이 양호한 특성이 있어서 국내에서는 일부지역에서만 자작나무 고유의 수피감상이 가능한 반면, 이품종의 경우엔 유럽의 기후에 맞게 개량되어 국내 모든 지역에서 품종 고유의 수피 매력을 발현시키는 장점을 가지고 있다.",
-                },
-                {
-                  icon: Sparkles,
-                  tag: "특별한 매력",
-                  title: "가장 밝은 백색, 몽환적인 사계절 풍경",
-                  body: "자작나무 중 가장 밝은 백색을 띠며 성장속도가 빠르다. 수피는 줄기뿐만 아니라 가지까지도 형광성을 지닌 특이한 흰색이라서 여러그루를 식재시 가을 단풍과 겨울나목이 다른 품종과 달리 매우 몽환적인 느낌을 주는 매력이 있다.",
-                },
-                {
-                  icon: TreePine,
-                  tag: "정원 가꾸기 팁",
-                  title: "노지월동이 가능한 속성 조경수",
-                  body: "전국 노지월동이 가능하고, 성장속도가 빠른 속성수이다. 나무높이는 9~15m까지 성장하며, 뿌리는 땅속깊이 직근으로 파고들지 않고, 사방으로 퍼지는 특성이 있다. 유럽과 미국뿐만 아니라 호주, 일본 등에서 인기조경수로 자리매김되고 있으며, 그 수액은 자일리톨 성분 등 이로운 성분이 많이 함유되어 있어서 국내의 고로쇠 수액처럼 웰빙음료 등에 활용되는 추세이다.",
-                },
-              ].map((c) => (
-                <article
-                  key={c.tag}
-                  className="border border-border rounded-lg p-5 md:p-6 bg-secondary/20 hover:bg-secondary/40 transition-colors"
-                >
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="h-8 w-8 rounded-full bg-background border border-border flex items-center justify-center">
-                      <c.icon className="h-4 w-4 text-primary" />
-                    </div>
-                    <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground font-medium">
-                      {c.tag}
-                    </span>
-                  </div>
-                  <h3 className="font-bold text-foreground text-lg md:text-xl mb-2 leading-snug">
-                    {c.title}
-                  </h3>
-                  <p className="text-primary text-sm md:text-base leading-relaxed">
-                    {c.body}
-                  </p>
-                </article>
-              ))}
+              <p className="font-bold text-foreground mt-2 text-2xl md:text-3xl">핵심 특징 및 관리</p>
+              <p className="text-primary text-base md:text-lg">
+                히말라야 서부지역에 자생하는 자작나무 중에서 발견된, 수피가 유난히 밝고 흰색인 변종을 유럽에서 원예용으로 개량하여 탄생시킨 품종으로 프랑스 자연주의자의 이름을 따서 '잭큐몬티'라는 이름이 붙여졌다.
+              </p>
+              <p className="text-primary text-base md:text-lg">
+                일반 자작나무 품종은 추운지역에서만 자작나무 고유의 아름다운 수피 색상을 발현시키고 생육이 양호한 특성이 있어서 국내에서는 일부지역에서만 자작나무 고유의 수피감상이 가능한 반면, 이품종의 경우엔 유럽의 기후에 맞게 개량되어 국내 모든 지역에서 품종 고유의 수피 매력을 발현시키는 장점을 가지고 있다.
+              </p>
+              <p className="text-primary text-base md:text-lg">
+                자작나무 중 가장 밝은 백색을 띠며 성장속도가 빠르다. 수피는 줄기뿐만 아니라 가지까지도 형광성을 지닌 특이한 흰색이라서 여러그루를 식재시 가을 단풍과 겨울나목이 다른 품종과 달리 매우 몽환적인 느낌을 주는 매력이 있어 1993년 영국 왕립현회로부터 최고의 권위있는 훈장을 수상하였다고 한다.
+              </p>
+              <p className="text-primary text-base md:text-lg whitespace-pre-line">
+                전국 노지월동이 가능하고, 성장속도가 빠른 속성수이다.
+                나무높이는 9~15m까지 성장하며, 뿌리는 땅속깊이 직근으로 파고들지 않고, 사방으로 퍼지는 특성이 있다.
+                유럽과 미국뿐만 아니라 호주, 일본 등에서 인기조경수로 자리매김되고 있으며, 그 수액은 자일리톨 성분 등 이로운 성분이 많이 함유되어 있어서 국내의 고로쇠 수액처럼 웰빙음료 등에 활용이 가는 추세이다.
+              </p>
             </div>
           </div>
           <div className="mt-8 md:mt-10 flex justify-end">
@@ -322,7 +262,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
 
       {/* 에어포트 재배 (inline, expanded) */}
       <section id="airpot" className="scroll-mt-24 border-t border-border bg-secondary/30 py-10 md:py-14">
