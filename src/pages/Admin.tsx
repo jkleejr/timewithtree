@@ -30,17 +30,19 @@ type PageView = {
   created_at: string;
 };
 
-type OrderStatus = "pending" | "paid" | "shipped" | "cancelled";
+type OrderStatus = "pending" | "paid" | "shipped" | "completed" | "cancelled";
 const STATUS_LABELS: Record<OrderStatus, string> = {
   pending: "입금대기",
   paid: "입금완료",
   shipped: "배송중",
+  completed: "배송완료",
   cancelled: "취소",
 };
 const STATUS_VARIANTS: Record<OrderStatus, "default" | "secondary" | "destructive" | "outline"> = {
   pending: "outline",
   paid: "default",
   shipped: "secondary",
+  completed: "default",
   cancelled: "destructive",
 };
 
