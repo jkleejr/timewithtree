@@ -21,7 +21,7 @@ export const OrderPolicyNotice = ({ className = "" }: OrderPolicyNoticeProps) =>
         </li>
         <li>제주도 등의 섬 (도서산간지역)으로는 배송이 불가합니다.</li>
         <li>주문하신 상품이 품절일 경우 고객님과 연락 후 환불 또는 대체 상품으로 진행됩니다.</li>
-        <li>
+        <li className="font-bold">
           무통장 입금 방식으로 결제시 관리자가 입금을 확인한 후 배송이 진행됩니다. 입금자명을 정확히 입력해주세요.
         </li>
       </ul>
