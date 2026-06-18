@@ -134,7 +134,8 @@ const OrderDetail = () => {
     if (order.status === "cancelled") return -1;
     if (order.status === "pending") return 0;
     if (order.status === "paid") return 1;
-    if (order.status === "shipped") return 3;
+    if (order.status === "shipped") return 2;
+    if (order.status === "completed") return 3;
     return 0;
   }, [order]);
 
