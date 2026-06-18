@@ -340,7 +340,18 @@ const Index = () => {
             </div>
           </div>
 
-
+          <div className="mt-8 md:mt-10 flex justify-end">
+            <Button
+              asChild
+              size="lg"
+              className="group relative rounded-none bg-black hover:bg-black/90 text-white shadow-lg px-8 py-3 transition-all duration-300"
+            >
+              <a href="#shop" className="relative inline-block font-medium font-sans">
+                구매하기
+                <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 
