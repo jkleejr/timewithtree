@@ -21,6 +21,7 @@ import Auth from "./pages/Auth.tsx";
 import Account from "./pages/Account.tsx";
 import Returns from "./pages/Returns.tsx";
 import PickupGuide from "./pages/PickupGuide.tsx";
+import Privacy from "./pages/Privacy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Admin from "./pages/Admin.tsx";
 import Unsubscribe from "./pages/Unsubscribe.tsx";
@@ -48,6 +49,7 @@ const AppRoutes = () => {
       <Route path="/account" element={<Account />} />
       <Route path="/returns" element={<Returns />} />
       <Route path="/pickup-guide" element={<PickupGuide />} />
+      <Route path="/privacy" element={<Privacy />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/unsubscribe" element={<Unsubscribe />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

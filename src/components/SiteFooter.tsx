@@ -11,6 +11,7 @@ const navLinks = [
   { to: "/cart", label: "장바구니" },
   { to: "/returns", label: "교환 / 환불 규정" },
   { to: "/pickup-guide", label: "방문 수령시 안내" },
+  { to: "/privacy", label: "개인정보처리방침" },
 ];
 
 export const SiteFooter = () => (
