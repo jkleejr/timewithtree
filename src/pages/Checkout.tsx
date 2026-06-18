@@ -337,7 +337,7 @@ const Checkout = () => {
 
               <div className="bg-secondary p-5 space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">주문총액</span>
+                  <span className="text-muted-foreground">상품 금액</span>
                   <span className="tabular-nums">{formatPrice(subtotal, currency)}</span>
                 </div>
                 <div className="flex justify-between">
@@ -345,7 +345,7 @@ const Checkout = () => {
                   <span>별도</span>
                 </div>
                 <div className="border-t border-border pt-3 flex justify-between items-baseline">
-                  <span className="font-medium">총주문금액</span>
+                  <span className="font-medium">총 결제 금액</span>
                   <span className="font-display text-xl tabular-nums font-sans">
                     {formatPrice(subtotal, currency)}
                   </span>
@@ -480,7 +480,7 @@ const Checkout = () => {
               </div>
               <div className="border-t border-border pt-4 space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">주문총액</span>
+                  <span className="text-muted-foreground">상품 금액</span>
                   <span className="tabular-nums">{formatPrice(subtotal, currency)}</span>
                 </div>
                 <div className="flex justify-between">
@@ -488,7 +488,7 @@ const Checkout = () => {
                   <span>별도</span>
                 </div>
                 <div className="border-t border-border pt-3 flex justify-between items-baseline">
-                  <span className="text-base font-sans">총주문금액</span>
+                  <span className="text-base font-sans">총 결제 금액</span>
                   <span className="font-display text-2xl tabular-nums font-sans">
                     {formatPrice(subtotal, currency)}
                   </span>
