@@ -33,7 +33,7 @@ type OrderRow = {
   items: OrderItem[];
   subtotal: number;
   currency: string;
-  status: "pending" | "paid" | "shipped" | "cancelled";
+  status: "pending" | "paid" | "shipped" | "completed" | "cancelled";
   created_at: string;
 };
 
@@ -41,6 +41,7 @@ const STATUS_LABEL: Record<OrderRow["status"], string> = {
   pending: "주문접수",
   paid: "입금완료",
   shipped: "배송중",
+  completed: "배송완료",
   cancelled: "취소됨",
 };
 
