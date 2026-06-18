@@ -76,6 +76,7 @@ const Checkout = () => {
   const [recipient, setRecipient] = useState<PartyForm>({ ...emptyParty });
   const [sameAsOrderer, setSameAsOrderer] = useState(true);
   const [deliveryMessage, setDeliveryMessage] = useState("");
+  const [deliveryDate, setDeliveryDate] = useState("");
 
   const [depositorName, setDepositorName] = useState("");
   const [depositorSame, setDepositorSame] = useState(true);
