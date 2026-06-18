@@ -140,7 +140,7 @@ const Account = () => {
     <SiteLayout>
       <section className="max-w-3xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-20">
         <h1 className="font-display text-4xl md:text-5xl mb-2 font-bold font-sans">내 계정</h1>
-        <p className="text-primary mb-10">{user.email}</p>
+        <p className="text-accent mb-10">{user.email}</p>
 
         <h2 className="font-display text-2xl mb-4 font-sans font-bold">내 정보</h2>
         <p className="text-sm text-muted-foreground mb-6">
