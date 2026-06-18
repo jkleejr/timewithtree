@@ -79,7 +79,7 @@ const Checkout = () => {
   const [deliveryDate, setDeliveryDate] = useState("");
 
   const [depositorName, setDepositorName] = useState("");
-  const [depositorSame, setDepositorSame] = useState(true);
+  const [depositorConfirmed, setDepositorConfirmed] = useState(false);
 
   useEffect(() => {
     if (!user) return;
@@ -105,9 +105,6 @@ const Checkout = () => {
     };
   }, [user]);
 
-  useEffect(() => {
-    if (depositorSame) setDepositorName(orderer.name);
-  }, [depositorSame, orderer.name]);
 
   const subtotal = items.reduce((s, i) => s + parseFloat(i.price.amount) * i.quantity, 0);
   const currency = items[0]?.price.currencyCode || "KRW";
