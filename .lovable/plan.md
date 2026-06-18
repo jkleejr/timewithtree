@@ -1,56 +1,38 @@
-## Goal
+# Fix Order Emails Not Sending
 
-When an order is successfully placed, send two emails:
-- **Customer**: order confirmation with everything they need.
-- **Admins (seller)**: full order + customer info so the order can be fulfilled.
+## Root cause
 
-Both emails are sent from `notify.timewithtree.co.kr` (already verified) via the existing Lovable email infrastructure.
+The `notify-admin-order` Edge Function (triggered by the DB on every new order) is failing to boot. Edge logs show repeatedly:
 
-## Current state
+```
+worker boot error: Unable to load .../@supabase/supabase-js/2.45.0/cors ... path not found
+```
 
-- Admin email already works: a database trigger on `orders` insert calls the `notify-admin-order` edge function, which sends the `new-order-admin` template to the 4 admin addresses (timewithtree@gmail.com, jklwjr@gmail.com, arminko2023@gmail.com, bj.euphoria@gmail.com). It already includes order number, customer name/phone/tel/email, shipping address, recipient (if different), delivery message, payment method, depositor name, bank account, items, subtotal, and customer note.
-- Customer confirmation email: **missing**. Nothing is sent to the buyer today.
+The line `import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors'` is invalid — that subpath doesn't exist in the package. Because the function never boots, no admin notification email and no customer confirmation email are ever sent, even though templates and `send-transactional-email` are wired correctly.
 
-## What I'll build
+Your email infrastructure is otherwise healthy: `notify.timewithtree.co.kr` is verified, templates (`new-order-admin`, `customer-order-confirmation`) exist, queue + cron exist.
 
-### 1. New customer email template
-`supabase/functions/_shared/transactional-email-templates/customer-order-confirmation.tsx`
+## Plan
 
-Korean, branded to match `new-order-admin` (same card style, KRW formatting, Asia/Seoul timestamp). Contents:
+1. **Fix the CORS import** in `supabase/functions/notify-admin-order/index.ts` — declare `corsHeaders` inline (the standard Lovable pattern) instead of importing a non-existent subpath. No other logic changes.
+2. **Redeploy** `notify-admin-order`.
+3. **Verify** by placing a fresh test order, then:
+   - Check edge logs for `notify-admin-order` → expect no boot errors and a 200 response.
+   - Check `email_send_log` for two rows per order: one with `template_name = 'new-order-admin'` (to admin emails) and one `customer-order-confirmation` (to the customer), each with `status = 'sent'`.
+   - Confirm both inboxes received the emails.
+4. If `email_send_log` shows `pending` that never flips to `sent`, inspect `process-email-queue` logs next. If it shows `dlq` or `failed`, surface the `error_message`.
 
-- Heading: "주문이 정상적으로 접수되었습니다"
-- Order number, order date, status ("입금 대기중")
-- Order items list with quantities and per-line totals
-- Subtotal / 총 주문 금액
-- Bank transfer instructions (only when `paymentMethod === 'bank_transfer'`): bank account `NH농협은행 301-0327-2621-11`, account holder 고준서, depositor name they entered, exact amount to deposit, note that 용달 배송비 is paid directly to the driver
-- Shipping address (recipient name, phone, address, requested delivery date, delivery message)
-- Note: "품절일 경우 전화로 안내드리겠습니다."
-- Contact line for questions (timewithtree@gmail.com)
+## Technical detail
 
-Registered in `registry.ts` as `customer-order-confirmation`.
+Replacement snippet (top of file):
 
-### 2. Trigger the customer email
-Extend `supabase/functions/notify-admin-order/index.ts` so that, in addition to looping over admin recipients, it also invokes `send-transactional-email` once for `order.customer_email` with `templateName: 'customer-order-confirmation'` and `idempotencyKey: customer-confirm-${order.id}`.
+```ts
+import { createClient } from 'npm:@supabase/supabase-js@2.45.0'
 
-This keeps a single trigger path (the existing DB trigger on `orders` insert), so no schema or trigger changes are needed and behavior stays best-effort — the checkout flow is never blocked if email sending hiccups.
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
+```
 
-### 3. Deploy
-Deploy `notify-admin-order` after the code change. `send-transactional-email` and `process-email-queue` are already deployed.
-
-## Payment verification (bank transfer)
-
-The seller specifically needs to confirm payment before fulfilling. With bank transfer there is no automatic verification — the admin manually checks the bank account, then marks the order paid. The current setup supports this well:
-
-- Order is inserted with status `pending` (enforced by `force_pending_order_status` trigger).
-- Admin email tells the seller exactly what amount, from whom (`depositorName`), to which account.
-- Customer email tells the buyer the same amount and account, so deposits match.
-
-I am **not** wiring credit card / PG verification in this change — you mentioned adding that later. When you're ready, the natural follow-up is a "payment confirmed / 배송 준비중" email to the customer that fires when an admin flips the order status from `pending` → `paid` in the admin dashboard. I can add that template + status-change trigger as a separate step once you confirm you want it.
-
-## Files touched
-
-- `supabase/functions/_shared/transactional-email-templates/customer-order-confirmation.tsx` (new)
-- `supabase/functions/_shared/transactional-email-templates/registry.ts` (register template)
-- `supabase/functions/notify-admin-order/index.ts` (also invoke customer email)
-
-No database migrations, no checkout-page changes, no new secrets.
+Everything else in the function stays as-is.
