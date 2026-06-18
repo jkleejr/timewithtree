@@ -43,7 +43,8 @@ const ProductDetail = () => {
   const p = product.node;
   const variants = p.variants.edges;
   const variant = variants[variantIndex]?.node;
-  const images = p.images.edges;
+  const variantImagesForTitle = variant?.title ? p.variantImages?.[variant.title] : undefined;
+  const images = (variantImagesForTitle && variantImagesForTitle.length > 0) ? variantImagesForTitle : p.images.edges;
 
   const handleAdd = async () => {
     if (!variant) return;
@@ -119,7 +120,7 @@ const ProductDetail = () => {
 
           {variants.length > 1 && (
             <div className="mb-6">
-              <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">Size</p>
+              <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">사이즈</p>
               <div className="flex flex-wrap gap-2">
                 {variants.map((v, i) => (
                   <button
