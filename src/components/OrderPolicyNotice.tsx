@@ -14,9 +14,9 @@ export const OrderPolicyNotice = ({ className = "" }: OrderPolicyNoticeProps) =>
       <ul className="text-xs md:text-sm leading-relaxed space-y-1.5 list-disc pl-4 marker:text-muted-foreground text-foreground">
         <li>
           <strong className="font-bold">저희 나무와 걷는 시간의 자작나무 묘목은</strong>{" "}
-          <span className="text-destructive font-bold">차량(용달)배송만 가능합니다.</span>
+          <span className="text-warning-red font-bold">차량(용달)배송만 가능합니다.</span>
         </li>
-        <li className="text-destructive font-bold">
+        <li className="text-warning-red font-bold">
           차량(용달)배송비는 착불로 진행되며 고객이 나무를 수령 후 직접 배송 기사에게 지급하시면 됩니다.
         </li>
         <li>제주도 등의 섬 (도서산간지역)으로는 배송이 불가합니다.</li>
