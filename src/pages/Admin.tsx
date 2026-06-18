@@ -30,17 +30,19 @@ type PageView = {
   created_at: string;
 };
 
-type OrderStatus = "pending" | "paid" | "shipped" | "cancelled";
+type OrderStatus = "pending" | "paid" | "shipped" | "completed" | "cancelled";
 const STATUS_LABELS: Record<OrderStatus, string> = {
   pending: "입금대기",
   paid: "입금완료",
   shipped: "배송중",
+  completed: "배송완료",
   cancelled: "취소",
 };
 const STATUS_VARIANTS: Record<OrderStatus, "default" | "secondary" | "destructive" | "outline"> = {
   pending: "outline",
   paid: "default",
   shipped: "secondary",
+  completed: "default",
   cancelled: "destructive",
 };
 
@@ -227,7 +229,7 @@ const OrdersSection = () => {
   };
 
   const counts = useMemo(() => {
-    const c = { all: orders.length, pending: 0, paid: 0, shipped: 0, cancelled: 0 };
+    const c = { all: orders.length, pending: 0, paid: 0, shipped: 0, completed: 0, cancelled: 0 };
     for (const o of orders) c[o.status] += 1;
     return c;
   }, [orders]);
@@ -236,8 +238,8 @@ const OrdersSection = () => {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-        {(["all", "pending", "paid", "shipped", "cancelled"] as const).map((k) => (
+      <div className="grid grid-cols-2 sm:grid-cols-6 gap-3">
+        {(["all", "pending", "paid", "shipped", "completed", "cancelled"] as const).map((k) => (
           <Card key={k}>
             <CardContent className="p-4">
               <p className="text-xs text-muted-foreground mb-1">

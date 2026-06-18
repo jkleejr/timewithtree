@@ -36,7 +36,7 @@ type OrderRow = {
   items: OrderItem[];
   subtotal: number;
   currency: string;
-  status: "pending" | "paid" | "shipped" | "cancelled";
+  status: "pending" | "paid" | "shipped" | "completed" | "cancelled";
   created_at: string;
 };
 
@@ -45,7 +45,7 @@ const STATUS_STEPS: Array<{ key: OrderRow["status"]; label: string }> = [
   { key: "pending", label: "주문접수" },
   { key: "paid", label: "입금완료" },
   { key: "shipped", label: "배송중" },
-  { key: "shipped", label: "배송완료" },
+  { key: "completed", label: "배송완료" },
 ];
 
 function parseNote(note: string | null) {
@@ -134,7 +134,8 @@ const OrderDetail = () => {
     if (order.status === "cancelled") return -1;
     if (order.status === "pending") return 0;
     if (order.status === "paid") return 1;
-    if (order.status === "shipped") return 3;
+    if (order.status === "shipped") return 2;
+    if (order.status === "completed") return 3;
     return 0;
   }, [order]);
 
