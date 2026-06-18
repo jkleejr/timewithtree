@@ -38,12 +38,12 @@ const STATUS_LABELS: Record<OrderStatus, string> = {
   completed: "배송완료",
   cancelled: "취소",
 };
-const STATUS_VARIANTS: Record<OrderStatus, "default" | "secondary" | "destructive" | "outline"> = {
-  pending: "outline",
-  paid: "default",
-  shipped: "secondary",
-  completed: "default",
-  cancelled: "destructive",
+const STATUS_CLASSES: Record<OrderStatus, string> = {
+  pending: "bg-yellow-100 text-yellow-800 border-yellow-300 hover:bg-yellow-100",
+  paid: "bg-blue-100 text-blue-800 border-blue-300 hover:bg-blue-100",
+  shipped: "bg-purple-100 text-purple-800 border-purple-300 hover:bg-purple-100",
+  completed: "bg-green-100 text-green-800 border-green-300 hover:bg-green-100",
+  cancelled: "bg-red-100 text-red-800 border-red-300 hover:bg-red-100",
 };
 
 type OrderItem = {
@@ -266,7 +266,7 @@ const OrdersSection = () => {
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <span className="font-mono text-sm">{o.order_number}</span>
-                      <Badge variant={STATUS_VARIANTS[o.status]}>{STATUS_LABELS[o.status]}</Badge>
+                      <Badge variant="outline" className={STATUS_CLASSES[o.status]}>{STATUS_LABELS[o.status]}</Badge>
                     </div>
                     <p className="text-xs text-muted-foreground">
                       {new Date(o.created_at).toLocaleString("ko-KR")}
