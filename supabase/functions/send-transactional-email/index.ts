@@ -53,8 +53,10 @@ Deno.serve(async (req) => {
     return new Response(null, { headers: corsHeaders })
   }
 
-  // Require a service_role JWT — this function must only be called server-to-server
-  // (from other edge functions / triggers using the service role key).
+  // Require service-role credentials — server-to-server only.
+  // Accept either a JWT with role=service_role (legacy) OR a bearer token
+  // matching the SUPABASE_SERVICE_ROLE_KEY env var directly (new sb_secret_ keys
+  // are opaque, not JWTs, so JWT parsing won't work).
   const authHeader = req.headers.get('Authorization')
   if (!authHeader?.startsWith('Bearer ')) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), {
@@ -62,8 +64,12 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   }
-  const claims = parseJwtClaims(authHeader.slice('Bearer '.length).trim())
-  if (claims?.role !== 'service_role') {
+  const bearer = authHeader.slice('Bearer '.length).trim()
+  const serviceRoleEnv = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+  const claims = parseJwtClaims(bearer)
+  const isServiceRole = claims?.role === 'service_role' || (serviceRoleEnv && bearer === serviceRoleEnv)
+  if (!isServiceRole) {
+    console.error('send-transactional-email: forbidden (non-service-role caller)')
     return new Response(JSON.stringify({ error: 'Forbidden' }), {
       status: 403,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
