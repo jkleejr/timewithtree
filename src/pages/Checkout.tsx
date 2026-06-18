@@ -303,13 +303,26 @@ const Checkout = () => {
                 )}
 
                 <div className="space-y-2 pt-2">
-                  <Label htmlFor="delivery_message" className="text-sm">전하시는 말씀</Label>
+                  <Label htmlFor="delivery_date" className="text-sm">배송일 지정</Label>
+                  <Input
+                    id="delivery_date"
+                    type="date"
+                    min={minDateStr}
+                    value={deliveryDate}
+                    onChange={(e) => setDeliveryDate(e.target.value)}
+                    className="rounded-none bg-background border-border"
+                  />
+                </div>
+
+                <div className="space-y-2 pt-2">
+                  <Label htmlFor="delivery_message" className="text-sm">배송시 요청사항</Label>
                   <Textarea
                     id="delivery_message"
                     rows={3}
                     value={deliveryMessage}
                     onChange={(e) => setDeliveryMessage(e.target.value)}
                     placeholder="배송 시 요청사항을 적어주세요 (선택)"
+                    className="rounded-none"
                   />
                 </div>
               </div>
