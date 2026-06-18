@@ -109,7 +109,54 @@ Deno.serve(async (req) => {
       }
     }
 
-    return new Response(JSON.stringify({ ok: true, results }), {
+    // Customer order confirmation (best-effort)
+    let customerResult: { email: string; ok: boolean; note?: string } | null = null
+    if (order.customer_email) {
+      // Parse delivery date from customer_note if present (stored as "[배송일] YYYY-MM-DD")
+      let deliveryDate: string | null = null
+      if (typeof order.customer_note === 'string') {
+        const m = order.customer_note.match(/\[배송일\]\s*([0-9]{4}-[0-9]{2}-[0-9]{2})/)
+        if (m) deliveryDate = m[1]
+      }
+      try {
+        const { error: invokeErr } = await supabase.functions.invoke(
+          'send-transactional-email',
+          {
+            body: {
+              templateName: 'customer-order-confirmation',
+              recipientEmail: order.customer_email,
+              idempotencyKey: `customer-confirm-${order.id}`,
+              templateData: {
+                orderNumber: order.order_number,
+                customerName: order.customer_name,
+                customerPhone: order.customer_phone,
+                customerEmail: order.customer_email,
+                shippingAddress: order.shipping_address,
+                postalCode: order.postal_code,
+                recipientName: order.recipient_name,
+                recipientPhone: order.recipient_phone,
+                recipientAddress: order.recipient_address,
+                recipientPostalCode: order.recipient_postal_code,
+                deliveryDate,
+                deliveryMessage: order.delivery_message,
+                paymentMethod: order.payment_method,
+                depositorName: order.depositor_name,
+                bankAccount: order.bank_account,
+                items: order.items,
+                subtotal: order.subtotal,
+                currency: order.currency,
+                createdAt: order.created_at,
+              },
+            },
+          },
+        )
+        customerResult = { email: order.customer_email, ok: !invokeErr, note: invokeErr?.message }
+      } catch (e) {
+        customerResult = { email: order.customer_email, ok: false, note: (e as Error).message }
+      }
+    }
+
+    return new Response(JSON.stringify({ ok: true, results, customer: customerResult }), {
       status: 200,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
