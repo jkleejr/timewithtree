@@ -191,7 +191,7 @@ const OrderSuccess = () => {
                 <h2 className="font-display text-lg font-bold mb-4 font-sans">주문자 정보</h2>
                 <dl className="space-y-3 text-sm">
                   <Row k="이름" v={order.customer_name} />
-                  <Row k="핸드폰" v={order.customer_phone} />
+                  <Row k="전화번호" v={order.customer_phone} />
                   <Row k="이메일" v={order.customer_email} />
                 </dl>
               </div>
