@@ -1,6 +1,10 @@
-The text size of the list items under the main title on the home page is currently configured with the Tailwind class **`text-base md:text-lg`**:
+The order success page is located at:
+/order-success
 
-* **Mobile/default:** `text-base` (which corresponds to **`16px`** or `1rem`)
-* **Tablet/Desktop (768px and up):** `text-lg` (which corresponds to **`18px`** or `1.125rem`)
+To display specific order details, it uses the query parameter "n" containing the order number:
+/order-success?n={order_number}
 
-This is styled in `src/pages/Index.tsx` around line 146. If you would like to make this text larger or smaller, please let me know and I will apply the changes!
+Example link:
+/order-success?n=ORD100123
+
+Let me know if you would like me to adjust any of its routing or behavior!
