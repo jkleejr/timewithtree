@@ -76,6 +76,7 @@ const Checkout = () => {
   const [recipient, setRecipient] = useState<PartyForm>({ ...emptyParty });
   const [sameAsOrderer, setSameAsOrderer] = useState(true);
   const [deliveryMessage, setDeliveryMessage] = useState("");
+  const [deliveryDate, setDeliveryDate] = useState("");
 
   const [depositorName, setDepositorName] = useState("");
   const [depositorSame, setDepositorSame] = useState(true);
@@ -177,6 +178,15 @@ const Checkout = () => {
       line_total: parseFloat(i.price.amount) * i.quantity,
     }));
 
+    const noteLines = [
+      `[받는분] ${effectiveRecipient.name || orderer.name} / ${effectiveRecipient.phone || orderer.phone}`,
+      deliveryDate ? `[배송일] ${deliveryDate}` : null,
+      deliveryMessage.trim() ? `[전하시는 말씀] ${deliveryMessage.trim()}` : null,
+      `[입금자명] ${depositorName.trim()}`,
+      `[주문자 전화] ${orderer.phone}`,
+    ].filter(Boolean);
+    const customerNote = noteLines.join("\n");
+
     const { data, error } = await supabase
       .from("orders")
       .insert({
@@ -196,7 +206,7 @@ const Checkout = () => {
         payment_method: "bank_transfer",
         depositor_name: depositorName.trim(),
         bank_account: BANK_ACCOUNT,
-        customer_note: null,
+        customer_note: customerNote,
         items: orderItems,
         subtotal,
         currency,
@@ -238,6 +248,11 @@ const Checkout = () => {
 
     navigate(`/order-success?n=${encodeURIComponent(data.order_number)}`);
   };
+
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const minDateStr = tomorrow.toISOString().split("T")[0];
 
   return (
     <SiteLayout>
@@ -288,13 +303,26 @@ const Checkout = () => {
                 )}
 
                 <div className="space-y-2 pt-2">
-                  <Label htmlFor="delivery_message" className="text-sm">전하시는 말씀</Label>
+                  <Label htmlFor="delivery_date" className="text-sm">배송일 지정</Label>
+                  <Input
+                    id="delivery_date"
+                    type="date"
+                    min={minDateStr}
+                    value={deliveryDate}
+                    onChange={(e) => setDeliveryDate(e.target.value)}
+                    className="rounded-none bg-background border-border"
+                  />
+                </div>
+
+                <div className="space-y-2 pt-2">
+                  <Label htmlFor="delivery_message" className="text-sm">배송시 요청사항</Label>
                   <Textarea
                     id="delivery_message"
                     rows={3}
                     value={deliveryMessage}
                     onChange={(e) => setDeliveryMessage(e.target.value)}
                     placeholder="배송 시 요청사항을 적어주세요 (선택)"
+                    className="rounded-none"
                   />
                 </div>
               </div>
