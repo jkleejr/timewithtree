@@ -22,64 +22,83 @@ const Privacy = () => {
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-xl md:text-2xl font-semibold mt-8 text-foreground flex items-center gap-2">
-              <span className="text-primary">■</span> 수집하는 개인정보 항목
+            <h2 className="text-xl md:text-2xl font-bold mt-8 text-foreground">
+              수집하는 개인정보 항목
             </h2>
             <p>회사는 나무 묘목 판매를 위해 아래의 개인정보를 수집하고 있습니다.</p>
-            <ul className="list-none pl-4 space-y-1">
-              <li>
-                <span className="font-medium text-foreground">ο 수집항목 :</span> 로그인ID , 비밀번호 , 이름, 이메일, 주소, 휴대폰번호, 서비스 이용기록 , 접속 로그 , 접속 IP 정보 , 결제기록
+            <ul className="list-none pl-4 space-y-2">
+              <li className="flex items-start gap-2">
+                <span className="text-foreground/50 mt-1.5 text-xs">•</span>
+                <div>
+                  <span className="font-semibold text-foreground">수집항목 :</span> 로그인ID , 비밀번호 , 이름, 이메일, 주소, 휴대폰번호, 서비스 이용기록 , 접속 로그 , 접속 IP 정보 , 결제기록
+                </div>
               </li>
-              <li>
-                <span className="font-medium text-foreground">ο 개인정보 수집방법 :</span> 홈페이지
+              <li className="flex items-start gap-2">
+                <span className="text-foreground/50 mt-1.5 text-xs">•</span>
+                <div>
+                  <span className="font-semibold text-foreground">개인정보 수집방법 :</span> 홈페이지
+                </div>
               </li>
             </ul>
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-xl md:text-2xl font-semibold mt-8 text-foreground flex items-center gap-2">
-              <span className="text-primary">■</span> 개인정보의 수집 및 이용목적
+            <h2 className="text-xl md:text-2xl font-bold mt-8 text-foreground">
+              개인정보의 수집 및 이용목적
             </h2>
             <p>회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.</p>
-            <ul className="list-none pl-4 space-y-2">
-              <li>
-                <span className="font-medium text-foreground">ο 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 구매 및 요금 결제 :</span> 물품배송 또는 청구지 등 발송
+            <ul className="list-none pl-4 space-y-3">
+              <li className="flex items-start gap-2">
+                <span className="text-foreground/50 mt-1.5 text-xs">•</span>
+                <div>
+                  <span className="font-semibold text-foreground">서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 구매 및 요금 결제 :</span> 물품배송 또는 청구지 등 발송
+                </div>
               </li>
-              <li>
-                <span className="font-medium text-foreground">ο 회원 관리 :</span> 회원제 서비스 이용에 따른 본인확인 , 개인 식별 , 연령확인 , 만14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인 , 고지사항 전달
+              <li className="flex items-start gap-2">
+                <span className="text-foreground/50 mt-1.5 text-xs">•</span>
+                <div>
+                  <span className="font-semibold text-foreground">회원 관리 :</span> 회원제 서비스 이용에 따른 본인확인 , 개인 식별 , 연령확인 , 만14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인 , 고지사항 전달
+                </div>
               </li>
-              <li>
-                <span className="font-medium text-foreground">ο 마케팅 및 광고에 활용 :</span> 접속 빈도 파악 또는 회원의 서비스 이용에 대한 통계
+              <li className="flex items-start gap-2">
+                <span className="text-foreground/50 mt-1.5 text-xs">•</span>
+                <div>
+                  <span className="font-semibold text-foreground">마케팅 및 광고에 활용 :</span> 접속 빈도 파악 또는 회원의 서비스 이용에 대한 통계
+                </div>
               </li>
             </ul>
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-xl md:text-2xl font-semibold mt-8 text-foreground flex items-center gap-2">
-              <span className="text-primary">■</span> 개인정보의 보유 및 이용기간
+            <h2 className="text-xl md:text-2xl font-bold mt-8 text-foreground">
+              개인정보의 보유 및 이용기간
             </h2>
             <p>회사는 개인정보 수집 및 이용목적이 달성된 후에는 예외 없이 해당 정보를 지체 없이 파기합니다.</p>
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-xl md:text-2xl font-semibold mt-8 text-foreground flex items-center gap-2">
-              <span className="text-primary">■</span> 개인정보의 파기절차 및 방법
+            <h2 className="text-xl md:text-2xl font-bold mt-8 text-foreground">
+              개인정보의 파기절차 및 방법
             </h2>
             <p>회사는 원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체없이 파기합니다. 파기절차 및 방법은 다음과 같습니다.</p>
             
-            <div className="pl-4 space-y-3">
-              <div>
-                <p className="font-medium text-foreground mb-1">ο 파기절차</p>
-                <p>
+            <div className="pl-4 space-y-4">
+              <div className="space-y-1">
+                <p className="font-semibold text-foreground flex items-center gap-2">
+                  <span className="text-foreground/50 text-xs">•</span> 파기절차
+                </p>
+                <p className="pl-3">
                   회원님이 회원가입 등을 위해 입력하신 정보는 목적이 달성된 후 별도의 DB로 옮겨져(종이의 경우 별도의 서류함) 내부 방침 및 기타 관련 법령에 의한 정보보호 사유에 따라(보유 및 이용기간 참조) 일정 기간 저장된 후 파기되어집니다.
                 </p>
-                <p className="mt-1 text-sm text-muted-foreground">
+                <p className="pl-3 text-sm text-muted-foreground">
                   별도 DB로 옮겨진 개인정보는 법률에 의한 경우가 아니고서는 보유되어지는 이외의 다른 목적으로 이용되지 않습니다.
                 </p>
               </div>
-              <div>
-                <p className="font-medium text-foreground mb-1">ο 파기방법</p>
-                <ul className="list-disc pl-5">
+              <div className="space-y-1">
+                <p className="font-semibold text-foreground flex items-center gap-2">
+                  <span className="text-foreground/50 text-xs">•</span> 파기방법
+                </p>
+                <ul className="list-disc pl-8 space-y-1">
                   <li>전자적 파일형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다.</li>
                 </ul>
               </div>
@@ -87,8 +106,8 @@ const Privacy = () => {
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-xl md:text-2xl font-semibold mt-8 text-foreground flex items-center gap-2">
-              <span className="text-primary">■</span> 개인정보 제공
+            <h2 className="text-xl md:text-2xl font-bold mt-8 text-foreground">
+              개인정보 제공
             </h2>
             <p>회사는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 아래의 경우에는 예외로 합니다.</p>
             <ul className="list-disc pl-5 space-y-1">
@@ -98,15 +117,15 @@ const Privacy = () => {
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-xl md:text-2xl font-semibold mt-8 text-foreground flex items-center gap-2">
-              <span className="text-primary">■</span> 수집한 개인정보의 위탁
+            <h2 className="text-xl md:text-2xl font-bold mt-8 text-foreground">
+              수집한 개인정보의 위탁
             </h2>
             <p>회사는 고객님의 동의없이 고객님의 정보를 외부 업체에 위탁하지 않습니다. 향후 그러한 필요가 생길 경우, 위탁 대상자와 위탁 업무 내용에 대해 고객님에게 통지하고 필요한 경우 사전 동의를 받도록 하겠습니다.</p>
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-xl md:text-2xl font-semibold mt-8 text-foreground flex items-center gap-2">
-              <span className="text-primary">■</span> 이용자 및 법정대리인의 권리와 그 행사방법
+            <h2 className="text-xl md:text-2xl font-bold mt-8 text-foreground">
+              이용자 및 법정대리인의 권리와 그 행사방법
             </h2>
             <div className="space-y-2">
               <p>
@@ -125,12 +144,12 @@ const Privacy = () => {
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-xl md:text-2xl font-semibold mt-8 text-foreground flex items-center gap-2">
-              <span className="text-primary">■</span> 개인정보에 관한 민원서비스
+            <h2 className="text-xl md:text-2xl font-bold mt-8 text-foreground">
+              개인정보에 관한 민원서비스
             </h2>
             <p>회사는 고객의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여 아래와 같이 개인정보관리책임자를 지정하고 있습니다.</p>
             
-            <div className="bg-muted p-5 rounded-lg border border-border space-y-2">
+            <div className="bg-muted p-5 rounded-lg border border-border space-y-2 text-base">
               <p><span className="font-semibold text-foreground">고객서비스담당 부서 :</span> 나무와 걷는 시간</p>
               <p><span className="font-semibold text-foreground">휴대전화 :</span> 010-8925-6251</p>
               <p><span className="font-semibold text-foreground">이메일 :</span> timewithtree@gmail.com</p>
