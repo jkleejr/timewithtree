@@ -335,24 +335,24 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                          </p>
                        </div>
 
-                       <div className="border-t border-border/50 pt-4">
-                         <p className="font-bold text-foreground mb-2">교환 또는 반품이 가능한 경우</p>
-                         <ul className="pl-5 space-y-2 list-disc">
-                           <li>판매자의 실수로 다른상품이 배송된 경우</li>
-                           <li>
-                             묘목이 심하게 파손되어 수령즉시 판매자에게 연락한 경우<br />
-                             <span className="text-sm text-muted-foreground">(수령당일 010-8925-6251 으로 문의부탁드립니다.)</span>
-                           </li>
-                         </ul>
-                       </div>
+                        <div className="border-t border-border/50 pt-4">
+                          <p className="font-bold text-foreground mb-2">교환 또는 반품이 가능한 경우</p>
+                          <div className="space-y-3">
+                            <p>판매자의 실수로 다른상품이 배송된 경우</p>
+                            <p>
+                              묘목이 심하게 파손되어 수령즉시 판매자에게 연락한 경우<br />
+                              <span className="text-sm text-muted-foreground">(수령당일 010-8925-6251 으로 문의부탁드립니다.)</span>
+                            </p>
+                          </div>
+                        </div>
 
-                       <div className="border-t border-border/50 pt-4">
-                         <p className="font-bold text-foreground mb-2">환불의 경우 / 교환의 경우</p>
-                         <ul className="pl-5 space-y-2 list-disc">
-                           <li>생물 특성상 2일 이내 수령하신 나무의 뿌리가 상했거나 줄기가 마른 경우, 당사에 문의 접수 후 상품의 사진을 받아 판단하여 교환 또는 환불 진행이 가능합니다.</li>
-                           <li>납품된 나무의 규격이 구매하신 나무와 다를 경우 구매하신 규격의 상품으로 재공급 또는 영수한 금액으로 환불해 드립니다.</li>
-                         </ul>
-                       </div>
+                        <div className="border-t border-border/50 pt-4">
+                          <p className="font-bold text-foreground mb-2">환불의 경우 / 교환의 경우</p>
+                          <div className="space-y-3">
+                            <p>생물 특성상 2일 이내 수령하신 나무의 뿌리가 상했거나 줄기가 마른 경우, 당사에 문의 접수 후 상품의 사진을 받아 판단하여 교환 또는 환불 진행이 가능합니다.</p>
+                            <p>납품된 나무의 규격이 구매하신 나무와 다를 경우 구매하신 규격의 상품으로 재공급 또는 영수한 금액으로 환불해 드립니다.</p>
+                          </div>
+                        </div>
 
                         <div className="border-t border-border/50 pt-4">
                           <p className="font-bold text-foreground mb-2">환불 시점</p>
