@@ -51,9 +51,9 @@ export interface ShopifyProduct {
 }
 
 const VARIANTS = [
-  { id: "jacq-r3", title: "R3", amount: "120000" },
-  { id: "jacq-r4", title: "R4", amount: "160000" },
-  { id: "jacq-r5", title: "R5", amount: "200000" },
+  { id: "jacq-r3", title: "R3, 잭큐몬티 자작나무", amount: "120000" },
+  { id: "jacq-r4", title: "R4, 잭큐몬티 자작나무", amount: "160000" },
+  { id: "jacq-r5", title: "R5, 잭큐몬티 자작나무", amount: "200000" },
   { id: "jacq-dagan", title: "다간형", amount: "200000" },
 ];
 
@@ -78,18 +78,18 @@ export const LOCAL_PRODUCTS: ShopifyProduct[] = [
         ],
       },
       variantImages: {
-        R3: [
+        "R3, 잭큐몬티 자작나무": [
           { node: { url: r3Img1, altText: "R3 구매하기 수피 클로즈업" } },
           { node: { url: r3Img2, altText: "R3 구매하기 줄기 측정" } },
           { node: { url: r3Img3, altText: "R3 일자형 구매하기 전체 모습" } },
         ],
-        R4: [
+        "R4, 잭큐몬티 자작나무": [
           { node: { url: r4Img1, altText: "R4 구매하기 둘레 측정" } },
           { node: { url: r4Img2, altText: "R4 구매하기 줄기 클로즈업" } },
           { node: { url: r4Img3, altText: "R4 구매하기 전체 모습" } },
           { node: { url: r4Img4, altText: "R4 일자형 구매하기 농장 전경" } },
         ],
-        R5: [
+        "R5, 잭큐몬티 자작나무": [
           { node: { url: r5Img1, altText: "R5 구매하기 수피 클로즈업" } },
           { node: { url: r5Img2, altText: "R5 구매하기 전체 모습" } },
         ],
