@@ -1,0 +1,1 @@
+REVOKE SELECT (admin_note) ON public.orders FROM anon, authenticated;
