@@ -249,6 +249,11 @@ const Checkout = () => {
     navigate(`/order-success?n=${encodeURIComponent(data.order_number)}`);
   };
 
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const minDateStr = tomorrow.toISOString().split("T")[0];
+
   return (
     <SiteLayout>
       <section className="max-w-6xl mx-auto px-6 md:px-10 pt-16 pb-24">
