@@ -162,9 +162,9 @@ const Index = () => {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-12 gap-8">
-            <div className="md:col-span-6">
-              <div className="relative w-full aspect-[3/4] overflow-hidden bg-secondary">
+          <div className="grid md:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <div className="md:col-span-5 md:sticky md:top-28">
+              <div className="relative w-full aspect-[3/4] overflow-hidden bg-secondary rounded-lg">
                 {aboutImages.map((img, i) => (
                   <img
                     key={i}
@@ -211,18 +211,30 @@ const Index = () => {
                 )}
               </div>
             </div>
-            <div className="md:col-span-6 md:col-start-7 flex-col gap-6 text-base leading-relaxed text-muted-foreground flex items-start justify-start">
-              <div className="text-primary text-base font-bold font-sans grid grid-cols-2 gap-x-6">
-                <div>
-                  <p className="font-sans">학명 : Betula Jacquemontii</p>
-                  <p className="font-sans">월동 : 내한성 높음</p>
+            <div className="md:col-span-7 flex flex-col gap-6 text-base leading-relaxed text-muted-foreground items-start justify-start">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6 border-b border-border/50 pb-6 w-full text-sm sm:text-base font-bold font-sans">
+                <div className="space-y-3">
+                  <div>
+                    <span className="text-xs text-muted-foreground font-medium block mb-0.5">학명</span>
+                    <span className="text-primary text-base sm:text-lg">Betula Jacquemontii</span>
+                  </div>
+                  <div>
+                    <span className="text-xs text-muted-foreground font-medium block mb-0.5">월동</span>
+                    <span className="text-primary">내한성 높음</span>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-sans">햇빛 : 양지</p>
-                  <p className="font-sans">물 : 겉흙이 마르면(과습주의)</p>
+                <div className="space-y-3">
+                  <div>
+                    <span className="text-xs text-muted-foreground font-medium block mb-0.5">햇빛</span>
+                    <span className="text-primary">양지</span>
+                  </div>
+                  <div>
+                    <span className="text-xs text-muted-foreground font-medium block mb-0.5">물</span>
+                    <span className="text-primary">겉흙이 마르면(과습주의)</span>
+                  </div>
                 </div>
               </div>
-              <p className="font-bold text-foreground mt-4 text-2xl md:text-3xl">핵심 특징 및 관리</p>
+              <p className="font-bold text-foreground mt-2 text-2xl md:text-3xl">핵심 특징 및 관리</p>
               <p className="text-primary text-base md:text-lg">
                 히말라야 서부지역에 자생하는 자작나무 중에서 발견된, 수피가 유난히 밝고 흰색인 변종을 유럽에서 원예용으로 개량하여 탄생시킨 품종으로 프랑스 자연주의자의 이름을 따서 '잭큐몬티'라는 이름이 붙여졌다.
               </p>
