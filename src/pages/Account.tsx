@@ -231,23 +231,23 @@ const Account = () => {
               </Link>
             </div>
           ) : (
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col gap-4 text-black">
               {orders.map((order) => {
                 const totalQty = (order.items ?? []).reduce(
                   (s, it) => s + (it.quantity ?? 0),
                   0,
                 );
                 return (
-                  <li key={order.id} className="border border-border p-5">
-                    <div className="flex justify-between items-start mb-3 gap-3">
+                  <li key={order.id} className="border border-border p-5 text-black">
+                    <div className="flex justify-between items-start mb-3 gap-3 text-black">
                       <div>
                         <Link
                           to={`/orders/${encodeURIComponent(order.order_number)}`}
-                          className="font-medium underline-offset-4 hover:underline"
+                          className="font-medium underline-offset-4 hover:underline text-black"
                         >
                           {order.order_number}
                         </Link>
-                        <p className="text-xs text-muted-foreground mt-1">
+                        <p className="text-xs text-black mt-1">
                           {formatDate(order.created_at)}
                         </p>
                       </div>
@@ -255,33 +255,33 @@ const Account = () => {
                         className={
                           order.status === "pending"
                             ? "text-xs px-2 py-1 bg-accent text-accent-foreground font-medium border border-transparent"
-                            : "text-xs px-2 py-1 border border-border bg-secondary"
+                            : "text-xs px-2 py-1 border border-border bg-secondary text-black"
                         }
                       >
                         {STATUS_LABEL[order.status]}
                       </span>
                     </div>
 
-                    <ul className="text-sm space-y-1 mb-3">
+                    <ul className="text-sm space-y-1 mb-3 text-black">
                       {(order.items ?? []).map((it, idx) => (
-                        <li key={idx} className="flex justify-between gap-3">
-                          <span className="flex-1">
+                        <li key={idx} className="flex justify-between gap-3 text-black">
+                          <span className="flex-1 text-black">
                             {it.product_title}
                             {it.variant_title ? (
-                              <span className="text-muted-foreground"> · {it.variant_title}</span>
+                              <span className="text-black"> · {it.variant_title}</span>
                             ) : null}
-                            <span className="text-muted-foreground"> × {it.quantity}</span>
+                            <span className="text-black"> × {it.quantity}</span>
                           </span>
-                          <span className="tabular-nums whitespace-nowrap">
+                          <span className="tabular-nums whitespace-nowrap text-black">
                             {formatPrice(it.line_total, order.currency)}
                           </span>
                         </li>
                       ))}
                     </ul>
 
-                    <div className="border-t border-border pt-3 flex justify-between items-baseline text-sm">
-                      <span className="text-muted-foreground">총 {totalQty}개</span>
-                      <span className="font-display tabular-nums font-sans text-base">
+                    <div className="border-t border-border pt-3 flex justify-between items-baseline text-sm text-black">
+                      <span className="text-black">총 {totalQty}개</span>
+                      <span className="font-display tabular-nums font-sans text-base text-black font-semibold">
                         {formatPrice(order.subtotal, order.currency)}
                       </span>
                     </div>
