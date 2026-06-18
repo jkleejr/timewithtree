@@ -325,9 +325,14 @@ const Checkout = () => {
                 <div className="space-y-5">
                   <div className="border border-border p-4">
                     <div className="flex items-center justify-between gap-4">
-                      <div>
-                        <p className="text-xs text-muted-foreground mb-1">계좌번호</p>
-                        <p className="font-medium tabular-nums">{BANK_ACCOUNT}</p>
+                      <div className="space-y-2">
+                        <div>
+                          <p className="text-xs text-muted-foreground mb-1">계좌번호</p>
+                          <p className="font-medium tabular-nums">{BANK_ACCOUNT}</p>
+                        </div>
+                        <p className="text-xs text-muted-foreground">
+                          계좌명 : <span className="font-medium text-foreground">고준서</span>
+                        </p>
                       </div>
                       <Button
                         type="button"
