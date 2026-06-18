@@ -321,7 +321,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                            <li>저희 농장과 협의없이 반품한 경우 조치 불가</li>
                            <li>주문 접수 이후 배송 준비 단계와 배송 중 단계 부터는 취소, 변경이 불가합니다.</li>
                          </ul>
-                         <p className="text-sm bg-muted p-3 rounded-lg border border-border/50">
+                         <p>
                            단, 기타 사유로 인해 당사와 협의 후, 상품 반품시 왕복 화물용달 비용이 발생할 수 있으며 회수 도중 가치 훼손이 발생할 경우 어떠한 조치도 불가합니다. 
                          </p>
                          <p className="mt-3">
