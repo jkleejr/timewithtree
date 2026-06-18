@@ -257,9 +257,9 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                         <span>나무는 에어포트에 식재된 상태로 배송됩니다.</span><br />
                         <span>식재시 반드시 에어포트 몸통과 하단 받침대를 분리 후 나무만 식재하세요.</span>
                       </p>
-                      <div>
+                       <div>
                         <p className="font-bold">차량(용달)배송 안내</p>
-                        <div className="mt-2 space-y-1 text-base md:text-lg text-foreground/80">
+                        <div className="mt-2 space-y-1 text-base md:text-lg text-foreground">
                           <p>저희 나무와 걷는 시간의 자작나무 묘목은 차량(용달)배송만 가능합니다.</p>
                           <p>차량(용달)배송비는 착불로 진행되며 고객이 나무를 수령 후 직접 배송 기사에게 지급하시면 됩니다.</p>
                           <p>차량(용달)배송비는 주문수량, 운송거리, 배송차량의 크기에 따라 차이가 있습니다.</p>
