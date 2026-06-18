@@ -29,7 +29,7 @@ const refunds = [
 const Returns = () => {
   return (
     <SiteLayout>
-      <section className="max-w-4xl mx-auto px-6 md:px-10 py-16 md:py-24">
+      <section className="max-w-4xl mx-auto px-6 md:px-10 pt-16 pb-8 md:pt-24 md:pb-12">
         <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-10">교환 / 환불 규정</h1>
 
         <div className="space-y-5 text-base md:text-lg leading-relaxed text-foreground/90">
