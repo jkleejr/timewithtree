@@ -16,9 +16,8 @@ Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
 
   try {
-    // verify_jwt=true in config.toml means the gateway has already verified
-    // the JWT signature. We additionally require the service_role claim so
-    // only server-to-server callers (DB trigger / other edge functions) succeed.
+    // Require service-role credentials. Accept either a JWT with role=service_role
+    // (legacy) OR a bearer token matching SUPABASE_SERVICE_ROLE_KEY (new opaque keys).
     const authHeader = req.headers.get('Authorization')
     if (!authHeader?.startsWith('Bearer ')) {
       return new Response(JSON.stringify({ error: 'Unauthorized' }), {
@@ -26,18 +25,21 @@ Deno.serve(async (req) => {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       })
     }
-    const token = authHeader.replace('Bearer ', '')
-    try {
-      const payload = JSON.parse(atob(token.split('.')[1]))
-      if (payload?.role !== 'service_role') {
-        return new Response(JSON.stringify({ error: 'Forbidden' }), {
-          status: 403,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        })
+    const bearer = authHeader.replace('Bearer ', '').trim()
+    const serviceRoleEnv = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+    let isServiceRole = serviceRoleEnv !== '' && bearer === serviceRoleEnv
+    if (!isServiceRole) {
+      try {
+        const payload = JSON.parse(atob(bearer.split('.')[1]))
+        isServiceRole = payload?.role === 'service_role'
+      } catch {
+        // not a JWT
       }
-    } catch {
-      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
-        status: 401,
+    }
+    if (!isServiceRole) {
+      console.error('notify-admin-order: forbidden (non-service-role caller)')
+      return new Response(JSON.stringify({ error: 'Forbidden' }), {
+        status: 403,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       })
     }
