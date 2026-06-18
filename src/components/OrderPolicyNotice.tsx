@@ -11,7 +11,7 @@ export const OrderPolicyNotice = ({ className = "" }: OrderPolicyNoticeProps) =>
         <AlertCircle className="h-16 w-16 md:h-20 md:w-20" strokeWidth={1.5} />
         <span className="mt-2 text-sm md:text-base tracking-wider">필독하세요!</span>
       </div>
-      <ul className="text-xs md:text-sm leading-relaxed space-y-1.5 list-disc pl-4 marker:text-muted-foreground text-foreground">
+      <ul className="text-xs md:text-sm leading-relaxed space-y-1.5 list-disc pl-4 marker:text-foreground text-foreground">
         <li>
           <strong className="font-bold">저희 나무와 걷는 시간의 자작나무 묘목은</strong>{" "}
           <span className="text-warning-red font-bold">차량(용달)배송만 가능합니다.</span>
