@@ -144,10 +144,34 @@ const Privacy = () => {
             <div className="mt-6 space-y-2">
               <p className="font-medium text-foreground">기타 개인정보침해에 대한 신고나 상담이 필요하신 경우에는 아래 기관에 문의하시기 바랍니다.</p>
               <ol className="list-decimal pl-5 space-y-1 text-sm text-muted-foreground">
-                <li>개인분쟁조정위원회 (www.1336.or.kr / 1336)</li>
-                <li>정보보호마크인증위원회 (www.eprivacy.or.kr / 02-580-0533~4)</li>
-                <li>대검찰청 인터넷범죄수사센터 (http://icic.sppo.go.kr / 02-3480-3600)</li>
-                <li>경찰청 사이버테러대응센터 (www.ctrc.go.kr / 02-392-0330)</li>
+                <li>
+                  개인분쟁조정위원회 (
+                  <a href="https://www.1336.or.kr" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
+                    www.1336.or.kr
+                  </a>{" "}
+                  / 1336)
+                </li>
+                <li>
+                  정보보호마크인증위원회 (
+                  <a href="https://www.eprivacy.or.kr" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
+                    www.eprivacy.or.kr
+                  </a>{" "}
+                  / 02-580-0533~4)
+                </li>
+                <li>
+                  대검찰청 인터넷범죄수사센터 (
+                  <a href="http://icic.sppo.go.kr" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
+                    http://icic.sppo.go.kr
+                  </a>{" "}
+                  / 02-3480-3600)
+                </li>
+                <li>
+                  경찰청 사이버테러대응센터 (
+                  <a href="https://www.ctrc.go.kr" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
+                    www.ctrc.go.kr
+                  </a>{" "}
+                  / 02-392-0330)
+                </li>
               </ol>
             </div>
           </div>
