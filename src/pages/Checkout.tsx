@@ -162,6 +162,12 @@ const Checkout = () => {
       return;
     }
 
+    if (paymentMethod === "bank" && !depositorConfirmed) {
+      toast.error("입금자명 확인란을 체크해주세요");
+      return;
+    }
+
+
     setSubmitting(true);
 
     const orderItems = items.map((i) => ({
