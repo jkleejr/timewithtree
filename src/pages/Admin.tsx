@@ -266,7 +266,7 @@ const OrdersSection = () => {
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <span className="font-mono text-sm">{o.order_number}</span>
-                      <Badge variant={STATUS_VARIANTS[o.status]}>{STATUS_LABELS[o.status]}</Badge>
+                      <Badge variant="outline" className={STATUS_CLASSES[o.status]}>{STATUS_LABELS[o.status]}</Badge>
                     </div>
                     <p className="text-xs text-muted-foreground">
                       {new Date(o.created_at).toLocaleString("ko-KR")}
