@@ -11,7 +11,7 @@ const Bullet = ({ children }: { children: ReactNode }) => (
 const Privacy = () => {
   return (
     <SiteLayout>
-      <section className="max-w-4xl mx-auto px-6 md:px-10 py-16 md:py-24">
+      <section className="max-w-4xl mx-auto px-6 md:px-10 pt-16 pb-8 md:pt-24 md:pb-12">
         <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-10">
           개인정보처리방침
         </h1>
