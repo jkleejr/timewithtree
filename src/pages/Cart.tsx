@@ -46,7 +46,7 @@ const Cart = () => {
                 const img = variantImgs?.[0]?.node || item.product.node.images?.edges?.[0]?.node;
                 const showVariantPrefix = variantValue && variantValue !== 'Default Title';
                 const displayTitle = showVariantPrefix
-                  ? `${variantValue}, ${item.product.node.title}`
+                  ? variantValue
                   : item.product.node.title;
                 return (
                   <div key={item.variantId} className="py-6 flex gap-4 md:gap-6">
@@ -65,12 +65,12 @@ const Cart = () => {
                       {item.selectedOptions.length > 0 && item.selectedOptions[0].value !== 'Default Title' && (
                         <>
                           {(() => {
-                            const variant = item.selectedOptions.map(o => o.value).join(' ');
+                            const variant = item.selectedOptions[0].value;
                             const descriptions: Record<string, string> = {
-                              'R3': '뿌리목 직경 약 3cm의 어린 자작나무로, 좁은 공간이나 화분 식재에 적합한 사이즈입니다.',
-                              'R4': '뿌리목 직경 약 4cm의 중간 사이즈 자작나무로, 정원이나 마당의 포인트 식재에 알맞습니다.',
-                              'R5': '뿌리목 직경 약 5cm의 성장한 자작나무로, 풍성한 수형과 안정감 있는 조경 효과를 제공합니다.',
-                              '다간형': '한 그루에서 여러 줄기가 자라는 다간형 자작나무로, 자연스럽고 풍성한 수형이 돋보이는 조경수입니다.',
+                              'R3, 잭큐몬티 자작나무': '근원직경 (줄기의 지면에 닿는 부분의 지름)이 3cm인 자작나무 묘목',
+                              'R4, 잭큐몬티 자작나무': '근원직경 (줄기의 지면에 닿는 부분의 지름)이 4cm인 자작나무 묘목',
+                              'R5, 잭큐몬티 자작나무': '근원직경 (줄기의 지면에 닿는 부분의 지름)이 5cm의 자작나무 묘목',
+                              '다간형': '한 나무에서 여러 줄기가 자라는 다간형 자작나무',
                             };
                             const desc = descriptions[variant];
                             return desc ? (
