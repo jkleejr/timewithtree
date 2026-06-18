@@ -279,11 +279,17 @@ const Account = () => {
                       ))}
                     </ul>
 
-                    <div className="border-t border-border pt-3 flex justify-between items-baseline text-sm text-black">
-                      <span className="text-black">총 {totalQty}개</span>
-                      <span className="font-display tabular-nums font-sans text-base text-black font-semibold">
-                        {formatPrice(order.subtotal, order.currency)}
-                      </span>
+                    <div className="border-t border-border pt-3 space-y-1 text-sm text-black">
+                      <div className="flex justify-between items-baseline">
+                        <span className="text-black">총 {totalQty}개</span>
+                        <span className="font-display tabular-nums font-sans text-base text-black font-semibold">
+                          {formatPrice(order.subtotal, order.currency)}
+                        </span>
+                      </div>
+                      <div className="flex justify-between items-baseline">
+                        <span className="text-black">배송비</span>
+                        <span className="text-black">별도</span>
+                      </div>
                     </div>
                   </li>
                 );
