@@ -9,7 +9,7 @@ export const OrderPolicyNotice = ({ className = "" }: OrderPolicyNoticeProps) =>
     <div className={`bg-secondary/60 border border-border p-5 md:p-6 flex gap-4 md:gap-6 ${className}`}>
       <div className="shrink-0 flex flex-col items-center text-foreground">
         <AlertCircle className="h-16 w-16 md:h-20 md:w-20" strokeWidth={1.5} />
-        <span className="mt-2 text-sm md:text-base tracking-wider">필독하세요!</span>
+        <span className="mt-2 text-sm md:text-base tracking-wider font-bold">필독하세요!</span>
       </div>
       <ul className="text-xs md:text-sm leading-relaxed space-y-1.5 list-disc pl-4 marker:text-foreground text-foreground">
         <li>
