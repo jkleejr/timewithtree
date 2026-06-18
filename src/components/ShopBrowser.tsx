@@ -248,7 +248,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                   <AccordionContent className="font-sans font-normal text-foreground">
                     <div className="space-y-4 text-base md:text-lg leading-relaxed">
                       <p>
-                        <span>〮 나무는 에어포트에 식재된 상태로 배송됩니다.</span><br />
+                        <span>나무는 에어포트에 식재된 상태로 배송됩니다.</span><br />
                         <span>식재시 반드시 에어포트 몸통과 하단 받침대를 분리 후 나무만 식재하세요.</span>
                       </p>
                       <div>
