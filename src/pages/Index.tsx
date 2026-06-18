@@ -212,11 +212,15 @@ const Index = () => {
               </div>
             </div>
             <div className="md:col-span-6 md:col-start-7 flex-col gap-6 text-base leading-relaxed text-muted-foreground flex items-start justify-start">
-              <div className="text-primary text-base font-bold font-sans">
-                <p className="font-sans">학명 : Betula Jacquemontii</p>
-                <p className="font-sans">월동 : 내한성 높음</p>
-                <p className="font-sans">햇빛 : 양지</p>
-                <p className="font-sans">물 : 겉흙이 마르면(과습주의)</p>
+              <div className="text-primary text-base font-bold font-sans grid grid-cols-2 gap-x-6">
+                <div>
+                  <p className="font-sans">학명 : Betula Jacquemontii</p>
+                  <p className="font-sans">월동 : 내한성 높음</p>
+                </div>
+                <div>
+                  <p className="font-sans">햇빛 : 양지</p>
+                  <p className="font-sans">물 : 겉흙이 마르면(과습주의)</p>
+                </div>
               </div>
               <p className="font-bold text-foreground mt-4 text-2xl md:text-3xl">핵심 특징 및 관리</p>
               <p className="text-primary text-base md:text-lg">
