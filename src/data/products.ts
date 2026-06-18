@@ -81,7 +81,7 @@ export const LOCAL_PRODUCTS: ShopifyProduct[] = [
       descriptionHtml: DESCRIPTION_HTML,
       handle: "jacquemontii-birch",
       priceRange: {
-        minVariantPrice: { amount: "120000", currencyCode: "KRW" },
+        minVariantPrice: { amount: "100000", currencyCode: "KRW" },
       },
       images: {
         edges: [
@@ -121,6 +121,7 @@ export const LOCAL_PRODUCTS: ShopifyProduct[] = [
             price: { amount: v.amount, currencyCode: "KRW" },
             availableForSale: true,
             selectedOptions: [{ name: "사이즈", value: v.title }],
+            description: v.description,
           },
         })),
       },
