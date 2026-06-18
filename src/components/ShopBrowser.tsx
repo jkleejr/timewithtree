@@ -360,9 +360,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                            환불 접수 완료 후 결제수단 별 환불시점은 아래와 같이 소요됩니다.<br />
                            (반품환불은 상품 회수 &gt; 입고확인 &gt; 환불승인단계를 거쳐 진행되오니 참고 부탁드립니다.)
                          </p>
-                         <ul className="pl-5 space-y-1 list-disc">
-                           <li>무통장입금 : 2영업일 이내 환불신청 계좌로 입금</li>
-                         </ul>
+                          <p className="text-sm">무통장입금 : 2영업일 이내 환불신청 계좌로 입금</p>
                        </div>
                      </div>
                    </AccordionContent>
