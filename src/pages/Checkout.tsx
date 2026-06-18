@@ -97,7 +97,7 @@ const Checkout = () => {
 
   const copyAccount = async () => {
     try {
-      await navigator.clipboard.writeText(BANK_ACCOUNT);
+      await navigator.clipboard.writeText("301-0327-2621-11");
       setCopied(true);
       toast.success("계좌번호가 복사되었습니다");
       setTimeout(() => setCopied(false), 2000);
