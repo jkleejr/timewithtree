@@ -321,6 +321,7 @@ const OrdersSection = () => {
             </Card>
           ))}
         </div>
+        </>
       )}
     </div>
   );
