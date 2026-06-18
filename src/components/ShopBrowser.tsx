@@ -484,6 +484,11 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                 </ul>
               </div>
               <p className="text-xs text-muted-foreground mt-4">
+                ※ R은 Radius를 뜻하며 근원직경 (줄기의 지면에 닿는 부분의 지름)을 표기하는 방식입니다.
+                <br />
+                R3는 줄기 지름이 3cm, R4는 줄기 지름이 4cm, R5는 줄기지름이 5cm 입니다.
+              </p>
+              <p className="text-xs text-muted-foreground mt-2">
                 ⓘ 생물 특성상 실제 받아보시는 상품과 다소(계절별) 차이가 날 수 있습니다.
               </p>
               <div className="flex justify-end mt-6">
