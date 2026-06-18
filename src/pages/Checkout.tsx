@@ -79,7 +79,7 @@ const Checkout = () => {
   const [deliveryDate, setDeliveryDate] = useState("");
 
   const [depositorName, setDepositorName] = useState("");
-  const [depositorSame, setDepositorSame] = useState(true);
+  const [depositorConfirmed, setDepositorConfirmed] = useState(false);
 
   useEffect(() => {
     if (!user) return;
@@ -105,9 +105,6 @@ const Checkout = () => {
     };
   }, [user]);
 
-  useEffect(() => {
-    if (depositorSame) setDepositorName(orderer.name);
-  }, [depositorSame, orderer.name]);
 
   const subtotal = items.reduce((s, i) => s + parseFloat(i.price.amount) * i.quantity, 0);
   const currency = items[0]?.price.currencyCode || "KRW";
@@ -164,6 +161,12 @@ const Checkout = () => {
       toast.error("입금자명을 입력해주세요");
       return;
     }
+
+    if (paymentMethod === "bank" && !depositorConfirmed) {
+      toast.error("입금자명 확인란을 체크해주세요");
+      return;
+    }
+
 
     setSubmitting(true);
 
@@ -421,21 +424,20 @@ const Checkout = () => {
                     <Input
                       id="depositor_name"
                       value={depositorName}
-                      onChange={(e) => {
-                        setDepositorSame(false);
-                        setDepositorName(e.target.value);
-                      }}
+                      onChange={(e) => setDepositorName(e.target.value)}
                       placeholder="입금자명"
                       required
                     />
-                    <label className="flex items-center gap-2 text-sm cursor-pointer">
+                    <label className="flex items-start gap-2 text-sm cursor-pointer">
                       <Checkbox
-                        checked={depositorSame}
-                        onCheckedChange={(c) => setDepositorSame(c === true)}
+                        checked={depositorConfirmed}
+                        onCheckedChange={(c) => setDepositorConfirmed(c === true)}
+                        className="mt-0.5"
                       />
-                      <span>주문자 이름과 동일</span>
+                      <span>입금자명이 실제 입금하실 은행 계좌의 예금주명과 동일한지 확인했습니다 *</span>
                     </label>
                   </div>
+
 
                   <p className="text-xs text-muted-foreground">
                     * 주문 접수 후 위 계좌로 입금해주시면 관리자가 확인 후 배송을 진행합니다.
