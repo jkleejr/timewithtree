@@ -208,7 +208,7 @@ const OrdersSection = () => {
     setLoading(true);
     supabase
       .from("orders")
-      .select("*")
+      .select("id, order_number, customer_name, customer_phone, customer_email, shipping_address, postal_code, items, subtotal, currency, status, customer_note, shipped_email_sent_at, created_at")
       .order("created_at", { ascending: false })
       .limit(200)
       .then(({ data }) => {
