@@ -253,16 +253,12 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                       </p>
                       <div>
                         <p>차량(용달)배송 안내</p>
-                        <ul className="mt-2 pl-5 space-y-2 list-disc">
-                          <li>
-                            본 상품은 일반 택배로 배송이 불가하며, 용달(화물차)로만 배송됩니다.
-                            <br />
-                            <span className="text-muted-foreground">(용달은 일반 택배가 아닌 화물차 배송 서비스를 의미합니다)</span>
-                          </li>
-                          <li>
-                            용달 배송비는 상품 금액과 별도로 청구되며, 용달 배송비는 용달(화물차)에 직접 지불하시면 됩니다.
-                          </li>
-                        </ul>
+                        <div className="mt-2 text-base md:text-lg whitespace-pre-line">
+                          저희 나무와 걷는 시간의 자작나무 묘목은 차량(용달)배송만 가능합니다. 
+                          차량(용달)배송비는 착불로 진행되며 고객이 나무를 수령 후 직접 배송 기사에게 지급하시면 됩니다. 
+                          차량(용달)배송비는 주문수량, 운송거리, 배송차량의 크기에 따라 차이가 있습니다. 
+                          차량(용달) 배송 상품 주문시 주문 정보에 수령 희망일과 시간을 지정하여 구매해 주시기 바랍니다.  
+                        </div>
                       </div>
                     </div>
                   </AccordionContent>
