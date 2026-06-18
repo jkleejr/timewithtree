@@ -97,7 +97,7 @@ const ProductDetail = () => {
           <Accordion type="single" collapsible className="mt-10 font-sans font-bold hidden md:block">
             <AccordionItem value="origin">
               <AccordionTrigger>원산지</AccordionTrigger>
-              <AccordionContent className="font-sans font-normal text-black">
+              <AccordionContent className="font-sans font-normal text-black text-base md:text-lg leading-relaxed">
                 네덜란드에서 조직배양한 묘목을 국내에서 재배
               </AccordionContent>
             </AccordionItem>
@@ -248,7 +248,7 @@ const ProductDetail = () => {
           <Accordion type="single" collapsible className="mt-10 font-sans font-bold md:hidden">
             <AccordionItem value="origin">
               <AccordionTrigger>원산지</AccordionTrigger>
-              <AccordionContent className="font-sans font-normal text-black">
+              <AccordionContent className="font-sans font-normal text-black text-base md:text-lg leading-relaxed">
                 네덜란드에서 조직배양한 묘목을 국내에서 재배
               </AccordionContent>
             </AccordionItem>
