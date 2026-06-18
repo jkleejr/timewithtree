@@ -234,14 +234,16 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          <Button
-            size="lg"
-            className="rounded-none w-full md:w-auto md:min-w-[280px]"
-            onClick={handleAdd}
-            disabled={isAdding || !variant?.availableForSale}
-          >
-            {isAdding ? <Loader2 className="h-4 w-4 animate-spin" /> : variant?.availableForSale === false ? 'Sold out' : '장바구니 담기'}
-          </Button>
+          <div className="flex justify-end">
+            <Button
+              className="rounded-none w-full md:w-auto px-8"
+              onClick={handleAdd}
+              disabled={isAdding || !variant?.availableForSale}
+            >
+              {isAdding ? <Loader2 className="h-4 w-4 animate-spin" /> : variant?.availableForSale === false ? 'Sold out' : '장바구니 담기'}
+            </Button>
+          </div>
+
 
           <Accordion type="single" collapsible className="mt-10 font-sans font-bold md:hidden">
             <AccordionItem value="origin">
