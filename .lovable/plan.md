@@ -1,10 +1,15 @@
-The order success page is located at:
-/order-success
+# Plan to Change the "주문접수" Box Background to Light Green
 
-To display specific order details, it uses the query parameter "n" containing the order number:
-/order-success?n={order_number}
+We will style the "주문접수" (Order Received) status badge to have a light green background and border, making it stand out as a fresh, active order status.
 
-Example link:
-/order-success?n=ORD100123
+## Steps
 
-Let me know if you would like me to adjust any of its routing or behavior!
+1. **Update `src/pages/Account.tsx`**
+   - Modify the order status badge styling in the order list.
+   - For `order.status === "pending"` ("주문접수"), change the Tailwind classes from standard secondary styles (`border-border bg-secondary`) to soft green classes (such as `border-emerald-200 bg-emerald-50 text-emerald-800`).
+   - Leave other statuses (paid, shipped, cancelled) with their existing styling, or style them consistently if appropriate.
+
+## Technical Details
+
+- **Target File**: `src/pages/Account.tsx`
+- **Proposed Tailwind Classes for Light Green**: `border-emerald-200 bg-emerald-50 text-emerald-800 font-medium`
