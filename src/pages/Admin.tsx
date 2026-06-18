@@ -68,6 +68,7 @@ type Order = {
   status: OrderStatus;
   customer_note: string | null;
   admin_note: string | null;
+  shipped_email_sent_at: string | null;
   created_at: string;
 };
 
