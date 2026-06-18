@@ -297,7 +297,21 @@ const OrdersSection = () => {
                       {new Date(o.created_at).toLocaleString("ko-KR")}
                     </p>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap justify-end">
+                    <Button
+                      size="sm"
+                      variant={o.shipped_email_sent_at ? "outline" : "default"}
+                      disabled={!!o.shipped_email_sent_at || sendingShipId === o.id}
+                      onClick={() => sendShippedEmail(o.id)}
+                    >
+                      {sendingShipId === o.id ? (
+                        <Loader2 className="h-3 w-3 animate-spin" />
+                      ) : o.shipped_email_sent_at ? (
+                        "메일 발송됨 ✓"
+                      ) : (
+                        "배송중 알림 메일"
+                      )}
+                    </Button>
                     <Select
                       value={o.status}
                       onValueChange={(v) => updateStatus(o.id, v as OrderStatus)}
