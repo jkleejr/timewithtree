@@ -466,17 +466,22 @@ const Checkout = () => {
             <div className="bg-secondary p-6 md:p-8 sticky top-24">
               <h2 className="font-display text-xl mb-6 font-sans">주문 요약</h2>
               <div className="space-y-3 mb-4">
-                {items.map((i) => (
-                  <div key={i.variantId} className="flex justify-between text-sm gap-3">
-                    <span className="flex-1">
-                      {i.product.node.title}
-                      <span className="text-muted-foreground"> × {i.quantity}</span>
-                    </span>
-                    <span className="tabular-nums whitespace-nowrap">
-                      {formatPrice(parseFloat(i.price.amount) * i.quantity, i.price.currencyCode)}
-                    </span>
-                  </div>
-                ))}
+                {items.map((i) => {
+                  const variantValue = i.selectedOptions[0]?.value;
+                  const showVariant = variantValue && variantValue !== 'Default Title';
+                  const displayTitle = showVariant ? variantValue : i.product.node.title;
+                  return (
+                    <div key={i.variantId} className="flex justify-between text-sm gap-3">
+                      <span className="flex-1">
+                        {displayTitle}
+                        <span className="text-muted-foreground"> × {i.quantity}</span>
+                      </span>
+                      <span className="tabular-nums whitespace-nowrap">
+                        {formatPrice(parseFloat(i.price.amount) * i.quantity, i.price.currencyCode)}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
               <div className="border-t border-border pt-4 space-y-2 text-sm">
                 <div className="flex justify-between">
