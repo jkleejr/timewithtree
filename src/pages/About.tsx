@@ -9,9 +9,9 @@ import aboutBark2 from "@/assets/about-doorenbos-2.jpg";
 import aboutBark3 from "@/assets/about-doorenbos-3.jpg";
 
 const aboutImages = [
-  { src: aboutBark, alt: "에어포트에서 자라는 구매하기" },
-  { src: aboutBark2, alt: "구매하기의 하얀 수피 클로즈업" },
-  { src: aboutBark3, alt: "에어포트에서 줄지어 자라는 구매하기" },
+  { src: aboutBark, alt: "에어포트에서 자라는 잭큐몬티 자작나무" },
+  { src: aboutBark2, alt: "잭큐몬티 자작나무의 하얀 수피 클로즈업" },
+  { src: aboutBark3, alt: "에어포트에서 줄지어 자라는 잭큐몬티 자작나무 묘목" },
 ];
 
 const About = () => {
