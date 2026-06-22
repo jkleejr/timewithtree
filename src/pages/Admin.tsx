@@ -72,6 +72,7 @@ type Order = {
   admin_note: string | null;
   shipped_email_sent_at: string | null;
   created_at: string;
+  archived_at: string | null;
 };
 
 // ===== Analytics sub-component =====
