@@ -73,11 +73,6 @@ type Order = {
   shipped_email_sent_at: string | null;
   created_at: string;
   archived_at: string | null;
-  delivery_message: string | null;
-  recipient_name: string | null;
-  recipient_phone: string | null;
-  recipient_address: string | null;
-  recipient_postal_code: string | null;
 };
 
 // ===== Analytics sub-component =====
@@ -220,7 +215,7 @@ const OrdersSection = () => {
     setLoading(true);
     const query = supabase
       .from("orders")
-      .select("id, order_number, customer_name, customer_phone, customer_email, shipping_address, postal_code, items, subtotal, currency, status, customer_note, shipped_email_sent_at, created_at, archived_at, delivery_message, recipient_name, recipient_phone, recipient_address, recipient_postal_code")
+      .select("id, order_number, customer_name, customer_phone, customer_email, shipping_address, postal_code, items, subtotal, currency, status, customer_note, shipped_email_sent_at, created_at, archived_at")
       .order("created_at", { ascending: false })
       .limit(500);
     const filtered = view === "archived"
@@ -465,13 +460,7 @@ const OrdersSection = () => {
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground mb-1">배송지</p>
-                    {o.recipient_name && (
-                      <p>{o.recipient_name}{o.recipient_phone ? ` · ${o.recipient_phone}` : ""}</p>
-                    )}
-                    <p>{(o.recipient_postal_code || o.postal_code) ? `(${o.recipient_postal_code || o.postal_code}) ` : ""}{o.recipient_address || o.shipping_address}</p>
-                    {o.delivery_message && (
-                      <p className="text-muted-foreground mt-1">요청사항: {o.delivery_message}</p>
-                    )}
+                    <p>{o.postal_code ? `(${o.postal_code}) ` : ""}{o.shipping_address}</p>
                     {o.customer_note && (
                       <p className="text-muted-foreground mt-1">메모: {o.customer_note}</p>
                     )}
@@ -488,22 +477,9 @@ const OrdersSection = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="mt-3 pt-3 border-t border-border space-y-1 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">상품 금액</span>
-                      <span className="tabular-nums">{formatPrice(Number(o.subtotal), o.currency)}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">용달배송비</span>
-                      <span className="text-muted-foreground">별도 (기사님께 직접 지불)</span>
-                    </div>
-                    <div className="flex justify-between pt-2 border-t border-border font-medium">
-                      <span>합계</span>
-                      <span className="tabular-nums">
-                        {formatPrice(Number(o.subtotal), o.currency)}
-                        <span className="text-xs text-muted-foreground font-normal"> + 용달배송비</span>
-                      </span>
-                    </div>
+                  <div className="flex justify-between pt-3 mt-3 border-t border-border font-medium">
+                    <span>합계</span>
+                    <span className="tabular-nums">{formatPrice(Number(o.subtotal), o.currency)}</span>
                   </div>
                 </div>
               </CardContent>
