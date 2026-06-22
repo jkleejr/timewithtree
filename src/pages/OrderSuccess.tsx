@@ -145,7 +145,9 @@ const OrderSuccess = () => {
                 </div>
                 <Button asChild className="rounded-none shrink-0">
                   <Link
-                    to={`/auth?mode=signup&redirect=${encodeURIComponent(
+                    to={`/auth?mode=signup&email=${encodeURIComponent(
+                      order.customer_email,
+                    )}&redirect=${encodeURIComponent(
                       `/orders/${order.order_number}`,
                     )}`}
                   >
