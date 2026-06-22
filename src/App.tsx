@@ -17,6 +17,7 @@ import Cart from "./pages/Cart.tsx";
 import Checkout from "./pages/Checkout.tsx";
 import OrderSuccess from "./pages/OrderSuccess.tsx";
 import OrderDetail from "./pages/OrderDetail.tsx";
+import OrderLookup from "./pages/OrderLookup.tsx";
 import Auth from "./pages/Auth.tsx";
 import Account from "./pages/Account.tsx";
 import Returns from "./pages/Returns.tsx";
