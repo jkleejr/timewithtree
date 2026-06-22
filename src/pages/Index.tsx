@@ -144,9 +144,9 @@ const Index = () => {
                 <span className="block md:inline">잭큐몬티 자작나무</span>{" "}
                 <span className="block md:inline">농장</span>
               </h1>
-              <ul className="md:max-w-2xl space-y-1.5 sm:space-y-2 text-base md:text-lg leading-relaxed font-sans text-white drop-shadow-md">
-                <li className="flex gap-2"><span aria-hidden="true">-</span><span>네덜란드에서 조직배양한 묘목 재배</span></li>
-                <li className="flex gap-2"><span aria-hidden="true">-</span><span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</span></li>
+              <ul className="md:max-w-2xl space-y-1.5 sm:space-y-2 text-base md:text-lg leading-relaxed font-sans text-white drop-shadow-md pl-4">
+                <li className="relative"><span className="absolute -left-4" aria-hidden="true">-</span>네덜란드에서 조직배양한 묘목 재배</li>
+                <li className="relative"><span className="absolute -left-4" aria-hidden="true">-</span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</li>
               </ul>
             </div>
           </div>
