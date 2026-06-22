@@ -206,21 +206,29 @@ const OrdersSection = () => {
   const [loading, setLoading] = useState(true);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [sendingShipId, setSendingShipId] = useState<string | null>(null);
+  const [view, setView] = useState<"active" | "archived">("active");
+  const [selectMode, setSelectMode] = useState(false);
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [bulkBusy, setBulkBusy] = useState(false);
 
   const load = () => {
     setLoading(true);
-    supabase
+    const query = supabase
       .from("orders")
-      .select("id, order_number, customer_name, customer_phone, customer_email, shipping_address, postal_code, items, subtotal, currency, status, customer_note, shipped_email_sent_at, created_at")
+      .select("id, order_number, customer_name, customer_phone, customer_email, shipping_address, postal_code, items, subtotal, currency, status, customer_note, shipped_email_sent_at, created_at, archived_at")
       .order("created_at", { ascending: false })
-      .limit(200)
-      .then(({ data }) => {
-        setOrders((data as unknown as Order[]) || []);
-        setLoading(false);
-      });
+      .limit(500);
+    const filtered = view === "archived"
+      ? query.not("archived_at", "is", null)
+      : query.is("archived_at", null);
+    filtered.then(({ data }) => {
+      setOrders((data as unknown as Order[]) || []);
+      setLoading(false);
+      setSelected(new Set());
+    });
   };
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => { load(); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [view]);
 
   const updateStatus = async (id: string, status: OrderStatus) => {
     setUpdatingId(id);
@@ -256,6 +264,51 @@ const OrdersSection = () => {
     );
   };
 
+  const toggleSelect = (id: string) => {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
+
+  const selectAll = () => {
+    if (selected.size === orders.length) setSelected(new Set());
+    else setSelected(new Set(orders.map((o) => o.id)));
+  };
+
+  const bulkArchive = async () => {
+    if (selected.size === 0) return;
+    setBulkBusy(true);
+    const ids = Array.from(selected);
+    const { error } = await supabase
+      .from("orders")
+      .update({ archived_at: new Date().toISOString() })
+      .in("id", ids);
+    setBulkBusy(false);
+    if (error) { toast.error("보관 처리 실패"); return; }
+    toast.success(`${ids.length}개 주문을 보관함으로 이동했습니다`);
+    setOrders((prev) => prev.filter((o) => !selected.has(o.id)));
+    setSelected(new Set());
+    setSelectMode(false);
+  };
+
+  const bulkRestore = async () => {
+    if (selected.size === 0) return;
+    setBulkBusy(true);
+    const ids = Array.from(selected);
+    const { error } = await supabase
+      .from("orders")
+      .update({ archived_at: null })
+      .in("id", ids);
+    setBulkBusy(false);
+    if (error) { toast.error("복원 실패"); return; }
+    toast.success(`${ids.length}개 주문을 복원했습니다`);
+    setOrders((prev) => prev.filter((o) => !selected.has(o.id)));
+    setSelected(new Set());
+    setSelectMode(false);
+  };
+
   const counts = useMemo(() => {
     const c = { all: orders.length, pending: 0, paid: 0, shipped: 0, completed: 0, cancelled: 0 };
     for (const o of orders) c[o.status] += 1;
@@ -264,70 +317,138 @@ const OrdersSection = () => {
 
   if (loading) return <div className="flex justify-center py-12"><Loader2 className="h-6 w-6 animate-spin" /></div>;
 
+  const isArchivedView = view === "archived";
+
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-2 sm:grid-cols-6 gap-3">
-        {(["all", "pending", "paid", "shipped", "completed", "cancelled"] as const).map((k) => (
-          <Card key={k}>
-            <CardContent className="p-4">
-              <p className="text-xs text-muted-foreground mb-1">
-                {k === "all" ? "전체" : STATUS_LABELS[k as OrderStatus]}
-              </p>
-              <p className="text-2xl font-semibold">{counts[k]}</p>
-            </CardContent>
-          </Card>
-        ))}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <Button
+            size="sm"
+            variant={!isArchivedView ? "default" : "outline"}
+            onClick={() => { setView("active"); setSelectMode(false); }}
+          >
+            활성 주문
+          </Button>
+          <Button
+            size="sm"
+            variant={isArchivedView ? "default" : "outline"}
+            onClick={() => { setView("archived"); setSelectMode(false); }}
+          >
+            <Archive className="h-3.5 w-3.5 mr-1.5" />
+            보관함
+          </Button>
+        </div>
+        <div className="flex items-center gap-2 flex-wrap justify-end">
+          {selectMode ? (
+            <>
+              <Button size="sm" variant="ghost" onClick={selectAll}>
+                {selected.size === orders.length && orders.length > 0 ? "전체 해제" : "전체 선택"}
+              </Button>
+              <Button
+                size="sm"
+                variant={isArchivedView ? "default" : "destructive"}
+                disabled={selected.size === 0 || bulkBusy}
+                onClick={isArchivedView ? bulkRestore : bulkArchive}
+              >
+                {bulkBusy ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : (
+                  <>
+                    {isArchivedView ? <ArchiveRestore className="h-3.5 w-3.5 mr-1.5" /> : <Archive className="h-3.5 w-3.5 mr-1.5" />}
+                    {isArchivedView ? `복원 (${selected.size})` : `보관 (${selected.size})`}
+                  </>
+                )}
+              </Button>
+              <Button size="sm" variant="outline" onClick={() => { setSelectMode(false); setSelected(new Set()); }}>
+                취소
+              </Button>
+            </>
+          ) : (
+            <Button size="sm" variant="outline" onClick={() => setSelectMode(true)} disabled={orders.length === 0}>
+              {isArchivedView ? "복원할 주문 선택" : "보관할 주문 선택"}
+            </Button>
+          )}
+        </div>
       </div>
 
+      {!isArchivedView && (
+        <div className="grid grid-cols-2 sm:grid-cols-6 gap-3">
+          {(["all", "pending", "paid", "shipped", "completed", "cancelled"] as const).map((k) => (
+            <Card key={k}>
+              <CardContent className="p-4">
+                <p className="text-xs text-muted-foreground mb-1">
+                  {k === "all" ? "전체" : STATUS_LABELS[k as OrderStatus]}
+                </p>
+                <p className="text-2xl font-semibold">{counts[k]}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
+
       {orders.length === 0 ? (
-        <Card><CardContent className="py-12 text-center text-muted-foreground">아직 주문이 없습니다.</CardContent></Card>
+        <Card><CardContent className="py-12 text-center text-muted-foreground">
+          {isArchivedView ? "보관된 주문이 없습니다." : "아직 주문이 없습니다."}
+        </CardContent></Card>
       ) : (
         <>
-        <p className="text-xs text-muted-foreground mb-3">
-          * 상태를 변경해도 고객에게 자동 메일은 발송되지 않습니다. 배송을 시작하면 각 주문의 <strong>배송중 알림 메일</strong> 버튼을 눌러 고객에게 안내해 주세요.
-        </p>
+        {!isArchivedView && (
+          <p className="text-xs text-muted-foreground mb-3">
+            * 상태를 변경해도 고객에게 자동 메일은 발송되지 않습니다. 배송을 시작하면 각 주문의 <strong>배송중 알림 메일</strong> 버튼을 눌러 고객에게 안내해 주세요.
+          </p>
+        )}
         <div className="space-y-4">
           {orders.map((o) => (
-            <Card key={o.id}>
+            <Card key={o.id} className={selected.has(o.id) ? "ring-2 ring-primary" : ""}>
               <CardContent className="p-5">
                 <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-mono text-sm">{o.order_number}</span>
-                      <Badge variant="outline" className={STATUS_CLASSES[o.status]}>{STATUS_LABELS[o.status]}</Badge>
+                  <div className="flex items-start gap-3">
+                    {selectMode && (
+                      <Checkbox
+                        className="mt-1"
+                        checked={selected.has(o.id)}
+                        onCheckedChange={() => toggleSelect(o.id)}
+                      />
+                    )}
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-mono text-sm">{o.order_number}</span>
+                        <Badge variant="outline" className={STATUS_CLASSES[o.status]}>{STATUS_LABELS[o.status]}</Badge>
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        {new Date(o.created_at).toLocaleString("ko-KR")}
+                      </p>
                     </div>
-                    <p className="text-xs text-muted-foreground">
-                      {new Date(o.created_at).toLocaleString("ko-KR")}
-                    </p>
                   </div>
-                  <div className="flex items-center gap-2 flex-wrap justify-end">
-                    <Button
-                      size="sm"
-                      variant={o.shipped_email_sent_at ? "outline" : "default"}
-                      disabled={!!o.shipped_email_sent_at || sendingShipId === o.id}
-                      onClick={() => sendShippedEmail(o.id)}
-                    >
-                      {sendingShipId === o.id ? (
-                        <Loader2 className="h-3 w-3 animate-spin" />
-                      ) : o.shipped_email_sent_at ? (
-                        "메일 발송됨 ✓"
-                      ) : (
-                        "배송중 알림 메일"
-                      )}
-                    </Button>
-                    <Select
-                      value={o.status}
-                      onValueChange={(v) => updateStatus(o.id, v as OrderStatus)}
-                      disabled={updatingId === o.id}
-                    >
-                      <SelectTrigger className="w-[140px]"><SelectValue /></SelectTrigger>
-                      <SelectContent>
-                        {(Object.keys(STATUS_LABELS) as OrderStatus[]).map((s) => (
-                          <SelectItem key={s} value={s}>{STATUS_LABELS[s]}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
+                  {!selectMode && !isArchivedView && (
+                    <div className="flex items-center gap-2 flex-wrap justify-end">
+                      <Button
+                        size="sm"
+                        variant={o.shipped_email_sent_at ? "outline" : "default"}
+                        disabled={!!o.shipped_email_sent_at || sendingShipId === o.id}
+                        onClick={() => sendShippedEmail(o.id)}
+                      >
+                        {sendingShipId === o.id ? (
+                          <Loader2 className="h-3 w-3 animate-spin" />
+                        ) : o.shipped_email_sent_at ? (
+                          "메일 발송됨 ✓"
+                        ) : (
+                          "배송중 알림 메일"
+                        )}
+                      </Button>
+                      <Select
+                        value={o.status}
+                        onValueChange={(v) => updateStatus(o.id, v as OrderStatus)}
+                        disabled={updatingId === o.id}
+                      >
+                        <SelectTrigger className="w-[140px]"><SelectValue /></SelectTrigger>
+                        <SelectContent>
+                          {(Object.keys(STATUS_LABELS) as OrderStatus[]).map((s) => (
+                            <SelectItem key={s} value={s}>{STATUS_LABELS[s]}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  )}
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-4 text-sm mb-4">
