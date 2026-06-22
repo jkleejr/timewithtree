@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Seo } from "@/components/Seo";
 import { useShopifyProduct } from "@/hooks/useShopifyProducts";
 import { useCartStore } from "@/stores/cartStore";
 import { formatPrice } from "@/lib/utils";
@@ -59,9 +60,41 @@ const ProductDetail = () => {
     toast.success("Added to cart", { description: p.title, position: "top-center" });
   };
 
+  const cleanDescription = (p.description || "").replace(/\s+/g, " ").trim().slice(0, 160) ||
+    `${p.title} — 잭큐몬티 자작나무 묘목. 세종·공주 농장에서 에어포트로 재배해 연중 식재가 가능합니다.`;
+  const firstImage = p.images.edges[0]?.node.url;
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: p.title,
+    description: cleanDescription,
+    image: firstImage ? [firstImage] : undefined,
+    brand: { "@type": "Brand", name: "나무와 걷는 시간" },
+    offers: variant
+      ? {
+          "@type": "Offer",
+          price: variant.price.amount,
+          priceCurrency: variant.price.currencyCode,
+          availability: variant.availableForSale
+            ? "https://schema.org/InStock"
+            : "https://schema.org/OutOfStock",
+          url: `https://timewithtree.co.kr/product/${handle}`,
+        }
+      : undefined,
+  };
+
   return (
     <SiteLayout>
+      <Seo
+        title={`${p.title} — 나무와 걷는 시간`}
+        description={cleanDescription}
+        path={`/product/${handle}`}
+        ogType="product"
+        image={firstImage}
+        jsonLd={productJsonLd}
+      />
       <div className="max-w-7xl mx-auto px-6 md:px-10 pt-8">
+
         <Button asChild className="rounded-none font-sans font-bold">
           <Link to="/cart">
             장바구니

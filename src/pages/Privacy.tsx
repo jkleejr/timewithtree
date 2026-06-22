@@ -1,4 +1,5 @@
 import { SiteLayout } from "@/components/SiteLayout";
+import { Seo } from "@/components/Seo";
 import { ReactNode } from "react";
 
 const Bullet = ({ children }: { children: ReactNode }) => (
@@ -11,10 +12,16 @@ const Bullet = ({ children }: { children: ReactNode }) => (
 const Privacy = () => {
   return (
     <SiteLayout>
+      <Seo
+        title="개인정보처리방침 — 나무와 걷는 시간"
+        description="'나무와 걷는 시간'이 수집하는 개인정보 항목, 이용 목적, 보유 기간, 파기 절차 및 이용자의 권리를 안내합니다."
+        path="/privacy"
+      />
       <section className="max-w-4xl mx-auto px-6 md:px-10 pt-16 pb-8 md:pt-24 md:pb-12">
         <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-10">
           개인정보처리방침
         </h1>
+
 
         <div className="space-y-10 text-base md:text-lg leading-relaxed text-foreground/90">
           <div className="space-y-4">
