@@ -81,7 +81,7 @@ const OrderLookup = () => {
               id="order_number"
               value={orderNumber}
               onChange={(e) => setOrderNumber(e.target.value)}
-              placeholder="예: 20260101-0001"
+              placeholder="예: ORD-262600-0001"
               required
               maxLength={64}
             />
