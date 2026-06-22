@@ -171,30 +171,6 @@ const AnalyticsSection = () => {
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader><CardTitle>인기 페이지 TOP 10</CardTitle></CardHeader>
-          <CardContent>
-            {loading ? <p className="text-muted-foreground">로딩중...</p> :
-              stats.topPages.length === 0 ? <p className="text-muted-foreground">데이터가 없습니다.</p> : (
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead><tr className="border-b">
-                    <th className="text-left py-2 font-medium">경로</th>
-                    <th className="text-right py-2 font-medium">조회수</th>
-                  </tr></thead>
-                  <tbody>
-                    {stats.topPages.map(([path, count]) => (
-                      <tr key={path} className="border-b border-border/60">
-                        <td className="py-2 font-mono text-xs sm:text-sm">{path}</td>
-                        <td className="py-2 text-right">{count.toLocaleString()}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </CardContent>
-        </Card>
       </div>
     </Tabs>
   );
