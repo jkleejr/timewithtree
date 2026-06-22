@@ -170,6 +170,7 @@ const Checkout = () => {
 
     setSubmitting(true);
 
+    // Send only items/quantities; the server re-prices from the authoritative catalog.
     const orderItems = items.map((i) => ({
       product_title: i.product.node.title,
       product_handle: i.product.node.handle,
@@ -177,8 +178,6 @@ const Checkout = () => {
       variant_title: i.variantTitle,
       options: i.selectedOptions,
       quantity: i.quantity,
-      unit_price: parseFloat(i.price.amount),
-      line_total: parseFloat(i.price.amount) * i.quantity,
     }));
 
     const noteLines = [
@@ -190,9 +189,11 @@ const Checkout = () => {
     ].filter(Boolean);
     const customerNote = noteLines.join("\n");
 
-    const { data, error } = await supabase
-      .from("orders")
-      .insert({
+    const { data, error } = await supabase.functions.invoke<{
+      id: string;
+      order_number: string;
+    }>("create-order", {
+      body: {
         user_id: user?.id ?? null,
         customer_name: orderer.name,
         customer_phone: orderer.phone,
@@ -206,17 +207,13 @@ const Checkout = () => {
         recipient_address: sameAsOrderer ? null : composeAddress(effectiveRecipient),
         recipient_postal_code: sameAsOrderer ? null : (effectiveRecipient.postal || null),
         delivery_message: deliveryMessage.trim() || null,
-        payment_method: "bank_transfer",
         depositor_name: depositorName.trim(),
         bank_account: BANK_ACCOUNT,
         customer_note: customerNote,
         items: orderItems,
-        subtotal,
         currency,
-        status: "pending",
-      })
-      .select("id, order_number")
-      .single();
+      },
+    });
 
     if (error || !data) {
       console.error("Order insert failed", error?.code);
