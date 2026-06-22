@@ -131,6 +131,30 @@ const OrderSuccess = () => {
           </div>
         ) : order ? (
           <div className="mt-10 space-y-6">
+            {/* Guest signup CTA — only shown to unauthenticated buyers */}
+            {!user && order.customer_email && (
+              <div className="border border-accent/40 bg-accent/5 p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+                <div className="flex items-start gap-3 flex-1">
+                  <UserPlus className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold mb-1">계정을 만들고 주문을 관리하세요</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      방금 주문하신 이메일({order.customer_email})로 가입하면, 이 주문이 자동으로 회원 주문 내역에 연결됩니다.
+                    </p>
+                  </div>
+                </div>
+                <Button asChild className="rounded-none shrink-0">
+                  <Link
+                    to={`/auth?mode=signup&redirect=${encodeURIComponent(
+                      `/orders/${order.order_number}`,
+                    )}`}
+                  >
+                    회원가입하기
+                  </Link>
+                </Button>
+              </div>
+            )}
+
             {/* 주문 상품 */}
             <div className="border border-border">
               <h2 className="font-display text-lg font-bold px-5 md:px-6 py-4 border-b border-border bg-secondary/40 font-sans">
