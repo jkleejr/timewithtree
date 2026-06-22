@@ -104,6 +104,7 @@ export type Database = {
       orders: {
         Row: {
           admin_note: string | null
+          archived_at: string | null
           bank_account: string | null
           created_at: string
           currency: string
@@ -133,6 +134,7 @@ export type Database = {
         }
         Insert: {
           admin_note?: string | null
+          archived_at?: string | null
           bank_account?: string | null
           created_at?: string
           currency?: string
@@ -162,6 +164,7 @@ export type Database = {
         }
         Update: {
           admin_note?: string | null
+          archived_at?: string | null
           bank_account?: string | null
           created_at?: string
           currency?: string
