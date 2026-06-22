@@ -12,3 +12,12 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /account
+Disallow: /checkout
+Disallow: /order-success
+Disallow: /orders/
+Disallow: /auth
+Disallow: /unsubscribe
+
+Sitemap: https://timewithtree.co.kr/sitemap.xml
