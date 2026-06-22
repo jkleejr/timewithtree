@@ -145,9 +145,11 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (e) {
-    console.error("create-order error", (e as Error).message);
+    const msg = (e as Error).message || "";
+    const isKnown = msg.startsWith("Unknown variant:");
+    console.error("create-order error", msg);
     return new Response(
-      JSON.stringify({ error: (e as Error).message || "Internal error" }),
+      JSON.stringify({ error: isKnown ? msg : "Order creation failed" }),
       { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   }
