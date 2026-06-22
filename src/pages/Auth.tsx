@@ -24,7 +24,7 @@ const Auth = () => {
   );
   const redirect = params.get("redirect") ?? "/account";
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(params.get("email") ?? "");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [loading, setLoading] = useState(false);
