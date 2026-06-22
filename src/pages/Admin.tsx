@@ -476,9 +476,8 @@ const OrdersSection = () => {
                         <span className="tabular-nums">{formatPrice(it.line_total, o.currency)}</span>
                       </div>
                     ))}
-                    <div className="flex justify-between gap-3 text-muted-foreground text-xs pt-1 border-t border-dashed border-border">
+                    <div className="pt-1 border-t border-dashed border-border text-sm text-black">
                       <span>용달배송비</span>
-                      <span>기사님께 직접 지불 (착불)</span>
                     </div>
                   </div>
                   <div className="flex justify-between pt-3 mt-3 border-t border-border font-medium">
