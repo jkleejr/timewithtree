@@ -1,22 +1,23 @@
-# Plan - Align Hero text on mobile
+# Repository Visibility Security Audit
 
-We will adjust the horizontal padding of the hero/intro overlay in the homepage so that the text aligns perfectly with the subsequent section ("자작나무 소개") on mobile devices.
+We reviewed the current codebase and project environment for any security risks or sensitive information before you make the GitHub repository public.
 
-## Proposed Changes
+## Security Audit Summary
 
-### `src/pages/Index.tsx`
+1. **Environment Variables (.env)**
+   - Verified that the `.env` file only contains the project ID, Supabase URL, and the client-safe anonymous publishable key (`VITE_SUPABASE_PUBLISHABLE_KEY`).
+   - None of these values are sensitive or private; they are exposed to the browser by design for the client app to function.
 
-Change the padding classes of the introductory overlay container from:
-```tsx
-className="relative md:absolute md:inset-0 z-[5] max-w-7xl mx-auto px-12 sm:px-6 md:px-10 py-8 md:py-16 flex flex-col gap-4 sm:gap-6 md:gap-8 pointer-events-none min-h-full"
-```
-to:
-```tsx
-className="relative md:absolute md:inset-0 z-[5] max-w-7xl mx-auto px-6 md:px-10 py-8 md:py-16 flex flex-col gap-4 sm:gap-6 md:gap-8 pointer-events-none min-h-full"
-```
+2. **Backend Secrets (Runtime Secrets)**
+   - Verified that sensitive server-side credentials (like `GOOGLE_SEARCH_CONSOLE_API_KEY`) are managed entirely inside the Lovable Cloud backend as encrypted runtime secrets.
+   - These are never committed to your git repository and remain completely secure.
 
-## Technical Notes
+3. **Database & API Security**
+   - Row-Level Security (RLS) policies are active on public tables.
+   - The security-definer helper functions are locked down (thanks to our recent migration).
 
-- The subsequent section (`#about`) uses `px-6 md:px-10` for its container padding.
-- The hero intro overlay was using `px-12 sm:px-6 md:px-10`, which caused it to have `px-12` (48px) on mobile instead of `px-6` (24px), shifting the text slightly to the right relative to other sections.
-- Changing it to `px-6 md:px-10` ensures consistent alignment across all screen widths.
+## Recommendations
+
+If you decide to make the repository public:
+- **No Private Credentials will be exposed**: There are no API keys or service role keys in your repository.
+- **Intellectual Property**: Making the repo public means anyone can copy your frontend design and custom pages. If you're comfortable with that (open-source), it is completely safe to proceed.
