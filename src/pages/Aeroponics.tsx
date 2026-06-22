@@ -3,6 +3,7 @@ import { AlertTriangle } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
+import { Seo } from "@/components/Seo";
 
 const benefits = [
   {
@@ -50,7 +51,13 @@ const benefits = [
 const Aeroponics = () => {
   return (
     <SiteLayout>
+      <Seo
+        title="에어포트(Air-Pot) 재배 방식 — 나무와 걷는 시간"
+        description="에어포트 재배의 7가지 핵심 장점(뿌리 회전 방지, 잔뿌리 증가, 활착률 향상 등)과 관리 시 주의사항을 정리했습니다."
+        path="/aeroponics"
+      />
       <section className="max-w-5xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-10">
+
         <p className="text-xs md:text-sm font-sans font-semibold text-primary uppercase tracking-[0.25em] mb-4 opacity-70">
           AIR POT CULTIVATION
         </p>

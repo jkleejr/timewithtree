@@ -1,10 +1,17 @@
 import { SiteLayout } from "@/components/SiteLayout";
+import { Seo } from "@/components/Seo";
 
 const PickupGuide = () => {
   return (
     <SiteLayout>
+      <Seo
+        title="농장 방문·직접 수령 안내 — 나무와 걷는 시간"
+        description="세종시 장군면 송문리·공주시 정안면 대산리 농장의 방문 구입과 직접 나무 수령 절차, 연락처와 영업 시간을 안내합니다."
+        path="/pickup-guide"
+      />
       <section className="max-w-4xl mx-auto px-6 md:px-10 pt-16 pb-8 md:pt-24 md:pb-12 text-primary">
         <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-10">방문 구입 또는 직접 나무 수령시 안내</h1>
+
 
         <div className="space-y-10 text-base md:text-lg leading-relaxed text-primary">
           <div>

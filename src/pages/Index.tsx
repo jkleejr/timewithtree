@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, RotateCcw, Sprout, Droplets, Wind, ShieldChe
 import { SiteLayout } from "@/components/SiteLayout";
 import { ShopBrowser } from "@/components/ShopBrowser";
 import { Button } from "@/components/ui/button";
+import { Seo } from "@/components/Seo";
 import heroMain1 from "@/assets/hero-main-1.jpg";
 import heroMain3 from "@/assets/hero-main-3.jpg";
 import heroBirch2 from "@/assets/hero-birch-2.png";
@@ -85,8 +86,14 @@ const Index = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="나무와 걷는 시간 — 잭큐몬티 자작나무 농장"
+        description="세종·공주 농장에서 에어포트로 재배한 잭큐몬티 자작나무. 네덜란드 조직배양 묘목을 연중 식재 가능한 묘목으로 직접 보내드립니다."
+        path="/"
+      />
       {/* Hero gallery */}
       <section className="relative">
+
         <div className="relative w-full overflow-hidden bg-secondary aspect-[4/5] md:aspect-[16/8]">
           {heroImages.map((img, i) => (
             <img
@@ -96,6 +103,7 @@ const Index = () => {
               width={1920}
               height={1280}
               loading={i === 0 ? "eager" : "lazy"}
+              fetchPriority={i === 0 ? "high" : "auto"}
               decoding="async"
               style={{ objectPosition: i === 0 || i === 3 ? "center 38%" : "center center" }}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${

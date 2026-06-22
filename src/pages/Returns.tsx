@@ -1,4 +1,5 @@
 import { SiteLayout } from "@/components/SiteLayout";
+import { Seo } from "@/components/Seo";
 
 const paragraphs = [
   "생물이다 보니 사진과 실제 상품이 다를 수 있으며, 같은 품종이더라도 개체에 따라 수형이나 크기에 다소 차이가 있을 수 있습니다. 또한 나무의 특성에 따라 잔뿌리의 양이 많거나 적을 수 있습니다.",
@@ -29,8 +30,14 @@ const refunds = [
 const Returns = () => {
   return (
     <SiteLayout>
+      <Seo
+        title="교환 / 환불 규정 — 나무와 걷는 시간"
+        description="잭큐몬티 자작나무 묘목의 교환·반품·환불 절차와 가능/불가 사유, 결제 수단별 환불 안내를 정리했습니다."
+        path="/returns"
+      />
       <section className="max-w-4xl mx-auto px-6 md:px-10 pt-16 pb-8 md:pt-24 md:pb-12">
         <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-10">교환 / 환불 규정</h1>
+
 
         <div className="space-y-5 text-base md:text-lg leading-relaxed text-foreground/90">
           {paragraphs.map((p, i) => (

@@ -4,14 +4,15 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
+import { Seo } from "@/components/Seo";
 import aboutBark from "@/assets/about-doorenbos.jpg";
 import aboutBark2 from "@/assets/about-doorenbos-2.jpg";
 import aboutBark3 from "@/assets/about-doorenbos-3.jpg";
 
 const aboutImages = [
-  { src: aboutBark, alt: "에어포트에서 자라는 구매하기" },
-  { src: aboutBark2, alt: "구매하기의 하얀 수피 클로즈업" },
-  { src: aboutBark3, alt: "에어포트에서 줄지어 자라는 구매하기" },
+  { src: aboutBark, alt: "에어포트에서 자라는 잭큐몬티 자작나무" },
+  { src: aboutBark2, alt: "잭큐몬티 자작나무의 하얀 수피 클로즈업" },
+  { src: aboutBark3, alt: "에어포트에서 줄지어 자라는 잭큐몬티 자작나무 묘목" },
 ];
 
 const About = () => {
@@ -28,7 +29,25 @@ const About = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="잭큐몬티 자작나무 소개 — 나무와 걷는 시간"
+        description="히말라야 자생 자작나무를 유럽에서 개량한 잭큐몬티(Betula Jacquemontii)의 학명, 수피 특성, 월동·관리 방법과 농장 위치를 안내합니다."
+        path="/about"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "나무와 걷는 시간",
+          telephone: "+82-10-8925-6251",
+          url: "https://timewithtree.co.kr/about",
+          areaServed: "KR",
+          location: [
+            { "@type": "Place", name: "세종 농장", address: { "@type": "PostalAddress", addressLocality: "세종시 장군면 송문리", addressCountry: "KR" } },
+            { "@type": "Place", name: "공주 농장", address: { "@type": "PostalAddress", addressLocality: "공주시 정안면 대산리", addressCountry: "KR" } },
+          ],
+        }}
+      />
       <section className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-12">
+
         <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">소개</p>
         <h1 className="font-display max-w-3xl leading-[1.1] font-bold font-sans text-4xl md:text-5xl">
           자작나무 소개

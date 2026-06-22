@@ -3,6 +3,7 @@ import { Leaf, AlertTriangle, Shovel, Scissors, Sprout, Layers, Mountain, Drople
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/BackButton";
+import { Seo } from "@/components/Seo";
 import treeMeasurements from "@/assets/tree-measurements.png";
 import plantingMistakes from "@/assets/planting-mistakes.png";
 import plantingCorrectVsWrong from "@/assets/planting-correct-vs-wrong.png";
@@ -34,12 +35,18 @@ const cautions = [
 const Planting = () => {
   return (
     <SiteLayout>
+      <Seo
+        title="잭큐몬티 자작나무 식재 가이드 — 나무와 걷는 시간"
+        description="에어포트에서 자란 잭큐몬티 자작나무 묘목의 식재 7단계, 멀칭, 수목 측정 기준(H·W·R·B)과 주의사항을 한 페이지로 안내합니다."
+        path="/planting"
+      />
       <section className="max-w-5xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-10">
+
         <p className="text-xs md:text-sm font-sans font-semibold text-primary uppercase tracking-[0.25em] mb-4 opacity-70">
           PLANTING GUIDE
         </p>
         <h1 className="font-display leading-tight mb-6 font-sans text-4xl md:text-5xl font-bold">
-          구매하기
+          잭큐몬티 자작나무 식재 가이드
         </h1>
         <p className="text-base md:text-lg leading-relaxed text-primary max-w-3xl">
           에어포트에서 자란 자작나무는 연중 식재가 가능하며 활착이 매우 빠릅니다. 아래의 식재 방법을 참고하여 건강하게 키워보세요.
