@@ -30,7 +30,15 @@ const Auth = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (user) navigate(redirect, { replace: true });
+    if (!user) return;
+    // Link any guest orders placed with this email to the now-signed-in user.
+    supabase.rpc("claim_guest_orders").then(({ data }) => {
+      const claimed = typeof data === "number" ? data : 0;
+      if (claimed > 0) {
+        toast.success(`이전 비회원 주문 ${claimed}건이 계정에 연결되었습니다`);
+      }
+      navigate(redirect, { replace: true });
+    });
   }, [user, navigate, redirect]);
 
   const handleSubmit = async (e: React.FormEvent) => {
