@@ -479,7 +479,7 @@ const OrdersSection = () => {
                   </div>
                   <div className="flex justify-between pt-3 mt-3 border-t border-border font-medium">
                     <span>합계</span>
-                    <span className="tabular-nums">{formatPrice(Number(o.subtotal), o.currency)} + 용달배송비</span>
+                    <span className="tabular-nums">{formatPrice(Number(o.subtotal), o.currency)}</span>
                   </div>
                 </div>
               </CardContent>
