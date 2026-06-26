@@ -372,7 +372,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                       return (
                         <li
                           key={variant.id}
-                          className={`grid grid-cols-[48px_1fr] lg:flex lg:items-center gap-x-3 gap-y-3 px-3 sm:px-4 py-3 cursor-pointer transition-colors ${
+                          className={`grid grid-cols-[48px_1fr] lg:flex lg:items-center gap-x-3 gap-y-3.5 px-4 py-4 sm:py-3 cursor-pointer transition-colors ${
                             isActive && activeVariant?.id === variant.id ? "bg-secondary/40" : "hover:bg-secondary/20"
                           }`}
                           onClick={() => selectProduct(p.id, variant.id)}
@@ -420,7 +420,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                               >
                                 <button
                                   onClick={() => setQty(variant.id, qty - 1)}
-                                  className="px-2 py-1.5 hover:bg-secondary"
+                                  className="px-2.5 py-2 sm:py-1.5 hover:bg-secondary"
                                   aria-label="Decrease"
                                 >
                                   <Minus className="h-3 w-3" />
@@ -441,7 +441,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                                 />
                                 <button
                                   onClick={() => setQty(variant.id, qty + 1)}
-                                  className="px-2 py-1.5 hover:bg-secondary"
+                                  className="px-2.5 py-2 sm:py-1.5 hover:bg-secondary"
                                   aria-label="Increase"
                                 >
                                   <Plus className="h-3 w-3" />
@@ -450,7 +450,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                               <Button
                                 size="icon"
                                 variant="outline"
-                                className="rounded-none h-9 w-9 relative flex-shrink-0"
+                                className="rounded-none h-10 w-10 sm:h-9 sm:w-9 relative flex-shrink-0"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   setPendingAdd({ product, variantId: variant.id });
