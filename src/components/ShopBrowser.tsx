@@ -352,31 +352,6 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                   })}
                 </ul>
               </div>
-              <p className="text-xs text-muted-foreground mt-4">
-                ※ R은 Radius를 뜻하며 근원직경 (줄기의 지면에 닿는 부분의 지름)을 표기하는 방식입니다.
-                <br />
-                R3는 줄기 지름이 3cm, R4는 줄기 지름이 4cm, R5는 줄기지름이 5cm 입니다.
-              </p>
-              <p className="text-xs text-muted-foreground mt-2">
-                ⓘ 생물 특성상 실제 받아보시는 상품과 다소(계절별) 차이가 날 수 있습니다.
-              </p>
-              {(activeProduct.node.descriptionHtml || activeProduct.node.description) && (
-                <div className="mt-8 pt-6 border-t border-border">
-                  <h3 className="font-bold mb-3 font-sans text-lg">
-                    {activeProduct.node.title}
-                  </h3>
-                  {activeProduct.node.descriptionHtml ? (
-                    <div
-                      className="leading-relaxed space-y-3 text-foreground font-sans text-base md:text-lg"
-                      dangerouslySetInnerHTML={{ __html: activeProduct.node.descriptionHtml }}
-                    />
-                  ) : (
-                    <p className="leading-relaxed whitespace-pre-line text-foreground font-sans text-base md:text-lg">
-                      {activeProduct.node.description}
-                    </p>
-                  )}
-                </div>
-              )}
               <Accordion type="single" collapsible className="mt-8 font-sans font-bold">
                 <AccordionItem value="origin">
                   <AccordionTrigger>원산지</AccordionTrigger>
