@@ -420,7 +420,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                               >
                                 <button
                                   onClick={() => setQty(variant.id, qty - 1)}
-                                  className="px-2 py-1.5 hover:bg-secondary"
+                                  className="px-2.5 py-2 sm:py-1.5 hover:bg-secondary"
                                   aria-label="Decrease"
                                 >
                                   <Minus className="h-3 w-3" />
@@ -441,7 +441,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                                 />
                                 <button
                                   onClick={() => setQty(variant.id, qty + 1)}
-                                  className="px-2 py-1.5 hover:bg-secondary"
+                                  className="px-2.5 py-2 sm:py-1.5 hover:bg-secondary"
                                   aria-label="Increase"
                                 >
                                   <Plus className="h-3 w-3" />
@@ -450,7 +450,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                               <Button
                                 size="icon"
                                 variant="outline"
-                                className="rounded-none h-9 w-9 relative flex-shrink-0"
+                                className="rounded-none h-10 w-10 sm:h-9 sm:w-9 relative flex-shrink-0"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   setPendingAdd({ product, variantId: variant.id });
