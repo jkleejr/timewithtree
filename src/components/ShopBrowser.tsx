@@ -350,7 +350,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                     >
                       <img
                         src={img.node.url}
-                        alt=""
+                        alt={img.node.altText || `${activeProduct.node.title} 사진 ${i + 1}`}
                         className="w-full h-full object-cover"
                         decoding="async"
                       />

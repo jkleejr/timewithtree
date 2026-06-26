@@ -37,7 +37,7 @@ const Cart = () => {
     <SiteLayout>
       <Seo
         title="장바구니 — 나무와 걷는 시간"
-        description="선택하신 잭큐몬티 자작나무 묘목을 장바구니에서 확인하고 주문을 진행하세요."
+        description="선택하신 잭큐몬티 자작나무 묘목을 장바구니에서 확인하고, 수량 변경과 주문 결제를 빠르게 진행하세요. 세종·공주 농장에서 직접 발송합니다."
         path="/cart"
       />
       <section className="max-w-6xl mx-auto px-6 md:px-10 pt-8 pb-24">
@@ -99,11 +99,11 @@ const Cart = () => {
                       )}
                       <div className="mt-auto flex items-center justify-between">
                         <div className="inline-flex items-center border border-border">
-                          <button onClick={() => updateQuantity(item.variantId, item.quantity - 1)} className="px-2 py-1.5 hover:bg-secondary">
+                          <button onClick={() => updateQuantity(item.variantId, item.quantity - 1)} className="px-2 py-1.5 hover:bg-secondary" aria-label={`${displayTitle} 수량 줄이기`}>
                             <Minus className="h-3 w-3" />
                           </button>
                           <span className="w-9 text-center text-sm tabular-nums">{item.quantity}</span>
-                          <button onClick={() => updateQuantity(item.variantId, item.quantity + 1)} className="px-2 py-1.5 hover:bg-secondary">
+                          <button onClick={() => updateQuantity(item.variantId, item.quantity + 1)} className="px-2 py-1.5 hover:bg-secondary" aria-label={`${displayTitle} 수량 늘리기`}>
                             <Plus className="h-3 w-3" />
                           </button>
                         </div>

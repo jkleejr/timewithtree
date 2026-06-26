@@ -142,7 +142,7 @@ const Account = () => {
     <SiteLayout>
       <Seo
         title="내 계정 — 나무와 걷는 시간"
-        description="나무와 걷는 시간 회원 정보, 배송지, 주문 내역과 배송 상태를 한 곳에서 관리하세요."
+        description="나무와 걷는 시간 회원 정보, 배송지, 연락처와 잭큐몬티 자작나무 주문 내역 및 배송 상태를 한 곳에서 편리하게 관리하세요."
         path="/account"
       />
       <section className="max-w-3xl mx-auto px-6 md:px-10 pt-8 md:pt-12 pb-20">
