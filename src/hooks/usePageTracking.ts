@@ -27,11 +27,16 @@ export const usePageTracking = () => {
     lastTracked.current = path;
 
     const sessionId = getSessionId();
-    void supabase.from("page_views").insert({
-      path,
-      session_id: sessionId,
-      referrer: document.referrer || null,
-      user_agent: navigator.userAgent.slice(0, 500),
-    });
+    void supabase
+      .from("page_views")
+      .insert({
+        path,
+        session_id: sessionId,
+        referrer: document.referrer || null,
+        user_agent: navigator.userAgent.slice(0, 500),
+      })
+      .then(({ error }) => {
+        if (error) console.warn("page_views insert failed:", error.message);
+      });
   }, [location.pathname]);
 };
