@@ -81,6 +81,7 @@ type Order = {
 const AnalyticsSection = () => {
   const [views, setViews] = useState<PageView[]>([]);
   const [loading, setLoading] = useState(true);
+  const [chartRange, setChartRange] = useState<RangeKey>("30d");
 
   useEffect(() => {
     setLoading(true);
@@ -113,17 +114,28 @@ const AnalyticsSection = () => {
   }, [views]);
 
   const chartData = useMemo(() => {
-    // Last 30 days, oldest first
-    const days: { day: string; views: number; visitors: number; sessions: Set<string> }[] = [];
+    const rangeMs: Record<RangeKey, number | null> = {
+      "1d": 24 * 60 * 60 * 1000,
+      "7d": 7 * 24 * 60 * 60 * 1000,
+      "30d": 30 * 24 * 60 * 60 * 1000,
+      "all": null,
+    };
+    const now = Date.now();
+    const ms = rangeMs[chartRange];
+
+    // Build day buckets
     const dayMap = new Map<string, { views: number; sessions: Set<string> }>();
+    const days = chartRange === "1d" ? 1 : chartRange === "7d" ? 7 : chartRange === "30d" ? 30 : 30;
     const start = new Date();
     start.setHours(0, 0, 0, 0);
-    for (let i = 29; i >= 0; i--) {
+    for (let i = days - 1; i >= 0; i--) {
       const d = new Date(start.getTime() - i * 24 * 60 * 60 * 1000);
       const key = d.toISOString().slice(0, 10);
       dayMap.set(key, { views: 0, sessions: new Set() });
     }
+
     for (const v of views) {
+      if (ms != null && now - new Date(v.created_at).getTime() > ms) continue;
       const key = v.created_at.slice(0, 10);
       const entry = dayMap.get(key);
       if (!entry) continue;
@@ -135,7 +147,17 @@ const AnalyticsSection = () => {
       방문자: e.sessions.size,
       페이지뷰: e.views,
     }));
-  }, [views]);
+  }, [views, chartRange]);
+
+  const chartTitle = useMemo(() => {
+    const titles: Record<RangeKey, string> = {
+      "1d": "최근 24시간 추이",
+      "7d": "최근 7일 추이",
+      "30d": "최근 30일 추이",
+      "all": "전체 기간 추이",
+    };
+    return titles[chartRange];
+  }, [chartRange]);
 
   const currentVisitors = useMemo(() => {
     const cutoff = Date.now() - 5 * 60 * 1000; // last 5 minutes
@@ -185,7 +207,20 @@ const AnalyticsSection = () => {
 
           {/* Chart */}
           <div className="border-t p-6">
-            <div className="mb-4 text-sm font-medium text-muted-foreground">최근 30일 추이</div>
+            <div className="mb-4 flex items-center justify-between gap-4">
+              <div className="text-sm font-medium text-muted-foreground">{chartTitle}</div>
+              <Select value={chartRange} onValueChange={(v) => setChartRange(v as RangeKey)}>
+                <SelectTrigger className="h-9 w-36 bg-black text-white border-black hover:bg-black/90 focus:ring-0 focus:ring-offset-0 [&>svg]:text-white">
+                  <SelectValue placeholder="기간 선택" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="1d">24시간</SelectItem>
+                  <SelectItem value="7d">7일</SelectItem>
+                  <SelectItem value="30d">30일</SelectItem>
+                  <SelectItem value="all">전체 기간</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
             {loading ? (
               <p className="text-muted-foreground">로딩중...</p>
             ) : (
