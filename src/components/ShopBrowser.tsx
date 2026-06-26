@@ -225,6 +225,8 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                   ))}
                 </div>
               )}
+            </div>
+            <div className="[grid-area:details]">
               <Accordion type="single" collapsible className="mt-8 font-sans font-bold">
                 <AccordionItem value="origin">
                   <AccordionTrigger>원산지</AccordionTrigger>
