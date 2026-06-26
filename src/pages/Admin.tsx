@@ -137,47 +137,75 @@ const AnalyticsSection = () => {
     }));
   }, [views]);
 
-  return (
-    <div className="mt-6 space-y-8">
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {buckets.map((b) => (
-          <Card key={b.key}>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">{b.label}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-semibold">
-                {loading ? "—" : b.visitors.toLocaleString()}
-                <span className="text-sm font-normal text-muted-foreground ml-1">방문자</span>
-              </div>
-              <div className="text-sm text-muted-foreground mt-1">
-                페이지뷰 {loading ? "—" : b.pageviews.toLocaleString()}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+  const currentVisitors = useMemo(() => {
+    const cutoff = Date.now() - 5 * 60 * 1000; // last 5 minutes
+    const sessions = new Set(
+      views
+        .filter((v) => new Date(v.created_at).getTime() >= cutoff)
+        .map((v) => v.session_id)
+        .filter(Boolean)
+    );
+    return sessions.size;
+  }, [views]);
 
-      <Card>
-        <CardHeader><CardTitle>방문자 추이 (최근 30일)</CardTitle></CardHeader>
-        <CardContent>
-          {loading ? (
-            <p className="text-muted-foreground">로딩중...</p>
-          ) : (
-            <div className="h-80 w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={chartData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                  <XAxis dataKey="day" tick={{ fontSize: 12 }} stroke="hsl(var(--muted-foreground))" />
-                  <YAxis allowDecimals={false} tick={{ fontSize: 12 }} stroke="hsl(var(--muted-foreground))" />
-                  <Tooltip contentStyle={{ background: "hsl(var(--background))", border: "1px solid hsl(var(--border))", borderRadius: 8 }} />
-                  <Legend />
-                  <Line type="monotone" dataKey="방문자" stroke="hsl(var(--primary))" strokeWidth={2} dot={false} />
-                  <Line type="monotone" dataKey="페이지뷰" stroke="hsl(var(--accent))" strokeWidth={2} dot={false} />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          )}
+  return (
+    <div className="mt-6">
+      <Card className="overflow-hidden">
+        <CardHeader className="flex flex-row items-center justify-between gap-4 border-b">
+          <CardTitle className="text-xl">웹 트래픽</CardTitle>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <span className={`h-2 w-2 rounded-full ${currentVisitors > 0 ? "bg-emerald-500 animate-pulse" : "bg-muted-foreground/40"}`} />
+            현재 방문자 {loading ? "—" : currentVisitors}명
+          </div>
+        </CardHeader>
+
+        <CardContent className="p-0">
+          {/* Inline metric cells */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-border">
+            {buckets.map((b) => (
+              <div key={b.key} className="p-6">
+                <div className="text-sm text-muted-foreground">{b.label}</div>
+                <div className="mt-2 text-4xl font-semibold tracking-tight text-foreground">
+                  {loading ? "—" : b.visitors.toLocaleString()}
+                </div>
+                <div className="mt-1 text-xs text-muted-foreground">
+                  방문자 · 페이지뷰 {loading ? "—" : b.pageviews.toLocaleString()}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Chart */}
+          <div className="border-t p-6">
+            <div className="mb-4 text-sm font-medium text-muted-foreground">최근 30일 추이</div>
+            {loading ? (
+              <p className="text-muted-foreground">로딩중...</p>
+            ) : (
+              <div className="h-80 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={chartData} margin={{ top: 10, right: 16, left: 0, bottom: 0 }}>
+                    <defs>
+                      <linearGradient id="visitorFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.35} />
+                        <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity={0} />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+                    <XAxis dataKey="day" tick={{ fontSize: 12 }} stroke="hsl(var(--muted-foreground))" tickLine={false} axisLine={false} />
+                    <YAxis allowDecimals={false} tick={{ fontSize: 12 }} stroke="hsl(var(--muted-foreground))" tickLine={false} axisLine={false} width={32} />
+                    <Tooltip contentStyle={{ background: "hsl(var(--background))", border: "1px solid hsl(var(--border))", borderRadius: 8 }} />
+                    <Area
+                      type="monotone"
+                      dataKey="방문자"
+                      stroke="hsl(var(--primary))"
+                      strokeWidth={2}
+                      fill="url(#visitorFill)"
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+            )}
+          </div>
         </CardContent>
       </Card>
     </div>
