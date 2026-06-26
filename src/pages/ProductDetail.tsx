@@ -226,14 +226,6 @@ const ProductDetail = () => {
               )}
             </div>
           )}
-          {p.descriptionHtml ? (
-            <div
-              className="leading-relaxed mb-8 space-y-3 font-normal font-sans text-black text-base md:text-lg"
-              dangerouslySetInnerHTML={{ __html: p.descriptionHtml }}
-            />
-          ) : (
-            <p className="leading-relaxed mb-8 whitespace-pre-line font-normal font-sans text-black text-base md:text-lg">{p.description}</p>
-          )}
 
           {variants.length > 1 && (
             <div className="mb-6">
