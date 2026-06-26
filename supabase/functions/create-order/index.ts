@@ -16,6 +16,9 @@ const PRICE_CATALOG: Record<string, { unit_price: number; title: string }> = {
   "jacq-dagan": { unit_price: 150000, title: "다간형, 잭큐몬티 자작나무" },
 };
 
+// Server-side authoritative bank account. Never accept this from the client.
+const BANK_ACCOUNT = "NH농협은행 301-0327-2621-11";
+
 const ItemSchema = z.object({
   product_title: z.string().max(300),
   product_handle: z.string().max(200),
@@ -40,7 +43,6 @@ const BodySchema = z.object({
   recipient_postal_code: z.string().trim().max(20).nullable().optional(),
   delivery_message: z.string().trim().max(1000).nullable().optional(),
   depositor_name: z.string().trim().min(1).max(100),
-  bank_account: z.string().trim().max(200),
   customer_note: z.string().trim().max(4000).nullable().optional(),
   currency: z.literal("KRW").optional(),
   items: z.array(ItemSchema).min(1).max(50),
@@ -122,7 +124,7 @@ Deno.serve(async (req) => {
         delivery_message: body.delivery_message ?? null,
         payment_method: "bank_transfer",
         depositor_name: body.depositor_name,
-        bank_account: body.bank_account,
+        bank_account: BANK_ACCOUNT,
         customer_note: body.customer_note ?? null,
         items: orderItems,
         subtotal,

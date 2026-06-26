@@ -208,7 +208,6 @@ const Checkout = () => {
         recipient_postal_code: sameAsOrderer ? null : (effectiveRecipient.postal || null),
         delivery_message: deliveryMessage.trim() || null,
         depositor_name: depositorName.trim(),
-        bank_account: BANK_ACCOUNT,
         customer_note: customerNote,
         items: orderItems,
         currency,
