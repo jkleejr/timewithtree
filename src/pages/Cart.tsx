@@ -5,6 +5,7 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { BackButton } from "@/components/BackButton";
 import { Button } from "@/components/ui/button";
 import { OrderPolicyNotice } from "@/components/OrderPolicyNotice";
+import { Seo } from "@/components/Seo";
 import { useCartStore } from "@/stores/cartStore";
 import { formatPrice } from "@/lib/utils";
 
