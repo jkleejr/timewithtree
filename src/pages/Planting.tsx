@@ -64,6 +64,8 @@ const Planting = () => {
               07 단계 + 01 멀칭
             </p>
           </div>
+          <h2 className="sr-only">식재 가이드 단계</h2>
+
           <div className="border-t border-border">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
               {steps.map((s, i) => {
