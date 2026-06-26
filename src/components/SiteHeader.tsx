@@ -56,10 +56,19 @@ export const SiteHeader = () => {
               window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
             }
           }}
-          className="flex items-center min-w-0"
+          className="flex items-center gap-2 min-w-0 text-foreground"
           aria-label="나무와 걷는 시간 — 홈"
         >
-          <img src={logo} alt="나무와 걷는 시간" className="h-10 md:h-16 w-auto -my-1 md:-my-2" />
+          <span className="relative h-10 w-9 md:h-16 md:w-14 shrink-0 overflow-hidden" aria-hidden="true">
+            <img
+              src={logo}
+              alt=""
+              className="absolute left-0 top-1/2 h-10 md:h-16 w-auto max-w-none -translate-y-1/2 -my-1 md:-my-2"
+            />
+          </span>
+          <span className="truncate whitespace-nowrap text-xl md:text-3xl font-semibold leading-none tracking-normal">
+            나무와 걷는 시간
+          </span>
         </Link>
         <nav className="hidden lg:flex items-center gap-6 xl:gap-10">
           {NAV_LINKS.map((l) =>
@@ -111,8 +120,13 @@ export const SiteHeader = () => {
               <Menu className="h-6 w-6" />
             </SheetTrigger>
             <SheetContent side="right" className="w-[80vw] max-w-xs p-0">
-              <div className="flex items-center px-5 py-4 border-b border-border">
-                <img src={logo} alt="" className="h-10 w-auto" />
+              <div className="flex items-center gap-2 px-5 py-4 border-b border-border text-foreground">
+                <span className="relative h-10 w-9 shrink-0 overflow-hidden" aria-hidden="true">
+                  <img src={logo} alt="" className="absolute left-0 top-1/2 h-10 w-auto max-w-none -translate-y-1/2" />
+                </span>
+                <span className="truncate whitespace-nowrap text-xl font-semibold leading-none tracking-normal">
+                  나무와 걷는 시간
+                </span>
               </div>
               <nav className="flex flex-col py-2">
                 {NAV_LINKS.map((l) => {
