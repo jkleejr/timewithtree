@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Loader2, Minus, Plus, Trash2, ShoppingCart } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
@@ -13,6 +14,18 @@ const Cart = () => {
   const totalItems = items.reduce((s, i) => s + i.quantity, 0);
   const subtotal = items.reduce((s, i) => s + parseFloat(i.price.amount) * i.quantity, 0);
   const currency = items[0]?.price.currencyCode || 'KRW';
+
+  useEffect(() => {
+    if (items.length > 0) return;
+    try {
+      const successPath = sessionStorage.getItem("checkout_success_path");
+      if (!successPath) return;
+      sessionStorage.removeItem("checkout_success_path");
+      navigate(successPath, { replace: true });
+    } catch {
+      // ignore storage errors
+    }
+  }, [items.length, navigate]);
 
   const handleCheckout = () => {
     if (items.length === 0) return;
