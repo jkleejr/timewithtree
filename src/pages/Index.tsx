@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronLeft, ChevronRight, RotateCcw, Sprout, Droplets, Wind, ShieldCheck, TrendingUp, TreePine, type LucideIcon } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
+import { useSwipe } from "@/hooks/useSwipe";
 import { ShopBrowser } from "@/components/ShopBrowser";
 import { Button } from "@/components/ui/button";
 import { Seo } from "@/components/Seo";
@@ -59,6 +60,14 @@ const Index = () => {
   const aboutLen = aboutImages.length;
   const heroLen = heroImages.length;
   const location = useLocation();
+  const heroSwipe = useSwipe(
+    () => setHeroIndex((i) => (i + 1) % heroLen),
+    () => setHeroIndex((i) => (i - 1 + heroLen) % heroLen),
+  );
+  const aboutSwipe = useSwipe(
+    () => setAboutIndex((i) => (i + 1) % aboutLen),
+    () => setAboutIndex((i) => (i - 1 + aboutLen) % aboutLen),
+  );
 
   useEffect(() => {
     if (aboutLen <= 1) return;
@@ -94,7 +103,7 @@ const Index = () => {
       {/* Hero gallery */}
       <section className="relative">
 
-        <div className="relative w-full overflow-hidden bg-secondary aspect-[4/5] md:aspect-[16/8]">
+        <div className="relative w-full overflow-hidden bg-secondary aspect-[4/5] md:aspect-[16/8] touch-pan-y" {...heroSwipe}>
           {heroImages.map((img, i) => (
             <img
               key={i}
@@ -173,7 +182,7 @@ const Index = () => {
 
           <div className="grid md:grid-cols-12 gap-8 lg:gap-12 items-start">
             <div className="md:col-span-5 [@media(max-height:950px)]:md:sticky [@media(max-height:950px)]:md:top-28">
-              <div className="relative w-full aspect-[3/4] overflow-hidden bg-secondary rounded-lg">
+              <div className="relative w-full aspect-[3/4] overflow-hidden bg-secondary rounded-lg touch-pan-y" {...aboutSwipe}>
                 {aboutImages.map((img, i) => (
                   <img
                     key={i}

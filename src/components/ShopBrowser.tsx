@@ -4,6 +4,7 @@ import { Minus, Plus, ShoppingCart, Loader2, ChevronLeft, ChevronRight, X } from
 import { toast } from "sonner";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import { formatPrice } from "@/lib/utils";
+import { useSwipe } from "@/hooks/useSwipe";
 
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -92,6 +93,11 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
     (activeProduct && activeVariant?.title
       ? activeProduct.node.variantImages?.[activeVariant.title]
       : undefined) ?? activeProduct?.node.images.edges ?? [];
+
+  const imageSwipe = useSwipe(
+    () => images.length > 1 && setActiveImage((i) => (i + 1) % images.length),
+    () => images.length > 1 && setActiveImage((i) => (i - 1 + images.length) % images.length),
+  );
 
   const selectProduct = (id: string, variantId?: string) => {
     const selectedProduct = sorted.find((p) => p.node.id === id);
@@ -287,7 +293,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
         ) : activeProduct ? (
           <div className="grid gap-8 lg:gap-12 md:grid-cols-2 items-start">
             <div className="flex flex-col">
-              <div className="relative aspect-[4/5] bg-secondary overflow-hidden mb-3">
+              <div className="relative aspect-[4/5] bg-secondary overflow-hidden mb-3 touch-pan-y" {...imageSwipe}>
                 {images[activeImage] ? (
                   <button
                     type="button"
@@ -543,7 +549,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
       <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
         <DialogContent className="max-w-5xl w-[95vw] p-0 bg-background border-none rounded-none [&>button]:hidden">
           {activeProduct && images[activeImage] && (
-            <div className="relative">
+            <div className="relative touch-pan-y" {...imageSwipe}>
               <img
                 src={images[activeImage].node.url}
                 alt={images[activeImage].node.altText || activeProduct.node.title}
