@@ -13,6 +13,11 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'Noto Sans KR', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Inter', 'Noto Sans KR', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Inter', 'Noto Sans KR', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
