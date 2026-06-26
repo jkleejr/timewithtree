@@ -352,13 +352,6 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                   ))}
                 </div>
               )}
-              {activeVariant && (
-                <h2 className="mt-4 md:mt-5 font-sans font-bold text-xl md:text-2xl text-foreground">
-                  {activeVariant.title && activeVariant.title !== "Default Title"
-                    ? `${activeVariant.title}, ${activeProduct.node.title}`
-                    : activeProduct.node.title}
-                </h2>
-              )}
               <div className="hidden md:block">
                 {accordionJSX}
               </div>
