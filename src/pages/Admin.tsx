@@ -17,11 +17,12 @@ import { Archive, ArchiveRestore } from "lucide-react";
 import { toast } from "sonner";
 import { formatPrice } from "@/lib/utils";
 
-type RangeKey = "1d" | "7d" | "30d";
+type RangeKey = "1d" | "7d" | "30d" | "all";
 const RANGE_LABELS: Record<RangeKey, string> = {
   "1d": "최근 24시간",
   "7d": "최근 7일",
   "30d": "최근 30일",
+  "all": "전체 기간",
 };
 
 type PageView = {
