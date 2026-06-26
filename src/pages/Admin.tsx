@@ -78,102 +78,108 @@ type Order = {
 
 // ===== Analytics sub-component =====
 const AnalyticsSection = () => {
-  const [range, setRange] = useState<RangeKey>("7d");
   const [views, setViews] = useState<PageView[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const days = range === "1d" ? 1 : range === "7d" ? 7 : 30;
-    const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
     setLoading(true);
     supabase
       .from("page_views")
       .select("id, path, session_id, referrer, created_at")
-      .gte("created_at", since)
       .order("created_at", { ascending: false })
-      .limit(5000)
+      .limit(50000)
       .then(({ data }) => {
         setViews((data as PageView[]) || []);
         setLoading(false);
       });
-  }, [range]);
+  }, []);
 
-  const stats = useMemo(() => {
-    const totalViews = views.length;
-    const uniqueVisitors = new Set(views.map((v) => v.session_id).filter(Boolean)).size;
-    const pageCounts = new Map<string, number>();
-    for (const v of views) pageCounts.set(v.path, (pageCounts.get(v.path) || 0) + 1);
-    const topPages = [...pageCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10);
-    const daily = new Map<string, { views: number; sessions: Set<string> }>();
+  const buckets = useMemo(() => {
+    const now = Date.now();
+    const windows: { key: RangeKey; ms: number | null }[] = [
+      { key: "1d", ms: 24 * 60 * 60 * 1000 },
+      { key: "7d", ms: 7 * 24 * 60 * 60 * 1000 },
+      { key: "30d", ms: 30 * 24 * 60 * 60 * 1000 },
+      { key: "all", ms: null },
+    ];
+    return windows.map(({ key, ms }) => {
+      const filtered = ms == null
+        ? views
+        : views.filter((v) => now - new Date(v.created_at).getTime() <= ms);
+      const visitors = new Set(filtered.map((v) => v.session_id).filter(Boolean)).size;
+      return { key, label: RANGE_LABELS[key], pageviews: filtered.length, visitors };
+    });
+  }, [views]);
+
+  const chartData = useMemo(() => {
+    // Last 30 days, oldest first
+    const days: { day: string; views: number; visitors: number; sessions: Set<string> }[] = [];
+    const dayMap = new Map<string, { views: number; sessions: Set<string> }>();
+    const start = new Date();
+    start.setHours(0, 0, 0, 0);
+    for (let i = 29; i >= 0; i--) {
+      const d = new Date(start.getTime() - i * 24 * 60 * 60 * 1000);
+      const key = d.toISOString().slice(0, 10);
+      dayMap.set(key, { views: 0, sessions: new Set() });
+    }
     for (const v of views) {
-      const day = v.created_at.slice(0, 10);
-      const entry = daily.get(day) || { views: 0, sessions: new Set() };
+      const key = v.created_at.slice(0, 10);
+      const entry = dayMap.get(key);
+      if (!entry) continue;
       entry.views += 1;
       if (v.session_id) entry.sessions.add(v.session_id);
-      daily.set(day, entry);
     }
-    const dailyArr = [...daily.entries()]
-      .map(([day, e]) => ({ day, views: e.views, visitors: e.sessions.size }))
-      .sort((a, b) => b.day.localeCompare(a.day));
-    return { totalViews, uniqueVisitors, topPages, dailyArr };
+    return [...dayMap.entries()].map(([day, e]) => ({
+      day: day.slice(5), // MM-DD
+      방문자: e.sessions.size,
+      페이지뷰: e.views,
+    }));
   }, [views]);
 
   return (
-    <Tabs value={range} onValueChange={(v) => setRange(v as RangeKey)}>
-      <TabsList>
-        {(Object.keys(RANGE_LABELS) as RangeKey[]).map((k) => (
-          <TabsTrigger key={k} value={k}>{RANGE_LABELS[k]}</TabsTrigger>
-        ))}
-      </TabsList>
-      <div className="mt-6 space-y-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Card>
+    <div className="mt-6 space-y-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {buckets.map((b) => (
+          <Card key={b.key}>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">총 페이지뷰</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground">{b.label}</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-semibold">{loading ? "—" : stats.totalViews.toLocaleString()}</div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">방문자 수 (세션 기준)</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-4xl font-semibold">{loading ? "—" : stats.uniqueVisitors.toLocaleString()}</div>
-            </CardContent>
-          </Card>
-        </div>
-
-        <Card>
-          <CardHeader><CardTitle>일자별 방문 추이</CardTitle></CardHeader>
-          <CardContent>
-            {loading ? <p className="text-muted-foreground">로딩중...</p> :
-              stats.dailyArr.length === 0 ? <p className="text-muted-foreground">데이터가 없습니다.</p> : (
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead><tr className="border-b">
-                    <th className="text-left py-2 font-medium">날짜</th>
-                    <th className="text-right py-2 font-medium">방문자</th>
-                    <th className="text-right py-2 font-medium">페이지뷰</th>
-                  </tr></thead>
-                  <tbody>
-                    {stats.dailyArr.map((d) => (
-                      <tr key={d.day} className="border-b border-border/60">
-                        <td className="py-2">{d.day}</td>
-                        <td className="py-2 text-right">{d.visitors.toLocaleString()}</td>
-                        <td className="py-2 text-right">{d.views.toLocaleString()}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <div className="text-3xl font-semibold">
+                {loading ? "—" : b.visitors.toLocaleString()}
+                <span className="text-sm font-normal text-muted-foreground ml-1">방문자</span>
               </div>
-            )}
-          </CardContent>
-        </Card>
-
+              <div className="text-sm text-muted-foreground mt-1">
+                페이지뷰 {loading ? "—" : b.pageviews.toLocaleString()}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
-    </Tabs>
+
+      <Card>
+        <CardHeader><CardTitle>방문자 추이 (최근 30일)</CardTitle></CardHeader>
+        <CardContent>
+          {loading ? (
+            <p className="text-muted-foreground">로딩중...</p>
+          ) : (
+            <div className="h-80 w-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={chartData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                  <XAxis dataKey="day" tick={{ fontSize: 12 }} stroke="hsl(var(--muted-foreground))" />
+                  <YAxis allowDecimals={false} tick={{ fontSize: 12 }} stroke="hsl(var(--muted-foreground))" />
+                  <Tooltip contentStyle={{ background: "hsl(var(--background))", border: "1px solid hsl(var(--border))", borderRadius: 8 }} />
+                  <Legend />
+                  <Line type="monotone" dataKey="방문자" stroke="hsl(var(--primary))" strokeWidth={2} dot={false} />
+                  <Line type="monotone" dataKey="페이지뷰" stroke="hsl(var(--accent))" strokeWidth={2} dot={false} />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
