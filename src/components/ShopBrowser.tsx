@@ -549,7 +549,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
       <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
         <DialogContent className="max-w-5xl w-[95vw] p-0 bg-background border-none rounded-none [&>button]:hidden">
           {activeProduct && images[activeImage] && (
-            <div className="relative">
+            <div className="relative touch-pan-y" {...imageSwipe}>
               <img
                 src={images[activeImage].node.url}
                 alt={images[activeImage].node.altText || activeProduct.node.title}
