@@ -351,7 +351,7 @@ const Index = () => {
                       </span>
                     </div>
                     <div className="flex-1 flex flex-col justify-center items-center text-center">
-                      <h3 className="font-sans font-bold text-sm md:text-base text-foreground leading-tight mb-1.5">
+                      <h3 className="font-sans font-bold text-base md:text-lg text-foreground leading-tight mb-1.5">
                         {b.title}
                       </h3>
                       <p className="text-base md:text-lg text-primary leading-snug">{b.desc}</p>
@@ -367,7 +367,7 @@ const Index = () => {
                   </span>
                 </div>
                 <div className="flex-1 flex flex-col justify-center items-center text-center">
-                  <h3 className="font-sans font-bold text-sm md:text-base text-foreground leading-tight mb-1.5">
+                  <h3 className="font-sans font-bold text-base md:text-lg text-foreground leading-tight mb-1.5">
                     관수 관리 필요
                   </h3>
                   <p className="text-base md:text-lg text-primary leading-snug">
