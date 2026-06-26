@@ -4,6 +4,7 @@ import { Minus, Plus, ShoppingCart, Loader2, ChevronLeft, ChevronRight, X } from
 import { toast } from "sonner";
 import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import { formatPrice } from "@/lib/utils";
+import { useSwipe } from "@/hooks/useSwipe";
 
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
