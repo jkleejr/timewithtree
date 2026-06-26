@@ -225,6 +225,141 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                   ))}
                 </div>
               )}
+            </div>
+
+
+            <div>
+              <h2 className="font-display font-bold mb-4 font-sans sm:text-3xl md:text-3xl text-3xl">
+                {activeProduct.node.title}
+              </h2>
+              <div className="border border-border">
+
+                <ul className="divide-y divide-border">
+                  {sorted.flatMap((product) => {
+                    const p = product.node;
+                    const isActive = p.id === activeProduct.node.id;
+                    return p.variants.edges.map((v, vi) => {
+                      const thumb = p.variantImages?.[v.node.title]?.[0]?.node ?? p.images.edges[0]?.node;
+                      const variant = v.node;
+                      const qty = getQty(variant.id);
+                      const inCart = cartQtyByVariant[variant.id] ?? 0;
+                      return (
+                        <li
+                          key={variant.id}
+                          className={`grid grid-cols-[48px_1fr] lg:flex lg:items-center gap-x-3 gap-y-3 px-3 sm:px-4 py-3 cursor-pointer transition-colors ${
+                            isActive && activeVariant?.id === variant.id ? "bg-secondary/40" : "hover:bg-secondary/20"
+                          }`}
+                          onClick={() => selectProduct(p.id, variant.id)}
+                        >
+                          <div className="w-12 h-12 bg-secondary overflow-hidden flex-shrink-0 row-span-1">
+                            {thumb && (
+                              <img
+                                src={thumb.url}
+                                alt={`${p.title} ${variant.title}`}
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                              />
+                            )}
+                          </div>
+                          <div className="flex-1 min-w-0 break-keep">
+                            {variant.title !== "Default Title" && (
+                              <p className="text-base font-bold truncate">
+                                {variant.title}
+                              </p>
+                            )}
+                            {variant.description ? (
+                              <p className="text-muted-foreground text-xs sm:text-sm mt-0.5">
+                                {variant.description}
+                              </p>
+                            ) : (
+                              <p className="text-primary text-xs sm:text-sm">
+                                예상출고시기:{" "}
+                                <span className="text-foreground">즉시배송 가능</span>
+                              </p>
+                            )}
+                          </div>
+                          <div className="col-span-2 lg:col-auto flex items-center justify-between lg:justify-end gap-2 lg:gap-3 flex-wrap">
+                            <div className="flex items-center gap-1.5 whitespace-nowrap">
+                              <span className="border border-red-600 text-red-600 text-[10px] font-semibold px-1.5 py-0.5 leading-none">
+                                용달
+                              </span>
+                              <span className="text-sm tabular-nums font-semibold font-sans">
+                                {formatPrice(variant.price.amount, variant.price.currencyCode)}
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div
+                                className="inline-flex items-center border border-border font-sans"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <button
+                                  onClick={() => setQty(variant.id, qty - 1)}
+                                  className="px-2 py-1.5 hover:bg-secondary"
+                                  aria-label="Decrease"
+                                >
+                                  <Minus className="h-3 w-3" />
+                                </button>
+                                <input
+                                  type="number"
+                                  min={0}
+                                  max={100}
+                                  value={qty}
+                                  onClick={(e) => (e.target as HTMLInputElement).select()}
+                                  onChange={(e) => {
+                                    const v = parseInt(e.target.value, 10);
+                                    if (isNaN(v)) return setQty(variant.id, 0);
+                                    setQty(variant.id, Math.min(100, Math.max(0, v)));
+                                  }}
+                                  className="w-10 text-center text-sm tabular-nums bg-transparent border-0 focus:outline-none focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none font-sans"
+                                  aria-label="Quantity"
+                                />
+                                <button
+                                  onClick={() => setQty(variant.id, qty + 1)}
+                                  className="px-2 py-1.5 hover:bg-secondary"
+                                  aria-label="Increase"
+                                >
+                                  <Plus className="h-3 w-3" />
+                                </button>
+                              </div>
+                              <Button
+                                size="icon"
+                                variant="outline"
+                                className="rounded-none h-9 w-9 relative flex-shrink-0"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setPendingAdd({ product, variantId: variant.id });
+                                }}
+                                disabled={isAdding || qty < 1 || !variant.availableForSale}
+                                aria-label="Add to cart"
+                              >
+                                {isAdding ? (
+                                  <Loader2 className="h-4 w-4 animate-spin" />
+                                ) : (
+                                  <ShoppingCart className="h-4 w-4" />
+
+                              )}
+                              {inCart > 0 && (
+                                <span className="absolute -top-2 -right-2 bg-foreground text-background text-[10px] font-semibold rounded-full h-5 min-w-5 px-1 flex items-center justify-center tabular-nums">
+                                  {inCart}
+                                </span>
+                              )}
+                              </Button>
+                            </div>
+                          </div>
+                        </li>
+                      );
+                    });
+                  })}
+                </ul>
+              </div>
+              <p className="text-xs text-muted-foreground mt-4">
+                ※ R은 Radius를 뜻하며 근원직경 (줄기의 지면에 닿는 부분의 지름)을 표기하는 방식입니다.
+                <br />
+                R3는 줄기 지름이 3cm, R4는 줄기 지름이 4cm, R5는 줄기지름이 5cm 입니다.
+              </p>
+              <p className="text-xs text-muted-foreground mt-2">
+                ⓘ 생물 특성상 실제 받아보시는 상품과 다소(계절별) 차이가 날 수 있습니다.
+              </p>
               {(activeProduct.node.descriptionHtml || activeProduct.node.description) && (
                 <div className="mt-8 pt-6 border-t border-border">
                   <h3 className="font-bold mb-3 font-sans text-lg">
@@ -366,140 +501,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                    </AccordionContent>
                  </AccordionItem>
               </Accordion>
-            </div>
 
-            <div>
-              <h2 className="font-display font-bold mb-4 font-sans sm:text-3xl md:text-3xl text-3xl">
-                {activeProduct.node.title}
-              </h2>
-              <div className="border border-border">
-
-                <ul className="divide-y divide-border">
-                  {sorted.flatMap((product) => {
-                    const p = product.node;
-                    const isActive = p.id === activeProduct.node.id;
-                    return p.variants.edges.map((v, vi) => {
-                      const thumb = p.variantImages?.[v.node.title]?.[0]?.node ?? p.images.edges[0]?.node;
-                      const variant = v.node;
-                      const qty = getQty(variant.id);
-                      const inCart = cartQtyByVariant[variant.id] ?? 0;
-                      return (
-                        <li
-                          key={variant.id}
-                          className={`grid grid-cols-[48px_1fr] lg:flex lg:items-center gap-x-3 gap-y-3 px-3 sm:px-4 py-3 cursor-pointer transition-colors ${
-                            isActive && activeVariant?.id === variant.id ? "bg-secondary/40" : "hover:bg-secondary/20"
-                          }`}
-                          onClick={() => selectProduct(p.id, variant.id)}
-                        >
-                          <div className="w-12 h-12 bg-secondary overflow-hidden flex-shrink-0 row-span-1">
-                            {thumb && (
-                              <img
-                                src={thumb.url}
-                                alt={`${p.title} ${variant.title}`}
-                                className="w-full h-full object-cover"
-                                loading="lazy"
-                              />
-                            )}
-                          </div>
-                          <div className="flex-1 min-w-0 break-keep">
-                            {variant.title !== "Default Title" && (
-                              <p className="text-base font-bold truncate">
-                                {variant.title}
-                              </p>
-                            )}
-                            {variant.description ? (
-                              <p className="text-muted-foreground text-xs sm:text-sm mt-0.5">
-                                {variant.description}
-                              </p>
-                            ) : (
-                              <p className="text-primary text-xs sm:text-sm">
-                                예상출고시기:{" "}
-                                <span className="text-foreground">즉시배송 가능</span>
-                              </p>
-                            )}
-                          </div>
-                          <div className="col-span-2 lg:col-auto flex items-center justify-between lg:justify-end gap-2 lg:gap-3 flex-wrap">
-                            <div className="flex items-center gap-1.5 whitespace-nowrap">
-                              <span className="border border-red-600 text-red-600 text-[10px] font-semibold px-1.5 py-0.5 leading-none">
-                                용달
-                              </span>
-                              <span className="text-sm tabular-nums font-semibold font-sans">
-                                {formatPrice(variant.price.amount, variant.price.currencyCode)}
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <div
-                                className="inline-flex items-center border border-border font-sans"
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                <button
-                                  onClick={() => setQty(variant.id, qty - 1)}
-                                  className="px-2 py-1.5 hover:bg-secondary"
-                                  aria-label="Decrease"
-                                >
-                                  <Minus className="h-3 w-3" />
-                                </button>
-                                <input
-                                  type="number"
-                                  min={0}
-                                  max={100}
-                                  value={qty}
-                                  onClick={(e) => (e.target as HTMLInputElement).select()}
-                                  onChange={(e) => {
-                                    const v = parseInt(e.target.value, 10);
-                                    if (isNaN(v)) return setQty(variant.id, 0);
-                                    setQty(variant.id, Math.min(100, Math.max(0, v)));
-                                  }}
-                                  className="w-10 text-center text-sm tabular-nums bg-transparent border-0 focus:outline-none focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none font-sans"
-                                  aria-label="Quantity"
-                                />
-                                <button
-                                  onClick={() => setQty(variant.id, qty + 1)}
-                                  className="px-2 py-1.5 hover:bg-secondary"
-                                  aria-label="Increase"
-                                >
-                                  <Plus className="h-3 w-3" />
-                                </button>
-                              </div>
-                              <Button
-                                size="icon"
-                                variant="outline"
-                                className="rounded-none h-9 w-9 relative flex-shrink-0"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setPendingAdd({ product, variantId: variant.id });
-                                }}
-                                disabled={isAdding || qty < 1 || !variant.availableForSale}
-                                aria-label="Add to cart"
-                              >
-                                {isAdding ? (
-                                  <Loader2 className="h-4 w-4 animate-spin" />
-                                ) : (
-                                  <ShoppingCart className="h-4 w-4" />
-
-                              )}
-                              {inCart > 0 && (
-                                <span className="absolute -top-2 -right-2 bg-foreground text-background text-[10px] font-semibold rounded-full h-5 min-w-5 px-1 flex items-center justify-center tabular-nums">
-                                  {inCart}
-                                </span>
-                              )}
-                              </Button>
-                            </div>
-                          </div>
-                        </li>
-                      );
-                    });
-                  })}
-                </ul>
-              </div>
-              <p className="text-xs text-muted-foreground mt-4">
-                ※ R은 Radius를 뜻하며 근원직경 (줄기의 지면에 닿는 부분의 지름)을 표기하는 방식입니다.
-                <br />
-                R3는 줄기 지름이 3cm, R4는 줄기 지름이 4cm, R5는 줄기지름이 5cm 입니다.
-              </p>
-              <p className="text-xs text-muted-foreground mt-2">
-                ⓘ 생물 특성상 실제 받아보시는 상품과 다소(계절별) 차이가 날 수 있습니다.
-              </p>
               <div className="flex justify-end mt-6">
                 <Button asChild size="lg" className="rounded-none">
                   <Link to="/cart">
