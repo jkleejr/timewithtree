@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Check, Copy, Loader2, Search } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
@@ -64,6 +64,7 @@ const Checkout = () => {
   const { user } = useAuth();
   const { items, clearCart } = useCartStore();
   const { open: openPostcode } = useDaumPostcode();
+  const orderCompletedRef = useRef(false);
 
   const [submitting, setSubmitting] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<"bank" | "card">("bank");
@@ -109,7 +110,7 @@ const Checkout = () => {
   const subtotal = items.reduce((s, i) => s + parseFloat(i.price.amount) * i.quantity, 0);
   const currency = items[0]?.price.currencyCode || "KRW";
 
-  if (items.length === 0) return <Navigate to="/cart" replace />;
+  if (items.length === 0 && !orderCompletedRef.current) return <Navigate to="/cart" replace />;
 
   const copyAccount = async () => {
     try {
@@ -245,10 +246,11 @@ const Checkout = () => {
         .eq("id", user.id);
     }
 
-    // Navigate FIRST, then clear the cart. Otherwise this page's
-    // `items.length === 0` guard would redirect to /cart before navigation lands.
+    // Mark completion before clearing the cart so the empty-cart guard cannot
+    // redirect guests to /cart while React Router is applying the success route.
+    orderCompletedRef.current = true;
     navigate(`/order-success?n=${encodeURIComponent(data.order_number)}`, { replace: true });
-    clearCart();
+    window.setTimeout(clearCart, 0);
   };
 
   const today = new Date();
