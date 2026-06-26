@@ -227,6 +227,10 @@ const Checkout = () => {
 
     try {
       sessionStorage.setItem(`order_email:${data.order_number}`, orderer.email);
+      sessionStorage.setItem(
+        "checkout_success_path",
+        `/order-success?n=${encodeURIComponent(data.order_number)}`,
+      );
     } catch {
       // ignore storage errors
     }
