@@ -225,12 +225,14 @@ const Checkout = () => {
     // Admin notification is sent server-side via a database trigger
     // (notify_admin_on_new_order) when the order row is inserted.
 
+    const successPath = `/order-success?n=${encodeURIComponent(data.order_number)}&id=${encodeURIComponent(data.id)}`;
+
     try {
       sessionStorage.setItem(`order_email:${data.order_number}`, orderer.email);
-      sessionStorage.setItem(
-        "checkout_success_path",
-        `/order-success?n=${encodeURIComponent(data.order_number)}`,
-      );
+      sessionStorage.setItem(`order_email:${data.id}`, orderer.email);
+      sessionStorage.setItem("checkout_success_path", successPath);
+      sessionStorage.setItem("checkout_last_order_id", data.id);
+      sessionStorage.setItem("checkout_last_order_number", data.order_number);
     } catch {
       // ignore storage errors
     }
@@ -253,7 +255,18 @@ const Checkout = () => {
     // Mark completion before clearing the cart so the empty-cart guard cannot
     // redirect guests to /cart while React Router is applying the success route.
     orderCompletedRef.current = true;
-    navigate(`/order-success?n=${encodeURIComponent(data.order_number)}`, { replace: true });
+
+    if (!user) {
+      // Guest path: hard navigation guarantees we leave /checkout and reach
+      // the confirmation page even if a re-render would otherwise trigger the
+      // empty-cart guard. The orderId in the URL lets OrderSuccess load the
+      // order as a reliable fallback to the human-readable order number.
+      clearCart();
+      window.location.assign(successPath);
+      return;
+    }
+
+    navigate(successPath, { replace: true });
     window.setTimeout(clearCart, 0);
   };
 

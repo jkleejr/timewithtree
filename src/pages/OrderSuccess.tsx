@@ -37,13 +37,14 @@ const OrderSuccess = () => {
   const [params] = useSearchParams();
   const { user } = useAuth();
   const orderNumber = params.get("n");
+  const orderId = params.get("id");
   const detailHref = orderNumber ? `/orders/${encodeURIComponent(orderNumber)}` : null;
 
   const [order, setOrder] = useState<OrderRow | null>(null);
-  const [loading, setLoading] = useState<boolean>(Boolean(orderNumber));
+  const [loading, setLoading] = useState<boolean>(Boolean(orderNumber || orderId));
 
   useEffect(() => {
-    if (!orderNumber) {
+    if (!orderNumber && !orderId) {
       setLoading(false);
       return;
     }
@@ -52,15 +53,16 @@ const OrderSuccess = () => {
     (async () => {
       setLoading(true);
 
-      // Authenticated user — RLS-scoped direct read
+      // Authenticated user — RLS-scoped direct read by order_number or id
       if (user) {
-        const { data } = await supabase
+        const query = supabase
           .from("orders")
           .select(
             "id, order_number, customer_name, customer_phone, customer_email, shipping_address, postal_code, items, subtotal, currency, status, customer_note, created_at",
-          )
-          .eq("order_number", orderNumber)
-          .maybeSingle();
+          );
+        const { data } = orderNumber
+          ? await query.eq("order_number", orderNumber).maybeSingle()
+          : await query.eq("id", orderId!).maybeSingle();
         if (!cancelled && data) {
           setOrder(data as unknown as OrderRow);
           setLoading(false);
@@ -71,12 +73,15 @@ const OrderSuccess = () => {
       // Guest path — needs email stored in session at checkout time
       let email = "";
       try {
-        email = sessionStorage.getItem(`order_email:${orderNumber}`) ?? "";
+        email =
+          (orderNumber && sessionStorage.getItem(`order_email:${orderNumber}`)) ||
+          (orderId && sessionStorage.getItem(`order_email:${orderId}`)) ||
+          "";
       } catch {
         email = "";
       }
 
-      if (email) {
+      if (email && orderNumber) {
         const { data } = await supabase.rpc("lookup_order", {
           p_order_number: orderNumber,
           p_email: email,
@@ -95,7 +100,7 @@ const OrderSuccess = () => {
     return () => {
       cancelled = true;
     };
-  }, [orderNumber, user?.id]);
+  }, [orderNumber, orderId, user?.id]);
 
   const orderDateStr = useMemo(() => {
     if (!order) return "";
