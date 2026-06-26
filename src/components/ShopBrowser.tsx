@@ -352,6 +352,13 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                   ))}
                 </div>
               )}
+              {activeVariant && (
+                <h2 className="mt-4 md:mt-5 font-sans font-bold text-xl md:text-2xl text-foreground">
+                  {activeVariant.title && activeVariant.title !== "Default Title"
+                    ? `${activeVariant.title}, ${activeProduct.node.title}`
+                    : activeProduct.node.title}
+                </h2>
+              )}
               <div className="hidden md:block">
                 {accordionJSX}
               </div>
@@ -377,7 +384,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                         <li
                           key={variant.id}
                           className={`grid grid-cols-[48px_1fr] lg:flex lg:items-center gap-x-3 gap-y-3.5 px-4 py-4 sm:py-3 cursor-pointer transition-colors ${
-                            isActive && activeVariant?.id === variant.id ? "bg-secondary" : "hover:bg-secondary/20"
+                            isActive && activeVariant?.id === variant.id ? "bg-secondary/40" : "hover:bg-secondary/20"
                           }`}
                           onClick={() => selectProduct(p.id, variant.id)}
                         >
