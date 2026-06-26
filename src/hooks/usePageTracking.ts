@@ -2,14 +2,14 @@ import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 
-const SESSION_KEY = "visitor_session_id";
+const VISITOR_KEY = "visitor_id";
 
 const getSessionId = (): string => {
   try {
-    let id = sessionStorage.getItem(SESSION_KEY);
+    let id = localStorage.getItem(VISITOR_KEY);
     if (!id) {
       id = crypto.randomUUID();
-      sessionStorage.setItem(SESSION_KEY, id);
+      localStorage.setItem(VISITOR_KEY, id);
     }
     return id;
   } catch {
