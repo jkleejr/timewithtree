@@ -182,7 +182,7 @@ const Index = () => {
 
           <div className="grid md:grid-cols-12 gap-8 lg:gap-12 items-start">
             <div className="md:col-span-5 [@media(max-height:950px)]:md:sticky [@media(max-height:950px)]:md:top-28">
-              <div className="relative w-full aspect-[3/4] overflow-hidden bg-secondary rounded-lg">
+              <div className="relative w-full aspect-[3/4] overflow-hidden bg-secondary rounded-lg touch-pan-y" {...aboutSwipe}>
                 {aboutImages.map((img, i) => (
                   <img
                     key={i}
