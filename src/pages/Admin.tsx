@@ -165,11 +165,19 @@ const AnalyticsSection = () => {
             {buckets.map((b) => (
               <div key={b.key} className="p-6">
                 <div className="text-sm text-muted-foreground">{b.label}</div>
-                <div className="mt-2 text-4xl font-semibold tracking-tight text-foreground">
-                  {loading ? "—" : b.visitors.toLocaleString()}
-                </div>
-                <div className="mt-1 text-xs text-muted-foreground">
-                  방문자 · 페이지뷰 {loading ? "—" : b.pageviews.toLocaleString()}
+                <div className="mt-3 grid grid-cols-2 gap-4">
+                  <div>
+                    <div className="text-3xl font-semibold tracking-tight text-foreground">
+                      {loading ? "—" : b.visitors.toLocaleString()}
+                    </div>
+                    <div className="mt-1 text-xs text-muted-foreground">고유 방문자</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-semibold tracking-tight text-foreground">
+                      {loading ? "—" : b.pageviews.toLocaleString()}
+                    </div>
+                    <div className="mt-1 text-xs text-muted-foreground">총 페이지뷰</div>
+                  </div>
                 </div>
               </div>
             ))}
