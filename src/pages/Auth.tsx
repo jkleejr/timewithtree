@@ -95,6 +95,13 @@ const Auth = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title={mode === "signin" ? "로그인 — 나무와 걷는 시간" : "회원가입 — 나무와 걷는 시간"}
+        description={mode === "signin"
+          ? "나무와 걷는 시간 계정에 로그인하여 주문 내역과 배송 상태를 확인하세요."
+          : "나무와 걷는 시간 회원가입 후 빠르고 편리하게 잭큐몬티 자작나무를 주문하세요."}
+        path="/auth"
+      />
       <section className="max-w-md mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-20">
         <h1 className="font-display text-4xl md:text-5xl mb-2 font-bold font-sans">
           {mode === "signin" ? "로그인" : "회원가입"}
