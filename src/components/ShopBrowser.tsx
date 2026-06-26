@@ -94,6 +94,11 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
       ? activeProduct.node.variantImages?.[activeVariant.title]
       : undefined) ?? activeProduct?.node.images.edges ?? [];
 
+  const imageSwipe = useSwipe(
+    () => images.length > 1 && setActiveImage((i) => (i + 1) % images.length),
+    () => images.length > 1 && setActiveImage((i) => (i - 1 + images.length) % images.length),
+  );
+
   const selectProduct = (id: string, variantId?: string) => {
     const selectedProduct = sorted.find((p) => p.node.id === id);
     setActiveProductId(id);
