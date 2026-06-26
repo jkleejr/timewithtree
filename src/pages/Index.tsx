@@ -60,6 +60,14 @@ const Index = () => {
   const aboutLen = aboutImages.length;
   const heroLen = heroImages.length;
   const location = useLocation();
+  const heroSwipe = useSwipe(
+    () => setHeroIndex((i) => (i + 1) % heroLen),
+    () => setHeroIndex((i) => (i - 1 + heroLen) % heroLen),
+  );
+  const aboutSwipe = useSwipe(
+    () => setAboutIndex((i) => (i + 1) % aboutLen),
+    () => setAboutIndex((i) => (i - 1 + aboutLen) % aboutLen),
+  );
 
   useEffect(() => {
     if (aboutLen <= 1) return;
