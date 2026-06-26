@@ -158,8 +158,8 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
             </p>
           </div>
         ) : activeProduct ? (
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            <div>
+          <div className="grid gap-8 lg:gap-12 md:grid-cols-2 [grid-template-areas:'images''products''details'] md:[grid-template-areas:'images_products''details_products']">
+            <div className="[grid-area:images]">
               <div className="relative aspect-[4/5] bg-secondary overflow-hidden mb-3">
                 {images[activeImage] ? (
                   <button
