@@ -372,7 +372,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                       return (
                         <li
                           key={variant.id}
-                          className={`grid grid-cols-[48px_1fr] lg:flex lg:items-center gap-x-3 gap-y-3 px-3 sm:px-4 py-3 cursor-pointer transition-colors ${
+                          className={`grid grid-cols-[48px_1fr] lg:flex lg:items-center gap-x-3 gap-y-3.5 px-4 py-4 sm:py-3 cursor-pointer transition-colors ${
                             isActive && activeVariant?.id === variant.id ? "bg-secondary/40" : "hover:bg-secondary/20"
                           }`}
                           onClick={() => selectProduct(p.id, variant.id)}
