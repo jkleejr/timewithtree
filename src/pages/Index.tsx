@@ -103,7 +103,7 @@ const Index = () => {
       {/* Hero gallery */}
       <section className="relative">
 
-        <div className="relative w-full overflow-hidden bg-secondary aspect-[4/5] md:aspect-[16/8]">
+        <div className="relative w-full overflow-hidden bg-secondary aspect-[4/5] md:aspect-[16/8] touch-pan-y" {...heroSwipe}>
           {heroImages.map((img, i) => (
             <img
               key={i}
