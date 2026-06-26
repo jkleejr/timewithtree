@@ -10,6 +10,9 @@ interface SitemapEntry {
   priority?: string;
 }
 
+// Product handles mirror src/data/products.ts. Update when products change.
+const PRODUCT_HANDLES = ["jacquemontii-birch"];
+
 const entries: SitemapEntry[] = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
   { path: "/shop", changefreq: "weekly", priority: "0.9" },
@@ -20,7 +23,15 @@ const entries: SitemapEntry[] = [
   { path: "/returns", changefreq: "monthly", priority: "0.5" },
   { path: "/privacy", changefreq: "yearly", priority: "0.3" },
   { path: "/order-lookup", changefreq: "monthly", priority: "0.4" },
+  ...PRODUCT_HANDLES.map((handle) => ({
+    path: `/product/${handle}`,
+    changefreq: "weekly" as const,
+    priority: "0.9",
+  })),
 ];
+// Note: /cart, /checkout, /order-success, /orders/:orderNumber, /auth, /account,
+// /admin, and /unsubscribe are intentionally excluded — they are user-specific
+// utility routes disallowed in public/robots.txt.
 
 function generateSitemap(entries: SitemapEntry[]) {
   const urls = entries.map((e) =>

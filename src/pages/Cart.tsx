@@ -5,6 +5,7 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { BackButton } from "@/components/BackButton";
 import { Button } from "@/components/ui/button";
 import { OrderPolicyNotice } from "@/components/OrderPolicyNotice";
+import { Seo } from "@/components/Seo";
 import { useCartStore } from "@/stores/cartStore";
 import { formatPrice } from "@/lib/utils";
 
@@ -34,6 +35,11 @@ const Cart = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="장바구니 — 나무와 걷는 시간"
+        description="선택하신 잭큐몬티 자작나무 묘목을 장바구니에서 확인하고 주문을 진행하세요."
+        path="/cart"
+      />
       <section className="max-w-6xl mx-auto px-6 md:px-10 pt-8 pb-24">
         <h1 className="font-display text-4xl md:text-5xl mb-10 font-bold font-sans">
           {totalItems === 0 ? '장바구니가 비어 있습니다' : `${totalItems}개 상품`}
