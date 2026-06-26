@@ -224,17 +224,17 @@ const Checkout = () => {
     // Admin notification is sent server-side via a database trigger
     // (notify_admin_on_new_order) when the order row is inserted.
 
-    clearCart();
     try {
       sessionStorage.setItem(`order_email:${data.order_number}`, orderer.email);
     } catch {
       // ignore storage errors
     }
 
-    // Save orderer info to profile for next time (logged-in users only)
+    // Save orderer info to profile for next time (logged-in users only).
+    // Fire and forget — don't block navigation.
     if (user) {
       const savedAddress = [orderer.address1, orderer.address2].filter(Boolean).join(" ").trim();
-      await supabase
+      void supabase
         .from("profiles")
         .update({
           full_name: orderer.name || null,
@@ -245,7 +245,10 @@ const Checkout = () => {
         .eq("id", user.id);
     }
 
-    navigate(`/order-success?n=${encodeURIComponent(data.order_number)}`);
+    // Navigate FIRST, then clear the cart. Otherwise this page's
+    // `items.length === 0` guard would redirect to /cart before navigation lands.
+    navigate(`/order-success?n=${encodeURIComponent(data.order_number)}`, { replace: true });
+    clearCart();
   };
 
   const today = new Date();
