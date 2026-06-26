@@ -140,6 +140,11 @@ const Account = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="내 계정 — 나무와 걷는 시간"
+        description="나무와 걷는 시간 회원 정보, 배송지, 주문 내역과 배송 상태를 한 곳에서 관리하세요."
+        path="/account"
+      />
       <section className="max-w-3xl mx-auto px-6 md:px-10 pt-8 md:pt-12 pb-20">
         <h1 className="font-display text-4xl md:text-5xl mb-2 font-bold font-sans">내 계정</h1>
         <p className="text-accent mb-10">{user.email}</p>
