@@ -63,7 +63,7 @@ export const SiteHeader = () => {
             <img
               src={logo}
               alt=""
-              className="absolute left-0 top-1/2 h-10 md:h-16 w-auto max-w-none -translate-y-1/2 -my-1 md:-my-2"
+              className="absolute left-0 top-1/2 h-10 md:h-16 w-auto max-w-none -translate-y-1/2"
             />
           </span>
           <span className="truncate whitespace-nowrap text-xl md:text-3xl font-semibold leading-none tracking-normal">
