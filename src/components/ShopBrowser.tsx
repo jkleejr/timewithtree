@@ -225,23 +225,8 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                   ))}
                 </div>
               )}
-              {(activeProduct.node.descriptionHtml || activeProduct.node.description) && (
-                <div className="mt-8 pt-6 border-t border-border">
-                  <h3 className="font-bold mb-3 font-sans text-lg">
-                    {activeProduct.node.title}
-                  </h3>
-                  {activeProduct.node.descriptionHtml ? (
-                    <div
-                      className="leading-relaxed space-y-3 text-foreground font-sans text-base md:text-lg"
-                      dangerouslySetInnerHTML={{ __html: activeProduct.node.descriptionHtml }}
-                    />
-                  ) : (
-                    <p className="leading-relaxed whitespace-pre-line text-foreground font-sans text-base md:text-lg">
-                      {activeProduct.node.description}
-                    </p>
-                  )}
-                </div>
-              )}
+
+
               <Accordion type="single" collapsible className="mt-8 font-sans font-bold">
                 <AccordionItem value="origin">
                   <AccordionTrigger>원산지</AccordionTrigger>
