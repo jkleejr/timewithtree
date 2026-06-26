@@ -502,6 +502,9 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                   <BackButton />
                 </div>
               )}
+              <div className="block md:hidden mt-6">
+                {accordionJSX}
+              </div>
             </div>
           </div>
         ) : null}
