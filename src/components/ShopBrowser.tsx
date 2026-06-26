@@ -158,8 +158,8 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
             </p>
           </div>
         ) : activeProduct ? (
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            <div>
+          <div className="grid gap-8 lg:gap-12 md:grid-cols-2 [grid-template-areas:'images''products''details'] md:[grid-template-areas:'images_products''details_products']">
+            <div className="[grid-area:images]">
               <div className="relative aspect-[4/5] bg-secondary overflow-hidden mb-3">
                 {images[activeImage] ? (
                   <button
@@ -225,6 +225,8 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                   ))}
                 </div>
               )}
+            </div>
+            <div className="[grid-area:details]">
               <Accordion type="single" collapsible className="mt-8 font-sans font-bold">
                 <AccordionItem value="origin">
                   <AccordionTrigger>원산지</AccordionTrigger>
@@ -352,7 +354,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
             </div>
 
 
-            <div>
+            <div className="[grid-area:products]">
               <h2 className="font-display font-bold mb-4 font-sans sm:text-3xl md:text-3xl text-3xl">
                 {activeProduct.node.title}
               </h2>
