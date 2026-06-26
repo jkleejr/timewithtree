@@ -293,7 +293,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
         ) : activeProduct ? (
           <div className="grid gap-8 lg:gap-12 md:grid-cols-2 items-start">
             <div className="flex flex-col">
-              <div className="relative aspect-[4/5] bg-secondary overflow-hidden mb-3">
+              <div className="relative aspect-[4/5] bg-secondary overflow-hidden mb-3 touch-pan-y" {...imageSwipe}>
                 {images[activeImage] ? (
                   <button
                     type="button"
