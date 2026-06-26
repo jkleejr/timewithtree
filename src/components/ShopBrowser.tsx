@@ -354,7 +354,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
             </div>
 
 
-            <div>
+            <div className="[grid-area:products]">
               <h2 className="font-display font-bold mb-4 font-sans sm:text-3xl md:text-3xl text-3xl">
                 {activeProduct.node.title}
               </h2>
