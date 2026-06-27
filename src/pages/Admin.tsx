@@ -99,6 +99,7 @@ type Order = {
 const AnalyticsSection = () => {
   const [views, setViews] = useState<PageView[]>([]);
   const [loading, setLoading] = useState(true);
+  const [denied, setDenied] = useState(false);
   const [chartRange, setChartRange] = useState<RangeKey>("30d");
 
   useEffect(() => {
@@ -108,11 +109,18 @@ const AnalyticsSection = () => {
       .select("id, path, session_id, referrer, created_at")
       .order("created_at", { ascending: false })
       .limit(50000)
-      .then(({ data }) => {
-        setViews((data as PageView[]) || []);
+      .then(({ data, error }) => {
+        if (error) {
+          if (isPermissionError(error)) setDenied(true);
+          else toast.error("방문자 통계를 불러오지 못했습니다");
+          setViews([]);
+        } else {
+          setViews((data as PageView[]) || []);
+        }
         setLoading(false);
       });
   }, []);
+
 
   const buckets = useMemo(() => {
     const now = Date.now();
