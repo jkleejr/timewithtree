@@ -387,7 +387,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                           }`}
                           onClick={() => selectProduct(p.id, variant.id)}
                         >
-                          <div className="w-12 aspect-[4/5] self-start bg-secondary overflow-hidden flex-shrink-0 row-span-1">
+                          <div className="w-12 aspect-[4/5] self-center bg-secondary overflow-hidden flex-shrink-0 row-span-1">
                             {thumb && (
                               <img
                                 src={thumb.url}
