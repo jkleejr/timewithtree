@@ -1,10 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { Navigate } from "react-router-dom";
-import { Loader2 } from "lucide-react";
+import { Loader2, ShieldAlert } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { useAuth } from "@/contexts/AuthContext";
-import { useIsAdmin } from "@/hooks/useIsAdmin";
+import { RequireAdmin } from "@/components/RequireAdmin";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -17,6 +15,26 @@ import { Archive, ArchiveRestore } from "lucide-react";
 import { toast } from "sonner";
 import { formatPrice } from "@/lib/utils";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+
+// Surfaces a server-side permission denial as a clear UI error instead of
+// silently rendering empty data. RLS/grants enforce the real check; this is
+// just a defense-in-depth signal in case a role is revoked mid-session.
+const isPermissionError = (err: { code?: string; message?: string } | null) => {
+  if (!err) return false;
+  if (err.code === "42501" || err.code === "PGRST301" || err.code === "PGRST302") return true;
+  const msg = (err.message || "").toLowerCase();
+  return msg.includes("permission denied") || msg.includes("not authorized") || msg.includes("rls");
+};
+
+const PermissionDenied = ({ resource }: { resource: string }) => (
+  <div className="flex flex-col items-center justify-center py-16 text-center">
+    <ShieldAlert className="h-10 w-10 text-destructive mb-3" />
+    <h3 className="text-lg font-semibold mb-1">접근 권한이 없습니다</h3>
+    <p className="text-sm text-muted-foreground max-w-sm">
+      {resource} 데이터를 불러올 권한이 없습니다. 관리자 권한이 만료되었거나 해제되었을 수 있습니다.
+    </p>
+  </div>
+);
 
 type RangeKey = "1d" | "7d" | "30d" | "all";
 const RANGE_LABELS: Record<RangeKey, string> = {
@@ -81,6 +99,7 @@ type Order = {
 const AnalyticsSection = () => {
   const [views, setViews] = useState<PageView[]>([]);
   const [loading, setLoading] = useState(true);
+  const [denied, setDenied] = useState(false);
   const [chartRange, setChartRange] = useState<RangeKey>("30d");
 
   useEffect(() => {
@@ -90,11 +109,18 @@ const AnalyticsSection = () => {
       .select("id, path, session_id, referrer, created_at")
       .order("created_at", { ascending: false })
       .limit(50000)
-      .then(({ data }) => {
-        setViews((data as PageView[]) || []);
+      .then(({ data, error }) => {
+        if (error) {
+          if (isPermissionError(error)) setDenied(true);
+          else toast.error("방문자 통계를 불러오지 못했습니다");
+          setViews([]);
+        } else {
+          setViews((data as PageView[]) || []);
+        }
         setLoading(false);
       });
   }, []);
+
 
   const buckets = useMemo(() => {
     const now = Date.now();
@@ -169,6 +195,8 @@ const AnalyticsSection = () => {
     );
     return sessions.size;
   }, [views]);
+
+  if (denied) return <div className="mt-6"><PermissionDenied resource="방문자 통계" /></div>;
 
   return (
     <div className="mt-6">
@@ -259,6 +287,7 @@ const AnalyticsSection = () => {
 const OrdersSection = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
+  const [denied, setDenied] = useState(false);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [sendingShipId, setSendingShipId] = useState<string | null>(null);
   const [view, setView] = useState<"active" | "archived">("active");
@@ -276,8 +305,14 @@ const OrdersSection = () => {
     const filtered = view === "archived"
       ? query.not("archived_at", "is", null)
       : query.is("archived_at", null);
-    filtered.then(({ data }) => {
-      setOrders((data as unknown as Order[]) || []);
+    filtered.then(({ data, error }) => {
+      if (error) {
+        if (isPermissionError(error)) setDenied(true);
+        else toast.error("주문을 불러오지 못했습니다");
+        setOrders([]);
+      } else {
+        setOrders((data as unknown as Order[]) || []);
+      }
       setLoading(false);
       setSelected(new Set());
     });
@@ -289,12 +324,14 @@ const OrdersSection = () => {
     setUpdatingId(id);
     const { error } = await supabase.from("orders").update({ status }).eq("id", id);
     setUpdatingId(null);
-    if (error) toast.error("상태 변경 실패");
-    else {
+    if (error) {
+      toast.error(isPermissionError(error) ? "권한이 없습니다" : "상태 변경 실패");
+    } else {
       toast.success("주문 상태가 변경되었습니다");
       setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status } : o)));
     }
   };
+
 
   const sendShippedEmail = async (id: string) => {
     setSendingShipId(id);
@@ -370,6 +407,7 @@ const OrdersSection = () => {
     return c;
   }, [orders]);
 
+  if (denied) return <PermissionDenied resource="주문" />;
   if (loading) return <div className="flex justify-center py-12"><Loader2 className="h-6 w-6 animate-spin" /></div>;
 
   const isArchivedView = view === "archived";
@@ -551,11 +589,18 @@ const OrdersSection = () => {
 const SettingsSection = () => {
   const [bankInfo, setBankInfo] = useState("");
   const [loading, setLoading] = useState(true);
+  const [denied, setDenied] = useState(false);
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    supabase.from("store_settings").select("bank_info").limit(1).maybeSingle().then(({ data }) => {
-      setBankInfo(data?.bank_info || "");
+    supabase.from("store_settings").select("bank_info").limit(1).maybeSingle().then(({ data, error }) => {
+      if (error && isPermissionError(error)) {
+        setDenied(true);
+      } else if (error) {
+        toast.error("계좌 정보를 불러오지 못했습니다");
+      } else {
+        setBankInfo(data?.bank_info || "");
+      }
       setLoading(false);
     });
   }, []);
@@ -567,10 +612,11 @@ const SettingsSection = () => {
       .update({ bank_info: bankInfo })
       .eq("singleton", true);
     setSaving(false);
-    if (error) toast.error("저장 실패");
+    if (error) toast.error(isPermissionError(error) ? "권한이 없습니다" : "저장 실패");
     else toast.success("계좌 정보가 저장되었습니다");
   };
 
+  if (denied) return <PermissionDenied resource="계좌 설정" />;
   if (loading) return <div className="flex justify-center py-12"><Loader2 className="h-6 w-6 animate-spin" /></div>;
 
   return (
@@ -599,52 +645,26 @@ const SettingsSection = () => {
 
 // ===== Main =====
 const Admin = () => {
-  const { user, loading: authLoading } = useAuth();
-  const { isAdmin, loading: adminLoading } = useIsAdmin();
-
-  if (authLoading || adminLoading) {
-    return (
+  return (
+    <RequireAdmin>
       <div className="min-h-screen flex flex-col">
         <SiteHeader />
-        <main className="flex-1 flex items-center justify-center text-muted-foreground">로딩중...</main>
-        <SiteFooter />
-      </div>
-    );
-  }
-  if (!user) return <Navigate to="/auth" replace />;
-  if (!isAdmin) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <SiteHeader />
-        <main className="flex-1 flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-2xl font-semibold mb-2">접근 권한이 없습니다</h1>
-            <p className="text-muted-foreground">관리자만 접근할 수 있는 페이지입니다.</p>
-          </div>
+        <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-10 py-10">
+          <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-8">관리자</h1>
+          <Tabs defaultValue="orders" className="space-y-6">
+            <TabsList>
+              <TabsTrigger value="orders">주문 관리</TabsTrigger>
+              <TabsTrigger value="analytics">방문자 통계</TabsTrigger>
+              <TabsTrigger value="settings">계좌 설정</TabsTrigger>
+            </TabsList>
+            <TabsContent value="orders"><OrdersSection /></TabsContent>
+            <TabsContent value="analytics"><AnalyticsSection /></TabsContent>
+            <TabsContent value="settings"><SettingsSection /></TabsContent>
+          </Tabs>
         </main>
         <SiteFooter />
       </div>
-    );
-  }
-
-  return (
-    <div className="min-h-screen flex flex-col">
-      <SiteHeader />
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-10 py-10">
-        <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-8">관리자</h1>
-        <Tabs defaultValue="orders" className="space-y-6">
-          <TabsList>
-            <TabsTrigger value="orders">주문 관리</TabsTrigger>
-            <TabsTrigger value="analytics">방문자 통계</TabsTrigger>
-            <TabsTrigger value="settings">계좌 설정</TabsTrigger>
-          </TabsList>
-          <TabsContent value="orders"><OrdersSection /></TabsContent>
-          <TabsContent value="analytics"><AnalyticsSection /></TabsContent>
-          <TabsContent value="settings"><SettingsSection /></TabsContent>
-        </Tabs>
-      </main>
-      <SiteFooter />
-    </div>
+    </RequireAdmin>
   );
 };
 
