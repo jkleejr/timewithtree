@@ -62,6 +62,12 @@ const OrderLookup = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="비회원 주문조회 — 나무와 걷는 시간"
+        description="주문번호와 이메일을 입력해 비회원으로 진행한 잭큐몬티 자작나무 주문 내역과 상태를 조회하세요."
+        path="/order-lookup"
+      />
+
       <section className="max-w-md mx-auto px-6 md:px-10 pt-16 md:pt-20 pb-24">
         <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">
           비회원 주문조회
