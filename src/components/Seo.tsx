@@ -7,11 +7,12 @@ interface SeoProps {
   ogType?: "website" | "article" | "product";
   image?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
 }
 
 const SITE_URL = "https://timewithtree.co.kr";
 
-export const Seo = ({ title, description, path, ogType = "website", image, jsonLd }: SeoProps) => {
+export const Seo = ({ title, description, path, ogType = "website", image, jsonLd, noindex }: SeoProps) => {
   const url = `${SITE_URL}${path}`;
   const ldArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
   return (
@@ -19,6 +20,7 @@ export const Seo = ({ title, description, path, ogType = "website", image, jsonL
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
@@ -33,3 +35,4 @@ export const Seo = ({ title, description, path, ogType = "website", image, jsonL
     </Helmet>
   );
 };
+

@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { OrderPolicyNotice } from "@/components/OrderPolicyNotice";
+import { Seo } from "@/components/Seo";
+
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { cn, formatPrice } from "@/lib/utils";
@@ -210,6 +212,13 @@ const OrderDetail = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="주문 상세 — 나무와 걷는 시간"
+        description="주문 상태, 배송지, 결제 정보 등 잭큐몬티 자작나무 주문 내역을 한 곳에서 확인하세요."
+        path={`/orders/${order?.order_number ?? ""}`}
+        noindex
+      />
+
       <section className="max-w-5xl mx-auto px-6 md:px-10 pt-12 pb-24 print:pt-0">
         <div className="flex items-center justify-between mb-6">
           <div>

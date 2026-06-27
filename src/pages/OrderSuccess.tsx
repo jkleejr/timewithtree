@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { formatPrice } from "@/lib/utils";
+import { Seo } from "@/components/Seo";
+
 
 type OrderItem = {
   product_title: string;
@@ -111,6 +113,13 @@ const OrderSuccess = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="주문 완료 — 나무와 걷는 시간"
+        description="잭큐몬티 자작나무 주문이 정상적으로 접수되었습니다. 입금 안내와 주문번호를 확인하세요."
+        path="/order-success"
+        noindex
+      />
+
       <section className="max-w-3xl mx-auto px-6 md:px-10 pt-16 pb-24">
         <div className="text-center">
           <CheckCircle2 className="h-14 w-14 mx-auto text-accent mb-6" />

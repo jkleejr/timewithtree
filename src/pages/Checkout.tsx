@@ -13,6 +13,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useDaumPostcode } from "@/hooks/useDaumPostcode";
 import { OrderPolicyNotice } from "@/components/OrderPolicyNotice";
+import { Seo } from "@/components/Seo";
+
 import { cn, formatPrice } from "@/lib/utils";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -277,6 +279,13 @@ const Checkout = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="주문 결제 — 나무와 걷는 시간"
+        description="주문자·배송지 정보를 입력하고 무통장 입금으로 잭큐몬티 자작나무 주문을 안전하게 마무리하세요."
+        path="/checkout"
+        noindex
+      />
+
       <section className="max-w-6xl mx-auto px-6 md:px-10 pt-16 pb-24">
         <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">결제</p>
         <h1 className="font-display text-4xl md:text-5xl mb-10 font-bold font-sans">주문 결제</h1>
