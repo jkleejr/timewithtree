@@ -819,7 +819,7 @@ const Admin = () => {
             <TabsList>
               <TabsTrigger value="orders">주문 관리</TabsTrigger>
               <TabsTrigger value="analytics">방문자 통계</TabsTrigger>
-              <TabsTrigger value="settings">계좌 설정</TabsTrigger>
+              <TabsTrigger value="settings">설정</TabsTrigger>
             </TabsList>
             <TabsContent value="orders"><OrdersSection /></TabsContent>
             <TabsContent value="analytics"><AnalyticsSection /></TabsContent>
