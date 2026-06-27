@@ -258,18 +258,27 @@ export type Database = {
         Row: {
           bank_info: string
           id: string
+          notify_admin_new_order: boolean
+          notify_customer_order_confirmation: boolean
+          notify_customer_shipped: boolean
           singleton: boolean
           updated_at: string
         }
         Insert: {
           bank_info?: string
           id?: string
+          notify_admin_new_order?: boolean
+          notify_customer_order_confirmation?: boolean
+          notify_customer_shipped?: boolean
           singleton?: boolean
           updated_at?: string
         }
         Update: {
           bank_info?: string
           id?: string
+          notify_admin_new_order?: boolean
+          notify_customer_order_confirmation?: boolean
+          notify_customer_shipped?: boolean
           singleton?: boolean
           updated_at?: string
         }
