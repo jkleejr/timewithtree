@@ -80,6 +80,19 @@ Deno.serve(async (req) => {
       })
     }
 
+    // Respect store-level toggle for shipped notifications.
+    const { data: settings } = await admin
+      .from('store_settings')
+      .select('notify_customer_shipped')
+      .limit(1)
+      .maybeSingle()
+    if (settings?.notify_customer_shipped === false) {
+      return new Response(
+        JSON.stringify({ error: '관리자 설정에서 배송중 알림이 비활성화되어 있습니다' }),
+        { status: 409, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
+      )
+    }
+
     const { error: invokeErr } = await admin.functions.invoke('send-transactional-email', {
       body: {
         templateName: 'customer-order-shipped',

@@ -11,6 +11,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import { Archive, ArchiveRestore } from "lucide-react";
 import { toast } from "sonner";
 import { formatPrice } from "@/lib/utils";
@@ -586,60 +589,221 @@ const OrdersSection = () => {
 };
 
 // ===== Settings sub-component =====
+type Toggles = {
+  notify_admin_new_order: boolean;
+  notify_customer_shipped: boolean;
+  notify_customer_order_confirmation: boolean;
+};
+type Throughput = {
+  batch_size: number;
+  send_delay_ms: number;
+  auth_email_ttl_minutes: number;
+  transactional_email_ttl_minutes: number;
+};
+
+const NUM_FIELDS: Array<{ key: keyof Throughput; label: string; min: number; max: number; help: string }> = [
+  { key: "batch_size", label: "배치 크기 (batch_size)", min: 1, max: 1000, help: "한 번에 처리할 이메일 수 (1–1000)" },
+  { key: "send_delay_ms", label: "전송 간격 ms (send_delay_ms)", min: 0, max: 60000, help: "각 이메일 사이의 지연 (0–60000ms)" },
+  { key: "auth_email_ttl_minutes", label: "인증 이메일 TTL (분)", min: 1, max: 1440, help: "인증 이메일 만료 시간 (1–1440분)" },
+  { key: "transactional_email_ttl_minutes", label: "거래 이메일 TTL (분)", min: 1, max: 1440, help: "거래 이메일 만료 시간 (1–1440분)" },
+];
+
 const SettingsSection = () => {
   const [bankInfo, setBankInfo] = useState("");
+  const [toggles, setToggles] = useState<Toggles>({
+    notify_admin_new_order: true,
+    notify_customer_shipped: true,
+    notify_customer_order_confirmation: true,
+  });
+  const [throughput, setThroughput] = useState<Throughput>({
+    batch_size: 10,
+    send_delay_ms: 200,
+    auth_email_ttl_minutes: 15,
+    transactional_email_ttl_minutes: 60,
+  });
+  const [errors, setErrors] = useState<Partial<Record<keyof Throughput, string>>>({});
   const [loading, setLoading] = useState(true);
   const [denied, setDenied] = useState(false);
-  const [saving, setSaving] = useState(false);
+  const [savingStore, setSavingStore] = useState(false);
+  const [savingThroughput, setSavingThroughput] = useState(false);
 
   useEffect(() => {
-    supabase.from("store_settings").select("bank_info").limit(1).maybeSingle().then(({ data, error }) => {
-      if (error && isPermissionError(error)) {
+    (async () => {
+      const storePromise = supabase
+        .from("store_settings")
+        .select("bank_info, notify_admin_new_order, notify_customer_shipped, notify_customer_order_confirmation")
+        .limit(1)
+        .maybeSingle();
+      const statePromise = supabase
+        .from("email_send_state")
+        .select("batch_size, send_delay_ms, auth_email_ttl_minutes, transactional_email_ttl_minutes")
+        .limit(1)
+        .maybeSingle();
+      const [{ data: store, error: storeErr }, { data: state, error: stateErr }] = await Promise.all([
+        storePromise,
+        statePromise,
+      ]);
+      if ((storeErr && isPermissionError(storeErr)) || (stateErr && isPermissionError(stateErr))) {
         setDenied(true);
-      } else if (error) {
-        toast.error("계좌 정보를 불러오지 못했습니다");
       } else {
-        setBankInfo(data?.bank_info || "");
+        if (storeErr) toast.error("설정을 불러오지 못했습니다");
+        else if (store) {
+          setBankInfo(store.bank_info || "");
+          setToggles({
+            notify_admin_new_order: store.notify_admin_new_order ?? true,
+            notify_customer_shipped: store.notify_customer_shipped ?? true,
+            notify_customer_order_confirmation: store.notify_customer_order_confirmation ?? true,
+          });
+        }
+        if (stateErr) toast.error("이메일 처리량 설정을 불러오지 못했습니다");
+        else if (state) setThroughput(state as Throughput);
       }
       setLoading(false);
-    });
+    })();
   }, []);
 
-  const save = async () => {
-    setSaving(true);
-    const { error } = await supabase
-      .from("store_settings")
-      .update({ bank_info: bankInfo })
-      .eq("singleton", true);
-    setSaving(false);
-    if (error) toast.error(isPermissionError(error) ? "권한이 없습니다" : "저장 실패");
-    else toast.success("계좌 정보가 저장되었습니다");
+  const validate = (next: Throughput): Partial<Record<keyof Throughput, string>> => {
+    const e: Partial<Record<keyof Throughput, string>> = {};
+    for (const f of NUM_FIELDS) {
+      const v = next[f.key];
+      if (!Number.isFinite(v) || !Number.isInteger(v)) e[f.key] = "정수를 입력하세요";
+      else if (v < f.min || v > f.max) e[f.key] = `${f.min}–${f.max} 사이의 값을 입력하세요`;
+    }
+    return e;
   };
 
-  if (denied) return <PermissionDenied resource="계좌 설정" />;
+  const onNum = (key: keyof Throughput, raw: string) => {
+    const v = raw === "" ? NaN : Number(raw);
+    const next = { ...throughput, [key]: v };
+    setThroughput(next);
+    setErrors(validate(next));
+  };
+
+  const saveStore = async () => {
+    setSavingStore(true);
+    const { error } = await supabase
+      .from("store_settings")
+      .update({
+        bank_info: bankInfo,
+        notify_admin_new_order: toggles.notify_admin_new_order,
+        notify_customer_shipped: toggles.notify_customer_shipped,
+        notify_customer_order_confirmation: toggles.notify_customer_order_confirmation,
+      })
+      .eq("singleton", true);
+    setSavingStore(false);
+    if (error) toast.error(isPermissionError(error) ? "권한이 없습니다" : "저장 실패");
+    else toast.success("저장되었습니다");
+  };
+
+  const saveThroughput = async () => {
+    const errs = validate(throughput);
+    setErrors(errs);
+    if (Object.keys(errs).length > 0) {
+      toast.error("입력값을 확인해주세요");
+      return;
+    }
+    setSavingThroughput(true);
+    const { error } = await supabase
+      .from("email_send_state")
+      .update(throughput)
+      .eq("id", 1);
+    setSavingThroughput(false);
+    if (error) toast.error(isPermissionError(error) ? "권한이 없습니다" : "저장 실패");
+    else toast.success("이메일 처리량 설정이 저장되었습니다");
+  };
+
+  if (denied) return <PermissionDenied resource="설정" />;
   if (loading) return <div className="flex justify-center py-12"><Loader2 className="h-6 w-6 animate-spin" /></div>;
 
+  const hasErrors = Object.keys(errors).length > 0;
+
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>입금 계좌 정보</CardTitle>
-        <p className="text-sm text-muted-foreground">
-          체크아웃 페이지에 표시되는 계좌 정보입니다. 비워두면 안내 문구가 대신 표시됩니다.
-        </p>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <Textarea
-          rows={5}
-          value={bankInfo}
-          onChange={(e) => setBankInfo(e.target.value)}
-          placeholder={"예시:\n농협 123-4567-8901-23\n예금주: 홍길동"}
-          className="font-mono text-sm"
-        />
-        <Button onClick={save} disabled={saving}>
-          {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : "저장"}
-        </Button>
-      </CardContent>
-    </Card>
+    <div className="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle>이메일 알림 설정</CardTitle>
+          <p className="text-sm text-muted-foreground">
+            각 알림 이메일을 켜거나 끌 수 있습니다. 끄면 해당 이메일은 발송되지 않습니다.
+          </p>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {([
+            { key: "notify_admin_new_order", label: "신규 주문 시 관리자 알림", desc: "고객이 주문을 접수하면 관리자에게 이메일을 보냅니다." },
+            { key: "notify_customer_order_confirmation", label: "고객 주문 확인 메일", desc: "주문 접수 시 고객에게 확인 이메일을 보냅니다." },
+            { key: "notify_customer_shipped", label: "배송중 알림 메일", desc: "관리자가 \"배송중 알림 메일\" 버튼을 눌렀을 때 고객에게 발송합니다." },
+          ] as const).map((row) => (
+            <div key={row.key} className="flex items-start justify-between gap-4 rounded-lg border p-4">
+              <div>
+                <Label htmlFor={row.key} className="text-sm font-medium">{row.label}</Label>
+                <p className="text-xs text-muted-foreground mt-1">{row.desc}</p>
+              </div>
+              <Switch
+                id={row.key}
+                checked={toggles[row.key]}
+                onCheckedChange={(checked) => setToggles((t) => ({ ...t, [row.key]: checked }))}
+              />
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>입금 계좌 정보</CardTitle>
+          <p className="text-sm text-muted-foreground">
+            체크아웃 페이지에 표시되는 계좌 정보입니다. 비워두면 안내 문구가 대신 표시됩니다.
+          </p>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <Textarea
+            rows={5}
+            value={bankInfo}
+            onChange={(e) => setBankInfo(e.target.value)}
+            placeholder={"예시:\n농협 123-4567-8901-23\n예금주: 홍길동"}
+            className="font-mono text-sm"
+          />
+          <Button onClick={saveStore} disabled={savingStore}>
+            {savingStore ? <Loader2 className="h-4 w-4 animate-spin" /> : "계좌 정보 및 알림 설정 저장"}
+          </Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>이메일 처리량 설정</CardTitle>
+          <p className="text-sm text-muted-foreground">
+            이메일 큐의 배치 크기·전송 간격·만료(TTL)를 조정합니다. 잘못된 값은 발송 지연 또는 실패를 유발할 수 있습니다.
+          </p>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {NUM_FIELDS.map((f) => (
+              <div key={f.key} className="space-y-1.5">
+                <Label htmlFor={f.key}>{f.label}</Label>
+                <Input
+                  id={f.key}
+                  type="number"
+                  min={f.min}
+                  max={f.max}
+                  value={Number.isFinite(throughput[f.key]) ? throughput[f.key] : ""}
+                  onChange={(e) => onNum(f.key, e.target.value)}
+                  aria-invalid={!!errors[f.key]}
+                  className={errors[f.key] ? "border-destructive" : ""}
+                />
+                {errors[f.key] ? (
+                  <p className="text-xs text-destructive">{errors[f.key]}</p>
+                ) : (
+                  <p className="text-xs text-muted-foreground">{f.help}</p>
+                )}
+              </div>
+            ))}
+          </div>
+          <Button onClick={saveThroughput} disabled={savingThroughput || hasErrors}>
+            {savingThroughput ? <Loader2 className="h-4 w-4 animate-spin" /> : "처리량 설정 저장"}
+          </Button>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
@@ -655,7 +819,7 @@ const Admin = () => {
             <TabsList>
               <TabsTrigger value="orders">주문 관리</TabsTrigger>
               <TabsTrigger value="analytics">방문자 통계</TabsTrigger>
-              <TabsTrigger value="settings">계좌 설정</TabsTrigger>
+              <TabsTrigger value="settings">설정</TabsTrigger>
             </TabsList>
             <TabsContent value="orders"><OrdersSection /></TabsContent>
             <TabsContent value="analytics"><AnalyticsSection /></TabsContent>
