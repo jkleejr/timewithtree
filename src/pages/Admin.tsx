@@ -287,6 +287,7 @@ const AnalyticsSection = () => {
 const OrdersSection = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
+  const [denied, setDenied] = useState(false);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [sendingShipId, setSendingShipId] = useState<string | null>(null);
   const [view, setView] = useState<"active" | "archived">("active");
@@ -304,8 +305,14 @@ const OrdersSection = () => {
     const filtered = view === "archived"
       ? query.not("archived_at", "is", null)
       : query.is("archived_at", null);
-    filtered.then(({ data }) => {
-      setOrders((data as unknown as Order[]) || []);
+    filtered.then(({ data, error }) => {
+      if (error) {
+        if (isPermissionError(error)) setDenied(true);
+        else toast.error("주문을 불러오지 못했습니다");
+        setOrders([]);
+      } else {
+        setOrders((data as unknown as Order[]) || []);
+      }
       setLoading(false);
       setSelected(new Set());
     });
@@ -317,12 +324,14 @@ const OrdersSection = () => {
     setUpdatingId(id);
     const { error } = await supabase.from("orders").update({ status }).eq("id", id);
     setUpdatingId(null);
-    if (error) toast.error("상태 변경 실패");
-    else {
+    if (error) {
+      toast.error(isPermissionError(error) ? "권한이 없습니다" : "상태 변경 실패");
+    } else {
       toast.success("주문 상태가 변경되었습니다");
       setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status } : o)));
     }
   };
+
 
   const sendShippedEmail = async (id: string) => {
     setSendingShipId(id);
