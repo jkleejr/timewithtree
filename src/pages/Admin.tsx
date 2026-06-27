@@ -196,6 +196,8 @@ const AnalyticsSection = () => {
     return sessions.size;
   }, [views]);
 
+  if (denied) return <div className="mt-6"><PermissionDenied resource="방문자 통계" /></div>;
+
   return (
     <div className="mt-6">
       <Card className="overflow-hidden">
