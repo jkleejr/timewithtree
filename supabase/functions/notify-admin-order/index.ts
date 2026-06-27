@@ -70,11 +70,18 @@ Deno.serve(async (req) => {
       })
     }
 
+    // Load toggles (best-effort; default to enabled if missing).
+    const { data: settings } = await supabase
+      .from('store_settings')
+      .select('notify_admin_new_order, notify_customer_order_confirmation')
+      .limit(1)
+      .maybeSingle()
+    const adminEnabled = settings?.notify_admin_new_order !== false
+    const customerConfirmEnabled = settings?.notify_customer_order_confirmation !== false
+
     // Best-effort admin notification.
-    // Calls send-transactional-email if available; silently succeeds otherwise
-    // so the customer order flow is never blocked by email setup.
     const results: Array<{ email: string; ok: boolean; note?: string }> = []
-    for (const email of ADMIN_EMAILS) {
+    for (const email of adminEnabled ? ADMIN_EMAILS : []) {
       try {
         const { error: invokeErr } = await supabase.functions.invoke(
           'send-transactional-email',
@@ -115,9 +122,9 @@ Deno.serve(async (req) => {
       }
     }
 
-    // Customer order confirmation (best-effort)
+    // Customer order confirmation (best-effort, respects toggle)
     let customerResult: { email: string; ok: boolean; note?: string } | null = null
-    if (order.customer_email) {
+    if (customerConfirmEnabled && order.customer_email) {
       // Parse delivery date from customer_note if present (stored as "[배송일] YYYY-MM-DD")
       let deliveryDate: string | null = null
       if (typeof order.customer_note === 'string') {
