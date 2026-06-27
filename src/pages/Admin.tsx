@@ -589,11 +589,18 @@ const OrdersSection = () => {
 const SettingsSection = () => {
   const [bankInfo, setBankInfo] = useState("");
   const [loading, setLoading] = useState(true);
+  const [denied, setDenied] = useState(false);
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    supabase.from("store_settings").select("bank_info").limit(1).maybeSingle().then(({ data }) => {
-      setBankInfo(data?.bank_info || "");
+    supabase.from("store_settings").select("bank_info").limit(1).maybeSingle().then(({ data, error }) => {
+      if (error && isPermissionError(error)) {
+        setDenied(true);
+      } else if (error) {
+        toast.error("계좌 정보를 불러오지 못했습니다");
+      } else {
+        setBankInfo(data?.bank_info || "");
+      }
       setLoading(false);
     });
   }, []);
@@ -605,10 +612,11 @@ const SettingsSection = () => {
       .update({ bank_info: bankInfo })
       .eq("singleton", true);
     setSaving(false);
-    if (error) toast.error("저장 실패");
+    if (error) toast.error(isPermissionError(error) ? "권한이 없습니다" : "저장 실패");
     else toast.success("계좌 정보가 저장되었습니다");
   };
 
+  if (denied) return <PermissionDenied resource="계좌 설정" />;
   if (loading) return <div className="flex justify-center py-12"><Loader2 className="h-6 w-6 animate-spin" /></div>;
 
   return (
