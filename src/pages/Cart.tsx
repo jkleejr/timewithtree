@@ -67,7 +67,7 @@ const Cart = () => {
                   ? variantValue
                   : item.product.node.title;
                 return (
-                  <div key={item.variantId} className="py-6 flex items-start gap-4 md:gap-6">
+                  <div key={item.variantId} className="py-6 flex items-center gap-4 md:gap-6">
                     <div className="w-24 aspect-[4/5] md:w-28 bg-secondary flex-shrink-0 overflow-hidden">
                       {img && <img src={img.url} alt={img.altText || displayTitle} className="w-full h-full object-cover" />}
                     </div>
