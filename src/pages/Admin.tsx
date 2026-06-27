@@ -1,10 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { Navigate } from "react-router-dom";
-import { Loader2 } from "lucide-react";
+import { Loader2, ShieldAlert } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { useAuth } from "@/contexts/AuthContext";
-import { useIsAdmin } from "@/hooks/useIsAdmin";
+import { RequireAdmin } from "@/components/RequireAdmin";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -17,6 +15,26 @@ import { Archive, ArchiveRestore } from "lucide-react";
 import { toast } from "sonner";
 import { formatPrice } from "@/lib/utils";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+
+// Surfaces a server-side permission denial as a clear UI error instead of
+// silently rendering empty data. RLS/grants enforce the real check; this is
+// just a defense-in-depth signal in case a role is revoked mid-session.
+const isPermissionError = (err: { code?: string; message?: string } | null) => {
+  if (!err) return false;
+  if (err.code === "42501" || err.code === "PGRST301" || err.code === "PGRST302") return true;
+  const msg = (err.message || "").toLowerCase();
+  return msg.includes("permission denied") || msg.includes("not authorized") || msg.includes("rls");
+};
+
+const PermissionDenied = ({ resource }: { resource: string }) => (
+  <div className="flex flex-col items-center justify-center py-16 text-center">
+    <ShieldAlert className="h-10 w-10 text-destructive mb-3" />
+    <h3 className="text-lg font-semibold mb-1">접근 권한이 없습니다</h3>
+    <p className="text-sm text-muted-foreground max-w-sm">
+      {resource} 데이터를 불러올 권한이 없습니다. 관리자 권한이 만료되었거나 해제되었을 수 있습니다.
+    </p>
+  </div>
+);
 
 type RangeKey = "1d" | "7d" | "30d" | "all";
 const RANGE_LABELS: Record<RangeKey, string> = {
