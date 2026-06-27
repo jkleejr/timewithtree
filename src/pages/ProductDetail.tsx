@@ -119,7 +119,7 @@ const ProductDetail = () => {
                 <button
                   key={i}
                   onClick={() => setActiveImage(i)}
-                  className={`aspect-[4/5] overflow-hidden border ${i === activeImage ? 'border-foreground' : 'border-transparent'}`}
+                  className={`aspect-square overflow-hidden border ${i === activeImage ? 'border-foreground' : 'border-transparent'}`}
                 >
                   <img src={img.node.url} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </button>
@@ -249,11 +249,11 @@ const ProductDetail = () => {
           <div className="mb-8">
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">수량</p>
             <div className="inline-flex items-center border border-border font-sans">
-              <button aria-label="수량 줄이기" onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-3 py-2 hover:bg-secondary font-sans">
+              <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-3 py-2 hover:bg-secondary font-sans">
                 <Minus className="h-3 w-3" />
               </button>
               <span className="w-10 text-center text-sm tabular-nums font-sans">{quantity}</span>
-              <button aria-label="수량 늘리기" onClick={() => setQuantity(quantity + 1)} className="px-3 py-2 hover:bg-secondary font-sans">
+              <button onClick={() => setQuantity(quantity + 1)} className="px-3 py-2 hover:bg-secondary font-sans">
                 <Plus className="h-3 w-3" />
               </button>
             </div>

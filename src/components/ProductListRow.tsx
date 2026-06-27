@@ -55,11 +55,11 @@ export const ProductListRow = ({ product }: { product: ShopifyProduct }) => {
         {images.length > 1 && (
           <div className="grid grid-cols-5 gap-2">
             {images.slice(0, 5).map((img, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveImage(i)}
-                  className={`aspect-[4/5] overflow-hidden border ${i === activeImage ? "border-foreground" : "border-transparent"}`}
-                >
+              <button
+                key={i}
+                onClick={() => setActiveImage(i)}
+                className={`aspect-square overflow-hidden border ${i === activeImage ? "border-foreground" : "border-transparent"}`}
+              >
                 <img src={img.node.url} alt="" className="w-full h-full object-cover" loading="lazy" />
               </button>
             ))}
