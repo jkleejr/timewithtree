@@ -344,7 +344,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                         setActiveImage(i);
                         setLightboxOpen(true);
                       }}
-                      className={`aspect-square overflow-hidden border ${
+                      className={`aspect-[4/5] overflow-hidden border ${
                         i === activeImage ? "border-foreground" : "border-transparent"
                       }`}
                     >
@@ -387,7 +387,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                           }`}
                           onClick={() => selectProduct(p.id, variant.id)}
                         >
-                          <div className="w-12 h-12 bg-secondary overflow-hidden flex-shrink-0 row-span-1">
+                          <div className="w-12 aspect-[4/5] self-start bg-secondary overflow-hidden flex-shrink-0 row-span-1">
                             {thumb && (
                               <img
                                 src={thumb.url}
