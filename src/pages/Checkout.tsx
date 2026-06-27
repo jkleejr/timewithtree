@@ -13,6 +13,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useDaumPostcode } from "@/hooks/useDaumPostcode";
 import { OrderPolicyNotice } from "@/components/OrderPolicyNotice";
+import { Seo } from "@/components/Seo";
+
 import { cn, formatPrice } from "@/lib/utils";
 import { toast } from "sonner";
 import { z } from "zod";

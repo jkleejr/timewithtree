@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { formatPrice } from "@/lib/utils";
+import { Seo } from "@/components/Seo";
+
 
 type OrderItem = {
   product_title: string;
