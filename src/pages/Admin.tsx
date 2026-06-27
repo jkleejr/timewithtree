@@ -645,52 +645,26 @@ const SettingsSection = () => {
 
 // ===== Main =====
 const Admin = () => {
-  const { user, loading: authLoading } = useAuth();
-  const { isAdmin, loading: adminLoading } = useIsAdmin();
-
-  if (authLoading || adminLoading) {
-    return (
+  return (
+    <RequireAdmin>
       <div className="min-h-screen flex flex-col">
         <SiteHeader />
-        <main className="flex-1 flex items-center justify-center text-muted-foreground">로딩중...</main>
-        <SiteFooter />
-      </div>
-    );
-  }
-  if (!user) return <Navigate to="/auth" replace />;
-  if (!isAdmin) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <SiteHeader />
-        <main className="flex-1 flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-2xl font-semibold mb-2">접근 권한이 없습니다</h1>
-            <p className="text-muted-foreground">관리자만 접근할 수 있는 페이지입니다.</p>
-          </div>
+        <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-10 py-10">
+          <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-8">관리자</h1>
+          <Tabs defaultValue="orders" className="space-y-6">
+            <TabsList>
+              <TabsTrigger value="orders">주문 관리</TabsTrigger>
+              <TabsTrigger value="analytics">방문자 통계</TabsTrigger>
+              <TabsTrigger value="settings">계좌 설정</TabsTrigger>
+            </TabsList>
+            <TabsContent value="orders"><OrdersSection /></TabsContent>
+            <TabsContent value="analytics"><AnalyticsSection /></TabsContent>
+            <TabsContent value="settings"><SettingsSection /></TabsContent>
+          </Tabs>
         </main>
         <SiteFooter />
       </div>
-    );
-  }
-
-  return (
-    <div className="min-h-screen flex flex-col">
-      <SiteHeader />
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-10 py-10">
-        <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-8">관리자</h1>
-        <Tabs defaultValue="orders" className="space-y-6">
-          <TabsList>
-            <TabsTrigger value="orders">주문 관리</TabsTrigger>
-            <TabsTrigger value="analytics">방문자 통계</TabsTrigger>
-            <TabsTrigger value="settings">계좌 설정</TabsTrigger>
-          </TabsList>
-          <TabsContent value="orders"><OrdersSection /></TabsContent>
-          <TabsContent value="analytics"><AnalyticsSection /></TabsContent>
-          <TabsContent value="settings"><SettingsSection /></TabsContent>
-        </Tabs>
-      </main>
-      <SiteFooter />
-    </div>
+    </RequireAdmin>
   );
 };
 
