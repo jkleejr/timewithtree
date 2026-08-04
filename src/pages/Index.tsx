@@ -162,8 +162,16 @@ const Index = () => {
                 <span className="block md:inline">농장</span>
               </h1>
               <ul className="md:max-w-2xl space-y-1.5 sm:space-y-2 text-base md:text-lg leading-relaxed font-sans text-white drop-shadow-md pl-4">
-                <li className="relative"><span className="absolute -left-4" aria-hidden="true">-</span>네덜란드에서 조직배양한 묘목 재배</li>
-                <li className="relative"><span className="absolute -left-4" aria-hidden="true">-</span>{"\n"}에어포트(화분 재배)로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</li>
+                <li className="relative">
+                  <span className="absolute -left-4" aria-hidden="true">-</span>
+                  네덜란드에서 직수입한 잭큐몬티 자작나무<br />
+                  에어포트(Air-Pot) 화분에서 건강하게 재배한 굵기 4-5cm의 프리미엄 묘목
+                </li>
+                <li className="relative">
+                  <span className="absolute -left-4" aria-hidden="true">-</span>
+                  화분으로 재배하여 연중 식재 가능<br />
+                  식재 후 활착률이 높아 고사 위험 현저히 낮음
+                </li>
               </ul>
             </div>
           </div>
