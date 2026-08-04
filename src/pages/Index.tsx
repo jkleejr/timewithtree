@@ -290,7 +290,7 @@ const Index = () => {
               에어포트 재배
             </h2>
             <p className="text-base md:text-lg leading-relaxed text-primary">
-              저희 자작나무는 일반 화분이 아닌 <strong>에어포트(Air-Pot)</strong>에서 재배됩니다.
+              저희 자작나무는 일반 화분이 아닌 <strong>에어포트 화분 재배(Air-Pot)</strong>에서 재배됩니다.
               옆면 전체에 통기 구멍이 있는 특수 용기로, 뿌리 품질을 근본적으로 높여주는 재배 방식입니다.
             </p>
           </div>
@@ -403,7 +403,7 @@ const Index = () => {
               나무 관련 정보 · 식재방법
             </h2>
             <p className="text-base md:text-lg leading-relaxed text-primary">
-              에어포트에서 자란 자작나무는 연중 식재가 가능하며 활착이 매우 빠릅니다.
+              에어포트 화분에서 키운 자작나무는&nbsp;연중 식재가 가능하며 활착이 매우 빠릅니다.
               아래의 식재 방법을 참고하여 건강하게 키워보세요.
             </p>
           </div>
