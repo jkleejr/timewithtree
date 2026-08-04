@@ -211,7 +211,7 @@ export const template = {
     deliveryMessage: '문 앞에 놓아주세요',
     paymentMethod: 'bank_transfer',
     depositorName: '홍길동',
-    bankAccount: 'NH농협은행 301-0327-2621-11',
+    bankAccount: 'KB 국민은행 852701-00-147567',
     items: [
       { product_title: '소나무', variant_title: '대형', quantity: 2, unit_price: 150000, line_total: 300000 },
       { product_title: '단풍나무', variant_title: 'Default Title', quantity: 1, unit_price: 80000, line_total: 80000 },

@@ -17,7 +17,7 @@ const PRICE_CATALOG: Record<string, { unit_price: number; title: string }> = {
 };
 
 // Server-side authoritative bank account. Never accept this from the client.
-const BANK_ACCOUNT = "NH농협은행 301-0327-2621-11";
+const BANK_ACCOUNT = "KB 국민은행 852701-00-147567";
 
 const ItemSchema = z.object({
   product_title: z.string().max(300),
