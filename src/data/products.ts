@@ -18,6 +18,8 @@ import r5Asset3 from "@/assets/r5-3.jpg.asset.json";
 import r5Asset4 from "@/assets/r5-4.jpg.asset.json";
 import r5Asset5 from "@/assets/r5-5.jpg.asset.json";
 import r5Asset6 from "@/assets/r5-6.jpg.asset.json";
+import daganAsset3 from "@/assets/dagan-3.jpg.asset.json";
+import daganAsset4 from "@/assets/dagan-4.jpg.asset.json";
 
 
 
