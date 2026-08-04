@@ -172,6 +172,10 @@ const Index = () => {
                   화분으로 재배하여 연중 식재 가능<br />
                   식재 후 활착률이 높아 고사 위험 현저히 낮음
                 </li>
+                <li className="relative">
+                  <span className="absolute -left-4" aria-hidden="true">-</span>
+                  전문 재배 관리로 균일한 수형과 건강한 뿌리 유지
+                </li>
               </ul>
             </div>
           </div>
