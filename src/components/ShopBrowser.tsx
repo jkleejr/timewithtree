@@ -336,15 +336,18 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
                 )}
               </div>
               {images.length > 1 && (
-                <div className="grid grid-cols-5 gap-2">
-                  {images.slice(0, 5).map((img, i) => (
+                <div
+                  ref={thumbStripRef}
+                  className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:thin]"
+                >
+                  {images.map((img, i) => (
                     <button
                       key={i}
                       onClick={() => {
                         setActiveImage(i);
                         setLightboxOpen(true);
                       }}
-                      className={`aspect-square overflow-hidden border ${
+                      className={`shrink-0 w-[calc((100%-2rem)/5)] min-w-16 aspect-square overflow-hidden border ${
                         i === activeImage ? "border-foreground" : "border-transparent"
                       }`}
                     >
