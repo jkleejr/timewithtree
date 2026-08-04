@@ -41,6 +41,7 @@ export const ShopBrowser = ({ showHeader = true, title = "구매하기", label, 
   const [activeVariantId, setActiveVariantId] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const thumbStripRef = useHorizontalWheelScroll<HTMLDivElement>();
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [pendingAdd, setPendingAdd] = useState<{
     product: ShopifyProduct;
