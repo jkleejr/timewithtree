@@ -137,8 +137,8 @@ const CustomerOrderConfirmationEmail = ({
             <>
               <Heading as="h2" style={h2}>입금 안내</Heading>
               <Section style={card}>
-                <Text style={row}><strong>입금 계좌:</strong> {bankAccount || 'NH농협은행 301-0327-2621-11'}</Text>
-                <Text style={row}><strong>예금주:</strong> 고준서</Text>
+                <Text style={row}><strong>입금 계좌:</strong> {bankAccount || 'KB 국민은행 852701-00-147567'}</Text>
+                <Text style={row}><strong>예금주:</strong> 고준서(나무와 걷는 시간)</Text>
                 <Text style={row}><strong>입금자명:</strong> {depositorName || customerName}</Text>
                 <Text style={rowEm}>
                   <strong>입금 금액:</strong>{' '}
@@ -226,7 +226,7 @@ export const template = {
     deliveryMessage: '문 앞에 놓아주세요',
     paymentMethod: 'bank_transfer',
     depositorName: '홍길동',
-    bankAccount: 'NH농협은행 301-0327-2621-11',
+    bankAccount: 'KB 국민은행 852701-00-147567',
     items: [
       { product_title: '자작나무', variant_title: 'R3', quantity: 1, unit_price: 100000, line_total: 100000 },
     ],

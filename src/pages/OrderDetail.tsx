@@ -14,7 +14,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { cn, formatPrice } from "@/lib/utils";
 import { toast } from "sonner";
 
-const BANK_ACCOUNT = "NH농협은행 301-0327-2621-11";
+const BANK_ACCOUNT = "KB 국민은행 852701-00-147567";
 
 type OrderItem = {
   product_title: string;
@@ -389,7 +389,7 @@ const OrderDetail = () => {
                     {copied ? <><Check className="h-4 w-4" /> 복사됨</> : <><Copy className="h-4 w-4" /> 복사</>}
                   </Button>
                 </div>
-                <p className="text-xs text-muted-foreground mt-2">예금주: 농업회사법인 나무와걷는시간</p>
+                <p className="text-xs text-muted-foreground mt-2">예금주: 고준서(나무와 걷는 시간)</p>
               </div>
             </dl>
           </div>

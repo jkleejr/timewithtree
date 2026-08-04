@@ -19,7 +19,7 @@ import { cn, formatPrice } from "@/lib/utils";
 import { toast } from "sonner";
 import { z } from "zod";
 
-const BANK_ACCOUNT = "NH농협은행 301-0327-2621-11";
+const BANK_ACCOUNT = "KB 국민은행 852701-00-147567";
 
 type PartyForm = {
   name: string;
@@ -116,7 +116,7 @@ const Checkout = () => {
 
   const copyAccount = async () => {
     try {
-      await navigator.clipboard.writeText("301-0327-2621-11");
+      await navigator.clipboard.writeText("852701-00-147567");
       setCopied(true);
       toast.success("계좌번호가 복사되었습니다");
       setTimeout(() => setCopied(false), 2000);
@@ -423,7 +423,7 @@ const Checkout = () => {
                         </div>
                         <div>
                           <p className="text-xs text-muted-foreground mb-1">계좌명</p>
-                          <p className="font-medium text-foreground">고준서</p>
+                          <p className="font-medium text-foreground">고준서(나무와 걷는 시간)</p>
                         </div>
                       </div>
                       <Button
