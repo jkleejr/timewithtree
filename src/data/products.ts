@@ -12,6 +12,8 @@ import daganImg1 from "@/assets/dagan-1.jpg";
 import daganImg2 from "@/assets/dagan-2.jpg";
 import r5Img1 from "@/assets/r5-1.jpg";
 import r5Img2 from "@/assets/r5-2.jpg";
+import r4Asset5 from "@/assets/r4-5.jpg.asset.json";
+import r4Asset6 from "@/assets/r4-6.jpg.asset.json";
 
 
 
