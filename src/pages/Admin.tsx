@@ -3,6 +3,7 @@ import { Loader2, ShieldAlert } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { RequireAdmin } from "@/components/RequireAdmin";
+import { Seo } from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";

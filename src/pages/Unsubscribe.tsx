@@ -4,6 +4,7 @@ import { Loader2 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Button } from "@/components/ui/button";
+import { Seo } from "@/components/Seo";
 
 type State = "loading" | "valid" | "already" | "invalid" | "success" | "error";
 
