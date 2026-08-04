@@ -72,6 +72,14 @@ const Index = () => {
     () => setAboutIndex((i) => (i + 1) % aboutLen),
     () => setAboutIndex((i) => (i - 1 + aboutLen) % aboutLen),
   );
+  const heroWheelRef = useWheelSwipe(
+    () => setHeroIndex((i) => (i + 1) % heroLen),
+    () => setHeroIndex((i) => (i - 1 + heroLen) % heroLen),
+  );
+  const aboutWheelRef = useWheelSwipe(
+    () => setAboutIndex((i) => (i + 1) % aboutLen),
+    () => setAboutIndex((i) => (i - 1 + aboutLen) % aboutLen),
+  );
 
   useEffect(() => {
     if (aboutLen <= 1) return;
