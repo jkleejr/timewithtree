@@ -20,6 +20,7 @@ const ProductDetail = () => {
   const [variantIndex, setVariantIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
+  const thumbStripRef = useHorizontalWheelScroll<HTMLDivElement>();
 
   if (isLoading) {
     return (
