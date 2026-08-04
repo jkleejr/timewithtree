@@ -659,6 +659,12 @@ const Admin = () => {
   return (
     <RequireAdmin>
       <div className="min-h-screen flex flex-col">
+        <Seo
+          title="관리자 — 나무와 걷는 시간"
+          description="주문 관리, 방문자 통계, SEO 점검 및 상점 설정을 관리하는 관리자 페이지입니다."
+          path="/admin"
+          noindex
+        />
         <SiteHeader />
         <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-10 py-10">
           <h1 className="font-display text-4xl md:text-5xl font-bold font-sans tracking-tight mb-8">관리자</h1>
