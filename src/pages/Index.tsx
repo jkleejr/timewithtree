@@ -163,7 +163,7 @@ const Index = () => {
               </h1>
               <ul className="md:max-w-2xl space-y-1.5 sm:space-y-2 text-base md:text-lg leading-relaxed font-sans text-white drop-shadow-md pl-4">
                 <li className="relative"><span className="absolute -left-4" aria-hidden="true">-</span>네덜란드에서 조직배양한 묘목 재배</li>
-                <li className="relative"><span className="absolute -left-4" aria-hidden="true">-</span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</li>
+                <li className="relative"><span className="absolute -left-4" aria-hidden="true">-</span>{"\n"}에어포트(화분 재배)로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</li>
               </ul>
             </div>
           </div>
@@ -287,7 +287,7 @@ const Index = () => {
           <div className="max-w-3xl mb-8 md:mb-10">
             
             <h2 className="font-display font-bold font-sans text-4xl md:text-5xl leading-tight mb-5">
-              에어포트 재배
+              에어포트 화분 재배
             </h2>
             <p className="text-base md:text-lg leading-relaxed text-primary">
               저희 자작나무는 일반 화분이 아닌 <strong>에어포트 화분 재배(Air-Pot)</strong>에서 재배됩니다.
@@ -316,7 +316,7 @@ const Index = () => {
                 className="w-full aspect-[4/3] object-cover"
               />
               <figcaption className="px-4 py-3 text-xs md:text-sm text-foreground font-sans">
-                에어포트 에서 자란 자작나무 — 안정적인 뿌리 구조로 연중 식재가 가능합니다.
+                에어포트(화분 재배)에서 자란 자작나무 — 안정적인 뿌리 구조로 연중 식재가 가능합니다.
               </figcaption>
             </figure>
           </div>
@@ -403,7 +403,7 @@ const Index = () => {
               나무 관련 정보 · 식재방법
             </h2>
             <p className="text-base md:text-lg leading-relaxed text-primary">
-              에어포트 화분에서 키운 자작나무는&nbsp;연중 식재가 가능하며 활착이 매우 빠릅니다.
+              에어포트(화분 재배)에서 자란 자작나무는&nbsp;연중 식재가 가능하며 활착이 매우 빠릅니다.
               아래의 식재 방법을 참고하여 건강하게 키워보세요.
             </p>
           </div>
