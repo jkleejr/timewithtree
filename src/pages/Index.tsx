@@ -19,11 +19,15 @@ import plantingCorrectVsWrong from "@/assets/planting-correct-vs-wrong.png";
 import aboutBark from "@/assets/about-doorenbos.jpg";
 import aboutBark2 from "@/assets/about-doorenbos-2.jpg";
 import aboutBark3 from "@/assets/about-doorenbos-3.jpg";
+import aboutBark4Asset from "@/assets/about-doorenbos-4.jpg.asset.json";
+import aboutBark5Asset from "@/assets/about-doorenbos-5.jpg.asset.json";
 
 const aboutImages = [
   { src: aboutBark, alt: "에어포트에서 자라는 자작나무" },
   { src: aboutBark2, alt: "자작나무의 하얀 수피 클로즈업" },
   { src: aboutBark3, alt: "에어포트에서 줄지어 자라는 자작나무" },
+  { src: aboutBark4Asset.url, alt: "에어포트 화분에서 자라는 잭큐몬티 자작나무 줄" },
+  { src: aboutBark5Asset.url, alt: "에어포트 화분에 식재된 잭큐몬티 자작나무 흰 수피 클로즈업" },
 ];
 
 const heroImages = [
