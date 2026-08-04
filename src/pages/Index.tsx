@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ChevronLeft, ChevronRight, RotateCcw, Sprout, Droplets, Wind, ShieldCheck, TrendingUp, TreePine, type LucideIcon } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { useSwipe } from "@/hooks/useSwipe";
+import { useWheelSwipe } from "@/hooks/useWheelSwipe";
 import { ShopBrowser } from "@/components/ShopBrowser";
 import { Button } from "@/components/ui/button";
 import { Seo } from "@/components/Seo";
