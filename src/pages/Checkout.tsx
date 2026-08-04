@@ -418,7 +418,7 @@ const Checkout = () => {
                     <div className="flex items-center justify-between gap-4">
                       <div className="space-y-2">
                         <div>
-                          <p className="text-xs text-muted-foreground mb-1">계좌번호</p>
+                          <p className="text-xs text-muted-foreground mb-1">입금계좌</p>
                           <p className="font-medium tabular-nums">{BANK_ACCOUNT}</p>
                         </div>
                         <div>
