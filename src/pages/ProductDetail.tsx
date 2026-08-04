@@ -9,6 +9,7 @@ import { Seo } from "@/components/Seo";
 import { useShopifyProduct } from "@/hooks/useShopifyProducts";
 import { useCartStore } from "@/stores/cartStore";
 import { formatPrice } from "@/lib/utils";
+import { useHorizontalWheelScroll } from "@/hooks/useHorizontalWheelScroll";
 
 const ProductDetail = () => {
   const { handle } = useParams<{ handle: string }>();
