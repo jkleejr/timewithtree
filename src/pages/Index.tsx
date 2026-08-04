@@ -403,7 +403,7 @@ const Index = () => {
               나무 관련 정보 · 식재방법
             </h2>
             <p className="text-base md:text-lg leading-relaxed text-primary">
-              에어포트 화분에서 키운 자작나무는&nbsp;연중 식재가 가능하며 활착이 매우 빠릅니다.
+              에어포트(화분 재배)에서 자란 자작나무는&nbsp;연중 식재가 가능하며 활착이 매우 빠릅니다.
               아래의 식재 방법을 참고하여 건강하게 키워보세요.
             </p>
           </div>
