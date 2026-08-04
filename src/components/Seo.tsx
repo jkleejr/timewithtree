@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import { recordSeoSnapshot } from "@/lib/seoMonitor";
 
 interface SeoProps {
   title: string;
@@ -15,6 +17,18 @@ const SITE_URL = "https://timewithtree.co.kr";
 export const Seo = ({ title, description, path, ogType = "website", image, jsonLd, noindex }: SeoProps) => {
   const url = `${SITE_URL}${path}`;
   const ldArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+
+  useEffect(() => {
+    recordSeoSnapshot({
+      path,
+      title,
+      description,
+      canonical: url,
+      noindex: !!noindex,
+    });
+  }, [path, title, description, url, noindex]);
+
+
   return (
     <Helmet>
       <title>{title}</title>

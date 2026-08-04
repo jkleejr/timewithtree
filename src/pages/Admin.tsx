@@ -15,6 +15,7 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Archive, ArchiveRestore } from "lucide-react";
+import { SeoSection } from "@/components/admin/SeoSection";
 import { toast } from "sonner";
 import { formatPrice } from "@/lib/utils";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
@@ -664,10 +665,12 @@ const Admin = () => {
             <TabsList>
               <TabsTrigger value="orders">주문 관리</TabsTrigger>
               <TabsTrigger value="analytics">방문자 통계</TabsTrigger>
+              <TabsTrigger value="seo">SEO 점검</TabsTrigger>
               <TabsTrigger value="settings">설정</TabsTrigger>
             </TabsList>
             <TabsContent value="orders"><OrdersSection /></TabsContent>
             <TabsContent value="analytics"><AnalyticsSection /></TabsContent>
+            <TabsContent value="seo"><SeoSection /></TabsContent>
             <TabsContent value="settings"><SettingsSection /></TabsContent>
           </Tabs>
         </main>
