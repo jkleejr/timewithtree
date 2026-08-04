@@ -174,7 +174,8 @@ const Index = () => {
                 </li>
                 <li className="relative">
                   <span className="absolute -left-4" aria-hidden="true">-</span>
-                  전문 재배 관리로 균일한 수형과 건강한 뿌리 유지
+                  사계절, 마음에 안식을 주는 정원<br />
+                  시간이 흐를수록 더 깊은 아름다움을 선사하는 잭큐몬티 자작나무
                 </li>
               </ul>
             </div>
