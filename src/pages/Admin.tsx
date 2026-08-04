@@ -15,6 +15,7 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Archive, ArchiveRestore } from "lucide-react";
+import { SeoSection } from "@/components/admin/SeoSection";
 import { toast } from "sonner";
 import { formatPrice } from "@/lib/utils";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
