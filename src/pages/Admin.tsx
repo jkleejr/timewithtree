@@ -664,10 +664,12 @@ const Admin = () => {
             <TabsList>
               <TabsTrigger value="orders">주문 관리</TabsTrigger>
               <TabsTrigger value="analytics">방문자 통계</TabsTrigger>
+              <TabsTrigger value="seo">SEO 점검</TabsTrigger>
               <TabsTrigger value="settings">설정</TabsTrigger>
             </TabsList>
             <TabsContent value="orders"><OrdersSection /></TabsContent>
             <TabsContent value="analytics"><AnalyticsSection /></TabsContent>
+            <TabsContent value="seo"><SeoSection /></TabsContent>
             <TabsContent value="settings"><SettingsSection /></TabsContent>
           </Tabs>
         </main>
