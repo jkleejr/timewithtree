@@ -165,7 +165,7 @@ const Index = () => {
                 <li className="relative">
                   <span className="absolute -left-4" aria-hidden="true">-</span>
                   네덜란드에서 직수입한 잭큐몬티 자작나무<br />
-                  에어포트(Air-Pot) 화분에서 건강하게 재배한 굵기 4-5cm의 프리미엄 묘목
+                  에어포트(Air-Pot) 화분에서 건강하게 재배한 굵기 4~5cm의 프리미엄 묘목
                 </li>
                 <li className="relative">
                   <span className="absolute -left-4" aria-hidden="true">-</span>
