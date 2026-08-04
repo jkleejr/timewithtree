@@ -14,6 +14,10 @@ import r5Img1 from "@/assets/r5-1.jpg";
 import r5Img2 from "@/assets/r5-2.jpg";
 import r4Asset5 from "@/assets/r4-5.jpg.asset.json";
 import r4Asset6 from "@/assets/r4-6.jpg.asset.json";
+import r5Asset3 from "@/assets/r5-3.jpg.asset.json";
+import r5Asset4 from "@/assets/r5-4.jpg.asset.json";
+import r5Asset5 from "@/assets/r5-5.jpg.asset.json";
+import r5Asset6 from "@/assets/r5-6.jpg.asset.json";
 
 
 
