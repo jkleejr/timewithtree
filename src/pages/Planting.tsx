@@ -49,7 +49,7 @@ const Planting = () => {
           잭큐몬티 자작나무 식재 가이드
         </h1>
         <p className="text-base md:text-lg leading-relaxed text-primary max-w-3xl">
-          에어포트에서 자란 자작나무는 연중 식재가 가능하며 활착이 매우 빠릅니다. 아래의 식재 방법을 참고하여 건강하게 키워보세요.
+          에어포트 화분에서 키운 자작나무는&nbsp;연중 식재가 가능하며 활착이 매우 빠릅니다. 아래의 식재 방법을 참고하여 건강하게 키워보세요.
         </p>
       </section>
 
