@@ -4,6 +4,7 @@ import { Loader2 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Button } from "@/components/ui/button";
+import { Seo } from "@/components/Seo";
 
 type State = "loading" | "valid" | "already" | "invalid" | "success" | "error";
 
@@ -59,6 +60,12 @@ const Unsubscribe = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Seo
+        title="이메일 수신 거부 — 나무와 걷는 시간"
+        description="나무와 걷는 시간의 주문 및 안내 이메일 수신을 해지합니다."
+        path="/unsubscribe"
+        noindex
+      />
       <SiteHeader />
       <main className="flex-1 flex items-center justify-center px-4 py-16">
         <div className="max-w-md w-full text-center space-y-4">
