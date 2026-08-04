@@ -14,6 +14,10 @@ import r5Img1 from "@/assets/r5-1.jpg";
 import r5Img2 from "@/assets/r5-2.jpg";
 import r4Asset5 from "@/assets/r4-5.jpg.asset.json";
 import r4Asset6 from "@/assets/r4-6.jpg.asset.json";
+import r5Asset3 from "@/assets/r5-3.jpg.asset.json";
+import r5Asset4 from "@/assets/r5-4.jpg.asset.json";
+import r5Asset5 from "@/assets/r5-5.jpg.asset.json";
+import r5Asset6 from "@/assets/r5-6.jpg.asset.json";
 
 
 
@@ -114,6 +118,10 @@ export const LOCAL_PRODUCTS: ShopifyProduct[] = [
         "R5, 잭큐몬티 자작나무": [
           { node: { url: r5Img1, altText: "R5 구매하기 수피 클로즈업" } },
           { node: { url: r5Img2, altText: "R5 구매하기 전체 모습" } },
+          { node: { url: r5Asset3.url, altText: "R5 잭큐몬티 자작나무 화분 재배 농장 전경" } },
+          { node: { url: r5Asset4.url, altText: "R5 잭큐몬티 자작나무 화분 수피 클로즈업" } },
+          { node: { url: r5Asset5.url, altText: "R5 잭큐몬티 자작나무 화분 재배 전체 모습" } },
+          { node: { url: r5Asset6.url, altText: "R5 잭큐몬티 자작나무 줄기 굵기 측정" } },
         ],
         "다간형, 잭큐몬티 자작나무": [
           { node: { url: daganImg1, altText: "다간형 구매하기 전체 모습" } },
