@@ -287,7 +287,7 @@ const Index = () => {
           <div className="max-w-3xl mb-8 md:mb-10">
             
             <h2 className="font-display font-bold font-sans text-4xl md:text-5xl leading-tight mb-5">
-              에어포트 재배
+              에어포트 화분 재배
             </h2>
             <p className="text-base md:text-lg leading-relaxed text-primary">
               저희 자작나무는 일반 화분이 아닌 <strong>에어포트 화분 재배(Air-Pot)</strong>에서 재배됩니다.
