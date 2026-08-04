@@ -114,12 +114,12 @@ const ProductDetail = () => {
             )}
           </div>
           {images.length > 1 && (
-            <div className="grid grid-cols-5 gap-2">
+            <div ref={thumbStripRef} className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:thin]">
               {images.map((img, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveImage(i)}
-                  className={`aspect-square overflow-hidden border ${i === activeImage ? 'border-foreground' : 'border-transparent'}`}
+                  className={`shrink-0 w-[calc((100%-2rem)/5)] min-w-16 aspect-square overflow-hidden border ${i === activeImage ? 'border-foreground' : 'border-transparent'}`}
                 >
                   <img src={img.node.url} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </button>
