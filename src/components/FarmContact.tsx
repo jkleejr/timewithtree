@@ -17,7 +17,7 @@ export const FarmContact = ({ variant = "section" }: { variant?: Variant }) => {
         <dl className="space-y-1.5">
           <InfoRow label="상호">나무와 걷는 시간</InfoRow>
           <InfoRow label="사업자등록번호">302-93-11822</InfoRow>
-          <InfoRow label="통신판매신고">—</InfoRow>
+          <InfoRow label="통신판매신고">제 2026-세종아름-0242 호</InfoRow>
           <InfoRow label="문의전화">
             <a href="tel:01089256251" className="hover:text-accent transition-colors">
               010-8925-6251
