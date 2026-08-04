@@ -128,6 +128,8 @@ export const LOCAL_PRODUCTS: ShopifyProduct[] = [
         "다간형, 잭큐몬티 자작나무": [
           { node: { url: daganImg1, altText: "다간형 구매하기 전체 모습" } },
           { node: { url: daganImg2, altText: "다간형 구매하기 농장 전경" } },
+          { node: { url: daganAsset3.url, altText: "다간형 잭큐몬티 자작나무 화분 재배 전체 모습" } },
+          { node: { url: daganAsset4.url, altText: "다간형 잭큐몬티 자작나무 화분 재배 농장 전경" } },
         ],
       },
 
