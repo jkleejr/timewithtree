@@ -108,6 +108,8 @@ export const LOCAL_PRODUCTS: ShopifyProduct[] = [
           { node: { url: r4Img2, altText: "R4 구매하기 줄기 클로즈업" } },
           { node: { url: r4Img3, altText: "R4 구매하기 전체 모습" } },
           { node: { url: r4Img4, altText: "R4 일자형 구매하기 농장 전경" } },
+          { node: { url: r4Asset5.url, altText: "R4 잭큐몬티 자작나무 화분 재배 전체 모습" } },
+          { node: { url: r4Asset6.url, altText: "R4 잭큐몬티 자작나무 화분 수피 클로즈업" } },
         ],
         "R5, 잭큐몬티 자작나무": [
           { node: { url: r5Img1, altText: "R5 구매하기 수피 클로즈업" } },
