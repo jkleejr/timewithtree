@@ -163,7 +163,7 @@ const Index = () => {
               </h1>
               <ul className="md:max-w-2xl space-y-1.5 sm:space-y-2 text-base md:text-lg leading-relaxed font-sans text-white drop-shadow-md pl-4">
                 <li className="relative"><span className="absolute -left-4" aria-hidden="true">-</span>네덜란드에서 조직배양한 묘목 재배</li>
-                <li className="relative"><span className="absolute -left-4" aria-hidden="true">-</span>에어포트로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</li>
+                <li className="relative"><span className="absolute -left-4" aria-hidden="true">-</span>{"\n"}에어포트(화분 재배)로 재배하여 연중 식재 가능, 식재 후 나무 고사 가능성 현저히 낮음</li>
               </ul>
             </div>
           </div>
