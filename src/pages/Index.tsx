@@ -182,23 +182,20 @@ const Index = () => {
       {/* 소개 문구 */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-8 md:py-12">
-          <ul className="md:max-w-3xl space-y-3 md:space-y-4 text-base md:text-lg leading-relaxed font-sans text-black pl-4">
-            <li className="relative">
-              <span className="absolute -left-4" aria-hidden="true">-</span>
+          <div className="md:max-w-3xl space-y-3 md:space-y-4 text-base md:text-lg leading-relaxed font-sans text-black">
+            <p>
               네덜란드에서 직수입한 잭큐몬티 자작나무<br />
               에어포트(Air-Pot) 화분에서 건강하게 재배한 굵기 4~5cm의 프리미엄 묘목
-            </li>
-            <li className="relative">
-              <span className="absolute -left-4" aria-hidden="true">-</span>
+            </p>
+            <p>
               화분으로 재배하여 연중 식재 가능<br />
               식재 후 활착률이 높아 고사 위험 현저히 낮음
-            </li>
-            <li className="relative">
-              <span className="absolute -left-4" aria-hidden="true">-</span>
+            </p>
+            <p>
               사계절, 마음에 안식을 주는 정원<br />
               시간이 흐를수록 더 깊은 아름다움을 선사하는 잭큐몬티 자작나무
-            </li>
-          </ul>
+            </p>
+          </div>
         </div>
       </section>
 
